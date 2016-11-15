@@ -5,10 +5,10 @@
     .module('dataToolApp')
     .run(runBlock);
 
-  /** @ngInject */
-  function runBlock($log) {
+    runBlock.$inject = ['$log']
 
-    $log.debug('runBlock end');
-  }
+    function runBlock($log) {
+        $log.debug('runBlock end');
+    }
 
 })();

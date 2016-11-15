@@ -20,12 +20,37 @@
     <!-- endinject -->
     <!-- endbuild -->
   </head>
-  <body ng-controller="MainController as main">
+  <body>
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div ui-view></div>
+    <!-- SideBar-->
+    <side-navigation></side-navigation>
+    <!-- SideBar-->
+
+    <!-- Wrapper-->
+    <div id="wrapper">
+        <!-- Page wraper -->
+        <!-- ng-class with current state name give you the ability to extended customization your view -->
+        <div id="page-wrapper" class="gray-bg {{$state.current.name}}">
+
+            <!-- Top NavBar -->
+            <top-navbar></top-navbar>
+
+            <!-- Top Title Bar -->
+            <top-title-bar></top-title-bar>
+
+            <!-- Main view  -->
+            <div ui-view="content"></div>
+
+            <!-- Footer -->
+            <div ng-include="'app/layouts/common/footer.html'"></div>
+        </div>
+        <!-- End page wrapper-->
+
+    </div>
+    <!-- End wrapper-->
 
     <!-- build:js(src) scripts/vendor.js -->
     <!-- bower:js -->
