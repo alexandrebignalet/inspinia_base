@@ -7,7 +7,7 @@
                     <a uib-dropdown-toggle="" href>
                             <span class="clear">
                                 <span class="block m-t-xs">
-                                    <strong class="font-bold">{{main.userName}}</strong>
+                                    <strong class="font-bold">{{vm.userName}}</strong>
                              </span>
                                 <span class="text-muted text-xs block">Example menu<b class="caret"></b></span>
                             </span>
@@ -22,10 +22,10 @@
 
             </li>
             <li ui-sref-active="active">
-              <a ui-sref="index.home"><i class="fa fa-laptop"></i> <span class="nav-label">Home page</span> </a>
+              <a ui-sref="home"><i class="fa fa-laptop"></i> <span class="nav-label">Home</span></a>
             </li>
             <li ui-sref-active="active">
-                <a ui-sref="index.main"><i class="fa fa-laptop"></i> <span class="nav-label">Main page</span> </a>
+                <a ui-sref="database"><i class="fa fa-laptop"></i> <span class="nav-label">Database</span></a>
             </li>
         </ul>
 
