@@ -20,6 +20,10 @@
                 }
             },
             resolve: {
+                mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
+                    $translatePartialLoader.addPart('home');
+                    return $translate.refresh();
+                }],
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
                         {
