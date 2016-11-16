@@ -9,6 +9,20 @@
             </form>
         </div>
         <ul class="nav navbar-top-links navbar-right">
+            <li uib-dropdown class="dropdown pointer" ng-controller="DtoolLanguageController as languageVm">
+                <a class="dropdown-toggle" uib-dropdown-toggle href="">
+                        <span>
+                            <span class="glyphicon glyphicon-flag"></span>
+                            <span class="hidden-sm" translate="global.menu.language">Language</span>
+                            <b class="caret"></b>
+                        </span>
+                </a>
+                <ul class="dropdown-menu" uib-dropdown-menu ng-if="languageVm.languages.length > 1">
+                    <li active-menu="{{language}}" ng-repeat="language in languageVm.languages">
+                        <a href="" ng-click="languageVm.changeLanguage(language);vm.collapseNavbar();">{{language | findLanguageFromKey}}</a>
+                    </li>
+                </ul>
+            </li>
             <li>
                 <a href="">
                     <i class="fa fa-sign-out"></i> Log out
