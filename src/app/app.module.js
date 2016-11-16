@@ -13,6 +13,7 @@
         'ui.router',
         'ui.bootstrap',
         'oc.lazyLoad',
-        'chart.js'
+        'chart.js',
+        'pascalprecht.translate'
     ]);
 })();
