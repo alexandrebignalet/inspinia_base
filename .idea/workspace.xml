@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="886b014c-9d33-4d34-9457-972b7169705e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/base_inspinia.iml" afterPath="$PROJECT_DIR$/.idea/base_inspinia.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.tmp/serve/index.html" afterPath="$PROJECT_DIR$/.tmp/serve/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower.json" afterPath="$PROJECT_DIR$/bower.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/home/home.controller.js" afterPath="$PROJECT_DIR$/src/app/home/home.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/home/home.html" afterPath="$PROJECT_DIR$/src/app/home/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/home/home.state.js" afterPath="$PROJECT_DIR$/src/app/home/home.state.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -54,17 +47,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.controller.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="home.controller.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app/home/home.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+            <state relative-caret-position="389">
+              <caret line="40" column="14" lean-forward="true" selection-start-line="40" selection-start-column="14" selection-end-line="40" selection-end-column="14" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="80">
@@ -144,8 +137,8 @@
         <option value="$PROJECT_DIR$/src/app/home/home.html" />
         <option value="$PROJECT_DIR$/src/app/home/home.state.js" />
         <option value="$PROJECT_DIR$/bower_components/angular-ui-sortable/sortable.js" />
-        <option value="$PROJECT_DIR$/src/app/home/home.controller.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/app/home/home.controller.js" />
       </list>
     </option>
   </component>
@@ -529,12 +522,12 @@
       <workItem from="1479236015166" duration="713000" />
       <workItem from="1479236740127" duration="831000" />
       <workItem from="1479237585234" duration="9485000" />
-      <workItem from="1479287064821" duration="3511000" />
+      <workItem from="1479287064821" duration="4338000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25765000" />
+    <option name="totallyTimeSpent" value="26592000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -870,18 +863,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/home/home.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
           <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/home/home.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="389">
+          <caret line="40" column="14" lean-forward="true" selection-start-line="40" selection-start-column="14" selection-end-line="40" selection-end-column="14" />
           <folding />
         </state>
       </provider>
