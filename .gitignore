@@ -2,4 +2,9 @@
 
 /bower_components
 
-/.idea
+.idea/
+
+/.tmp
+
+/dist
+
