@@ -28,7 +28,8 @@
     "angular-translate-loader-partial": "^2.13.0",
     "angular-translate-storage-cookie": "^2.13.0",
     "angular-dynamic-locale": "^0.1.32",
-    "ngstorage": "^0.3.11"
+    "ngstorage": "^0.3.11",
+    "angular-datatables": "^0.5.5"
   },
   "devDependencies": {
     "angular-mocks": "~1.5.0"
