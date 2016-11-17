@@ -1,5 +1,6 @@
 {
     "announcer": {
-        "announcer": "annonceur"
+        "announcer": "annonceur",
+        "list": "Liste des annonceurs"
     }
 }
