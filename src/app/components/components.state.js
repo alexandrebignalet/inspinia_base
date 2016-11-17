@@ -11,7 +11,18 @@
         $stateProvider
             .state('components', {
                 parent: 'app',
-                abstract: true
+                abstract: true,
+                views: {
+                    'sidebar@': {
+                        template: '<side-navigation></side-navigation>'
+                    },
+                    'topNavbar@': {
+                        template: '<top-navbar></top-navbar>'
+                    },
+                    'topTitleBar@': {
+                        template: '<top-title-bar></top-title-bar>'
+                    }
+                }
             });
     }
 })();

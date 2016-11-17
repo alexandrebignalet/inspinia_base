@@ -26,7 +26,7 @@
     <![endif]-->
 
     <!-- SideBar-->
-    <side-navigation></side-navigation>
+    <div ui-view="sidebar"></div>
     <!-- SideBar-->
 
     <!-- Wrapper-->
@@ -36,10 +36,10 @@
         <div id="page-wrapper" class="gray-bg {{$state.current.name}}">
 
             <!-- Top NavBar -->
-            <top-navbar></top-navbar>
+            <div ui-view="topNavbar"></div>
 
             <!-- Top Title Bar -->
-            <top-title-bar></top-title-bar>
+            <div ui-view="topTitleBar"></div>
 
             <!-- Main view  -->
             <div ui-view="content"></div>

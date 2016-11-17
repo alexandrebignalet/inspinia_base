@@ -9,12 +9,17 @@
 
     function stateConfig($stateProvider) {
         $stateProvider.state('home', {
-            parent: 'app',
+            parent: 'components',
             url: '/home',
-            data: { pageTitle: 'Vue d\'ensemble' },
+            data: {
+                pageTitle: 'Vue d\'ensemble',
+                data: {
+                    authorities: []
+                }
+            },
             views: {
                 'content@': {
-                    templateUrl: 'app/home/home.html',
+                    templateUrl: 'app/components/home/home.html',
                     controller: 'HomeController',
                     controllerAs: 'vm'
                 }

@@ -10,9 +10,16 @@
 
         $stateProvider
             .state('app', {
-                abstract: true
+                abstract: true,
+                resolve: {
+                    authorize: ['Auth',
+                        function (Auth) {
+                            return Auth.authorize();
+                        }
+                    ]
+                }
             });
 
-        $urlRouterProvider.otherwise('/home');
+        $urlRouterProvider.otherwise('/login');
     }
 })();

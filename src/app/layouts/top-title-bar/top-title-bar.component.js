@@ -17,16 +17,16 @@
     function TopTitleBarController($rootScope) {
         var vm = this;
 
-        var stateChangeStart = $rootScope.$on('$stateChangeSuccess',  function(event, toState, toParams, fromState, fromParams) {
-            vm.title =  toState.data.pageTitle;
-            vm.current = toState.name;
-        });
+        // var stateChangeStart = $rootScope.$on('$stateChangeSuccess',  function(event, toState, toParams, fromState, fromParams) {
+        vm.title =  $rootScope.pageTitle;
+        vm.current = $rootScope.name;
+        // });
 
-        $rootScope.$on('$destroy', function () {
-            if(angular.isDefined(stateChangeStart) && stateChangeStart !== null){
-                stateChangeStart();
-            }
-        });
+        // $rootScope.$on('$destroy', function () {
+        //     if(angular.isDefined(stateChangeStart) && stateChangeStart !== null){
+        //         stateChangeStart();
+        //     }
+        // });
     }
 
 })();
