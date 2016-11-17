@@ -39,9 +39,11 @@
 
         ////////////////
 
-        function activate() {
-
-        }
+        vm.sortableOptions = {
+            items: "> *",
+            connectWith: ".connectPanels",
+            handler: ".ibox-title"
+        };
     }
 })();
 
