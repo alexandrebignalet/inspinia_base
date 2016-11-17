@@ -18,7 +18,7 @@
                 },
                 views: {
                     'content@': {
-                        template: '<users></users>'
+                        template: '<users users="users"></users>'
                     }
                 }
             });
