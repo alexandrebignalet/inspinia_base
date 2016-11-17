@@ -12,12 +12,17 @@
             .state('app', {
                 abstract: true,
                 resolve: {
+                    authorize: ['Auth',
+                        function (Auth) {
+                            return Auth.authorize();
+                        }
+                    ],
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                         $translatePartialLoader.addPart('global');
                     }]
                 }
             });
 
-        $urlRouterProvider.otherwise('/home');
+        $urlRouterProvider.otherwise('/login');
     }
 })();

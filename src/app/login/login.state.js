@@ -10,16 +10,15 @@
     function stateConfig($stateProvider) {
 
         $stateProvider
-            .state('database', {
-                parent: 'components',
-                url: '/databases',
+            .state('login', {
+                parent: 'app',
+                url: '/login',
                 data: {
-                    pageTitle: 'Database',
-                    authorities: ['ROLE_ADMIN', 'ROLE_USER']
+                    pageTitle: 'Login'
                 },
                 views: {
                     'content@': {
-                        template: '<databases></databases>'
+                        template: '<login></login>'
                     }
                 }
             });

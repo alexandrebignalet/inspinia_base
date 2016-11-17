@@ -1,23 +1,23 @@
 <nav class="navbar-default navbar-static-side" role="navigation">
     <div class="sidebar-collapse">
-        <ul side-navigation class="nav metismenu" id="side-menu">
+        <ul class="nav metismenu" id="side-menu">
             <li class="nav-header">
 
                 <div class="profile-element" uib-dropdown>
                     <a uib-dropdown-toggle="" href>
                             <span class="clear">
                                 <span class="block m-t-xs">
-                                    <strong class="font-bold">{{vm.userName}}</strong>
+                                    <strong class="font-bold">{{vm.user.firstname}} {{vm.user.lastname | uppercase}}</strong>
                              </span>
-                                <span class="text-muted text-xs block">Example menu<b class="caret"></b></span>
+                                <span class="text-muted text-xs block">Developer (fonction)<b class="caret"></b></span>
                             </span>
                     </a>
                     <ul uib-dropdown-menu class="animated flipInX m-t-xs">
-                        <li><a href="">Logout</a></li>
+                        <li><a ng-click="vm.logout()">Logout</a></li>
                     </ul>
                 </div>
                 <div class="logo-element">
-                    IN+
+                    DT+
                 </div>
 
             </li>

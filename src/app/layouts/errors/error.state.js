@@ -10,16 +10,14 @@
     function stateConfig($stateProvider) {
 
         $stateProvider
-            .state('database', {
-                parent: 'components',
-                url: '/databases',
+            .state('accessdenied', {
+                url: '/accessdenied',
                 data: {
-                    pageTitle: 'Database',
-                    authorities: ['ROLE_ADMIN', 'ROLE_USER']
+                    pageTitle: '404'
                 },
                 views: {
                     'content@': {
-                        template: '<databases></databases>'
+                        templateUrl: 'app/layouts/errors/404.html'
                     }
                 }
             });
