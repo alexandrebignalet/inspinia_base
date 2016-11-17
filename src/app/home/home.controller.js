@@ -36,6 +36,16 @@
             function activate() {
 
             }
+
+            /**
+             *
+             * @type {{items: string, connectWith: string, handler: string}}
+             */
+            vm.sortableOptions = {
+                items: "> *",
+                connectWith: ".connectPanels",
+                handler: ".ibox-title"
+            };
         }
 
 })();

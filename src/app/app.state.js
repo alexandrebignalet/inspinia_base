@@ -10,7 +10,12 @@
 
         $stateProvider
             .state('app', {
-                abstract: true
+                abstract: true,
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('global');
+                    }]
+                }
             });
 
         $urlRouterProvider.otherwise('/home');
