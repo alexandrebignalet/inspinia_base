@@ -19,9 +19,7 @@
                 },
                 views: {
                     'content@': {
-                        templateUrl: 'app/components/database/databases.html',
-                        controller: 'DatabaseController',
-                        controllerAs: 'vm'
+                        template: '<database></database>'
                     }
                 }
             });

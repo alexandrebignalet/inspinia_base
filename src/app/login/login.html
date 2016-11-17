@@ -6,15 +6,15 @@
         <h3>Welcome to DT+</h3>
         <form class="m-t" role="form" ng-submit="vm.login($event)">
             <div class="form-group">
-                <input type="text" id="username" class="form-control" placeholder="Username" required="" ng-model="vm.username">
+                <input type="text" id="username" class="form-control" placeholder="Username" required ng-model="vm.username">
             </div>
             <div class="form-group">
-                <input type="password" id="password" class="form-control" placeholder="Password" required="" ng-model="vm.password">
+                <input type="password" id="password" class="form-control" placeholder="Password" required ng-model="vm.password">
             </div>
             <div class="form-group">
                 <label for="rememberMe">
                     <input type="checkbox" id="rememberMe" ng-model="vm.rememberMe" checked>
-                    <span translate="login.form.rememberme">Remember me</span>
+                    <span>Remember me</span>
                 </label>
             </div>
             <button type="submit" class="btn btn-primary block full-width m-b">Login</button>

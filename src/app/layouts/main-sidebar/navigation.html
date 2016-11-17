@@ -7,13 +7,13 @@
                     <a uib-dropdown-toggle="" href>
                             <span class="clear">
                                 <span class="block m-t-xs">
-                                    <strong class="font-bold">{{vm.userName}}</strong>
+                                    <strong class="font-bold">{{vm.user.firstname}} {{vm.user.lastname | uppercase}}</strong>
                              </span>
-                                <span class="text-muted text-xs block">Example menu<b class="caret"></b></span>
+                                <span class="text-muted text-xs block">Developer (fonction)<b class="caret"></b></span>
                             </span>
                     </a>
                     <ul uib-dropdown-menu class="animated flipInX m-t-xs">
-                        <li><a href="">Logout</a></li>
+                        <li><a ng-click="vm.logout()">Logout</a></li>
                     </ul>
                 </div>
                 <div class="logo-element">

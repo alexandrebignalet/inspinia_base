@@ -1,9 +1,15 @@
 (function () {
     'use strict';
 
+    var database = {
+        templateUrl: 'app/components/database/databases.html',
+        controller: DatabaseController,
+        controllerAs: 'vm'
+    };
+
     angular
         .module('dataToolApp')
-        .controller('DatabaseController', DatabaseController);
+        .component('database', database);
 
     DatabaseController.$inject = [];
 

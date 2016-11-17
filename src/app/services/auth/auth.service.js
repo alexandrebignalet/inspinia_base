@@ -23,11 +23,13 @@
         ////////////////
 
         function authorize (force) {
-            var authReturn = Principal.identity(force).then(authThen);
+            var authReturn = Principal.identity(force)
+                .then(authThen);
 
             return authReturn;
 
             function authThen () {
+
                 var isAuthenticated = Principal.isAuthenticated();
 
                 // an authenticated user can't access to login and register pages

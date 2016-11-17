@@ -17,9 +17,7 @@
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/components/home/home.html',
-                    controller: 'HomeController',
-                    controllerAs: 'vm'
+                    template: '<home></home>'
                 }
             }
         });

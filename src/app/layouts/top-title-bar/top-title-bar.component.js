@@ -17,7 +17,7 @@
     function TopTitleBarController($rootScope) {
         var vm = this;
 
-        var stateChangeStart = $rootScope.$on('$stateChangeSuccess',  function(event, toState) {
+        var stateChangeStart = $rootScope.$on('$stateChangeSuccess',  function() {
             vm.title =  $rootScope.pageTitle;
             vm.current = $rootScope.name;
         });

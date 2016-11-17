@@ -11,10 +11,10 @@
         .module('dataToolApp')
         .component('login', login);
 
-    LoginController.$inject = ['$rootScope', '$state', '$timeout', 'Auth'];
+    LoginController.$inject = ['$rootScope', '$state', '$timeout', 'Auth', 'ToastrService'];
 
     /* @ngInject */
-    function LoginController($rootScope, $state, $timeout, Auth) {
+    function LoginController($rootScope, $state, $timeout, Auth, ToastrService) {
         var vm = this;
 
         vm.credentials = {};
@@ -32,7 +32,7 @@
                 password: vm.password,
                 rememberMe: vm.rememberMe
             }).then(function () {
-                toastr.success('You are now connected to DataTool.');
+                ToastrService.success('You are now connected to DataTool.', 'Connection successful');
                 if ($state.current.name === 'register') {
                     $state.go('home');
                 }
@@ -45,9 +45,11 @@
                     var previousState = Auth.getPreviousState();
                     Auth.resetPreviousState();
                     $state.go(previousState.name, previousState.params);
+                } else {
+                    $state.go('home');
                 }
             }).catch(function () {
-                toastr.error('Bad credentials.')
+                ToastrService.error('Bad credentials.', 'Login failed')
             });
         }
     }
