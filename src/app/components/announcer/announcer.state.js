@@ -27,6 +27,10 @@
                     }
                 },
                 resolve: {
+                    mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
+                        $translatePartialLoader.addPart('announcer');
+                        return $translate.refresh();
+                    }],
                     loadPlugin: function ($ocLazyLoad) {
                         return $ocLazyLoad.load([
                             {

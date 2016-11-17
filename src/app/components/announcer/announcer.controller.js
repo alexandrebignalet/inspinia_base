@@ -20,7 +20,7 @@
         ////////////////
 
         function activate() {
-            console.log('ANNOUNCER CONTROLLER');
+
         }
 
         vm.dtOptions = DTOptionsBuilder.newOptions()
@@ -42,8 +42,6 @@
                     }
                 }
             ]);
-
-        console.log(vm.dtOptions);
     }
 
 })();
