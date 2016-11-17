@@ -1,5 +1,6 @@
 {
     "announcer": {
-        "announcer": "announcer"
+        "announcer": "announcer",
+        "list": "Announcers list"
     }
 }
