@@ -17,7 +17,6 @@
         vm.changeLanguage = changeLanguage;
         vm.languages = null;
 
-        console.log('FOO');
 
         DtoolLanguageService.getAll().then(function(languages){
             vm.languages = languages
