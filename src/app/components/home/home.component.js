@@ -17,8 +17,6 @@
     function HomeController() {
         var vm = this;
 
-        activate();
-
         vm.chart = {};
 
         vm.chart.piechart = {
