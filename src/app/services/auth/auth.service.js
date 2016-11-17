@@ -44,7 +44,6 @@
 
                 if ($rootScope.toState.data.authorities && $rootScope.toState.data.authorities.length > 0 && !Principal.hasAnyAuthority($rootScope.toState.data.authorities)) {
                     if (isAuthenticated) {
-                        //TODO AccessDenied Route
                         // user is signed in but not authorized for desired state
                         $state.go('accessdenied');
                     }
@@ -53,7 +52,6 @@
                         // send them to the login service, so you can return them when you're done
                         storePreviousState($rootScope.toState.name, $rootScope.toStateParams);
 
-                        //TODO AccessDenied Route
                         // now, send them to the signin state so they can log in
                         $state.go('accessdenied').then(function() {
                             $state.go('login');

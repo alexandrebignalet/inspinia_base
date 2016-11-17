@@ -13,9 +13,7 @@
             url: '/home',
             data: {
                 pageTitle: 'Vue d\'ensemble',
-                data: {
-                    authorities: []
-                }
+                authorities: ['ROLE_ADMIN', 'ROLE_USER']
             },
             views: {
                 'content@': {

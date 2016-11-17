@@ -42,13 +42,10 @@
                 .success(authenticateSuccess);
 
 
-            function authenticateSuccess (data, status, headers) {
-                var bearerToken = headers('Authorization');
-                if (angular.isDefined(bearerToken) && bearerToken.slice(0, 7) === 'Bearer ') {
-                    var jwt = bearerToken.slice(7, bearerToken.length);
-                    service.storeAuthenticationToken(jwt, credentials.rememberMe);
-                    return jwt;
-                }
+            function authenticateSuccess (data) {
+                var jwt = data.token;
+                service.storeAuthenticationToken(jwt, credentials.rememberMe);
+                return jwt;
             }
         }
 

@@ -12,6 +12,9 @@
             .state('components', {
                 parent: 'app',
                 abstract: true,
+                data:{
+                    authorities: []
+                },
                 views: {
                     'sidebar@': {
                         template: '<side-navigation></side-navigation>'

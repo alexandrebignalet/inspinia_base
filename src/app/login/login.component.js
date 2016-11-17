@@ -17,7 +17,6 @@
     function LoginController($rootScope, $state, $timeout, Auth) {
         var vm = this;
 
-        vm.authenticationError = false;
         vm.credentials = {};
         vm.login = login;
         vm.password = null;
@@ -33,7 +32,7 @@
                 password: vm.password,
                 rememberMe: vm.rememberMe
             }).then(function () {
-                vm.authenticationError = false;
+                toastr.success('You are now connected to DataTool.');
                 if ($state.current.name === 'register') {
                     $state.go('home');
                 }
@@ -48,7 +47,7 @@
                     $state.go(previousState.name, previousState.params);
                 }
             }).catch(function () {
-                vm.authenticationError = true;
+                toastr.error('Bad credentials.')
             });
         }
     }
