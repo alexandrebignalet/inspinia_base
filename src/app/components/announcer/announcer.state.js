@@ -31,16 +31,26 @@
                         return $ocLazyLoad.load([
                             {
                                 serie: true,
-                                files: ['bower_components/angular-datatables/dist/angular-datatables.js']
+                                files: ['bower_components/datatables.net-buttons-bs/js/buttons.bootstrap.js','bower_components/datatables.net-buttons-bs/css/buttons.bootstrap.min.css']
                             },
                             {
                                 serie: true,
-                                files: ['bower_components/angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap.min.js']
+                                files: ['bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js','bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css']
                             },
                             {
                                 serie: true,
-                                files: ['bower_components/angular-datatables/dist/plugins/buttons/angular-datatables.buttons.js']
-                            }
+                                files: ['bower_components/angular-datatables/dist/angular-datatables.min.js']
+                            },
+                            {
+                                serie: true,
+                                files: ['bower_components/angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap.js','bower_components/angular-datatables/dist/plugins/bootstrap/datatables.bootstrap.min.css']
+                            },
+
+                            {
+                                serie: true,
+                                files: ['bower_components/angular-datatables/dist/plugins/buttons/angular-datatables.buttons.min.js']
+                            },
+
                         ]);
                     }
                 }

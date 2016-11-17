@@ -24,13 +24,13 @@
         }
 
         vm.dtOptions = DTOptionsBuilder.newOptions()
-            .withDOM('<"html5buttons"B>lTfgitp')
+            .withDOM('<"html5buttons"B>lfrtip')
+            .withBootstrap()
             .withButtons([
                 {extend: 'copy'},
                 {extend: 'csv'},
                 {extend: 'excel', title: 'ExampleFile'},
                 {extend: 'pdf', title: 'ExampleFile'},
-
                 {extend: 'print',
                     customize: function (win){
                         $(win.document.body).addClass('white-bg');
@@ -42,6 +42,8 @@
                     }
                 }
             ]);
+
+        console.log(vm.dtOptions);
     }
 
 })();
