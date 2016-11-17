@@ -25,6 +25,24 @@
                         controller: 'AnnouncerController',
                         controllerAs: 'vm'
                     }
+                },
+                resolve: {
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load([
+                            {
+                                serie: true,
+                                files: ['bower_components/angular-datatables/dist/angular-datatables.js']
+                            },
+                            {
+                                serie: true,
+                                files: ['bower_components/angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap.min.js']
+                            },
+                            {
+                                serie: true,
+                                files: ['bower_components/angular-datatables/dist/plugins/buttons/angular-datatables.buttons.js']
+                            }
+                        ]);
+                    }
                 }
             });
     }
