@@ -8,18 +8,17 @@
     stateConfig.$inject = ['$stateProvider'];
 
     function stateConfig($stateProvider) {
-
         $stateProvider
-            .state('database', {
+            .state('user', {
                 parent: 'components',
-                url: '/databases',
+                url: '/users',
                 data: {
-                    pageTitle: 'Database',
-                    authorities: ['ROLE_ADMIN', 'ROLE_USER']
+                    pageTitle: 'User Management',
+                    authorities: ['ROLE_ADMIN']
                 },
                 views: {
                     'content@': {
-                        template: '<databases></databases>'
+                        template: '<users></users>'
                     }
                 }
             });

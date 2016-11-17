@@ -5,10 +5,10 @@
     .module('dataToolApp')
     .run(runBlock);
 
-    runBlock.$inject = ['$log', 'translationHandler']
+    runBlock.$inject = ['translationHandler', 'stateHandler']
 
-    function runBlock($log, translationHandler) {
-        $log.debug('runBlock end');
+    function runBlock(translationHandler, stateHandler) {
+        stateHandler.initialize();
         translationHandler.initialize();
     }
 

@@ -11,12 +11,18 @@
         .module('dataToolApp')
         .component('topNavbar', topNavbar);
 
-    topNavbarController.$inject = ['$timeout'];
+    topNavbarController.$inject = ['$timeout', 'Auth', '$state'];
 
-    function topNavbarController($timeout) {
+    function topNavbarController($timeout, Auth, $state) {
         var vm = this;
 
         vm.minimalize = minimalize;
+        vm.logout = logout;
+
+        function logout() {
+            Auth.logout();
+            $state.go('login');
+        }
 
         function minimalize() {
             angular.element('body').toggleClass('mini-navbar');

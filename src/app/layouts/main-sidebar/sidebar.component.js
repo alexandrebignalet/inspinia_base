@@ -11,13 +11,27 @@
         .module('dataToolApp')
         .component('sideNavigation', sideNavigation);
 
-    sideNavigationController.$inject = [];
+    sideNavigationController.$inject = ['Principal', 'Auth', '$state'];
 
     /* @ngInject */
-    function sideNavigationController() {
+    function sideNavigationController(Principal, Auth, $state) {
         var vm = this;
-        vm.userName = "Alexandre";
-    }
 
+        vm.isAuthenticated = Principal.isAuthenticated();
+        vm.logout = logout;
+
+
+        Principal.identity(true)
+            .then(getCurrentUser);
+
+        function getCurrentUser(identity){
+            vm.user = identity
+        }
+
+        function logout(){
+            Auth.logout();
+            $state.go('login');
+        }
+    }
 })();
 
