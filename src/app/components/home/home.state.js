@@ -22,22 +22,16 @@
                         mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                             $translatePartialLoader.addPart('home');
                             return $translate.refresh();
-                        }]
-                    }
-                }
-            },
-            resolve: {
-                mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
-                    $translatePartialLoader.addPart('home');
-                    return $translate.refresh();
-                }],
-                loadPlugin: function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([
-                        {
-                            name: 'ui.sortable',
-                            files: ['bower_components/angular-ui-sortable/sortable.js']
+                        }],
+                        loadPlugin: function ($ocLazyLoad) {
+                            return $ocLazyLoad.load([
+                                {
+                                    name: 'ui.sortable',
+                                    files: ['bower_components/angular-ui-sortable/sortable.js']
+                                }
+                            ]);
                         }
-                    ]);
+                    }
                 }
             }
         });
