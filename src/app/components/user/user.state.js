@@ -18,7 +18,12 @@
                 },
                 views: {
                     'content@': {
-                        template: '<users users="users"></users>'
+                        templateUrl: 'app/components/user/users.html',
+                        controller: 'UserController',
+                        controllerAs: 'vm',
+                        resolve: {
+
+                        }
                     }
                 }
             });
