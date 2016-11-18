@@ -1,12 +1,24 @@
 /**
+ * Created by Axel on 18/11/2016.
+ */
+/**
  * Created by Axel on 17/11/2016.
  */
 (function () {
     'use strict';
 
+    var announcer = {
+        templateUrl: 'app/components/announcer/announcers.html',
+        controller: AnnouncerController,
+        controllerAs: 'vm',
+        bindings: {
+            announcers : '<'
+        }
+    };
+
     angular
         .module('dataToolApp')
-        .controller('AnnouncerController', AnnouncerController);
+        .component('announcer', announcer);
 
     AnnouncerController.$inject = ['DTOptionsBuilder'];
 
@@ -15,13 +27,9 @@
         var vm = this;
         vm.title = 'AnnouncerController';
 
-        activate();
-
         ////////////////
 
-        function activate() {
-
-        }
+        console.log(vm.data);
 
         vm.dtOptions = DTOptionsBuilder.newOptions()
             .withDOM('<"html5buttons"B>lfrtip')

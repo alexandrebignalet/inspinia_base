@@ -19,6 +19,7 @@
 
         vm.isAuthenticated = Principal.isAuthenticated();
         vm.logout = logout;
+        vm.state = $state;
 
 
         Principal.identity(true)
@@ -26,6 +27,7 @@
 
         function getCurrentUser(identity){
             vm.user = identity
+            console.log($state);
         }
 
         function logout(){

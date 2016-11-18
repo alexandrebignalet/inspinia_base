@@ -15,7 +15,7 @@
                 url: '/databases',
                 data: {
                     pageTitle: 'Database',
-                    authorities: ['ROLE_ADMIN', 'ROLE_USER']
+                    authorities: ['ROLE_ADMIN', 'ROLE_USER', 'ROLE_SUPER_ADMIN']
                 },
                 views: {
                     'content@': {

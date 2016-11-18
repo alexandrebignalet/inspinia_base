@@ -25,6 +25,13 @@
                     'topTitleBar@': {
                         template: '<top-title-bar></top-title-bar>'
                     }
+                },
+                resolve: {
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load([
+                            'metisMenu'
+                        ]);
+                    }
                 }
             });
     }

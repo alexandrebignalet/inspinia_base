@@ -2,9 +2,12 @@
     <div class="col-lg-10">
         <h2>{{ vm.title }}</h2>
         <ol class="breadcrumb">
-            <li class="active">
-                <strong>{{vm.current|uppercase}}</strong>
+
+            <li ng-repeat="state in vm.stateList" ng-class="{active: $last}">
+                <a ng-if="!$last" ui-sref="{{ state }}">{{state|uppercase}}</a>
+                <strong ng-if="$last">{{state|uppercase}}</strong>
             </li>
+
         </ol>
     </div>
     <div class="col-lg-2">
