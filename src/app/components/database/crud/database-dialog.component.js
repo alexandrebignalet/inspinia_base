@@ -34,6 +34,7 @@
             angular.element('.form-group:eq(1)>input').focus();
         });
 
+
         vm.$onInit = function () {
             vm.countries = COUNTRIES;
             vm.database = vm.resolve.database;
