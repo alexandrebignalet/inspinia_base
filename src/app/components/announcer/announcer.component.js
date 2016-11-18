@@ -12,7 +12,7 @@
         controller: AnnouncerController,
         controllerAs: 'vm',
         bindings: {
-            data : '<'
+            announcers : '<'
         }
     };
 
