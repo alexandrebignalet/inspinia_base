@@ -25,6 +25,16 @@
                     'topTitleBar@': {
                         template: '<top-title-bar></top-title-bar>'
                     }
+                },
+                resolve: {
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load([
+                            {
+                                serie: true,
+                                files: ['bower_components/metisMenu/dist/metisMenu.js', 'bower_components/metisMenu/dist/metisMenu.css']
+                            }
+                        ]);
+                    }
                 }
             });
     }

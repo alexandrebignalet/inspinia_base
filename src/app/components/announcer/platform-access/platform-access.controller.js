@@ -6,12 +6,12 @@
 
     angular
         .module('dataToolApp')
-        .controller('PlatformAccess', PlatformAccess);
+        .controller('PlatformAccessController', PlatformAccessController);
 
-    PlatformAccess.$inject = [];
+    PlatformAccessController.$inject = [];
 
     /* @ngInject */
-    function PlatformAccess() {
+    function PlatformAccessController() {
         var vm = this;
         vm.title = 'PlatformAccess';
 

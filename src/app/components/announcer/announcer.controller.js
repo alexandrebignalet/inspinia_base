@@ -15,7 +15,7 @@
         var vm = this;
         vm.title = 'AnnouncerController';
 
-        activate();
+        //activate();
 
         ////////////////
 
