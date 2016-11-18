@@ -17,7 +17,13 @@
             },
             views: {
                 'content@': {
-                    template: '<home></home>'
+                    template: '<home></home>',
+                    resolve: {
+                        mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                            $translatePartialLoader.addPart('home');
+                            return $translate.refresh();
+                        }]
+                    }
                 }
             }
         });

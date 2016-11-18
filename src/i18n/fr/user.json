@@ -1,6 +1,12 @@
 {
     "user": {
         "list": "Liste des utilisateurs",
-        "create": "Créer un nouvel utilisateur"
+        "create": "Créer un nouvel utilisateur",
+        "email": "Email",
+        "username": "Nom d'utilisateur",
+        "firstname": "Prénom",
+        "lastname": "Nom",
+        "createdAt": "Date de création",
+        "action": "Action"
     }
 }
