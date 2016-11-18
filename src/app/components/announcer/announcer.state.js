@@ -25,7 +25,6 @@
                     }
                 },
                 resolve: {
-
                     data: [
                         'Announcer', function(Announcer) {
                             return Announcer.get({

@@ -8,6 +8,7 @@
     resourceConfig.$inject = ['$resourceProvider'];
 
     function resourceConfig($resourceProvider) {
+
         /**
          * If trailing slashes aren't enable, browsers will block all requested by CORS policy.
          * This enabled allows to let the / at the end of a request url
