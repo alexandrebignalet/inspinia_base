@@ -12,7 +12,7 @@
 
     /* @ngInject */
     function  Announcer($resource, API_BASE_URL) {
-        var resourceUrl = API_BASE_URL+'/announcers/:id';
+        var resourceUrl = API_BASE_URL+'/api/announcers/:id';
 
         return $resource(resourceUrl, {}, {
             'update': {method: 'PUT'},
