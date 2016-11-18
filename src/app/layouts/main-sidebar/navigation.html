@@ -1,6 +1,6 @@
 <nav class="navbar-default navbar-static-side" role="navigation">
     <div class="sidebar-collapse">
-        <ul side-navigation  class="nav metismenu" id="side-menu">
+        <ul side-navigation class="nav metismenu" id="side-menu">
             <li class="nav-header">
 
                 <div class="profile-element" uib-dropdown>
@@ -21,20 +21,26 @@
                 </div>
 
             </li>
+
             <li ui-sref-active="active">
               <a ui-sref="home"><i class="fa fa-home"></i> <span class="nav-label">Home</span></a>
             </li>
+
             <li ui-sref-active="active">
                 <a ui-sref="database"><i class="fa fa-database"></i> <span class="nav-label">Database</span></a>
             </li>
-            <li>
-                <a href=""><i class="fa fa-sitemap"></i> <span class="nav-label">FOO</span><span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level collapse">
-                    <li><a href="">Second Level Item</a></li>
-                    <li><a href="">Second Level Item</a></li>
+
+            <li ng-class="{active: vm.state.includes('announcer')}">
+                <a href=""><i class="fa fa-bullhorn"></i> <span class="nav-label">Announcer</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse" ng-class="{in: vm.state.includes('announcer')}">
+                    <li>
+                        <a ui-sref-active="active" ui-sref="announcer"><i class="fa fa-bullhorn"></i> <span class="nav-label">Announcer</span></a>
+                    </li>
+                    <li>
+                        <a ui-sref-active="active" ui-sref="announcer.platform-access"><i class="fa fa-key"></i> <span class="nav-label">Platform Access</span></a>
+                    </li>
                 </ul>
             </li>
         </ul>
-
     </div>
 </nav>

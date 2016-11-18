@@ -20,9 +20,9 @@
     function stateConfig($stateProvider) {
 
         $stateProvider
-            .state('pplatform-access', {
+            .state('announcer.platform-access', {
                 parent: 'announcer',
-                url: '/platform-acces',
+                url: '/platform-access',
                 data: {
                     pageTitle: 'Platform Access'
                 },
