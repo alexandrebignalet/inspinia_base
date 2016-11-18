@@ -8,10 +8,10 @@
         .module('dataToolApp')
         .controller('AnnouncerController', AnnouncerController);
 
-    AnnouncerController.$inject = ['DTOptionsBuilder'];
+    AnnouncerController.$inject = ['Announcer', 'DTOptionsBuilder'];
 
     /* @ngInject */
-    function AnnouncerController(DTOptionsBuilder) {
+    function AnnouncerController(Announcer, DTOptionsBuilder) {
         var vm = this;
         vm.title = 'AnnouncerController';
 
@@ -20,7 +20,20 @@
         ////////////////
 
         function activate() {
+            Announcer.get({
+                'context': angular.toJson(['announcers_all', 'companies_all', 'contacts_summary', 'addresses_summary'])
+            },onSuccess,onError);
 
+            function onSuccess(data) {
+                vm.announcers = data.announcers;
+
+                var announcersByCountry = $filter('groupBy')(vm.announcers, 'country', 'country');
+                vm.defaultIndex = objectKeyIndex(announcersByCountry, 'FR') !== -1 ? objectKeyIndex(announcersByCountry, 'FR') : 0;
+            }
+
+            function onError(error) {
+                console.log(error);
+            }
         }
 
         vm.dtOptions = DTOptionsBuilder.newOptions()
