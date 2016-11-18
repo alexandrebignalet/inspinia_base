@@ -4,6 +4,10 @@
 /**
  * Created by Axel on 17/11/2016.
  */
+
+/**
+ * Created by Axel on 17/11/2016.
+ */
 (function() {
     'use strict';
 
@@ -16,15 +20,15 @@
     function stateConfig($stateProvider) {
 
         $stateProvider
-            .state('platform-access', {
+            .state('pplatform-access', {
                 parent: 'announcer',
-                url: '/platform-access',
+                url: '/platform-acces',
                 data: {
-                    pageTitle: 'Platform access'
+                    pageTitle: 'Platform Access'
                 },
                 views: {
                     'content@': {
-                        templateUrl: 'app/components/announcer/platform-acces/platform-acces.html',
+                        templateUrl: 'app/components/announcer/platform-access/platform-access.html',
                         controller: 'PlatformAccessController',
                         controllerAs: 'vm'
                     }
@@ -33,33 +37,7 @@
                     mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
                         $translatePartialLoader.addPart('announcer');
                         return $translate.refresh();
-                    }],
-                    /*loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load([
-                            {
-                                serie: true,
-                                files: ['bower_components/datatables.net-buttons-bs/js/buttons.bootstrap.js','bower_components/datatables.net-buttons-bs/css/buttons.bootstrap.min.css']
-                            },
-                            {
-                                serie: true,
-                                files: ['bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js','bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css']
-                            },
-                            {
-                                serie: true,
-                                files: ['bower_components/angular-datatables/dist/angular-datatables.min.js']
-                            },
-                            {
-                                serie: true,
-                                files: ['bower_components/angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap.js','bower_components/angular-datatables/dist/plugins/bootstrap/datatables.bootstrap.min.css']
-                            },
-
-                            {
-                                serie: true,
-                                files: ['bower_components/angular-datatables/dist/plugins/buttons/angular-datatables.buttons.min.js']
-                            },
-
-                        ]);
-                    }*/
+                    }]
                 }
             });
     }

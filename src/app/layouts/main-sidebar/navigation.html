@@ -1,6 +1,6 @@
 <nav class="navbar-default navbar-static-side" role="navigation">
     <div class="sidebar-collapse">
-        <ul class="nav metismenu" id="side-menu">
+        <ul side-navigation  class="nav metismenu" id="side-menu">
             <li class="nav-header">
 
                 <div class="profile-element" uib-dropdown>
@@ -27,8 +27,12 @@
             <li ui-sref-active="active">
                 <a ui-sref="database"><i class="fa fa-database"></i> <span class="nav-label">Database</span></a>
             </li>
-            <li ui-sref-active="active">
-                <a ui-sref="announcer"><i class="fa fa-bullhorn"></i> <span class="nav-label">Announcer</span></a>
+            <li>
+                <a href=""><i class="fa fa-sitemap"></i> <span class="nav-label">FOO</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li><a href="">Second Level Item</a></li>
+                    <li><a href="">Second Level Item</a></li>
+                </ul>
             </li>
         </ul>
 

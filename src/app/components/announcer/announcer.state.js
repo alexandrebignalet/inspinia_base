@@ -49,12 +49,10 @@
                                 serie: true,
                                 files: ['bower_components/angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap.js','bower_components/angular-datatables/dist/plugins/bootstrap/datatables.bootstrap.min.css']
                             },
-
                             {
                                 serie: true,
                                 files: ['bower_components/angular-datatables/dist/plugins/buttons/angular-datatables.buttons.min.js']
                             }
-
                         ]);
                     }
                 }
