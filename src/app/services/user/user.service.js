@@ -8,6 +8,8 @@
     User.$inject = ['$resource', '$http','API_BASE_URL'];
 
     function User ($resource, $http, API_BASE_URL) {
+        var resourceUrl = API_BASE_URL + '/api/users/:id';
+
         var service = {
             resource: resource,
             current: current
@@ -15,17 +17,9 @@
 
         function resource() {
 
-            return $resource( API_BASE_URL + '/api/users/:id', {}, {
-                'query': {method: 'GET', isArray: true},
-                'get': {
-                    method: 'GET',
-                    transformResponse: function (data) {
-                        data = angular.fromJson(data);
-                        return data;
-                    }
-                },
-                'save': { method:'POST' },
-                'update': { method:'PUT' },
+            return $resource( resourceUrl, {}, {
+                'save': { method:'POST'},
+                'patch': { method:'PATCH'},
                 'delete':{ method:'DELETE'}
             });
         }
