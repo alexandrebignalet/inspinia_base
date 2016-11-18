@@ -21,7 +21,7 @@
                 },
                 views: {
                     'content@': {
-                        template: '<announcer data="$resolve.data"></announcer>'
+                        template: '<announcer announcers="$resolve.data"></announcer>'
                     }
                 },
                 resolve: {
@@ -30,7 +30,7 @@
                             return Announcer.get({
 
                             }).$promise.then(function(data){
-                                return data;
+                                return data.announcers;
                             }).catch(function(error){
                                 console.log(error);
                             })

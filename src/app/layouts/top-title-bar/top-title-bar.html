@@ -3,9 +3,9 @@
         <h2>{{ vm.title }}</h2>
         <ol class="breadcrumb">
 
-            <li ng-repeat="name in vm.stateList" ng-class="{active: $last}">
-                <a ng-if="!$last" ui-sref="{{ name }}">{{name|uppercase}}</a>
-                <strong ng-if="$last">{{name|uppercase}}</strong>
+            <li ng-repeat="state in vm.stateList" ng-class="{active: $last}">
+                <a ng-if="!$last" ui-sref="{{ state }}">{{state|uppercase}}</a>
+                <strong ng-if="$last">{{state|uppercase}}</strong>
             </li>
 
         </ol>
