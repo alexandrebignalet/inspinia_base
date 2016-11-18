@@ -21,13 +21,23 @@
                 },
                 views: {
                     'content@': {
-                        templateUrl: 'app/components/announcer/announcers.html',
-                        controller: 'AnnouncerController',
-                        controllerAs: 'vm'
+                        template: '<announcer data="$resolve.data"></announcer>'
                     }
                 },
                 resolve: {
-                    mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+
+                    data: [
+                        'Announcer', function(Announcer) {
+                            return Announcer.get({
+
+                            }).$promise.then(function(data){
+                                return data;
+                            }).catch(function(error){
+                                console.log(error);
+                            })
+                        }
+                    ],
+                    mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
                         $translatePartialLoader.addPart('announcer');
                         return $translate.refresh();
                     }],
