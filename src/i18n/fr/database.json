@@ -1,0 +1,19 @@
+{
+    "database": {
+        "list": "Listes des bases de données",
+        "create": "Créer une base de données",
+        "name": "Nom",
+        "type": "Type",
+        "country": "Pays",
+        "company": "Entreprise",
+        "segmentation":{
+            "age": "Age",
+            "sex": "Sexe",
+            "zipcode": "Code postal",
+            "name": "Nom",
+            "firstname": "Prénom"
+        },
+        "active": "Active",
+        "expertSenderApiUrl": "ExpertSender Api Url"
+    }
+}

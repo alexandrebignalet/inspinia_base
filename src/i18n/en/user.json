@@ -1,0 +1,12 @@
+{
+    "user": {
+        "list": "Users list",
+        "create": "Create a new user",
+        "email": "Email",
+        "username": "Username",
+        "firstname": "Firstname",
+        "lastname": "Lastname",
+        "createdAt": "Creation date",
+        "action": "Action"
+    }
+}
