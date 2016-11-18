@@ -14,6 +14,10 @@
             "firstname": "Nombre"
         },
         "active": "Activo",
-        "expertSenderApiUrl": "ExpertSender Api Url"
+        "expertSenderApiUrl": "ExpertSender Api Url",
+        "dialog": {
+            "createOrEdit": "Crear ou editar una base de datos"
+        }
+
     }
 }

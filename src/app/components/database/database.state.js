@@ -39,7 +39,10 @@
                                     ToastrService.error(error, 'Impossible to retrieve users.');
                                     return $q.reject(error);
                                 }
-                            }]
+                            }],
+                            loadPlugin: function ($ocLazyLoad) {
+                                return $ocLazyLoad.load(['datatables']);
+                            }
                         }
                     }
                 }

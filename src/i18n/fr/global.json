@@ -5,6 +5,38 @@
         "menu": {
             "language": "Langage"
         },
-        "actions": "Actions"
+        "actions": "Actions",
+        "entity": {
+            "action": {
+                "addblob": "Add blob",
+                "addimage": "Add image",
+                "back": "Back",
+                "cancel": "Cancel",
+                "delete": "Delete",
+                "edit": "Edit",
+                "open": "Open",
+                "save": "Save",
+                "view": "View"
+            },
+            "detail": {
+                "field": "Field",
+                "value": "Value"
+            },
+            "delete": {
+                "title": "Confirm delete operation"
+            },
+            "validation": {
+                "required": "This field is required.",
+                "minlength": "This field is required to be at least {{ min }} characters.",
+                "maxlength": "This field cannot be longer than {{ max }} characters.",
+                "min": "This field should be more than {{ min }}.",
+                "max": "This field cannot be more than {{ max }}.",
+                "minbytes": "This field should be more than {{ min }} bytes.",
+                "maxbytes": "This field cannot be more than {{ max }} bytes.",
+                "pattern": "This field should follow pattern {{ pattern }}.",
+                "number": "This field should be a number.",
+                "datetimelocal": "This field should be a date and time."
+            }
+        }
     }
 }

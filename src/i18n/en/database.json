@@ -13,6 +13,9 @@
             "firstname": "Firstname"
         },
         "active": "Active",
-        "expertSenderApiUrl": "ExpertSender Api Url"
+        "expertSenderApiUrl": "ExpertSender Api Url",
+        "dialog": {
+            "createOrEdit": "Create or edit a database"
+        }
     }
 }
