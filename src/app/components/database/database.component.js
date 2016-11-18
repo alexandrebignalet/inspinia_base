@@ -4,7 +4,10 @@
     var databases = {
         templateUrl: 'app/components/database/databases.html',
         controller: DatabaseController,
-        controllerAs: 'vm'
+        controllerAs: 'vm',
+        bindings: {
+            databases: '='
+        }
     };
 
     angular
@@ -17,12 +20,9 @@
     function DatabaseController() {
         var vm = this;
 
-        vm.title = "Databases page";
-        activate();
-
-        ////////////////
-
-        function activate() {}
+        this.$onInit = function(){
+            console.log(vm);
+        }
     }
 
 })();

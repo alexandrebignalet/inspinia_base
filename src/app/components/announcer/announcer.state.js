@@ -27,7 +27,7 @@
                     }
                 },
                 resolve: {
-                    mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
+                    mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                         $translatePartialLoader.addPart('announcer');
                         return $translate.refresh();
                     }],
@@ -53,7 +53,7 @@
                             {
                                 serie: true,
                                 files: ['bower_components/angular-datatables/dist/plugins/buttons/angular-datatables.buttons.min.js']
-                            },
+                            }
 
                         ]);
                     }

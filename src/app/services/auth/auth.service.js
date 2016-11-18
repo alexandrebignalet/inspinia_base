@@ -44,7 +44,9 @@
                     $state.go(previousState.name, previousState.params);
                 }
 
-                if ($rootScope.toState.data.authorities && $rootScope.toState.data.authorities.length > 0 && !Principal.hasAnyAuthority($rootScope.toState.data.authorities)) {
+                if ($rootScope.toState.data.authorities && $rootScope.toState.data.authorities.length > 0 &&
+                    !Principal.hasAnyAuthority($rootScope.toState.data.authorities)
+                ) {
                     if (isAuthenticated) {
                         // user is signed in but not authorized for desired state
                         $state.go('accessdenied');
