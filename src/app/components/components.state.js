@@ -29,10 +29,7 @@
                 resolve: {
                     loadPlugin: function ($ocLazyLoad) {
                         return $ocLazyLoad.load([
-                            {
-                                serie: true,
-                                files: ['bower_components/metisMenu/dist/metisMenu.js', 'bower_components/metisMenu/dist/metisMenu.css']
-                            }
+                            'metisMenu'
                         ]);
                     }
                 }
