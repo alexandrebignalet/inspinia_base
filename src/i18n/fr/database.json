@@ -3,6 +3,7 @@
         "list": "Listes des bases de données",
         "create": "Créer une base de données",
         "name": "Nom",
+        "type": "Type",
         "country": "Pays",
         "company": "Entreprise",
         "segmentation":{

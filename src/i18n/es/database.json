@@ -5,6 +5,7 @@
         "name": "Nombre",
         "country": "País",
         "company": "Empresa",
+        "type": "Typo",
         "segmentation":{
             "age": "Edad",
             "sex": "Sexo",
