@@ -76,6 +76,20 @@
                     }]
 
             })
+            .state('announcer.platform-access.delete', {
+                parent: 'announcer.platform-access',
+                url: '/delete/:platformAccessId',
+                data: {
+                    pageTitle: 'Delete a Platform Access',
+                    authorities: ['ROLE_ADMIN', 'ROLE_SUPER_ADMIN']
+                },
+                onEnter: ['platformAccessDialogService', '$stateParams',
+                    function(platformAccessDialogService, $stateParams) {
+                        var platformAccessId = $stateParams.platformAccessId;
+                        platformAccessDialogService.openDeleteModal(platformAccessId);
+                    }]
+
+            })
         ;
     }
 })();

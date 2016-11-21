@@ -38,7 +38,6 @@
         function save() {
             vm.isSaving = true;
 
-            console.log(vm.platformAccess);
             if( vm.platformAccess.id != null ) {
                 Announcer.updatePlatformAccess(vm.platformAccess);
             } else {

@@ -14,7 +14,8 @@
     function platformAccessDialogService($state,$uibModal,Announcer) {
 
         var service = {
-            openDialogModal: openDialogModal
+            openDialogModal: openDialogModal,
+            openDeleteModal: openDeleteModal
         };
 
         return service;
@@ -23,24 +24,11 @@
 
         function openDialogModal(announcerId,platformId) {
 
-            var platformAccess = {
-                    announcer: announcerId,
-                    url: null,
-                    username: null,
-                    password: null,
-                    description: null
-                };
-
-            if( platformId != '' ) {
-                platformAccess = Announcer.getPlatformAccess(platformId);
-                console.log(platformAccess);
-            }
+            var platformAccess = initPlatformAccess(announcerId,platformId);
 
             if( announcerId == '' && platformAccess.announcer == '') {
                 var announcers = Announcer.getAll();
             }
-
-
 
             $uibModal.open({
                 component: 'platformAccessDialog',
@@ -55,6 +43,40 @@
             },function() {
                 $state.go('^')
             })
+        }
+
+        function initPlatformAccess(announcerId,platformId) {
+            var platformAccess = {
+                announcer: announcerId,
+                url: null,
+                username: null,
+                password: null,
+                description: null
+            };
+
+            if( platformId != '' ) {
+                platformAccess = Announcer.getPlatformAccess(platformId);
+            }
+            return platformAccess;
+        }
+
+        function openDeleteModal(platformAccessId) {
+
+            console.log(platformAccessId);
+
+            $uibModal.open({
+                component: 'platformAccessDelete',
+                backdrop: 'static',
+                size: 'lg',
+                resolve: {
+                    platformAccessId: {id: platformAccessId},
+                }
+            }).result.then(function(){
+                $state.go('^')
+            },function() {
+                $state.go('^')
+            })
+
         }
     }
 

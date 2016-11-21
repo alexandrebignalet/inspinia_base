@@ -34,7 +34,7 @@
             },
             'delete_platform_access' : {
                 method: 'DELETE',
-                url:  API_BASE_URL+'/announcers/platform-access/:platformId/json'
+                url:  API_BASE_URL + '/api/announcers/platform-access/:platformId/json'
             }
         });
 
@@ -72,6 +72,8 @@
             }
         }
 
+        // TODO : HANDLE ERRORS
+
         function savePlatformAccess(platformAccess) {
             resource.save_platform_access({announcerId : platformAccess.announcer},{
                 url: platformAccess.url,
@@ -80,6 +82,7 @@
                 description: platformAccess.description
             })
         }
+
         function updatePlatformAccess(platformAccess) {
             resource.update_platform_access({platformId : platformAccess.id},{
                 url: platformAccess.url,
@@ -89,13 +92,18 @@
             })
         }
 
+        function deletePlatformAccess(platformAccessId) {
+            resource.delete_platform_access({platformId: platformAccessId});
+        }
+
 
 
         return {
             getAll: getAll,
             getPlatformAccess: getPlatformAccess,
             savePlatformAccess: savePlatformAccess,
-            updatePlatformAccess: updatePlatformAccess
+            updatePlatformAccess: updatePlatformAccess,
+            deletePlatformAccess: deletePlatformAccess
         }
     }
 
