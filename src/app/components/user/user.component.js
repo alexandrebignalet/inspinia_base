@@ -14,12 +14,41 @@
         .module('dataToolApp')
         .component('users', users);
 
-    UserController.$inject = [];
+    UserController.$inject = ['DTOptionsBuilder'];
 
     /* @ngInject */
-    function UserController() {
+    function UserController(DTOptionsBuilder) {
         var vm = this;
 
+        vm.$onInit = function (){
+            vm.dtOptions = DTOptionsBuilder.newOptions()
+                .withDOM('<"html5buttons"B>lfrtip')
+                .withBootstrap()
+                .withButtons([
+                    {extend: 'copy'},
+                    {extend: 'csv'},
+                    {extend: 'excel', title: 'ExampleFile'},
+                    {extend: 'pdf', title: 'ExampleFile'},
+                    {extend: 'print',
+                        customize: function (win){
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                .addClass('compact')
+                                .css('font-size', 'inherit');
+                        }
+                    }
+                ]);
+        };
+
+        vm.$onChanges = function(changes){
+            console.log('changes on user', changes)
+        };
+
+        vm.$onDestroy = function(){
+            console.log('destroy user')
+        }
     }
 })();
 

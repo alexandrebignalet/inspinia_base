@@ -19,31 +19,31 @@
                 },
                 views: {
                     'content@': {
-                        template: '<databases databases="$resolve.databases"></databases>',
-                        resolve: {
-                            mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                                $translatePartialLoader.addPart('database');
-                                return $translate.refresh();
-                            }],
-                            databases: ['Database', '$q', 'ToastrService', function(Database, $q, ToastrService){
-                                return Database.get({
-                                    'context': angular.toJson(['databases_all', 'companies_summary'])
-                                }).$promise
-                                    .then(getDatabasesThen)
-                                    .catch(getDatabasesCatch);
+                        template: '<databases databases="$resolve.databases"></databases>'
+                    }
+                },
+                resolve: {
+                    mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('database');
+                        return $translate.refresh();
+                    }],
+                    databases: ['Database', '$q', 'ToastrService', function(Database, $q, ToastrService){
+                        return Database.get({
+                            'context': angular.toJson(['databases_all', 'companies_summary'])
+                        }).$promise
+                            .then(getDatabasesThen)
+                            .catch(getDatabasesCatch);
 
-                                function getDatabasesThen(data){
-                                    return data.databases;
-                                }
-                                function getDatabasesCatch(error){
-                                    ToastrService.error(error, 'Impossible to retrieve users.');
-                                    return $q.reject(error);
-                                }
-                            }],
-                            loadPlugin: function ($ocLazyLoad) {
-                                return $ocLazyLoad.load(['datatables']);
-                            }
+                        function getDatabasesThen(data){
+                            return data.databases;
                         }
+                        function getDatabasesCatch(error){
+                            ToastrService.error(error, 'Impossible to retrieve users.');
+                            return $q.reject(error);
+                        }
+                    }],
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load(['datatables']);
                     }
                 }
             });
