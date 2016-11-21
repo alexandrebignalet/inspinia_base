@@ -20,7 +20,6 @@
         ////////////////
 
         function activate() {
-            console.log('PLATFORM ACCESS');
         }
     }
 

@@ -20,9 +20,6 @@
     function DatabaseController() {
         var vm = this;
 
-        this.$onInit = function(){
-            console.log(vm);
-        }
     }
 
 })();

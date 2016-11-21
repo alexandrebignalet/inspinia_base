@@ -17,7 +17,7 @@
             },
             views: {
                 'content@': {
-                    template: '<home></home>',
+                    template: '<home></home>'
                 }
             },
             resolve: {

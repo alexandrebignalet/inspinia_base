@@ -29,8 +29,6 @@
 
         ////////////////
 
-        console.log(vm.data);
-
         vm.dtOptions = DTOptionsBuilder.newOptions()
             .withDOM('<"html5buttons"B>lfrtip')
             .withBootstrap()
@@ -41,10 +39,10 @@
                 {extend: 'pdf', title: 'ExampleFile'},
                 {extend: 'print',
                     customize: function (win){
-                        $(win.document.body).addClass('white-bg');
-                        $(win.document.body).css('font-size', '10px');
+                        angular.element(win.document.body).addClass('white-bg');
+                        angular.element(win.document.body).css('font-size', '10px');
 
-                        $(win.document.body).find('table')
+                        angular.element(win.document.body).find('table')
                             .addClass('compact')
                             .css('font-size', 'inherit');
                     }
