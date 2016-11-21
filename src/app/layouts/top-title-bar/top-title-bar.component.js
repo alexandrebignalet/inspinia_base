@@ -17,20 +17,15 @@
     function TopTitleBarController($rootScope) {
         var vm = this;
 
-
-        var stateChangeStart = $rootScope.$on('$stateChangeSuccess',  function() {
+        var stateChangeSuccess = $rootScope.$on('$stateChangeSuccess',  function() {
             vm.title =  $rootScope.pageTitle;
             vm.current = $rootScope.name;
             vm.stateList = vm.current.split(".");
         });
 
-        $rootScope.$on('$stateChangeStart', function() {
-            vm.stateList = [];
-        })
-
         $rootScope.$on('$destroy', function () {
-            if(angular.isDefined(stateChangeStart) && stateChangeStart !== null){
-                stateChangeStart();
+            if(angular.isDefined(stateChangeSuccess) && stateChangeSuccess !== null){
+                stateChangeSuccess();
             }
         });
     }

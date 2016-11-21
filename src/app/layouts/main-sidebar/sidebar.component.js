@@ -27,7 +27,6 @@
 
         function getCurrentUser(identity){
             vm.user = identity
-            console.log($state);
         }
 
         function logout(){

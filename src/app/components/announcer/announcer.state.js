@@ -27,13 +27,11 @@
                 resolve: {
                     data: [
                         'Announcer', function(Announcer) {
-                            return Announcer.get({
-
-                            }).$promise.then(function(data){
+                            return Announcer.get({}).$promise.then(function (data) {
                                 return data.announcers;
-                            }).catch(function(error){
-                                console.log(error);
-                            })
+                            }).catch(function (error) {
+                                //TODO : Process error
+                            });
                         }
                     ],
                     mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
