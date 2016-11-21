@@ -35,6 +35,12 @@
                         'bower_components/metisMenu/dist/metisMenu.js',
                         'bower_components/metisMenu/dist/metisMenu.css'
                     ]
+                },
+                {
+                    name: 'ui.sortable',
+                    files: [
+                        'bower_components/angular-ui-sortable/sortable.min.js'
+                    ]
                 }
             ]
         });
