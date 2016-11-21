@@ -27,6 +27,7 @@
                         $translatePartialLoader.addPart('database');
                         return $translate.refresh();
                     }],
+
                     databases: ['Database', '$q', 'ToastrService', function(Database, $q, ToastrService){
                         return Database.get({
                             'context': angular.toJson(['databases_all', 'companies_summary'])

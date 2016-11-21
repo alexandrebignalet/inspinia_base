@@ -14,13 +14,24 @@
         .module('dataToolApp')
         .component('databases', databases);
 
-    DatabaseController.$inject = ['DTOptionsBuilder'];
+    DatabaseController.$inject = ['DTOptionsBuilder', 'Principal'];
 
     /* @ngInject */
-    function DatabaseController(DTOptionsBuilder) {
+    function DatabaseController(DTOptionsBuilder, Principal) {
         var vm = this;
+        vm.canActivate = false;
 
         this.$onInit = function(){
+            Principal.identity()
+                .then(getUserToCheckRoles);
+
+            function getUserToCheckRoles(){
+                if (Principal.hasAnyAuthority(['ROLE_ADMIN', 'ROLE_SUPER_ADMIN']))
+                {
+                    vm.canActivate = true;
+                }
+            }
+
             vm.dtOptions = DTOptionsBuilder.newOptions()
                 .withDOM('<"html5buttons"B>lfrtip')
                 .withBootstrap()

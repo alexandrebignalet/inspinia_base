@@ -11,7 +11,6 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-
                     <table datatable="ng" dt-options="vm.dtOptions" class="table table-striped table-bordered table-hover dataTables-example">
                         <thead>
                             <tr>
@@ -24,7 +23,7 @@
                                 <th translate="database.segmentation.age">Age</th>
                                 <th translate="database.segmentation.sex">Sex</th>
                                 <th translate="database.segmentation.zipcode">Zipcode</th>
-                                <th translate="database.segmentation.name">Name</th>
+                                <th translate="database.segmentation.nameExt">Name</th>
                                 <th translate="database.segmentation.firstname">Firstname</th>
                                 <th translate="database.active">Active</th>
                                 <th translate="database.expertSenderApiUrl">Expertsender_apiurl</th>
@@ -34,57 +33,57 @@
                         <tbody>
                         <tr class="gradeX" ng-repeat="db in vm.databases">
                             <td>
-                                <a href>{{ db.id }} </a>
+                                <a href>{{ ::db.id }} </a>
                             </td>
-                            <th><a href>{{ db.name }}</a></th>
-                            <td>{{ db.country }}</td>
-                            <td>{{ db.type }}</td>
+                            <th><a href>{{ ::db.name }}</a></th>
+                            <td>{{ ::db.country }}</td>
+                            <td>{{ ::db.type }}</td>
                             <td>
                                 <ul class="list-unstyled">
                                     <li ng-repeat="company in db.companies">
-                                        {{ company.name }}
+                                        {{ ::company.name }}
                                     </li>
                                 </ul>
                             </td>
-                            <td>{{ db.reinerouge_id }}</td>
+                            <td>{{ ::db.reinerouge_id }}</td>
                             <td>
-                                <span class="fa fa-ok" ng-if="db._age" style="color:#045979"></span>
-                                <span class="fa fa-remove" ng-if="!db._age"></span>
+                                <span class="fa fa-check" ng-if="db.age" style="color:#045979"></span>
+                                <span class="fa fa-remove" ng-if="!db.age"></span>
                             </td>
                             <td>
-                                <span class="fa fa-ok" ng-if="db._sexe" style="color:#045979"></span>
-                                <span class="fa fa-remove" ng-if="!db._sexe"></span>
+                                <span class="fa fa-check" ng-if="db.sexe" style="color:#045979"></span>
+                                <span class="fa fa-remove" ng-if="!db.sexe"></span>
                             </td>
                             <td>
-                                <span class="fa fa-ok" ng-if="db._zipcode" style="color:#045979"></span>
-                                <span class="fa fa-remove" ng-if="!db._zipcode"></span>
+                                <span class="fa fa-check" ng-if="db.zipcode" style="color:#045979"></span>
+                                <span class="fa fa-remove" ng-if="!db.zipcode"></span>
                             </td>
                             <td>
-                                <span class="fa fa-ok" ng-if="db._name_ext" style="color:#045979"></span>
-                                <span class="fa fa-remove" ng-if="!db._name_ext"></span>
+                                <span class="fa fa-check" ng-if="db.name_ext" style="color:#045979"></span>
+                                <span class="fa fa-remove" ng-if="!db.name_ext"></span>
                             </td>
                             <td>
-                                <span class="fa fa-ok" ng-if="db._firstname" style="color:#045979"></span>
-                                <span class="fa fa-remove" ng-if="!db._firstname"></span>
+                                <span class="fa fa-check" ng-if="db.firstname" style="color:#045979"></span>
+                                <span class="fa fa-remove" ng-if="!db.firstname"></span>
                             </td>
                             <td>
-                                <div has-any-authority="ROLE_ADMIN, ROLE_SUPER_ADMIN">
-                                    <a href ng-if="!db._active">
+                                <div ng-if="vm.canActivate">
+                                    <a href ng-if="!db.active">
                                         <span class="fa fa-power-off" style="color:red;"></span>
                                     </a>
-                                    <a href ng-if="db._active">
+                                    <a href ng-if="db.active">
                                         <span class="fa fa-power-off" style="color:green;"></span>
                                     </a>
                                 </div>
-                                <div has-any-authority="ROLE_TRAFFIC_MANAGER">
-                                    <span class="fa fa-power-off" style="color:red;" ng-if="!db._active"></span>
-                                    <span class="fa fa-power-off" style="color:green;" ng-if="db._active"></span>
+                                <div ng-if="!vm.canActivate">
+                                    <span class="fa fa-power-off" style="color:red;" ng-if="!db.active"></span>
+                                    <span class="fa fa-power-off" style="color:green;" ng-if="db.active"></span>
                                 </div>
                             </td>
 
-                            <td>{{ db.expertsender_apiurl }}</td>
+                            <td>{{ ::db.expertsender_apiurl }}</td>
                             <td>
-                                <a href><i class="fa fa-pencil"></i></a>
+                                <a ui-sref="database.edit({id: db.id})"><i class="fa fa-pencil"></i></a>
                             </td>
                         </tr>
                         </tbody>

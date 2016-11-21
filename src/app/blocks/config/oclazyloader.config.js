@@ -11,6 +11,7 @@
     ocLazyLoaderConfig.$inject = ['$ocLazyLoadProvider'];
 
     function ocLazyLoaderConfig($ocLazyLoadProvider) {
+
         $ocLazyLoadProvider["config"]({
             debug: true,
             serie: true,

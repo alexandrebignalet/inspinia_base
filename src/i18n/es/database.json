@@ -10,7 +10,7 @@
             "age": "Edad",
             "sex": "Sexo",
             "zipcode": "Código postal",
-            "name": "Apellido",
+            "nameExt": "Apellido Fuera",
             "firstname": "Nombre"
         },
         "active": "Activo",

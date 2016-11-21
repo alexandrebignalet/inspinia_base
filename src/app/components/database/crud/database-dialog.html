@@ -1,4 +1,4 @@
-<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+<form name="editForm" role="form" novalidate ng-submit="vm.onSubmit()">
 
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
@@ -21,22 +21,117 @@
         <div class="form-group">
             <label class="control-label" translate="database.country" for="database_country">Country</label>
             <div class="input-group">
-                <input id="database_country" type="text" class="form-control" name="name" ng-model="vm.database.country" required  />
+                <input id="database_country" type="text" class="form-control" name="country" ng-model="vm.database.country" required  />
             </div>
-            <div ng-show="editForm.name.$invalid">
+            <div ng-show="editForm.country.$invalid">
                 <p class="help-block"
-                   ng-show="editForm.name.$error.required" translate="global.entity.validation.required">
+                   ng-show="editForm.country.$error.required" translate="global.entity.validation.required">
                     This field is required.
                 </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="database.type" for="database_type">Type</label>
+            <div class="input-group">
+                <select class="form-control" ng-model="vm.database.type" name="type" id="database_type" required>
+                    <option value=""></option>
+                    <option value="External">External</option>
+                    <option value="Intern">Internal</option>
+                </select>
+            </div>
+            <div ng-show="editForm.type.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.type.$error.required" translate="global.entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="database_rrid">Reine Rouge ID</label>
+            <div class="input-group">
+                <input type="number" class="form-control" ng-model="vm.database.reinerouge_id" id="database_rrid"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="database_apiUrl_expertSender">Api Url ExpertSender</label>
+            <div class="input-group">
+                <input type="text" class="form-control" ng-model="vm.database.expertsender_apiurl" id="database_apiUrl_expertSender"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="database_apikey_expertSender">Api Key ExpertSender</label>
+            <div class="input-group">
+                <input type="text" class="form-control" ng-model="vm.database.expertsender_apikey" id="database_apikey_expertSender"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="database_token_mailXpertise">Token MailXpertise</label>
+            <div class="input-group">
+                <input type="text" class="form-control" ng-model="vm.database.mailxpertise_token" id="database_token_mailXpertise"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="database_apikey_mailXpertise">Api Key MailXpertise</label>
+            <div class="input-group">
+                <input type="text" class="form-control" ng-model="vm.database.mailxpertise_apikey" id="database_apikey_mailXpertise"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="database_ids_mailXpertise">Api Key MailXpertise</label>
+            <div class="input-group">
+                <input type="text" class="form-control" ng-model="vm.database.mailxpertise_list_ids" id="database_ids_mailXpertise"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="database_domain_mailXpertise">Api Key MailXpertise</label>
+            <div class="input-group">
+                <input type="text" class="form-control" ng-model="vm.database.mailxpertise_domain" id="database_domain_mailXpertise"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <input icheck type="checkbox" ng-model="vm.database.age" />
+                <label translate="database.segmentation.age"> </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <input icheck type="checkbox" ng-model="vm.database.sex">
+                <label translate="database.segmentation.sex"></label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <input icheck type="checkbox" ng-model="vm.database.zipcode">
+                <label translate="database.segmentation.zipcode"></label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <input icheck type="checkbox" ng-model="vm.database.name_ext">
+                <label translate="database.segmentation.nameExt"></label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <input icheck type="checkbox" ng-model="vm.database.firstname">
+                <label translate="database.segmentation.firstname"></label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <input icheck type="checkbox" ng-model="vm.database.active">
+                <label translate="database.active"></label>
+
             </div>
         </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="global.entity.action.cancel">Cancel</span>
         </button>
         <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="global.entity.action.save">Save</span>
         </button>
     </div>
 </form>

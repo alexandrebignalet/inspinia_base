@@ -12,7 +12,8 @@
         controller: DatabaseDialogController,
         controllerAs: 'vm',
         bindings: {
-            database : '<'
+            modalInstance: '<',
+            resolve: '<'
         }
     };
 
@@ -20,45 +21,59 @@
         .module('dataToolApp')
         .component('databaseDialog', databaseDialog);
 
-    DatabaseDialogController.$inject = ['$uibModalInstance'];
+    DatabaseDialogController.$inject = ['$timeout', 'Database', 'ToastrService', '$q'];
 
     /* @ngInject */
-    function DatabaseDialogController($uibModalInstance) {
+    function DatabaseDialogController($timeout, Database, ToastrService, $q) {
         var vm = this;
 
         vm.clear = clear;
-        vm.save = save;
-
+        vm.onSubmit = onSubmit;
+console.log(vm.resolve)
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
         });
 
+        vm.$onInit = function () {
+            vm.database = vm.resolve.database;
+            delete vm.resolve;
+        };
+
         function clear () {
-            $uibModalInstance.dismiss('cancel');
+            vm.modalInstance.dismiss('cancel');
         }
 
-        function save () {
-            // vm.isSaving = true;
-            // if (vm.database.id !== null) {
-            //     Field.resource().patch(
-            //         {"id": vm.database.id},
-            //         {name: vm.database.name, description: vm.database.description},
-            //         onSaveSuccess,
-            //         onSaveError);
-            // } else {
-            //     Field.resource().save({name: vm.database.name, description: vm.database.description}, onSaveSuccess, onSaveError);
-            // }
-        }
+        function onSubmit(){
+            if (!vm.database) return;
+            delete vm.database.routers;
+            delete vm.database.companies;
+            delete vm.database.lots;
 
-        // function onSaveSuccess () {
-        //     $scope.$emit('sapebApp:databaseUpdate', vm.database);
-        //     $uibModalInstance.close(vm.database);
-        //     vm.isSaving = false;
-        // }
-        //
-        // function onSaveError () {
-        //     vm.isSaving = false;
-        // }
+            vm.isSaving = true;
+
+            if (vm.database.id !== null) {
+                var id = vm.database.id;
+                delete vm.database.id;
+                Database.patch(
+                    {"id": id},
+                    vm.database,
+                    onSaveSuccess,
+                    onSaveError);
+            } else {
+                Database.save(vm.database, onSaveSuccess, onSaveError);
+            }
+
+            function onSaveSuccess(database){
+                vm.isSaving = false;
+                vm.modalInstance.close(vm.database);
+                console.log(database);
+            }
+            function onSaveError(error){
+                vm.isSaving = false;
+                ToastrService.error(error, 'Fail to save Database.');
+                return $q.reject(error);
+            }
+        }
     }
 
 })();
