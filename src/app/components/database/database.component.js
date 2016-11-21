@@ -18,6 +18,7 @@
 
     /* @ngInject */
     function DatabaseController(DTOptionsBuilder, Principal) {
+
         var vm = this;
         vm.canActivate = false;
 
