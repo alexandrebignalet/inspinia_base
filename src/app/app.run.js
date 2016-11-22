@@ -5,7 +5,7 @@
     .module('dataToolApp')
     .run(runBlock);
 
-    runBlock.$inject = ['translationHandler', 'stateHandler']
+    runBlock.$inject = ['translationHandler', 'stateHandler'];
 
     function runBlock(translationHandler, stateHandler) {
         stateHandler.initialize();
