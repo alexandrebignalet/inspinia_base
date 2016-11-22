@@ -18,26 +18,31 @@
                 },
                 views: {
                     'content@': {
-                        template: '<users users="$resolve.users"></users>',
-                        resolve: {
-                            users: ['User', '$q', 'ToastrService', function(User, $q, ToastrService){
-                                return User.resource().get().$promise
-                                    .then(getUsersThen)
-                                    .catch(getUsersCatch);
+                        template: '<users users="$resolve.users"></users>'
+                    }
+                },
+                resolve: {
+                    users: ['User', '$q', 'ToastrService', function(User, $q, ToastrService){
+                        return User.resource().get().$promise
+                            .then(getUsersThen)
+                            .catch(getUsersCatch);
 
-                                function getUsersThen(data){
-                                    return data.users;
-                                }
-                                function getUsersCatch(error){
-                                    ToastrService.error(error, 'Impossible to retrieve users.');
-                                    return $q.reject(error);
-                                }
-                            }],
-                            mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                                $translatePartialLoader.addPart('user');
-                                return $translate.refresh();
-                            }]
+                        function getUsersThen(data){
+                            return data.users;
                         }
+                        function getUsersCatch(error){
+                            ToastrService.error(error, 'Impossible to retrieve users.');
+                            return $q.reject(error);
+                        }
+                    }],
+                    mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('user');
+                        return $translate.refresh();
+                    }],
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load([
+                            'datatables'
+                        ]);
                     }
                 }
             });

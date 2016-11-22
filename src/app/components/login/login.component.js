@@ -2,7 +2,7 @@
     'use strict';
 
     var login = {
-        templateUrl: 'app/login/login.html',
+        templateUrl: 'app/components/login/login.html',
         controller: LoginController,
         controllerAs: 'vm'
     };

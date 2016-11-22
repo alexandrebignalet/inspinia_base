@@ -75,8 +75,8 @@
 
             return deferred.promise;
 
-            function getUserThen (account) {
-                _identity = account.data;
+            function getUserThen (user) {
+                _identity = user.data;
                 _authenticated = true;
                 deferred.resolve(_identity);
             }

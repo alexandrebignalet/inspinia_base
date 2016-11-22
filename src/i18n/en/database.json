@@ -5,14 +5,20 @@
         "name": "Name",
         "country": "Country",
         "company": "Company",
+        "type": "Type",
         "segmentation":{
             "age": "Age",
             "sex": "Sex",
             "zipcode": "Zipcode",
-            "name": "Name",
+            "nameExt": "Name Ext",
             "firstname": "Firstname"
         },
         "active": "Active",
-        "expertSenderApiUrl": "ExpertSender Api Url"
+        "activated": "Activated",
+        "deactivated": "Deactivated",
+        "expertSenderApiUrl": "ExpertSender Api Url",
+        "dialog": {
+            "createOrEdit": "Create or edit a database"
+        }
     }
 }

@@ -15,7 +15,9 @@
         'oc.lazyLoad',
         'chart.js',
         'ngStorage',
+        'ui.bootstrap',
         'tmh.dynamicLocale',
-        'pascalprecht.translate'
+        'pascalprecht.translate',
+        'ui.select'
     ]);
 })();

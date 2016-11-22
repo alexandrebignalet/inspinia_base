@@ -10,10 +10,16 @@
             "age": "Edad",
             "sex": "Sexo",
             "zipcode": "Código postal",
-            "name": "Apellido",
+            "nameExt": "Apellido Fuera",
             "firstname": "Nombre"
         },
         "active": "Activo",
-        "expertSenderApiUrl": "ExpertSender Api Url"
+        "activated": "Activada",
+        "deactivated": "Desactivada",
+        "expertSenderApiUrl": "ExpertSender Api Url",
+        "dialog": {
+            "createOrEdit": "Crear ou editar una base de datos"
+        }
+
     }
 }

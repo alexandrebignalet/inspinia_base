@@ -5,6 +5,41 @@
         "menu": {
             "language": "Langage"
         },
-        "actions": "Actions"
+        "actions": "Actions",
+        "entity": {
+            "select": {
+                "country": "Pays"
+            },
+            "action": {
+                "addblob": "Ajout d'un ficher blob",
+                "addimage": "Ajout d'une image",
+                "back": "Retour",
+                "cancel": "Annuler",
+                "delete": "Supprimer",
+                "edit": "Editer",
+                "open": "Ouvrir",
+                "save": "Sauvegarder",
+                "view": "Vue"
+            },
+            "detail": {
+                "field": "champs",
+                "value": "valeur"
+            },
+            "delete": {
+                "title": "Confirmer la suppression"
+            },
+            "validation": {
+                "required": "Ce champs est requis.",
+                "minlength": "Ce champs doit faire au moins {{ min }} caractères.",
+                "maxlength": "Ce champs ne doit pas être plus long que {{ max }} caractères.",
+                "min": "Ce champs doit être supérieur à {{ min }}.",
+                "max": "Ce champs doit être inférieur à {{ max }}.",
+                "minbytes": "Ce champs doit être supérieur à {{ min }} bytes.",
+                "maxbytes": "Ce champs doit être inférieur à {{ max }} bytes.",
+                "pattern": "Ce champs doit suivre le pattern {{ pattern }}.",
+                "number": "Ca champs doit être un nombre.",
+                "datetimelocal": "Ce champs doit être un datetime."
+            }
+        }
     }
 }
