@@ -18,13 +18,13 @@
                 },
                 views: {
                     'content@': {
-                        template: '<announcer></announcer>'
+                        template: '<contact contacts="$resolve.data"></contact>'
                     }
                 },
                 resolve: {
                     data: [
-                        'Announcer', function(Announcer) {
-                            return {}
+                        'Contact', function(Contact) {
+                            return Contact.getAll(['contacts_all'])
                         }
                     ],
                     mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
