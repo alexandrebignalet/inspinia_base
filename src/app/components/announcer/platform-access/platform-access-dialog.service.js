@@ -30,17 +30,19 @@
 
             $uibModal.open({
                 component: 'platformAccessDialog',
-                backdrop: 'static',
+                backdrop: 'true',
                 size: 'lg',
                 resolve: {
-                    platformAccess: initPlatformAccess(announcerId,platformId),
+                    platformAccess: initPlatformAccess(announcerId, platformId),
                     announcers: announcers
                 }
-            }).result.then(function(){
-                $state.go('^',null, { reload: true })
-            },function() {
+            }).result.then(function () {
+                $state.go('^', null, {reload: true})
+            }, function () {
                 $state.go('^')
-            })
+            });
+
+
         }
 
         function initPlatformAccess(announcerId,platformId) {
@@ -60,8 +62,6 @@
 
         function openDeleteModal(platformAccessId) {
 
-            console.log(platformAccessId);
-
             $uibModal.open({
                 component: 'platformAccessDelete',
                 backdrop: 'static',
@@ -70,7 +70,8 @@
                     platformAccessId: {id: platformAccessId}
                 }
             }).result.then(function(){
-                $state.go('^')
+                console.log('foo');
+                $state.go('^',null, {reload: true})
             },function() {
                 $state.go('^')
             })

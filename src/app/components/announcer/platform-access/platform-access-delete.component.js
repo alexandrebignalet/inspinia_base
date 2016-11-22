@@ -26,7 +26,6 @@
 
         vm.$onInit = function() {
             vm.platformAccessId = vm.resolve.platformAccessId.id;
-            console.log(vm.platformAccessId);
         };
 
         function clear() {
@@ -34,7 +33,19 @@
         }
 
         function confirmDelete() {
-            Announcer.deletePlatformAccess(vm.platformAccessId);
+            Announcer.deletePlatformAccess(vm.platformAccessId)
+                .then(onSuccess)
+                .catch(onError)
+            ;
+
+            function onSuccess() {
+                vm.modalInstance.close();
+            }
+
+            function onError() {
+                vm.modalInstance.dismiss();
+            }
+
         }
     }
 

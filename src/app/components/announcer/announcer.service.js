@@ -1,6 +1,3 @@
-/**
- * Created by Axel on 18/11/2016.
- */
 (function () {
     'use strict';
 
@@ -56,6 +53,7 @@
         }
 
         function getPlatformAccess(platformId) {
+
             return resource.get_platform_access({
                 platformId: platformId
             },{
@@ -72,30 +70,54 @@
             }
         }
 
-        // TODO : HANDLE ERRORS
-
         function savePlatformAccess(platformAccess) {
-            resource.save_platform_access({announcerId : platformAccess.announcer},{
+            return resource.save_platform_access({announcerId : platformAccess.announcer},{
                 url: platformAccess.url,
                 username: platformAccess.username,
                 password: platformAccess.password,
                 description: platformAccess.description
-            })
+            },onSaveSuccess,onSaveError).$promise;
+
+            function onSaveSuccess() {
+                ToastrService.success('Platform Access Created','SUCCESS');
+            }
+
+            function onSaveError(error) {
+                ToastrService.error('Impossible to save Platform Access','XHR Error');
+                return $q.reject(error);
+            }
         }
 
         function updatePlatformAccess(platformAccess) {
-            resource.update_platform_access({platformId : platformAccess.id},{
+            return resource.update_platform_access({platformId : platformAccess.id},{
                 url: platformAccess.url,
                 username: platformAccess.username,
                 password: platformAccess.password,
                 description: platformAccess.description
-            })
+            },onSaveSuccess,onSaveError).$promise;
+
+            function onSaveSuccess() {
+                ToastrService.success('Platform Access Updated','SUCCESS');
+            }
+
+            function onSaveError(error) {
+                ToastrService.error('Impossible to save Platform Access','XHR Error');
+                return $q.reject(error);
+            }
         }
 
         function deletePlatformAccess(platformAccessId) {
-            resource.delete_platform_access({platformId: platformAccessId});
-        }
+            return resource.delete_platform_access({platformId: platformAccessId}, onSuccess, onError).$promise;
 
+            function onSuccess() {
+                ToastrService.success('Platform Access Deleted','SUCCESS');
+            }
+
+            function onError(error) {
+                ToastrService.error('Impossible to delete Platform Access','XHR Error');
+                return $q.reject(error);
+            }
+        }
 
 
         return {

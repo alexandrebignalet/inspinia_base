@@ -21,30 +21,39 @@
     function PlatformAccessDialogController(Announcer) {
         var vm              = this;
         vm.clear            = clear;
-        vm.save             = save;
-        vm.selectAnnouncer  = '';
+        vm.saveEntity       = saveEntity;
 
         vm.$onInit = function () {
             vm.announcers       = vm.resolve.announcers;
             vm.platformAccess   = vm.resolve.platformAccess;
-            vm.selectAnnouncer  = vm.platformAccess.announcer == '';
         };
 
         function clear() {
             vm.modalInstance.dismiss();
         }
 
+        function saveEntity(platformAccess) {
 
-        function save() {
             vm.isSaving = true;
 
             if( vm.platformAccess.id != null ) {
-                Announcer.updatePlatformAccess(vm.platformAccess);
+                Announcer.updatePlatformAccess(platformAccess);
             } else {
-                Announcer.savePlatformAccess(vm.platformAccess);
+                Announcer.savePlatformAccess(platformAccess)
+                    .then(success)
+                    .catch(error)
+                ;
             }
 
-            vm.modalInstance.close('success');
+            function error() {
+
+            }
+
+            function success() {
+                vm.modalInstance.close('success');
+            }
+
+
         }
     }
 
