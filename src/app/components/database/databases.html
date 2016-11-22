@@ -7,7 +7,7 @@
                         <small></small>
                     </h5>
                     <div class="ibox-tools">
-                        <a ui-sref="database.create" href class="btn btn-primary btn">Create new database</a>
+                        <a ui-sref="database.create" translate="database.create" class="btn btn-primary btn">Create new database</a>
                     </div>
                 </div>
                 <div class="ibox-content">
@@ -67,18 +67,19 @@
                                 <span class="fa fa-remove" ng-if="!db.firstname"></span>
                             </td>
                             <td>
-                                <div ng-if="vm.canActivate">
-                                    <a href ng-if="!db.active">
-                                        <span class="fa fa-power-off" style="color:red;"></span>
-                                    </a>
-                                    <a href ng-if="db.active">
-                                        <span class="fa fa-power-off" style="color:green;"></span>
-                                    </a>
-                                </div>
-                                <div ng-if="!vm.canActivate">
-                                    <span class="fa fa-power-off" style="color:red;" ng-if="!db.active"></span>
-                                    <span class="fa fa-power-off" style="color:green;" ng-if="db.active"></span>
-                                </div>
+                                <!--<div ng-if="vm.canActivate">-->
+                                    <!--<a href ng-if="!db.active">-->
+                                        <!--<span class="fa fa-power-off" style="color:red;"></span>-->
+                                    <!--</a>-->
+                                    <!--<a href ng-if="db.active">-->
+                                        <!--<span class="fa fa-power-off" style="color:green;"></span>-->
+                                    <!--</a>-->
+                                <!--</div>-->
+                                <!--<div ng-if="!vm.canActivate">-->
+                                    <!--<span class="fa fa-power-off" style="color:red;" ng-if="!db.active"></span>-->
+                                    <!--<span class="fa fa-power-off" style="color:green;" ng-if="db.active"></span>-->
+                                <!--</div>-->
+                                <database-activate database="db" authorize="vm.canActivate"></database-activate>
                             </td>
 
                             <td>{{ ::db.expertsender_apiurl }}</td>

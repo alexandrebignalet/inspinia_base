@@ -9,6 +9,7 @@ var $ = require('gulp-load-plugins')({
 });
 
 gulp.task('partials', function () {
+    console.log(path.join(conf.paths.src, '/app/**/*.html'))
   return gulp.src([
     path.join(conf.paths.src, '/app/**/*.html'),
     path.join(conf.paths.tmp, '/serve/app/**/*.html')
@@ -19,7 +20,7 @@ gulp.task('partials', function () {
       quotes: true
     }))
     .pipe($.angularTemplatecache('templateCacheHtml.js', {
-      module: 'inspinia',
+      module: 'dataToolApp',
       root: 'app'
     }))
     .pipe(gulp.dest(conf.paths.tmp + '/partials/'));
