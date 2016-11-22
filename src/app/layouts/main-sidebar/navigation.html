@@ -30,6 +30,10 @@
                 <a ui-sref="database"><i class="fa fa-database"></i> <span class="nav-label">Database</span></a>
             </li>
 
+            <li ui-sref-active="active">
+                <a ui-sref="contact"><i class="fa fa-phone"></i> <span class="nav-label">Contact</span></a>
+            </li>
+
             <li ng-class="{active: vm.state.includes('announcer')}">
                 <a ui-sref="announcer"><i class="fa fa-bullhorn"></i> <span class="nav-label">Announcer</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse" ng-class="{in: vm.state.includes('announcer')}">

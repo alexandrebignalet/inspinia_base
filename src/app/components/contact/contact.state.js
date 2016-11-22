@@ -10,31 +10,27 @@
     function stateConfig($stateProvider) {
 
         $stateProvider
-            .state('announcer', {
+            .state('contact', {
                 parent: 'components',
-                url: '/announcer',
+                url: '/contact',
                 data: {
-                    pageTitle: 'Announcer',
-                    authorities: ['ROLE_ADMIN', 'ROLE_USER', 'ROLE_SUPER_ADMIN']
+                    pageTitle: 'Contact'
                 },
                 views: {
                     'content@': {
-                        template: '<announcer announcers="$resolve.announcers"></announcer>'
+                        template: '<announcer></announcer>'
                     }
                 },
                 resolve: {
-                    announcers: [
+                    data: [
                         'Announcer', function(Announcer) {
-                            return Announcer.getAll();
+                            return {}
                         }
                     ],
                     mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
-                        $translatePartialLoader.addPart('announcer');
+                        $translatePartialLoader.addPart('contact');
                         return $translate.refresh();
-                    }],
-                    loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(['datatables']);
-                    }
+                    }]
                 }
             });
     }

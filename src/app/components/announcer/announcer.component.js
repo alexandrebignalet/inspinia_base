@@ -1,9 +1,3 @@
-/**
- * Created by Axel on 18/11/2016.
- */
-/**
- * Created by Axel on 17/11/2016.
- */
 (function () {
     'use strict';
 
