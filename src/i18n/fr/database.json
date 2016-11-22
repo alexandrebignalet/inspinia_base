@@ -15,7 +15,7 @@
         },
         "active": "Active",
         "activated": "Activée",
-        "deactivated": "Désactivée"
+        "deactivated": "Désactivée",
         "expertSenderApiUrl": "ExpertSender Api Url",
         "dialog": {
             "createOrEdit": "Créer ou éditer une base de données"

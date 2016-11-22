@@ -5,10 +5,6 @@
      * TODO create a autocomplete function backend with a LIKE clause foreach entity
      */
 
-<<<<<<< HEAD
-
-=======
->>>>>>> functions create & edit created, not functionnal due to api.. bugs fixed
     angular
         .module('dataToolApp')
         .config(stateConfig);
@@ -19,7 +15,6 @@
 
         $stateProvider
             .state('database.create', {
-<<<<<<< HEAD
                 parent: 'database',
                 url: '/create',
                 data: {
@@ -76,9 +71,6 @@
                             backdrop: 'static',
                             size: 'lg',
                             resolve: {
-                                countries: ['CountriesProvider', function(CountriesProvider){
-                                    return CountriesProvider.get();
-                                }],
                                 database: ['Database', function(Database){
                                     return Database.get({
                                         'id': $stateParams.id
