@@ -1,6 +1,12 @@
 {
     "announcer": {
         "announcer": "annonceur",
-        "list": "Liste des annonceurs"
+        "list": "Liste des annonceurs",
+        "platform-access": {
+            "add": "Ajouter un accès platform",
+            "username": "Nom d'utilisateur",
+            "password": "Mot de passe",
+            "description": "Description"
+        }
     }
 }
