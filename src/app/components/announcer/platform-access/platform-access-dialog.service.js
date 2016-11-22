@@ -24,9 +24,7 @@
 
         function openDialogModal(announcerId,platformId) {
 
-            var platformAccess = initPlatformAccess(announcerId,platformId);
-
-            if( announcerId == '' && platformAccess.announcer == '') {
+            if( announcerId == '' ) {
                 var announcers = Announcer.getAll();
             }
 
@@ -35,7 +33,7 @@
                 backdrop: 'static',
                 size: 'lg',
                 resolve: {
-                    platformAccess: platformAccess,
+                    platformAccess: initPlatformAccess(announcerId,platformId),
                     announcers: announcers
                 }
             }).result.then(function(){
@@ -69,7 +67,7 @@
                 backdrop: 'static',
                 size: 'lg',
                 resolve: {
-                    platformAccessId: {id: platformAccessId},
+                    platformAccessId: {id: platformAccessId}
                 }
             }).result.then(function(){
                 $state.go('^')
