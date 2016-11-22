@@ -2,9 +2,6 @@
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="vm.clear()">&times;</button>
 
     <h4 class="modal-title">New Platform Access</h4>
-    <pre>
-        {{vm.platformAccess.announcer}}
-    </pre>
 </div>
 <div class="modal-body">
     <platform-access-form announcers="vm.announcers" platform-access="vm.platformAccess" on-save-platform-access="vm.onSave($event)"></platform-access-form>
