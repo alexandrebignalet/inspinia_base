@@ -21,20 +21,21 @@
         .module('dataToolApp')
         .component('databaseDialog', databaseDialog);
 
-    DatabaseDialogController.$inject = ['$timeout', 'Database', 'ToastrService', '$q'];
+    DatabaseDialogController.$inject = ['$timeout', 'Database', 'ToastrService', '$q', 'COUNTRIES'];
 
     /* @ngInject */
-    function DatabaseDialogController($timeout, Database, ToastrService, $q) {
+    function DatabaseDialogController($timeout, Database, ToastrService, $q, COUNTRIES) {
         var vm = this;
 
         vm.clear = clear;
         vm.onSubmit = onSubmit;
-console.log(vm.resolve)
+
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
         });
 
         vm.$onInit = function () {
+            vm.countries = COUNTRIES;
             vm.database = vm.resolve.database;
             delete vm.resolve;
         };
@@ -48,10 +49,12 @@ console.log(vm.resolve)
             delete vm.database.routers;
             delete vm.database.companies;
             delete vm.database.lots;
+            delete vm.database.expertsender_cpm;
 
             vm.isSaving = true;
 
-            if (vm.database.id !== null) {
+            if (angular.isDefined(vm.database.id) && vm.database.id !== null) {
+                // TODO use ES2015 and destructuration to avoid this mess
                 var id = vm.database.id;
                 delete vm.database.id;
                 Database.patch(

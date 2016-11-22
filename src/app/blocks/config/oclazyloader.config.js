@@ -42,6 +42,10 @@
                     files: [
                         'bower_components/angular-ui-sortable/sortable.min.js'
                     ]
+                },
+                {
+                    name: 'iCheckButtons',
+                    files: ['bower_components/iCheck/skins/square/_all.css']
                 }
             ]
         });

@@ -5,6 +5,41 @@
         "menu": {
             "language": "Idiomas"
         },
-        "actions": "Actionnes"
+        "actions": "Actionnes",
+        "entity": {
+            "select": {
+                "country": "Pays"
+            },
+            "action": {
+                "addblob": "Añadir un archivo blob",
+                "addimage": "Añadir un imagen",
+                "back": "Retorno",
+                "cancel": "Cancelar",
+                "delete": "Eliminar",
+                "edit": "Editar",
+                "open": "Abierto",
+                "save": "Guardar",
+                "view": "Vista"
+            },
+            "detail": {
+                "field": "Campo",
+                "value": "Valor"
+            },
+            "delete": {
+                "title": "Confirmar eliminaciòn"
+            },
+            "validation": {
+                "required": "Este campo es necesario.",
+                "minlength": "Este campo debe contener {{ min }} carácteres.",
+                "maxlength": "Este campo cannot be longer than {{ max }} characters.",
+                "min": "Este campo should be more than {{ min }}.",
+                "max": "Este field cannot be more than {{ max }}.",
+                "minbytes": "This campo should be more than {{ min }} bytes.",
+                "maxbytes": "This campo cannot be more than {{ max }} bytes.",
+                "pattern": "This campo should follow pattern {{ pattern }}.",
+                "number": "This campo should be a number.",
+                "datetimelocal": "This campo should be a date and time."
+            }
+        }
     }
 }

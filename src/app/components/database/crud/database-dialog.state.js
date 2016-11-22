@@ -21,18 +21,14 @@
                 pageTitle: 'Create a database',
                 authorities: ['ROLE_ADMIN', 'ROLE_SUPER_ADMIN']
             },
-            onEnter: ['$state', '$uibModal', 'ToastrService', '$q',
-                function($state, $uibModal, ToastrService, $q) {
+            onEnter: ['$state', '$uibModal',
+                function($state, $uibModal) {
                     $uibModal.open({
                         component: 'databaseDialog',
                         backdrop: 'static',
                         size: 'lg',
                         resolve: {
-                            countries: ['CountriesProvider', function(CountriesProvider){
-                                return CountriesProvider.get();
-                            }],
                             database: {
-                                id: null,
                                 name: null,
                                 country: null,
                                 type: null,
@@ -43,17 +39,19 @@
                                 mailxpertise_apikey: null,
                                 mailxpertise_list_ids: null,
                                 mailxpertise_domain: null,
-                                plans: null,
-                                age: null,
-                                sexe: null,
-                                zipcode: null,
-                                nameExt: null,
-                                firstname: null,
-                                active: null
+                                age: false,
+                                sexe: false,
+                                zipcode: false,
+                                name_ext: false,
+                                firstname: false,
+                                active: false
+                            },
+                            loadPlugin: function ($ocLazyLoad) {
+                                return $ocLazyLoad.load(['iCheckButtons']);
                             }
                         }
                     }).result.then(function() {
-                        $state.go('database', null, { reload: 'database' });
+                        $state.go('database');
                     }, function() {
                         $state.go('database');
                     });
@@ -73,9 +71,6 @@
                             backdrop: 'static',
                             size: 'lg',
                             resolve: {
-                                countries: ['CountriesProvider', function(CountriesProvider){
-                                    return CountriesProvider.get();
-                                }],
                                 database: ['Database', function(Database){
                                     return Database.get({
                                         'id': $stateParams.id
@@ -93,15 +88,11 @@
                                     }
                                 }],
                                 loadPlugin: function ($ocLazyLoad) {
-                                    return $ocLazyLoad.load([
-                                        {
-                                            files: ['bower_components/iCheck/skins//square/_all.css']
-                                        }
-                                    ]);
+                                    return $ocLazyLoad.load(['iCheckButtons']);
                                 }
                             }
                         }).result.then(function() {
-                            $state.go('database', null, { reload: 'database' });
+                            $state.go('database');
                         }, function() {
                             $state.go('database');
                         });

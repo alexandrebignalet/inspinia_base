@@ -5,6 +5,7 @@
         "name": "Name",
         "country": "Country",
         "company": "Company",
+        "type": "Type",
         "segmentation":{
             "age": "Age",
             "sex": "Sex",
@@ -13,6 +14,8 @@
             "firstname": "Firstname"
         },
         "active": "Active",
+        "activated": "Activated",
+        "deactivated": "Deactivated",
         "expertSenderApiUrl": "ExpertSender Api Url",
         "dialog": {
             "createOrEdit": "Create or edit a database"
