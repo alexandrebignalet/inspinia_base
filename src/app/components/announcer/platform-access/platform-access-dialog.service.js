@@ -37,7 +37,7 @@
                     announcers: announcers
                 }
             }).result.then(function(){
-                $state.go('^')
+                $state.go('^',null, { reload: true })
             },function() {
                 $state.go('^')
             })

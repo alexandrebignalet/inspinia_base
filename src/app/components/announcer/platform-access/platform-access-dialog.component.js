@@ -43,6 +43,8 @@
             } else {
                 Announcer.savePlatformAccess(vm.platformAccess);
             }
+
+            vm.modalInstance.close('success');
         }
     }
 

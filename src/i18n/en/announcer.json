@@ -1,6 +1,12 @@
 {
     "announcer": {
         "announcer": "announcer",
-        "list": "Announcers list"
+        "list": "Announcers list",
+        "platform-access": {
+            "add": "Add platform access",
+            "username": "Username",
+            "password": "Password",
+            "description": "Description"
+    }
     }
 }

@@ -7,7 +7,7 @@
                         <small></small>
                     </h5>
                     <div class="ibox-tools">
-                        <a ui-sref="announcer.platform-access.create" class="btn btn-primary b-r-xs"><span translate="announcer.platform-access.add"></span>Add Platform Access</a>
+                        <a ui-sref="announcer.platform-access.create" class="btn btn-primary b-r-xs"><span translate="announcer.platform-access.add">Add Platform Access</span></a>
                     </div>
                 </div>
                 <div class="ibox-content">
@@ -15,16 +15,16 @@
                     <table datatable="ng" dt-options="vm.dtOptions" class="table table-striped table-hover">
                         <thead>
                         <tr>
-                            <th>Announcer</th>
-                            <th>Username</th>
-                            <th>Password</th>
+                            <th><span translate="announcer.announcer">Announcer</span></th>
+                            <th><span translate="announcer.platform-access.username">Username</span></th>
+                            <th><span translate="announcer.platform-access.password">Password</span></th>
                             <th>URL</th>
-                            <th>Description</th>
+                            <th><span translate="announcer.platform-access.description">Description</span></th>
                         </tr>
                         </thead>
                         <tbody>
 
-                            <tr ng-repeat="announcer in ::vm.announcers">
+                            <tr ng-repeat="announcer in vm.announcers">
                                 <td>{{announcer.announcer}}
                                     <a ui-sref="announcer.platform-access.create({announcerId: announcer.id})" class="btn btn-xs btn-primary pull-right" role="button">
                                         <span class="fa fa-plus"></span>
@@ -53,11 +53,11 @@
                         </tbody>
                         <tfoot>
                         <tr>
-                            <th>Announcer</th>
+                            <th><span translate="announcer.announcer">Announcer</span></th>
+                            <th><span translate="announcer.platform-access.username">Username</span></th>
+                            <th><span translate="announcer.platform-access.password">Password</span></th>
                             <th>URL</th>
-                            <th>Username</th>
-                            <th>Password</th>
-                            <th>Description</th>
+                            <th><span translate="announcer.platform-access.description">Description</span></th>
                         </tr>
                         </tfoot>
                     </table>
