@@ -11,8 +11,7 @@
     function DatabaseDialogService($state, $uibModal) {
 
         var service = {
-            openDialogModal: openDialogModal,
-            openDeleteModal: openDeleteModal
+            openDialogModal: openDialogModal
         };
 
         return service;

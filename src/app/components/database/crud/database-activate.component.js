@@ -2,18 +2,17 @@
     'use strict';
 
     var databaseActivate = {
-        template: '<div ng-if="!vm.authorize">'+
-                    '<span class="fa fa-power-off" style="color:red;" ng-if="!vm.database.active"></span>'+
-                    '<span class="fa fa-power-off" style="color:green;" ng-if="vm.database.active"></span>'+
-                '</div>' +
-                '<div ng-if="vm.authorize">'+
-                    '<button type="button" ng-if="!vm.database.active" ng-disabled="vm.isSaving" ng-click="vm.update()">'+
-                        '<span class="fa fa-power-off" style="color:red;"></span>'+
-                    '</button>'+
-                    '<button type="button" ng-if="vm.database.active" ng-disabled="vm.isSaving" ng-click="vm.update()">'+
-                        '<span class="fa fa-power-off" style="color:green;"></span>'+
-                    '</button>'+
-                '</div>',
+        template: '<div>'+
+        '<button type="button"' +
+        'ng-disabled="vm.isSaving" ng-click="vm.update()"' +
+        ' ng-class="{' +
+        '\'btn btn-primary btn-circle\': vm.database.active,' +
+        '\'btn btn-danger btn-circle btn-outline\': !vm.database.active' +
+        '}">' +
+        '<span class="fa fa-power-off"></span>'+
+        '</button>'+
+        '</div>',
+
         controller: DatabaseActivateController,
         controllerAs: 'vm',
         bindings: {
@@ -42,6 +41,8 @@
         };
 
         function update(){
+            if (!vm.authorize) return;
+
             vm.database.active = !vm.database.active;
 
             vm.onActivate({
