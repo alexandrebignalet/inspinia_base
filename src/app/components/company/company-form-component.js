@@ -1,38 +1,40 @@
 (function () {
     'use strict';
 
-    var addressDialog = {
-        templateUrl: 'app/components/address/address-dialog.html',
-        controller: AddressDialogController,
+    var companyForm = {
+        templateUrl: 'app/components/company/company-form.html',
+        controller: CompanyFormController,
         controllerAs: 'vm',
         bindings: {
-            modalInstance: '<',
-            resolve: '<'
+            company: '<',
+            databases: '<',
+            onSaveCompany: '&'
         }
     };
 
     angular
         .module('dataToolApp')
-        .component('addressDialog', addressDialog);
+        .component('companyForm', companyForm);
 
-    AddressDialogController.$inject = ['Address'];
+    CompanyFormController.$inject = [];
 
     /* @ngInject */
-    function AddressDialogController(Address) {
+    function CompanyFormController() {
         var vm = this;
-        vm.clear = clear;
-        vm.onSave = onSave;
         vm.isSaving = false;
+        vm.onSubmit = onSubmit;
+        vm.onSaveContact = onSaveContact;
+        vm.onSaveAddress = onSaveAddress;
 
-        vm.$onInit = function () {
-            vm.address = vm.resolve.address;
-        };
-
-        function clear() {
-            vm.modalInstance.dismiss();
+        function onSubmit() {
+            vm.onSaveCompany({
+                $event: {
+                    company: vm.company
+                }
+            });
         }
 
-        function onSave($event) {
+        function onSaveAddress($event){
             if (!$event.address) return;
 
             vm.isSaving = true;
@@ -55,6 +57,10 @@
             function onError() {
                 vm.isSaving = false;
             }
+        }
+
+        function onSaveContact($event){
+
         }
     }
 

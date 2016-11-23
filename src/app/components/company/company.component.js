@@ -1,30 +1,30 @@
 (function () {
     'use strict';
 
-    var contact = {
-        templateUrl: 'app/components/contact/contacts.html',
-        controller: ContactController,
+    var company = {
+        templateUrl: 'app/components/company/companies.html',
+        controller: CompanyController,
         controllerAs: 'vm',
         bindings: {
-            contacts : '<'
+            companies : '<'
         }
     };
 
     angular
         .module('dataToolApp')
-        .component('contact', contact);
+        .component('company', company);
 
-    ContactController.$inject = ['DTOptionsBuilder'];
+    CompanyController.$inject = ['DTOptionsBuilder'];
 
     /* @ngInject */
-    function ContactController(DTOptionsBuilder) {
+    function CompanyController(DTOptionsBuilder) {
         var vm = this;
-        vm.showContact = showContact;
-        vm.showedContact = {};
+        vm.showCompany = showCompany;
+        vm.showedCompany = {};
 
         vm.$onInit = function() {
-            if( vm.contacts.length > 0) {
-                vm.showedContact = vm.contacts[0]
+            if( vm.companies.length > 0) {
+                vm.showedCompany = vm.companies[0]
             }
 
             vm.dtOptions = DTOptionsBuilder.newOptions()
@@ -48,8 +48,8 @@
                 ]);
         };
 
-        function showContact(contact) {
-            vm.showedContact = contact;
+        function showCompany(company) {
+            vm.showedCompany = company;
         }
 
 
