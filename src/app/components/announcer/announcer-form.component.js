@@ -34,7 +34,6 @@
         // TODO : USE EVENT
 
         function save() {
-            console.log(vm.announcer);
             vm.onSaveEntity({announcer: vm.announcer});
         }
     }
