@@ -1,0 +1,12 @@
+{
+    "company": {
+        "company": "Empresa",
+        "list": "Lista de las empresas",
+        "new": "Añadir o editar una empresa",
+        "name": "Nombre",
+        "phone": "Teléfono",
+        "numTva": "Núm. TVA",
+        "paymentPeriod": "Periodo de pago",
+        "invoiceDeliveryDay": "Fecha de entrega AAF"
+    }
+}
