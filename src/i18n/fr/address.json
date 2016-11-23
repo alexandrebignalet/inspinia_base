@@ -1,0 +1,16 @@
+{
+    "address": {
+        "list": "Liste des adresses",
+        "create": "Créer ou éditer une nouvelle addresse",
+        "delete": "Supprimer",
+        "country": "Pays",
+        "street": "Rue",
+        "town": "Ville",
+        "zipcode": "Code Postal",
+        "complement": "Complément",
+        "confirm": {
+            "delete": "Confirmer la suppression de l'adresse",
+            "msg": "Êtes vous sûr de vouloir supprimer cette addresse ?"
+        }
+    }
+}
