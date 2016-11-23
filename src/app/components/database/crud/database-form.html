@@ -1,0 +1,121 @@
+<form name="editForm" role="form" novalidate ng-submit="vm.onSubmit()">
+    <div class="form-group">
+        <table class="table table-responsive table-bordered">
+            <thead>
+            <th class="text-center" translate="database.segmentation.age">Age</th>
+            <th class="text-center" translate="database.segmentation.sex">Sex</th>
+            <th class="text-center" translate="database.segmentation.zipcode">Zipcode</th>
+            <th class="text-center" translate="database.segmentation.nameExt">NameExt</th>
+            <th class="text-center" translate="database.segmentation.firstname">Firstname</th>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="text-center"><input icheck type="checkbox" ng-model="vm.database.age" /></td>
+                <td class="text-center"><input icheck type="checkbox" ng-model="vm.database.sexe" /></td>
+                <td class="text-center"><input icheck type="checkbox" ng-model="vm.database.zipcode" /></td>
+                <td class="text-center"><input icheck type="checkbox" ng-model="vm.database.name_ext" /></td>
+                <td class="text-center"><input icheck type="checkbox" ng-model="vm.database.firstname" /></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="form-group">
+        <label class="control-label" translate="database.name" for="database_name">Name</label>
+        <div>
+            <input id="database_name" type="text" class="form-control" name="name" ng-model="vm.database.name" required  />
+        </div>
+        <div ng-show="editForm.name.$invalid">
+            <p class="help-block"
+               ng-show="editForm.name.$error.required" translate="global.entity.validation.required">
+                This field is required.
+            </p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" translate="database.country" for="database_country">Country</label>
+        <div>
+            <ui-select ng-model="vm.database.country" theme="bootstrap" id="database_country">
+                <ui-select-match placeholder="Select or search a country in the list...">{{$select.selected.code}}</ui-select-match>
+                <ui-select-choices repeat="country.code as country in vm.countries | filter: $select.search">
+                    <div ng-bind-html="country.name | highlight: $select.search"></div>
+                    <small ng-bind-html="country.code | highlight: $select.search"></small>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+        <div ng-show="editForm.country.$invalid">
+            <p class="help-block"
+               ng-show="editForm.country.$error.required" translate="global.entity.validation.required">
+                This field is required.
+            </p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" translate="database.type" for="database_type">Type</label>
+        <div>
+            <select class="form-control" ng-model="vm.database.type" name="type" id="database_type" required>
+                <option value=""></option>
+                <option value="External">External</option>
+                <option value="Intern">Internal</option>
+            </select>
+        </div>
+        <div ng-show="editForm.type.$invalid">
+            <p class="help-block"
+               ng-show="editForm.type.$error.required" translate="global.entity.validation.required">
+                This field is required.
+            </p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="database_rrid">Reine Rouge ID</label>
+        <div>
+            <input type="number" class="form-control" ng-model="vm.database.reinerouge_id" id="database_rrid"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="database_apiUrl_expertSender">Api Url ExpertSender</label>
+        <div>
+            <input type="text" class="form-control" ng-model="vm.database.expertsender_apiurl" id="database_apiUrl_expertSender"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="database_apikey_expertSender">Api Key ExpertSender</label>
+        <div>
+            <input type="text" class="form-control" ng-model="vm.database.expertsender_apikey" id="database_apikey_expertSender"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="database_token_mailXpertise">Token MailXpertise</label>
+        <div>
+            <input type="text" class="form-control" ng-model="vm.database.mailxpertise_token" id="database_token_mailXpertise"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="database_apikey_mailXpertise">Api Key MailXpertise</label>
+        <div>
+            <input type="text" class="form-control" ng-model="vm.database.mailxpertise_apikey" id="database_apikey_mailXpertise"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="database_ids_mailXpertise">Api Key MailXpertise</label>
+        <div>
+            <input type="text" class="form-control" ng-model="vm.database.mailxpertise_list_ids" id="database_ids_mailXpertise"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="database_domain_mailXpertise">Api Key MailXpertise</label>
+        <div>
+            <input type="text" class="form-control" ng-model="vm.database.mailxpertise_domain" id="database_domain_mailXpertise"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="text-center">
+            <label translate="database.active"></label>
+            <div>
+                <input icheck type="checkbox" ng-model="vm.database.active">
+            </div>
+        </div>
+    </div>
+    <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary btn-block">
+        <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="global.entity.action.save">Save</span>
+    </button>
+</form>

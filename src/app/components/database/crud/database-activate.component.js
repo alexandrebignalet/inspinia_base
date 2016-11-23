@@ -2,23 +2,24 @@
     'use strict';
 
     var databaseActivate = {
-        template: '<div ng-if="!vm.authorize">'+
-                    '<span class="fa fa-power-off" style="color:red;" ng-if="!vm.database.active"></span>'+
-                    '<span class="fa fa-power-off" style="color:green;" ng-if="vm.database.active"></span>'+
-                '</div>' +
-                '<div ng-if="vm.authorize" ng-click="vm.update()">'+
-                    '<a href ng-if="!vm.database.active">'+
-                        '<span class="fa fa-power-off" style="color:red;"></span>'+
-                    '</a>'+
-                    '<a href ng-if="vm.database.active">'+
-                        '<span class="fa fa-power-off" style="color:green;"></span>'+
-                    '</a>'+
-                '</div>',
+        template: '<div>'+
+        '<button type="button"' +
+        'ng-disabled="vm.isSaving" ng-click="vm.update()"' +
+        ' ng-class="{' +
+        '\'btn btn-primary btn-circle\': vm.database.active,' +
+        '\'btn btn-danger btn-circle btn-outline\': !vm.database.active' +
+        '}">' +
+        '<span class="fa fa-power-off"></span>'+
+        '</button>'+
+        '</div>',
+
         controller: DatabaseActivateController,
         controllerAs: 'vm',
         bindings: {
             database: '<',
-            authorize: '<'
+            authorize: '<',
+            onActivate: '&',
+            isSaving: '<'
         }
     };
 
@@ -26,34 +27,29 @@
         .module('dataToolApp')
         .component('databaseActivate', databaseActivate);
 
-    DatabaseActivateController.$inject = ['Database', 'ToastrService', '$q'];
+    DatabaseActivateController.$inject = [];
 
     /* @ngInject */
-    function DatabaseActivateController(Database, ToastrService, $q) {
+    function DatabaseActivateController() {
         var vm = this;
-
         vm.update = update;
 
+        vm.$onChanges = function(changes) {
+            if (changes.database) {
+                vm.database = Object.assign({}, vm.database);
+            }
+        };
+
         function update(){
+            if (!vm.authorize) return;
+
             vm.database.active = !vm.database.active;
 
-            delete vm.database.routers;
-            delete vm.database.companies;
-            delete vm.database.lots;
-            delete vm.database.expertsender_cpm;
-            var id = vm.database.id;
-            delete vm.database.id;
-
-            Database.patch({'id': id}, vm.database, onPatchSuccess, onPatchError);
-
-            function onPatchSuccess(data){
-                return data;
-            }
-
-            function onPatchError(error){
-                ToastrService.error(error, 'Impossible to activate database.');
-                return $q.reject(error);
-            }
+            vm.onActivate({
+                $event: {
+                    database: vm.database
+                }
+            });
         }
     }
 

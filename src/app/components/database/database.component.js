@@ -14,14 +14,17 @@
         .module('dataToolApp')
         .component('databases', databases);
 
-    DatabaseController.$inject = ['DTOptionsBuilder', 'Principal'];
+    DatabaseController.$inject = ['DTOptionsBuilder', 'Principal', 'Database', 'ToastrService', '$translate'];
 
     /* @ngInject */
-    function DatabaseController(DTOptionsBuilder, Principal) {
+    function DatabaseController(DTOptionsBuilder, Principal, Database, ToastrService, $translate) {
         var vm = this;
-        vm.canActivate = false;
 
-        this.$onInit = function(){
+        vm.isSaving = false;
+        vm.canActivate = false;
+        vm.onActivate = onActivate;
+
+        vm.$onInit = function(){
             Principal.identity()
                 .then(getUserToCheckRoles);
 
@@ -51,6 +54,30 @@
                         }
                     }
                 ]);
+        };
+
+        function onActivate($event){
+            vm.isSaving = true;
+
+            var toastMessage = $translate.instant('database.deactivate.msg');
+            if($event.database.active)
+            {
+                toastMessage = $translate.instant('database.activate.msg');
+            }
+
+            Database.patch($event.database)
+                .then(onPatchSuccess)
+                .catch(onPatchError);
+
+            function onPatchSuccess(data){
+                vm.isSaving = false;
+                ToastrService.success(toastMessage);
+                return data;
+            }
+
+            function onPatchError(){
+                vm.isSaving = false;
+            }
         }
     }
 
