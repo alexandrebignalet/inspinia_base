@@ -1,15 +1,12 @@
 <form name="editForm" role="form" novalidate ng-submit="vm.onSubmit()">
-    <div class="form-group" ng-if="!fromAnnouncer">
+    <div class="form-group" ng-if="!vm.fromAnnouncer">
         <label for="platform_access_announcer">Announcer</label>
-        <!--<select class="form-control" id="platform_access_announcer" name="announcer" ng-model="vm.platformAccess.announcer" ng-options="announcer.id as announcer.announcer for announcer in vm.announcers track by announcer.id">-->
         <ui-select ng-model="vm.platformAccess.announcer" theme="bootstrap" id="platform_access_announcer">
             <ui-select-match placeholder="Select or search an Announcer in the list...">{{$select.selected.announcer}}</ui-select-match>
             <ui-select-choices repeat="announcer in vm.announcers | filter: $select.search">
                 <div ng-bind-html="announcer.announcer | highlight: $select.search"></div>
-                <!--<small ng-bind-html="announcer. | highlight: $select.search"></small>-->
             </ui-select-choices>
         </ui-select>
-        <!--</select>-->
         <div ng-show="editForm.announcer.$invalid">
             <p class="help-block"
                ng-show="editForm.announcer.$error.required">
