@@ -28,20 +28,8 @@
                         return $translate.refresh();
                     }],
 
-                    databases: ['Database', '$q', 'ToastrService', function(Database, $q, ToastrService){
-                        return Database.get({
-                            'context': angular.toJson(['databases_all', 'companies_summary'])
-                        }).$promise
-                            .then(getDatabasesThen)
-                            .catch(getDatabasesCatch);
-
-                        function getDatabasesThen(data){
-                            return data.databases;
-                        }
-                        function getDatabasesCatch(error){
-                            ToastrService.error(error, 'Impossible to retrieve users.');
-                            return $q.reject(error);
-                        }
+                    databases: ['Database', function(Database){
+                        return Database.getAll(['databases_all', 'companies_summary']);
                     }],
                     loadPlugin: function ($ocLazyLoad) {
                         return $ocLazyLoad.load(['datatables']);

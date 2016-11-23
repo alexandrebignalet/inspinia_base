@@ -11,10 +11,10 @@
         .module('dataToolApp')
         .component('home', home);
 
-    HomeController.$inject = [];
+    HomeController.$inject = ['Database'];
 
     /* @ngInject */
-    function HomeController() {
+    function HomeController(Database) {
         var vm = this;
 
         vm.chart = {};

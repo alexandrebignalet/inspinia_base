@@ -6,19 +6,21 @@
                     '<span class="fa fa-power-off" style="color:red;" ng-if="!vm.database.active"></span>'+
                     '<span class="fa fa-power-off" style="color:green;" ng-if="vm.database.active"></span>'+
                 '</div>' +
-                '<div ng-if="vm.authorize" ng-click="vm.update()">'+
-                    '<a href ng-if="!vm.database.active">'+
+                '<div ng-if="vm.authorize">'+
+                    '<button type="button" ng-if="!vm.database.active" ng-disabled="vm.isSaving" ng-click="vm.update()">'+
                         '<span class="fa fa-power-off" style="color:red;"></span>'+
-                    '</a>'+
-                    '<a href ng-if="vm.database.active">'+
+                    '</button>'+
+                    '<button type="button" ng-if="vm.database.active" ng-disabled="vm.isSaving" ng-click="vm.update()">'+
                         '<span class="fa fa-power-off" style="color:green;"></span>'+
-                    '</a>'+
+                    '</button>'+
                 '</div>',
         controller: DatabaseActivateController,
         controllerAs: 'vm',
         bindings: {
             database: '<',
-            authorize: '<'
+            authorize: '<',
+            onActivate: '&',
+            isSaving: '<'
         }
     };
 
@@ -26,34 +28,27 @@
         .module('dataToolApp')
         .component('databaseActivate', databaseActivate);
 
-    DatabaseActivateController.$inject = ['Database', 'ToastrService', '$q'];
+    DatabaseActivateController.$inject = [];
 
     /* @ngInject */
-    function DatabaseActivateController(Database, ToastrService, $q) {
+    function DatabaseActivateController() {
         var vm = this;
-
         vm.update = update;
+
+        vm.$onChanges = function(changes) {
+            if (changes.database) {
+                vm.database = Object.assign({}, vm.database);
+            }
+        };
 
         function update(){
             vm.database.active = !vm.database.active;
 
-            delete vm.database.routers;
-            delete vm.database.companies;
-            delete vm.database.lots;
-            delete vm.database.expertsender_cpm;
-            var id = vm.database.id;
-            delete vm.database.id;
-
-            Database.patch({'id': id}, vm.database, onPatchSuccess, onPatchError);
-
-            function onPatchSuccess(data){
-                return data;
-            }
-
-            function onPatchError(error){
-                ToastrService.error(error, 'Impossible to activate database.');
-                return $q.reject(error);
-            }
+            vm.onActivate({
+                $event: {
+                    database: vm.database
+                }
+            });
         }
     }
 

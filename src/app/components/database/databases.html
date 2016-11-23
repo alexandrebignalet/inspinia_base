@@ -67,19 +67,9 @@
                                 <span class="fa fa-remove" ng-if="!db.firstname"></span>
                             </td>
                             <td>
-                                <!--<div ng-if="vm.canActivate">-->
-                                    <!--<a href ng-if="!db.active">-->
-                                        <!--<span class="fa fa-power-off" style="color:red;"></span>-->
-                                    <!--</a>-->
-                                    <!--<a href ng-if="db.active">-->
-                                        <!--<span class="fa fa-power-off" style="color:green;"></span>-->
-                                    <!--</a>-->
-                                <!--</div>-->
-                                <!--<div ng-if="!vm.canActivate">-->
-                                    <!--<span class="fa fa-power-off" style="color:red;" ng-if="!db.active"></span>-->
-                                    <!--<span class="fa fa-power-off" style="color:green;" ng-if="db.active"></span>-->
-                                <!--</div>-->
-                                <database-activate database="db" authorize="vm.canActivate"></database-activate>
+                                <database-activate  database="db" authorize="vm.canActivate"
+                                                    on-activate="vm.onActivate($event)" is-saving="vm.isSaving"
+                                ></database-activate>
                             </td>
 
                             <td>{{ ::db.expertsender_apiurl }}</td>

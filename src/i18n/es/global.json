@@ -5,6 +5,8 @@
         "menu": {
             "language": "Idiomas"
         },
+        "save": "Guardar",
+        "delete": "Eliminar",
         "actions": "Actionnes",
         "entity": {
             "select": {
