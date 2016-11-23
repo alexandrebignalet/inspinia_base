@@ -1,0 +1,12 @@
+{
+    "company": {
+        "company": "company",
+        "list": "Companies list",
+        "new": "Create or edit a company",
+        "name": "Name",
+        "phone": "Phone",
+        "numTva": "No TVA",
+        "paymentPeriod": "Payment period",
+        "invoiceDeliveryDay": "Invoice delivery day"
+    }
+}

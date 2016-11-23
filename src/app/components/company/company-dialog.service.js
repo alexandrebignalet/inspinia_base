@@ -3,12 +3,12 @@
 
     angular
         .module('dataToolApp')
-        .factory('AddressDialogService', AddressDialogService);
+        .factory('CompanyDialogService', CompanyDialogService);
 
-    AddressDialogService.$inject = ['$state','$uibModal'];
+    CompanyDialogService.$inject = ['$state','$uibModal'];
 
     /* @ngInject */
-    function AddressDialogService($state,$uibModal) {
+    function CompanyDialogService($state,$uibModal) {
 
         var service = {
             openDialogModal: openDialogModal,
@@ -19,15 +19,18 @@
 
         ////////////////
 
-        function openDialogModal(address) {
+        function openDialogModal(company, databases) {
 
             $uibModal.open({
-                component: 'addressDialog',
+                component: 'companyDialog',
                 backdrop: 'true',
                 size: 'lg',
                 resolve: {
-                    address: function(){
-                        return address;
+                    company: function(){
+                        return company
+                    },
+                    databases: function(){
+                        return databases
                     }
                 }
             })
@@ -40,15 +43,15 @@
                 );
         }
 
-        function openDeleteModal(addressId) {
+        function openDeleteModal(companyId) {
 
             $uibModal.open({
-                component: 'addressDelete',
+                component: 'companyDelete',
                 backdrop: 'static',
                 size: 'lg',
                 resolve: {
-                    addressId: function () {
-                        return addressId;
+                    companyId: function () {
+                        return companyId;
                     }
                 }
             }).result.then(function(){

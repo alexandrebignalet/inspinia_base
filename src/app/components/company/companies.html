@@ -1,0 +1,61 @@
+
+<div class="wrapper wrapper-content  animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5 translate="company.list">Companies list
+                        <small></small>
+                    </h5>
+                    <div class="ibox-tools">
+                        <a ui-sref="company.create" class="btn btn-primary btn">Create new company</a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="clients-list">
+                        <div class="tab-content">
+                            <div>
+                                <div class="full-height-scroll">
+                                    <div class="table-responsive">
+                                        <table datatable="ng" dt-options="vm.dtOptions" class="table table-striped table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th translate="company.name">Name</th>
+                                                    <th translate="company.phone">Phone</th>
+                                                    <th translate="company.numTva">Num Tva</th>
+                                                    <th translate="company.paymentPeriod">Payment Period</th>
+                                                    <th translate="company.invoiceDeliveryDay">Invoice delivery day</th>
+                                                    <!--<th translate="global.actions">Actions</th>-->
+                                                </tr>
+                                            </thead>
+                                            <tbody ng-repeat="company in vm.companies">
+                                                <tr ng-click="vm.showCompany(company)">
+                                                    <td><a class="client-link">{{ company.name }}</a></td>
+                                                    <td> <i class="fa fa-phone"> </i> {{ company.phone }} </td>
+                                                    <td>{{ company.numTva }}</td>
+                                                    <td>{{ company.paymentPeriod }}</td>
+                                                    <td>{{ company.invoiceDeliveryDay }}</td>
+                                                    <!--<td>-->
+                                                        <!--<a ui-sref="company.edit({id: company.id})"><button class="btn btn-primary">-->
+                                                            <!--<span class="fa fa-pencil"></span>-->
+                                                        <!--</button></a>-->
+                                                        <!--<a ui-sref="company.delete({id: company.id})"><button class="btn btn-danger">-->
+                                                            <!--<span class="fa fa-trash"></span>-->
+                                                        <!--</button></a>-->
+                                                    <!--</td>-->
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <company-show company="vm.showedCompany"></company-show>
+        </div>
+    </div>
+</div>
