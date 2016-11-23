@@ -22,11 +22,11 @@
                 },
                 views: {
                     'content@': {
-                        template: '<announcer announcers="$resolve.data"></announcer>'
+                        template: '<announcer announcers="$resolve.announcers"></announcer>'
                     }
                 },
                 resolve: {
-                    data: [
+                    announcers: [
                         'Announcer', function(Announcer) {
                             return Announcer.getAll();
                         }
@@ -36,9 +36,7 @@
                         return $translate.refresh();
                     }],
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load([
-                            'datatables'
-                        ]);
+                        return $ocLazyLoad.load(['datatables']);
                     }
                 }
             });

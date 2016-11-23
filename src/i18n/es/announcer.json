@@ -1,5 +1,8 @@
 {
     "announcer": {
-        "announcer": "annonceur"
+        "announcer": "annonceur",
+        "create": "Añadir un nuevo annunciante",
+        "country": "País",
+        "actions": "Acciónes"
     }
 }
