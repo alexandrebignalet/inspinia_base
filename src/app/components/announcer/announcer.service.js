@@ -19,6 +19,7 @@
         /////////////////////////////////////////////
 
         var service = {
+            initAnnouncer: initAnnouncer,
             getAll: getAll,
             get: get
         };
@@ -61,7 +62,20 @@
                 return $q.reject(error);
             }
         }
+
+        function initAnnouncer() {
+            var announcer = {
+                announcer: '',
+                country: '',
+                platform: '',
+                company: null,
+                idReineRouge: '',
+                contacts: [],
+                address: {}
+            }
+
+            return announcer;
+        }
     }
 
 })();
-

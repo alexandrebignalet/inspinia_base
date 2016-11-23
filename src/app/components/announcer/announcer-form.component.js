@@ -7,6 +7,8 @@
         controllerAs: 'vm',
         bindings: {
             entity: '<',
+            companies: '<',
+            contacts: '<',
             onSaveEntity: '&'
         }
     };
@@ -26,7 +28,6 @@
         vm.$onInit = function() {
             vm.announcer =  vm.entity;
 
-            console.log(vm.announcer);
         };
 
         function save() {

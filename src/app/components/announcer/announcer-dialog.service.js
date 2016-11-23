@@ -19,14 +19,16 @@
 
         ////////////////
 
-        function openDialogModal(announcer) {
+        function openDialogModal(announcer,companies,contacts) {
 
             $uibModal.open({
                 component: 'announcerDialog',
                 backdrop: 'true',
                 size: 'lg',
                 resolve: {
-                    contact: function() { return announcer}
+                    announcer: function() { return announcer},
+                    companies: function() { return companies},
+                    contacts: function() { return contacts}
                 }
             }).result.then(function () {
                 $state.go('^', null, {reload: true})

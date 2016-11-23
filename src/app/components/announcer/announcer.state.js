@@ -36,6 +36,32 @@
                         return $ocLazyLoad.load(['datatables']);
                     }
                 }
-            });
+            })
+            .state('announcer.create', {
+                parent: 'announcer',
+                url: '/create',
+                data: {
+                    pageTitle: 'Create an announcer',
+                    authorities: ['ROLE_ADMIN', 'ROLE_SUPER_ADMIN']
+                },
+                resolve: {
+                    contacts: [
+                        'Contact', function (Contact) {
+                            return Contact.getAll(['contacts_all'])
+                        }
+                    ],
+                    companies: [
+                        'Company', function (Company) {
+                            return Company.getAll(['companies_all'])
+                        }
+                    ]
+                },
+                onEnter: ['announcerDialogService', 'Announcer', 'companies', 'contacts',
+                    function(announcerDialogService, Announcer, companies, contacts) {
+                        var announcer = Announcer.initAnnouncer();
+                        announcerDialogService.openDialogModal(announcer,companies,contacts);
+                    }]
+            })
+        ;
     }
 })();

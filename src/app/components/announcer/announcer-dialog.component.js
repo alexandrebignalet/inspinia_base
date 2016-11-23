@@ -24,7 +24,10 @@
         vm.saveEntity       = saveEntity;
 
         vm.$onInit = function () {
-            vm.announcer   = vm.resolve.announcer;
+            console.log(vm.resolve);
+            vm.announcer    = vm.resolve.announcer;
+            vm.companies    = vm.resolve.companies;
+            vm.contacts     = vm.resolve.contacts;
         };
 
         function clear() {
