@@ -22,6 +22,7 @@
         var vm = this;
         vm.clear = clear;
         vm.onSave = onSave;
+        vm.isSaving = false;
 
         vm.$onInit = function () {
             vm.announcers       = vm.resolve.announcers;

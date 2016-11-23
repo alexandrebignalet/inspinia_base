@@ -8,7 +8,8 @@
         bindings: {
             platformAccess: '<',
             announcers: '<',
-            onSavePlatformAccess: '&'
+            onSavePlatformAccess: '&',
+            isSaving: '<'
         }
     };
 
