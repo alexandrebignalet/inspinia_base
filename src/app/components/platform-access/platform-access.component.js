@@ -2,7 +2,7 @@
     'use strict';
 
     var platformAccess = {
-        templateUrl: 'app/components/announcer/platform-access/platform-access.html',
+        templateUrl: 'app/components/platform-access/platform-access.html',
         controller: PlatformAccessController,
         controllerAs: 'vm',
         bindings: {

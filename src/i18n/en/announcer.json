@@ -1,7 +1,10 @@
 {
     "announcer": {
         "announcer": "announcer",
+        "create": "Create new announcer",
         "list": "Announcers list",
+        "country": "Country",
+        "actions": "Actions",
         "platform-access": {
             "add": "Add platform access",
             "username": "Username",

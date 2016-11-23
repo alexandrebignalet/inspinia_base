@@ -7,26 +7,34 @@
                         <small></small>
                     </h5>
                     <div class="ibox-tools">
-                        <a href="" class="btn btn-primary btn">Create new project !</a>
+                        <a href="" class="btn btn-primary btn" translate="announcer.create">Create new announcer</a>
                     </div>
                 </div>
                 <div class="ibox-content">
-
-                    <table datatable="ng" dt-options="vm.dtOptions" class="table table-striped table-bordered table-hover dataTables-example">
+                    <table datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.DTColumnDefs" class="table table-striped table-bordered table-hover dataTables-example">
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Announcer</th>
+                            <th translate="announcer.announcer">Announcer</th>
                             <th>Reine Rouge ID</th>
-                            <th>Pays</th>
+                            <th translate="announcer.country">Pays</th>
+                            <th translate="announcer.actions">Actions</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr ng-repeat="announcer in ::vm.announcers" class="gradeX">
-                            <td>{{announcer.id}}</td>
-                            <td>{{announcer.announcer}}</td>
-                            <td>{{announcer.reinerouge_id}}</td>
-                            <td>{{announcer.country}}</td>
+                            <td>{{::announcer.id}}</td>
+                            <td>{{::announcer.announcer}}</td>
+                            <td>{{::announcer.reinerouge_id}}</td>
+                            <td>{{::announcer.country}}</td>
+                            <td>
+                                <a ui-sref="announcer.edit"><button class="btn btn-primary">
+                                    <span class="fa fa-pencil"></span>
+                                </button></a>
+                                <a ui-sref="announcer.delete"><button class="btn btn-danger">
+                                    <span class="fa fa-trash"></span>
+                                </button></a>
+                            </td>
                         </tr>
                         </tbody>
                         <tfoot>

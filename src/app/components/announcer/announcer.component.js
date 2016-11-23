@@ -20,10 +20,10 @@
         .module('dataToolApp')
         .component('announcer', announcer);
 
-    AnnouncerController.$inject = ['DTOptionsBuilder'];
+    AnnouncerController.$inject = ['DTOptionsBuilder', 'DTColumnDefBuilder'];
 
     /* @ngInject */
-    function AnnouncerController(DTOptionsBuilder) {
+    function AnnouncerController(DTOptionsBuilder, DTColumnDefBuilder) {
         var vm = this;
         vm.title = 'AnnouncerController';
 
@@ -49,6 +49,10 @@
                         }
                     }
                 ]);
+
+            vm.DTColumnDefs = [
+                DTColumnDefBuilder.newColumnDef(4).notSortable()
+            ];
         };
     }
 

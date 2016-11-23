@@ -2,7 +2,7 @@
     'use strict';
 
     var platformAccessDelete = {
-        templateUrl: 'app/components/announcer/platform-access/platform-access-delete.html',
+        templateUrl: 'app/components/platform-access/platform-access-delete.html',
         controller: PlatformAccessDeleteController,
         controllerAs: 'vm',
         bindings: {
