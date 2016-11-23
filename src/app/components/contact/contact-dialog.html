@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="vm.clear()">&times;</button>
+
+    <h4 class="modal-title">New Contact</h4>
+</div>
+
+<contact-form companies="vm.companies" entity="vm.contact" on-save-entity="vm.saveEntity(contact)"></contact-form>

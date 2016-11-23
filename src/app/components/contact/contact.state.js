@@ -37,6 +37,52 @@
                         ]);
                     }
                 }
-            });
+            })
+            .state('contact.create', {
+                parent: 'contact',
+                url: '/create',
+                data: {
+                    pageTitle: 'Create a contact',
+                    authorities: ['ROLE_ADMIN', 'ROLE_SUPER_ADMIN']
+                },
+                resolve: {
+                    companies: [
+                        'Company', function (Company) {
+                            return Company.getAll(['companies_all'])
+                        }
+                    ]
+                },
+                onEnter: ['contactDialogService', 'Contact', 'companies',
+                    function(contactDialogService,Contact, companies) {
+                        var contact = Contact.initContact();
+                        contactDialogService.openDialogModal(contact,companies);
+                    }]
+            })
+            .state('contact.edit', {
+                parent: 'contact',
+                url: '/edit/:contactId',
+                data: {
+                    pageTitle: 'Edit a contact',
+                    authorities: ['ROLE_ADMIN', 'ROLE_SUPER_ADMIN']
+                },
+                resolve: {
+                    contact: [
+                        'Contact','$stateParams', function (Contact,$stateParams) {
+                            var contactId = $stateParams.contactId;
+                            return Contact.get(contactId,['contacts_all'])
+                        }
+                    ],
+                    companies: [
+                        'Company', function (Company) {
+                            return Company.getAll(['companies_all'])
+                        }
+                    ]
+                },
+                onEnter: ['contactDialogService', 'contact', 'companies',
+                    function(contactDialogService, contact, companies) {
+                        contactDialogService.openDialogModal(contact,companies);
+                    }]
+            })
+        ;
     }
 })();
