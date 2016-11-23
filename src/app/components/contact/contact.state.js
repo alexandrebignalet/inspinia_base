@@ -24,7 +24,7 @@
                 resolve: {
                     data: [
                         'Contact', function(Contact) {
-                            return Contact.getAll(['contacts_all'])
+                            return Contact.getAll(['contacts_all','companies_all'])
                         }
                     ],
                     mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
@@ -69,7 +69,7 @@
                     contact: [
                         'Contact','$stateParams', function (Contact,$stateParams) {
                             var contactId = $stateParams.contactId;
-                            return Contact.get(contactId,['contacts_all'])
+                            return Contact.get(contactId,['contacts_all','companies_all'])
                         }
                     ],
                     companies: [

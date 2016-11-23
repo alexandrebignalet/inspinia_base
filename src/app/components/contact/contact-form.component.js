@@ -36,6 +36,10 @@
 
         vm.$onInit = function() {
             vm.contact =  vm.entity;
+            if( vm.contact.company.id ) {
+                vm.contact.company = parseInt(vm.contact.company.id);
+            }
+            console.log(vm.contact);
         };
 
         function save() {

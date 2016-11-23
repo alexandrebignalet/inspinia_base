@@ -31,7 +31,7 @@
                                                 <tr >
                                                     <td class="client-avatar"><img alt="image" src="assets/images/patterns/a1.jpg"> </td>
                                                     <td><a ng-click="vm.showContact(contact)" class="client-link">{{ contact.firstname }} {{ contact.surname }}</a></td>
-                                                    <td> {{ contact.company }} TDF </td>
+                                                    <td> {{ contact.company.name }} </td>
                                                     <!-- DISPLAY CONTACT INFO MAIL || PHONE -->
                                                     <td ng-if="contact.email != ''"><i class="fa fa-envelope"> </i> {{ contact.mail }}</td>
                                                     <td ng-if="contact.email == '' && contact.phone != ''"><i class="fa fa-phone"> </i> {{ contact.phone }}</td>

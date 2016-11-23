@@ -36,9 +36,15 @@
 
             vm.isSaving = true;
 
-            Contact.save(contact)
-                .then(succes)
-                .catch(error);
+            if( contact.id ) {
+                Contact.update(contact)
+                    .then(success)
+                    .catch(error);
+            } else {
+                Contact.save(contact)
+                    .then(success)
+                    .catch(error);
+            }
 
             function error() {
 
