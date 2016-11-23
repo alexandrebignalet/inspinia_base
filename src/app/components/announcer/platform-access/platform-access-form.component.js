@@ -6,9 +6,9 @@
         controller: PlatformAccessFormController,
         controllerAs: 'vm',
         bindings: {
-            entity: '<',
+            platformAccess: '<',
             announcers: '<',
-            onSaveEntity: '&'
+            onSavePlatformAccess: '&'
         }
     };
 
@@ -21,17 +21,17 @@
     /* @ngInject */
     function PlatformAccessFormController() {
         var vm = this;
-        vm.isSaving = false;
-        vm.selectAnnouncer = true;
-        vm.save = save;
 
-        vm.$onInit = function() {
-            vm.platformAccess =  vm.entity;
-            vm.selectAnnouncer  = vm.platformAccess.announcer == '';
-        };
+        vm.fromAnnouncer = vm.platformAccess.announcer !== null;
 
-        function save() {
-            vm.onSaveEntity({platformAccess: vm.platformAccess});
+        vm.onSubmit = onSubmit;
+
+        function onSubmit() {
+            vm.onSavePlatformAccess({
+                $event: {
+                    platformAccess: vm.platformAccess
+                }
+            });
         }
     }
 

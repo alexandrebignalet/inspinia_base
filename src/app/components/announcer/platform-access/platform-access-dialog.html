@@ -1,7 +1,16 @@
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="vm.clear()">&times;</button>
 
-    <h4 class="modal-title">New Platform Acces</h4>
+    <h4 class="modal-title">New Platform Access</h4>
+    <pre>
+        {{vm.platformAccess.announcer}}
+    </pre>
 </div>
-
-<platform-access-form announcers="vm.announcers" entity="vm.platformAccess" on-save-entity="vm.saveEntity(platformAccess)"></platform-access-form>
+<div class="modal-body">
+    <platform-access-form announcers="vm.announcers" platform-access="vm.platformAccess" on-save-platform-access="vm.onSave($event)"></platform-access-form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default pull-left" data-dismiss="modal" ng-click="vm.clear();">
+        <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+    </button>
+</div>

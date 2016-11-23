@@ -24,7 +24,8 @@
                 parent: 'announcer',
                 url: '/platform-access',
                 data: {
-                    pageTitle: 'Platform Access'
+                    pageTitle: 'Platform Access',
+                    authorities: ['ROLE_ADMIN', 'ROLE_SUPER_ADMIN']
                 },
                 views: {
                     'content@': {
@@ -48,45 +49,71 @@
                     }
                 }
             })
-            .state('announcer.platform-access.create', {
+            .state('announcer.platform-access.createForAnnouncer', {
                 parent: 'announcer.platform-access',
-                url: '/create/:announcerId',
+                url: '/create-for-announcer/:announcerId',
                 data: {
                     pageTitle: 'Create a Platform Access',
                     authorities: ['ROLE_ADMIN', 'ROLE_SUPER_ADMIN']
                 },
-                onEnter: ['platformAccessDialogService', '$stateParams',
-                    function(platformAccessDialogService, $stateParams) {
-                        var announcerId = $stateParams.announcerId;
-                        platformAccessDialogService.openDialogModal(announcerId,'');
+                resolve: {
+                    announcer: ['Announcer', '$stateParams', function(Announcer, $stateParams){
+                        return Announcer.get($stateParams.announcerId);
                     }]
+                },
+                onEnter: ['PlatformAccessDialogService', 'PlatformAccess', 'announcer',
+                    function(PlatformAccessDialogService, PlatformAccess, announcer) {
+                        var platformAccess = PlatformAccess.init();
+                        platformAccess.announcer = announcer;
 
+                        PlatformAccessDialogService.openDialogModal(platformAccess);
+                    }]
+            })
+            .state('announcer.platform-access.create', {
+                parent: 'announcer.platform-access',
+                url: '/create',
+                data: {
+                    pageTitle: 'Create a Platform Access',
+                    authorities: ['ROLE_ADMIN', 'ROLE_SUPER_ADMIN']
+                },
+                resolve:{
+                    announcers: ['Announcer', function(Announcer){
+                        return Announcer.getAll();
+                    }]
+                },
+                onEnter: ['PlatformAccessDialogService', 'PlatformAccess', 'announcers',
+                    function(PlatformAccessDialogService, PlatformAccess, announcers) {
+                        PlatformAccessDialogService.openDialogModal(PlatformAccess.init(), announcers);
+                    }]
             })
             .state('announcer.platform-access.edit', {
                 parent: 'announcer.platform-access',
-                url: '/edit/:platformAccessId',
+                url: '/edit/:id',
                 data: {
                     pageTitle: 'Edit a Platform Access',
                     authorities: ['ROLE_ADMIN', 'ROLE_SUPER_ADMIN']
                 },
-                onEnter: ['platformAccessDialogService', '$stateParams',
-                    function(platformAccessDialogService, $stateParams) {
-                        var platformAccessId = $stateParams.platformAccessId;
-                        platformAccessDialogService.openDialogModal('',platformAccessId);
+                resolve:{
+                    platformAccess: ['PlatformAccess', '$stateParams', function(PlatformAccess, $stateParams){
+                        return PlatformAccess.get($stateParams.id);
+                    }]
+                },
+                onEnter: ['PlatformAccessDialogService',
+                    function(PlatformAccessDialogService) {
+                        PlatformAccessDialogService.openDialogModal(platformAccess);
                     }]
 
             })
             .state('announcer.platform-access.delete', {
                 parent: 'announcer.platform-access',
-                url: '/delete/:platformAccessId',
+                url: '/delete/:id',
                 data: {
                     pageTitle: 'Delete a Platform Access',
                     authorities: ['ROLE_ADMIN', 'ROLE_SUPER_ADMIN']
                 },
-                onEnter: ['platformAccessDialogService', '$stateParams',
-                    function(platformAccessDialogService, $stateParams) {
-                        var platformAccessId = $stateParams.platformAccessId;
-                        platformAccessDialogService.openDeleteModal(platformAccessId);
+                onEnter: ['PlatformAccessDialogService', '$stateParams',
+                    function(PlatformAccessDialogService, $stateParams) {
+                        PlatformAccessDialogService.openDeleteModal($stateParams.id);
                     }]
 
             })

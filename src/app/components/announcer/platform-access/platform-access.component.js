@@ -19,7 +19,9 @@
     /* @ngInject */
     function PlatformAccessController(DTOptionsBuilder,DTColumnDefBuilder) {
         var vm = this;
+
         vm.dtOptions = DTOptionsBuilder.newOptions();
+
         vm.DTColumnDefs = [
             DTColumnDefBuilder.newColumnDef(1).notSortable(),
             DTColumnDefBuilder.newColumnDef(2).notSortable(),

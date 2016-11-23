@@ -28,7 +28,7 @@
 
                             <tr ng-repeat="announcer in vm.announcers">
                                 <td>{{announcer.announcer}}
-                                    <a ui-sref="announcer.platform-access.create({announcerId: announcer.id})" class="btn btn-xs btn-primary pull-right" role="button">
+                                    <a ui-sref="announcer.platform-access.createForAnnouncer({announcerId: announcer.id})" class="btn btn-xs btn-primary pull-right" role="button">
                                         <span class="fa fa-plus"></span>
                                     </a>
                                 </td>
@@ -36,8 +36,8 @@
                                     <p ng-repeat="platform in announcer.platform_access">
                                         {{ platform.username }}
                                         <span class="pull-right">
-                                            <a ui-sref="announcer.platform-access.edit({platformAccessId: platform.id})" class="btn btn-xs btn-white"><i class="fa fa-edit"></i>  </a>
-                                            <a ui-sref="announcer.platform-access.delete({platformAccessId: platform.id})" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i>  </a>
+                                            <a ui-sref="announcer.platform-access.edit({id: platform.id})" class="btn btn-xs btn-white"><i class="fa fa-edit"></i>  </a>
+                                            <a ui-sref="announcer.platform-access.delete({id: platform.id})" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i>  </a>
                                         </span>
                                     </p>
                                 </td>

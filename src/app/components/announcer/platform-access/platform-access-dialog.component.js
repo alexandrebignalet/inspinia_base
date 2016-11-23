@@ -15,13 +15,13 @@
         .module('dataToolApp')
         .component('platformAccessDialog', platformAccessDialog);
 
-    PlatformAccessDialogController.$inject = ['Announcer'];
+    PlatformAccessDialogController.$inject = ['PlatformAccess'];
 
     /* @ngInject */
-    function PlatformAccessDialogController(Announcer) {
-        var vm              = this;
-        vm.clear            = clear;
-        vm.saveEntity       = saveEntity;
+    function PlatformAccessDialogController(PlatformAccess) {
+        var vm = this;
+        vm.clear = clear;
+        vm.onSave = onSave;
 
         vm.$onInit = function () {
             vm.announcers       = vm.resolve.announcers;
@@ -32,25 +32,28 @@
             vm.modalInstance.dismiss();
         }
 
-        function saveEntity(platformAccess) {
+        function onSave($event) {
+            if (!$event.platformAccess) return;
 
             vm.isSaving = true;
 
-            if( vm.platformAccess.id != null ) {
-                Announcer.updatePlatformAccess(platformAccess);
+            if( $event.platformAccess.id != null ) {
+                PlatformAccess.update($event.platformAccess)
+                    .then(onSuccess)
+                    .catch(onError);
             } else {
-                Announcer.savePlatformAccess(platformAccess)
-                    .then(success)
-                    .catch(error)
-                ;
+                PlatformAccess.save($event.platformAccess)
+                    .then(onSuccess)
+                    .catch(onError);
             }
 
-            function error() {
-
+            function onSuccess(platformAccess) {
+                vm.isSaving = false;
+                vm.modalInstance.close(platformAccess);
             }
 
-            function success() {
-                vm.modalInstance.close('success');
+            function onError() {
+                vm.isSaving = false;
             }
 
 
