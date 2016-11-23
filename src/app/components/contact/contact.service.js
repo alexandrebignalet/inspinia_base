@@ -77,11 +77,26 @@
                 .catch(onError);
 
             function onSuccess(response) {
-                ToastrService.success('Contact created', 'SUCCESS');
+                ToastrService.success('Contact edited', 'SUCCESS');
             }
 
             function onError(error) {
-                ToastrService.error('Impossible to create contact', 'XHR Error');
+                ToastrService.error('Impossible to edit contact', 'XHR Error');
+                return $q.reject(error);
+            }
+        }
+
+        function deleteContact(contactId) {
+            return resource.delete({id: contactId}).$promise
+                .then(onSuccess)
+                .catch(onError);
+
+            function onSuccess() {
+                ToastrService.success('Contact deleted', 'SUCCESS');
+            }
+
+            function onError(error) {
+                ToastrService.error('Impossible to delete contact', 'XHR Error');
                 return $q.reject(error);
             }
         }
@@ -120,7 +135,8 @@
             getAll: getAll,
             get: get,
             save:save,
-            update:update
+            update:update,
+            delete:deleteContact
         }
     }
 

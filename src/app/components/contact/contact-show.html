@@ -17,7 +17,8 @@
 
                 <h3>
                     <strong>{{ vm.contact.firstname }} {{ vm.contact.surname }}</strong>
-                    <a class="text-info pull-right" ui-sref="contact.edit({contactId: vm.contact.id})"><i class="fa fa-pencil"></i>Edit</a>
+                    <a class="text-danger pull-right" ui-sref="contact.delete({contactId: vm.contact.id})"><i class="fa fa-trash"></i></a>
+                    <a class="text-info pull-right" ui-sref="contact.edit({contactId: vm.contact.id})"><i class="fa fa-pencil"></i></a>
                 </h3>
             </div>
             <hr>

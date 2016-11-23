@@ -83,6 +83,20 @@
                         contactDialogService.openDialogModal(contact,companies);
                     }]
             })
+            .state('contact.delete', {
+                parent: 'contact',
+                url: '/delete/:contactId',
+                data: {
+                    pageTitle: 'Delete a Contact',
+                    authorities: ['ROLE_ADMIN', 'ROLE_SUPER_ADMIN']
+                },
+                onEnter: ['contactDialogService', '$stateParams',
+                    function(contactDialogService, $stateParams) {
+                        var contactId = $stateParams.contactId;
+                        contactDialogService.openDeleteModal(contactId);
+                    }]
+
+            })
         ;
     }
 })();
