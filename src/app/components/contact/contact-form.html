@@ -1,0 +1,140 @@
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-body">
+
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label for="contact_civility">Civility</label>
+                <select class="form-control" id="contact_civility" name="civility" ng-model="vm.contact.civility" ng-options="civility for civility in vm.civilities">
+
+                </select>
+                <div ng-show="editForm.civility.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.civility.$error.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group col-md-5">
+                <div class="form-group">
+                    <label class="control-label" for="contact_firstname">Firstname</label>
+                    <input type="text" class="form-control" name="firstname" id="contact_firstname" ng-model="vm.contact.firstname" required/>
+                </div>
+                <div ng-show="editForm.firstname.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.firstname.$error.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group col-md-5">
+                <div class="form-group">
+                    <label class="control-label" for="contact_surname">Surname</label>
+                    <input type="text" class="form-control" name="surname" id="contact_surname" ng-model="vm.contact.surname" required/>
+                </div>
+                <div ng-show="editForm.surname.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.surname.$error.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <div class="form-group">
+                    <label class="control-label" for="contact_mail">Mail</label>
+                    <input type="text" class="form-control" name="mail" id="contact_mail" ng-model="vm.contact.mail" required/>
+                </div>
+                <div ng-show="editForm.mail.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.mail.$error.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <div class="form-group">
+                    <label class="control-label" for="contact_phone">Phone</label>
+                    <input type="text" class="form-control" name="phone" id="contact_phone" ng-model="vm.contact.phone" required/>
+                </div>
+                <div ng-show="editForm.phone.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.phone.$error.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <div class="form-group">
+                    <label class="control-label" for="contact_skype">Skype</label>
+                    <input type="text" class="form-control" name="skype" id="contact_skype" ng-model="vm.contact.skype" required/>
+                </div>
+                <div ng-show="editForm.skype.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.skype.$error.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+
+            <div class="form-group col-md-4">
+                <label for="contact_company">Company</label>
+                <select class="form-control" id="contact_company" name="company" ng-model="vm.contact.company" ng-options="company.id as company.name for company in vm.companies">
+
+                </select>
+                <div ng-show="editForm.company.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.company.$error.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="contact_type">Type</label>
+                <select class="form-control" id="contact_type" name="type" ng-model="vm.contact.type" ng-options="type as type for type in vm.types">
+
+                </select>
+                <div ng-show="editForm.type.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.type.$error.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group col-md-4">
+                <div class="form-group">
+                    <label class="control-label" for="contact_fonction">Fonction</label>
+                    <input type="text" class="form-control" name="fonction" id="contact_fonction" ng-model="vm.contact.fonction" required/>
+                </div>
+                <div ng-show="editForm.fonction.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.fonction.$error.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="modal-footer">
+        <!--<button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-block btn-primary">-->
+        <button type="submit" class="btn btn-block btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

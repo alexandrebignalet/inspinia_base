@@ -1,0 +1,56 @@
+
+<div class="wrapper wrapper-content  animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5 translate="contact.list">Contacts list
+                        <small></small>
+                    </h5>
+                    <div class="ibox-tools">
+                        <a ui-sref="contact.create" class="btn btn-primary btn">Create new contact</a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="clients-list">
+                        <div class="tab-content">
+                            <div>
+                                <div class="full-height-scroll" full-scroll>
+                                    <div class="table-responsive">
+                                        <table datatable="ng" dt-options="vm.dtOptions" class="table table-striped table-bordered table-hover">
+                                            <thead>
+                                                    <tr>
+                                                    <th></th>
+                                                    <th>Name</th>
+                                                    <th>Company</th>
+                                                    <th>Contact</th>
+                                                    <th>Function</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody ng-repeat="contact in vm.contacts">
+                                                <tr >
+                                                    <td class="client-avatar"><img alt="image" src="assets/images/patterns/a1.jpg"> </td>
+                                                    <td><a ng-click="vm.showContact(contact)" class="client-link">{{ contact.firstname }} {{ contact.surname }}</a></td>
+                                                    <td> {{ contact.company.name }} </td>
+                                                    <!-- DISPLAY CONTACT INFO MAIL || PHONE -->
+                                                    <td ng-if="contact.email != ''"><i class="fa fa-envelope"> </i> {{ contact.mail }}</td>
+                                                    <td ng-if="contact.email == '' && contact.phone != ''"><i class="fa fa-phone"> </i> {{ contact.phone }}</td>
+                                                    <td ng-if="contact.email == '' && contact.phone == ''"></td>
+                                                    <!-- END DISPLAY -->
+                                                    <td>{{ contact.fonction }}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <contact-show contact="vm.showedContact"></contact-show>
+        </div>
+    </div>
+</div>

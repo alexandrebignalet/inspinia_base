@@ -1,0 +1,33 @@
+
+<div class="contact-box">
+
+        <div class="col-sm-4">
+
+            <div class="text-center">
+                <img alt="image" class="img-circle m-t-xs img-responsive" src="assets/images/patterns/toto.jpg">
+
+                <div class="m-t-xs font-bold">{{ vm.contact.fonction }}</div>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div>
+
+
+                <small> {{vm.contact.civility }}</small>
+
+                <h3>
+                    <strong>{{ vm.contact.firstname }} {{ vm.contact.surname }}</strong>
+                    <a class="text-danger pull-right" ui-sref="contact.delete({contactId: vm.contact.id})"><i class="fa fa-trash"></i></a>
+                    <a class="text-info pull-right" ui-sref="contact.edit({contactId: vm.contact.id})"><i class="fa fa-pencil"></i></a>
+                </h3>
+            </div>
+            <hr>
+            <p><i class="fa fa-briefcase"></i> {{vm.contact.company.name }} TDF </p>
+            <p><i class="fa fa-tag"></i> {{vm.contact.type }} </p>
+            <p><i class="fa fa-envelope"></i> {{vm.contact.mail }}</p>
+            <p><i class="fa fa-phone"></i> {{vm.contact.phone }}</p>
+        </div>
+        <div class="clearfix"></div>
+
+</div>
+
