@@ -15,36 +15,49 @@
         .module('dataToolApp')
         .component('platformAccessDialog', platformAccessDialog);
 
-    PlatformAccessDialogController.$inject = ['Announcer'];
+    PlatformAccessDialogController.$inject = ['PlatformAccess'];
 
     /* @ngInject */
-    function PlatformAccessDialogController(Announcer) {
-        var vm              = this;
-        vm.clear            = clear;
-        vm.save             = save;
-        vm.selectAnnouncer  = '';
+    function PlatformAccessDialogController(PlatformAccess) {
+        var vm = this;
+        vm.clear = clear;
+        vm.onSave = onSave;
+        vm.isSaving = false;
 
         vm.$onInit = function () {
             vm.announcers       = vm.resolve.announcers;
             vm.platformAccess   = vm.resolve.platformAccess;
-            vm.selectAnnouncer  = vm.platformAccess.announcer == '';
         };
 
         function clear() {
             vm.modalInstance.dismiss();
         }
 
+        function onSave($event) {
+            if (!$event.platformAccess) return;
 
-        function save() {
             vm.isSaving = true;
 
-            if( vm.platformAccess.id != null ) {
-                Announcer.updatePlatformAccess(vm.platformAccess);
+            if( $event.platformAccess.id != null ) {
+                PlatformAccess.update($event.platformAccess)
+                    .then(onSuccess)
+                    .catch(onError);
             } else {
-                Announcer.savePlatformAccess(vm.platformAccess);
+                PlatformAccess.save($event.platformAccess)
+                    .then(onSuccess)
+                    .catch(onError);
             }
 
-            vm.modalInstance.close('success');
+            function onSuccess(platformAccess) {
+                vm.isSaving = false;
+                vm.modalInstance.close(platformAccess);
+            }
+
+            function onError() {
+                vm.isSaving = false;
+            }
+
+
         }
     }
 

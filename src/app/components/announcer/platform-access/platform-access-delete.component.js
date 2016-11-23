@@ -15,18 +15,17 @@
         .module('dataToolApp')
         .component('platformAccessDelete', platformAccessDelete);
 
-    PlatformAccessDeleteController.$inject = ['Announcer'];
+    PlatformAccessDeleteController.$inject = ['PlatformAccess'];
 
     /* @ngInject */
-    function PlatformAccessDeleteController(Announcer) {
+    function PlatformAccessDeleteController(PlatformAccess) {
         var vm = this;
 
         vm.clear = clear;
         vm.confirmDelete = confirmDelete;
 
         vm.$onInit = function() {
-            vm.platformAccessId = vm.resolve.platformAccessId.id;
-            console.log(vm.platformAccessId);
+            vm.platformAccessId = vm.resolve.platformAccessId;
         };
 
         function clear() {
@@ -34,7 +33,18 @@
         }
 
         function confirmDelete() {
-            Announcer.deletePlatformAccess(vm.platformAccessId);
+            PlatformAccess.delete(vm.platformAccessId)
+                .then(onSuccess)
+                .catch(onError);
+
+            function onSuccess() {
+                vm.modalInstance.close();
+            }
+
+            function onError() {
+                vm.modalInstance.dismiss();
+            }
+
         }
     }
 

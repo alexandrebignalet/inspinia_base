@@ -6,12 +6,12 @@
 
     angular
         .module('dataToolApp')
-        .factory('platformAccessDialogService', platformAccessDialogService);
+        .factory('PlatformAccessDialogService', PlatformAccessDialogService);
 
-    platformAccessDialogService.$inject = ['$state','$uibModal', 'Announcer'];
+    PlatformAccessDialogService.$inject = ['$state','$uibModal', 'Announcer'];
 
     /* @ngInject */
-    function platformAccessDialogService($state,$uibModal,Announcer) {
+    function PlatformAccessDialogService($state,$uibModal,Announcer) {
 
         var service = {
             openDialogModal: openDialogModal,
@@ -22,55 +22,44 @@
 
         ////////////////
 
-        function openDialogModal(announcerId,platformId) {
-
-            if( announcerId == '' ) {
-                var announcers = Announcer.getAll();
-            }
+        function openDialogModal(platformAccess, announcers) {
 
             $uibModal.open({
                 component: 'platformAccessDialog',
-                backdrop: 'static',
+                backdrop: 'true',
                 size: 'lg',
                 resolve: {
-                    platformAccess: initPlatformAccess(announcerId,platformId),
-                    announcers: announcers
+                    platformAccess: function(){
+                        return platformAccess;
+                    },
+                    announcers: function(){
+                        return announcers;
+                    }
                 }
-            }).result.then(function(){
-                $state.go('^',null, { reload: true })
-            },function() {
-                $state.go('^')
             })
-        }
-
-        function initPlatformAccess(announcerId,platformId) {
-            var platformAccess = {
-                announcer: announcerId,
-                url: null,
-                username: null,
-                password: null,
-                description: null
-            };
-
-            if( platformId != '' ) {
-                platformAccess = Announcer.getPlatformAccess(platformId);
-            }
-            return platformAccess;
+                .result
+                .then(function () {
+                    $state.go('^', null, {reload: true})
+                }, function () {
+                    $state.go('^')
+                }
+            );
         }
 
         function openDeleteModal(platformAccessId) {
-
-            console.log(platformAccessId);
 
             $uibModal.open({
                 component: 'platformAccessDelete',
                 backdrop: 'static',
                 size: 'lg',
                 resolve: {
-                    platformAccessId: {id: platformAccessId}
+                    platformAccessId: function () {
+                        return platformAccessId;
+                    }
                 }
             }).result.then(function(){
-                $state.go('^')
+                console.log('foo');
+                $state.go('^',null, {reload: true})
             },function() {
                 $state.go('^')
             })

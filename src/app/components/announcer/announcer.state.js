@@ -17,7 +17,8 @@
                 parent: 'components',
                 url: '/announcer',
                 data: {
-                    pageTitle: 'Announcer'
+                    pageTitle: 'Announcer',
+                    authorities: ['ROLE_ADMIN', 'ROLE_USER', 'ROLE_SUPER_ADMIN']
                 },
                 views: {
                     'content@': {
