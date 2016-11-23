@@ -30,7 +30,12 @@
                     mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
                         $translatePartialLoader.addPart('contact');
                         return $translate.refresh();
-                    }]
+                    }],
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load([
+                            'datatables'
+                        ]);
+                    }
                 }
             });
     }

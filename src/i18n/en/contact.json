@@ -1,5 +1,7 @@
 {
     "contact": {
-        "contact": "contact"
+        "contact": "contact",
+        "list": "Contacts list",
+        "new": "Create a contact"
     }
 }

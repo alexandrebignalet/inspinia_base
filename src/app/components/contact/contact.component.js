@@ -14,13 +14,24 @@
         .module('dataToolApp')
         .component('contact', contact);
 
-    ContactController.$inject = [];
+    ContactController.$inject = ['DTOptionsBuilder'];
 
     /* @ngInject */
-    function ContactController() {
+    function ContactController(DTOptionsBuilder) {
         var vm = this;
+        vm.showContact = showContact;
+        vm.showedContact = {};
 
-        ////////////////
+        vm.$onInit = function() {
+            if( vm.contacts.length > 0) {
+                vm.showedContact = vm.contacts[0]
+            }
+        };
+
+        function showContact(contact) {
+            vm.showedContact = contact;
+        }
+
 
     }
 
