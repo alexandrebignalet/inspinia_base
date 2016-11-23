@@ -1,3 +1,60 @@
-/**
- * Created by Axel on 23/11/2016.
- */
+(function () {
+    'use strict';
+
+    var announcerDialog = {
+        templateUrl: 'app/components/announcer/announcer-dialog.html',
+        controller: AnnouncerDialogController,
+        controllerAs: 'vm',
+        bindings: {
+            modalInstance: '<',
+            resolve: '<'
+        }
+    };
+
+    angular
+        .module('dataToolApp')
+        .component('announcerDialog', announcerDialog);
+
+    AnnouncerDialogController.$inject = ['Announcer'];
+
+    /* @ngInject */
+    function AnnouncerDialogController(Announcer) {
+        var vm              = this;
+        vm.clear            = clear;
+        vm.saveEntity       = saveEntity;
+
+        vm.$onInit = function () {
+            vm.announcer   = vm.resolve.announcer;
+        };
+
+        function clear() {
+            vm.modalInstance.dismiss();
+        }
+
+        function saveEntity(announcer) {
+
+            vm.isSaving = true;
+
+            if( announcer.id ) {
+                Announcer.update(announcer)
+                    .then(success)
+                    .catch(error);
+            } else {
+                Announcer.save(announcer)
+                    .then(success)
+                    .catch(error);
+            }
+
+            function error() {
+
+            }
+
+            function success() {
+                vm.modalInstance.close('success');
+            }
+
+
+        }
+    }
+
+})();
