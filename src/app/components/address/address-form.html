@@ -1,0 +1,70 @@
+<form name="editForm" role="form" novalidate ng-submit="vm.onSubmit()">
+    <div class="form-group">
+        <div class="form-group">
+            <label class="control-label" for="address_street" translate="address.street">Street</label>
+            <input type="text" class="form-control" name="street" id="address_street" ng-model="vm.address.street" required/>
+        </div>
+        <div ng-show="editForm.street.$invalid">
+            <p class="help-block"
+               ng-show="editForm.street.$error.required" translate="global.entity.validation.required">
+                This field is required.
+            </p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="form-group">
+            <label class="control-label" for="address_complement" translate="address.complement">Complement</label>
+            <input type="text" class="form-control" id="address_complement" ng-model="vm.address.complement"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="form-group">
+            <label class="control-label" for="address_town" translate="address.town">City</label>
+            <input type="text" class="form-control" name="town" id="address_town" ng-model="vm.address.town" />
+        </div>
+        <div ng-show="editForm.town.$invalid">
+            <p class="help-block"
+               ng-show="editForm.town.$error.required" translate="global.validation.required">
+                This field is required.
+            </p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="form-group">
+            <label class="control-label" for="address_zipcode" translate="address.zipcode">Zipcode</label>
+            <input type="text" class="form-control" name="zipcode" id="address_zipcode" ng-model="vm.address.zipcode" />
+        </div>
+        <div ng-show="editForm.zipcode.$invalid">
+            <p class="help-block"
+               ng-show="editForm.zipcode.$error.required" translate="global.validation.required">
+                This field is required.
+            </p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="form-group">
+            <label class="control-label" for="address_country" translate="address.country">Country</label>
+            <ui-select ng-model="vm.address.country" theme="bootstrap" id="address_country">
+                <ui-select-match placeholder="Select or search a country in the list...">{{$select.selected.code}}</ui-select-match>
+                <ui-select-choices repeat="country.code as country in vm.countries | filter: $select.search">
+                    <div ng-bind-html="country.name | highlight: $select.search"></div>
+                    <small ng-bind-html="country.code | highlight: $select.search"></small>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+        <div ng-show="editForm.country.$invalid">
+            <p class="help-block"
+               ng-show="editForm.country.$error.required" translate="global.validation.required">
+                This field is required.
+            </p>
+        </div>
+    </div>
+
+    <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-block btn-primary">
+        <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+    </button>
+</form>
