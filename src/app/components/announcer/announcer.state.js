@@ -62,6 +62,37 @@
                         announcerDialogService.openDialogModal(announcer,companies,contacts);
                     }]
             })
+            .state('announcer.edit', {
+                parent: 'announcer',
+                url: '/edit/:announcerId',
+                data: {
+                    pageTitle: 'Create an announcer',
+                    authorities: ['ROLE_ADMIN', 'ROLE_SUPER_ADMIN']
+                },
+                resolve: {
+                    announcer: [
+                        'Announcer', '$stateParams', function(Announcer, $stateParams) {
+                        var announcerId = $stateParams.announcerId;
+                        return Announcer.get(announcerId,
+                            ['announcers_all','contacts_summary','companies_all','addresses_summary']);
+                        }
+                    ],
+                    contacts: [
+                        'Contact', function (Contact) {
+                            return Contact.getAll(['contacts_all','companies_summary'])
+                        }
+                    ],
+                    companies: [
+                        'Company', function (Company) {
+                            return Company.getAll(['companies_all','addresses_summary'])
+                        }
+                    ]
+                },
+                onEnter: ['announcerDialogService', 'Announcer', 'companies', 'contacts', 'announcer',
+                    function(announcerDialogService, Announcer, companies, contacts, announcer) {
+                        announcerDialogService.openDialogModal(announcer,companies,contacts);
+                    }]
+            })
         ;
     }
 })();
