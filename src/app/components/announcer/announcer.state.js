@@ -47,12 +47,12 @@
                 resolve: {
                     contacts: [
                         'Contact', function (Contact) {
-                            return Contact.getAll(['contacts_all'])
+                            return Contact.getAll(['contacts_all','companies_summary'])
                         }
                     ],
                     companies: [
                         'Company', function (Company) {
-                            return Company.getAll(['companies_all'])
+                            return Company.getAll(['companies_all','addresses_summary'])
                         }
                     ]
                 },

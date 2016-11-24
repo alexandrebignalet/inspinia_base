@@ -28,7 +28,10 @@
                 resolve: {
                     announcer: function() { return announcer},
                     companies: function() { return companies},
-                    contacts: function() { return contacts}
+                    contacts: function() { return contacts},
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load(['iCheckButtons']);
+                    }
                 }
             }).result.then(function () {
                 $state.go('^', null, {reload: true})

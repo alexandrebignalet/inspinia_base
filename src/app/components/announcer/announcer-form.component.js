@@ -17,20 +17,24 @@
         .module('dataToolApp')
         .component('announcerForm', announcerForm);
 
-    AnnouncerFormController.$inject = [];
+    AnnouncerFormController.$inject = ['COUNTRIES'];
 
     /* @ngInject */
-    function AnnouncerFormController() {
+    function AnnouncerFormController(COUNTRIES) {
         var vm = this;
         vm.isSaving = false;
         vm.save = save;
 
         vm.$onInit = function() {
             vm.announcer =  vm.entity;
-
+            vm.countries = COUNTRIES;
+            console.log(vm.countries);
         };
 
+        // TODO : USE EVENT
+
         function save() {
+            console.log(vm.announcer);
             vm.onSaveEntity({announcer: vm.announcer});
         }
     }

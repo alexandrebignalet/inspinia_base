@@ -1,10 +1,13 @@
 {
     "announcer": {
-        "announcer": "announcer",
+        "announcer": "Announcer",
         "create": "Create new announcer",
         "list": "Announcers list",
         "country": "Country",
         "actions": "Actions",
+        "contacts": "Contacts",
+        "company": "Company",
+        "reine_rouge_id": "Reine Rouge ID",
         "platform-access": {
             "add": "Add platform access",
             "username": "Username",

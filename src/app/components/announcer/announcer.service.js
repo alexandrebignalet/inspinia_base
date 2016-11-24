@@ -69,9 +69,9 @@
                 country: '',
                 platform: '',
                 company: null,
-                idReineRouge: '',
+                reinerouge_id: '',
                 contacts: [],
-                address: {}
+                address: ''
             }
 
             return announcer;
