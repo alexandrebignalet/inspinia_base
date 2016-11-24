@@ -49,7 +49,8 @@
         function getAll(context) {
             return resource.get({
                 'context': angular.toJson(context)
-            }).$promise
+            })
+                .$promise
                 .then(getAnnouncersThen)
                 .catch(getAnnouncersCatch);
 
@@ -60,6 +61,17 @@
             function getAnnouncersCatch(error) {
                 ToastrService.error('Impossible to retrieve Announcers','XHR Error');
                 return $q.reject(error);
+            }
+        }
+
+        function save(announcer) {
+            return resource.save(toPayloadFormat(announcer))
+                .$promise
+                .then(onSuccess)
+                .catch(onError);
+
+            function onSuccess() {
+                //ToastrService.
             }
         }
 
