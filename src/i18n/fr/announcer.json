@@ -9,6 +9,7 @@
         "reine_rouge_id": "ID Reine Rouge",
         "contacts": "Contacts",
         "company": "Companie",
+        "platform": "Platform",
         "platform-access": {
             "add": "Ajouter un accès platform",
             "username": "Nom d'utilisateur",

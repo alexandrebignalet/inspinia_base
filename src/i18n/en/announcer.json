@@ -8,6 +8,7 @@
         "contacts": "Contacts",
         "company": "Company",
         "reine_rouge_id": "Reine Rouge ID",
+        "platform": "Platform",
         "platform-access": {
             "add": "Add platform access",
             "username": "Username",

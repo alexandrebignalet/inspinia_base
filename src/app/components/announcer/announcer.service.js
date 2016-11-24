@@ -21,7 +21,8 @@
         var service = {
             initAnnouncer: initAnnouncer,
             getAll: getAll,
-            get: get
+            get: get,
+            save: save
         };
 
         return service;
@@ -71,7 +72,12 @@
                 .catch(onError);
 
             function onSuccess() {
-                //ToastrService.
+                ToastrService.success('Announcer created','SUCCESS')
+            }
+
+            function onError(error) {
+                ToastrService.error('Impossible to create Announcers','XHR Error');
+                return $q.reject(error);
             }
         }
 
@@ -84,9 +90,34 @@
                 reinerouge_id: '',
                 contacts: [],
                 address: ''
-            }
+            };
 
             return announcer;
+        }
+
+        function toPayloadFormat(announcer) {
+            var tmp = Object.assign({}, announcer);
+            var contacts = [];
+
+            if( tmp.useCompanyAddress ){
+                tmp.address = {id: tmp.company.address.id }
+            }
+
+            if( tmp.company ) {
+                tmp.company = {id: tmp.company.id }
+            }
+
+            if( tmp.contacts.length > 0 ) {
+                angular.forEach( tmp.contacts, function(contact) {
+                    contacts.push({id: contact})
+                });
+
+                tmp.contacts = contacts;
+            }
+
+            delete tmp.useCompanyAddress;
+
+            return tmp;
         }
     }
 
