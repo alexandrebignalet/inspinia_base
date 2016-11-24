@@ -4,4 +4,12 @@
     <h4 class="modal-title">New Contact</h4>
 </div>
 
-<contact-form companies="vm.companies" entity="vm.contact" on-save-entity="vm.saveEntity(contact)"></contact-form>
+<div class="modal-body">
+    <contact-form companies="vm.companies" entity="vm.contact" on-save-entity="vm.saveEntity(contact)"></contact-form>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-default pull-left" data-dismiss="modal" ng-click="vm.clear();">
+        <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+    </button>
+</div>

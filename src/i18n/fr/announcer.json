@@ -1,11 +1,14 @@
 {
     "announcer": {
-        "announcer": "annonceur",
+        "announcer": "Annonceur",
         "create": "Créer un nouvel annonceur",
         "country": "Pays",
         "actions": "Actions",
         "list": "Liste des annonceurs",
         "new": "Créer un annonceur",
+        "reine_rouge_id": "ID Reine Rouge",
+        "contacts": "Contacts",
+        "company": "Companie",
         "platform-access": {
             "add": "Ajouter un accès platform",
             "username": "Nom d'utilisateur",

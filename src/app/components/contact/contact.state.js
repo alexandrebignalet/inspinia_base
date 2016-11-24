@@ -54,7 +54,7 @@
                 },
                 onEnter: ['contactDialogService', 'Contact', 'companies',
                     function(contactDialogService,Contact, companies) {
-                        var contact = Contact.initContact();
+                        var contact = Contact.init();
                         contactDialogService.openDialogModal(contact,companies);
                     }]
             })

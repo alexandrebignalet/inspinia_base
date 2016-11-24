@@ -10,6 +10,15 @@
     /* @ngInject */
     function  Contact($resource, $q, ToastrService, API_BASE_URL) {
 
+        var service = {
+            init: initContact,
+            getAll: getAll,
+            get: get,
+            save:save,
+            update:update,
+            delete:deleteContact
+        };
+
         var resourceUrl = API_BASE_URL + '/api/contacts/:id';
 
         var resource = $resource( resourceUrl, {}, {
@@ -17,6 +26,10 @@
             'patch': { method:'PATCH'},
             'delete':{ method:'DELETE'}
         });
+
+        return service;
+
+        ////////////////
 
         function getAll(context) {
             return resource.get({
@@ -101,7 +114,8 @@
             }
         }
 
-        function initContact(idContact) {
+        function initContact() {
+
             var contact = {
                 firstname: '',
                 surname: '',
@@ -113,10 +127,6 @@
                 phone: '',
                 skype: ''
             };
-
-            if( idContact ) {
-                contact = Contact.get(idContact);
-            }
 
             return contact;
         }
@@ -130,14 +140,7 @@
             return tmp;
         }
 
-        return {
-            initContact: initContact,
-            getAll: getAll,
-            get: get,
-            save:save,
-            update:update,
-            delete:deleteContact
-        }
+
     }
 
 })();

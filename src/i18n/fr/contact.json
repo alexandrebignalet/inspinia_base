@@ -1,6 +1,7 @@
 {
     "contact": {
         "contact": "contact",
+        "contacts": "contacts",
         "list": "Liste des contacts",
         "new": "Ajouter un contact"
     }

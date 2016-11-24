@@ -19,6 +19,7 @@
         /////////////////////////////////////////////
 
         var service = {
+            initAnnouncer: initAnnouncer,
             getAll: getAll,
             get: get
         };
@@ -48,7 +49,8 @@
         function getAll(context) {
             return resource.get({
                 'context': angular.toJson(context)
-            }).$promise
+            })
+                .$promise
                 .then(getAnnouncersThen)
                 .catch(getAnnouncersCatch);
 
@@ -61,7 +63,31 @@
                 return $q.reject(error);
             }
         }
+
+        function save(announcer) {
+            return resource.save(toPayloadFormat(announcer))
+                .$promise
+                .then(onSuccess)
+                .catch(onError);
+
+            function onSuccess() {
+                //ToastrService.
+            }
+        }
+
+        function initAnnouncer() {
+            var announcer = {
+                announcer: '',
+                country: '',
+                platform: '',
+                company: null,
+                reinerouge_id: '',
+                contacts: [],
+                address: ''
+            }
+
+            return announcer;
+        }
     }
 
 })();
-
