@@ -25,7 +25,7 @@
                 resolve: {
                     announcers: [
                         'Announcer', function(Announcer) {
-                            return Announcer.getAll();
+                            return Announcer.getAll(['announcers_all','companies_summary']);
                         }
                     ],
                     mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {

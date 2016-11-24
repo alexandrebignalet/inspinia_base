@@ -50,6 +50,21 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="form-group col-md-9">
+                <div class="form-group">
+                    <label class="control-label" for="announcer_platform" translate="announcer.platform">Platform</label>
+                    <input type="text" class="form-control" name="platform" id="announcer_platform" ng-model="vm.announcer.platform" required/>
+                </div>
+                <div ng-show="editForm.platform.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.platform.$error.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+        </div>
+
         <hr>
 
         <div class="row">
@@ -64,7 +79,7 @@
                     </ui-select>
                 </div>
                 <div ng-if="vm.announcer.company != null" class="m-t-sm">
-                    <input id="address" icheck type="checkbox" ng-model="vm.useCompanyAddress"><i></i>
+                    <input id="address" icheck type="checkbox" ng-model="vm.announcer.useCompanyAddress"><i></i>
                     <span>Use company address</span>
                 </div>
                 <div ng-show="editForm.company.$invalid">
@@ -75,7 +90,7 @@
                 </div>
             </div>
 
-            <div ng-if="vm.useCompanyAddress" class="m-t-sm col-md-offset-1 border-left col-md-5">
+            <div ng-if="vm.announcer.useCompanyAddress" class="m-t-sm col-md-offset-1 border-left col-md-5">
                 <h4>Address</h4>
                 <hr>
                 <div class="">
