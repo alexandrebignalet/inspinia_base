@@ -13,7 +13,7 @@
         var resourceUrl = API_BASE_URL+'/api/announcers/:id';
 
         var resource = $resource(resourceUrl, {}, {
-            'update': {method: 'PUT'}
+            'update': {method: 'PATCH'}
         });
 
         /////////////////////////////////////////////
@@ -83,7 +83,7 @@
         }
 
         function update(announcer) {
-            return resource.save(toPayloadFormat(announcer))
+            return resource.update({id: announcer.id},toPayloadFormat(announcer))
                 .$promise
                 .then(onSuccess)
                 .catch(onError);
@@ -97,6 +97,7 @@
                 return $q.reject(error);
             }
         }
+
 
         function initAnnouncer() {
             var announcer = {
@@ -118,6 +119,8 @@
 
             if( tmp.useCompanyAddress ){
                 tmp.address = {id: tmp.company.address.id }
+            } else {
+                tmp.address = '';
             }
 
             if( tmp.company ) {
