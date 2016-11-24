@@ -44,10 +44,15 @@
                     pageTitle: 'Create a company',
                     authorities: ['ROLE_ADMIN', 'ROLE_SUPER_ADMIN']
                 },
-                onEnter: ['CompanyDialogService', 'Company',
-                    function(CompanyDialogService, Company) {
+                resolve: {
+                    databases: ['Database', function(Database){
+                        return Database.getAll();
+                    }]
+                },
+                onEnter: ['CompanyDialogService', 'Company', 'databases',
+                    function(CompanyDialogService, Company, databases) {
                         var company = Company.init();
-                        CompanyDialogService.openDialogModal(company);
+                        CompanyDialogService.openDialogModal(company, databases);
                     }]
             })
             .state('company.edit', {

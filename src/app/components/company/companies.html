@@ -15,7 +15,7 @@
                     <div class="clients-list">
                         <div class="tab-content">
                             <div>
-                                <div class="full-height-scroll">
+                                <div class="full-height-scroll" full-scroll>
                                     <div class="table-responsive">
                                         <table datatable="ng" dt-options="vm.dtOptions" class="table table-striped table-bordered table-hover">
                                             <thead>
@@ -25,24 +25,15 @@
                                                     <th translate="company.numTva">Num Tva</th>
                                                     <th translate="company.paymentPeriod">Payment Period</th>
                                                     <th translate="company.invoiceDeliveryDay">Invoice delivery day</th>
-                                                    <!--<th translate="global.actions">Actions</th>-->
                                                 </tr>
                                             </thead>
-                                            <tbody ng-repeat="company in vm.companies">
+                                            <tbody class="gradeX" ng-repeat="company in vm.companies">
                                                 <tr ng-click="vm.showCompany(company)">
                                                     <td><a class="client-link">{{ company.name }}</a></td>
                                                     <td> <i class="fa fa-phone"> </i> {{ company.phone }} </td>
-                                                    <td>{{ company.numTva }}</td>
-                                                    <td>{{ company.paymentPeriod }}</td>
-                                                    <td>{{ company.invoiceDeliveryDay }}</td>
-                                                    <!--<td>-->
-                                                        <!--<a ui-sref="company.edit({id: company.id})"><button class="btn btn-primary">-->
-                                                            <!--<span class="fa fa-pencil"></span>-->
-                                                        <!--</button></a>-->
-                                                        <!--<a ui-sref="company.delete({id: company.id})"><button class="btn btn-danger">-->
-                                                            <!--<span class="fa fa-trash"></span>-->
-                                                        <!--</button></a>-->
-                                                    <!--</td>-->
+                                                    <td>{{ company.num_tva }}</td>
+                                                    <td>{{ company.payment_period }}</td>
+                                                    <td>{{ company.invoice_delivery_day }}</td>
                                                 </tr>
                                             </tbody>
                                         </table>

@@ -16,15 +16,23 @@
         .module('dataToolApp')
         .component('companyForm', companyForm);
 
-    CompanyFormController.$inject = [];
+    CompanyFormController.$inject = ['Contact', 'Address'];
 
     /* @ngInject */
-    function CompanyFormController() {
+    function CompanyFormController(Contact, Address) {
         var vm = this;
+
         vm.isSaving = false;
+        vm.contacts = [];
+        vm.address = null;
+
         vm.onSubmit = onSubmit;
         vm.onSaveContact = onSaveContact;
         vm.onSaveAddress = onSaveAddress;
+
+        vm.$onInit = function(){
+            vm.newContact = Contact.initContact();
+        };
 
         function onSubmit() {
             vm.onSaveCompany({
@@ -59,8 +67,9 @@
             }
         }
 
-        function onSaveContact($event){
-
+        function onSaveContact(contact){
+            vm.contacts.push(contact);
+            vm.newContact = Contact.initContact();
         }
     }
 

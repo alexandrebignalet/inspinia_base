@@ -2,11 +2,19 @@
     "company": {
         "company": "Empresa",
         "list": "Lista de las empresas",
-        "new": "Añadir o editar una empresa",
+        "create": "Añadir o editar una empresa",
         "name": "Nombre",
         "phone": "Teléfono",
-        "numTva": "Núm. TVA",
-        "paymentPeriod": "Periodo de pago",
+        "numTva": "Núm. IVA",
+        "percentTva": "Perciento IVA",
+        "databases": "Bases de datos",
+        "paymentPeriod": {
+            "name": "Periodo de pago",
+            "0": "Tras recibir la factura"
+        },
+        "contacts": "Contactos",
+        "address": "Direccíon",
+        "mgGlobal": "Garantía mínima global",
         "invoiceDeliveryDay": "Fecha de entrega AAF"
     }
 }
