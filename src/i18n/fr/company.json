@@ -2,11 +2,19 @@
     "company": {
         "company": "Entreprise",
         "list": "Liste des entreprises",
-        "new": "Créer ou éditer une entreprise",
+        "create": "Créer ou éditer une entreprise",
         "name": "Nom",
         "phone": "Téléphone",
         "numTva": "Num. TVA",
-        "paymentPeriod": "Délai de paiement",
+        "percentTva": "Pourcentage de TVA",
+        "databases": "Bases de données",
+        "paymentPeriod": {
+            "name": "Délai de paiement",
+            "0": "À la reception de la facture"
+        },
+        "contacts": "Contacts",
+        "address": "Adresse",
+        "mgGlobal": "Minimum garanti global",
         "invoiceDeliveryDay": "Date de réception factures"
     }
 }

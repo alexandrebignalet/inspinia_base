@@ -1,5 +1,4 @@
-<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
-
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
         <div class="row">
             <div class="form-group col-md-2">
                 <label for="contact_civility">Civility</label>
@@ -86,7 +85,7 @@
 
         <div class="row">
 
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-4" ng-if="vm.companies !== undefined">
                 <label for="contact_company">Company</label>
                 <select class="form-control" id="contact_company" name="company" ng-model="vm.contact.company" ng-options="company.id as company.name for company in vm.companies">
 
@@ -99,7 +98,7 @@
                 </div>
             </div>
 
-            <div class="form-group col-md-4">
+            <div ng-class="{'form-group col-md-4': vm.companies !== undefined, 'form-group col-md-6': vm.companies === undefined}">
                 <label for="contact_type">Type</label>
                 <select class="form-control" id="contact_type" name="type" ng-model="vm.contact.type" ng-options="type as type for type in vm.types">
 
@@ -112,7 +111,7 @@
                 </div>
             </div>
 
-            <div class="form-group col-md-4">
+            <div ng-class="{'form-group col-md-4': vm.companies !== undefined, 'form-group col-md-6': vm.companies === undefined}">
                 <div class="form-group">
                     <label class="control-label" for="contact_fonction">Fonction</label>
                     <input type="text" class="form-control" name="fonction" id="contact_fonction" ng-model="vm.contact.fonction" required/>
