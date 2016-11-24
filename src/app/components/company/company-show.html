@@ -1,104 +1,114 @@
-<div id="company-1" class="tab-pane active">
-    <div class="m-b-lg">
-        <h2>{{ company.name }}</h2>
+<div class="ibox">
+    <div class="ibox-content">
+        <div id="company-1" class="tab-pane active">
+            <div class="m-b-lg">
+                <h2>
+                    {{ vm.company.name }}
+                    <div class="pull-right">
+                        <a ui-sref="company.edit({id: vm.company.id})"><button class="btn btn-primary">
+                            <span class="fa fa-pencil"></span>
+                        </button></a>
+                        <a ui-sref="company.delete({id: vm.company.id})"><button class="btn btn-danger">
+                            <span class="fa fa-trash"></span>
+                        </button></a>
+                    </div>
+                </h2>
+                <div>
+                    <strong>Informations</strong>
 
-        <div class="pull-right">
-            <a ui-sref="company.edit({id: company.id})"><button class="btn btn-primary">
-                <span class="fa fa-pencil"></span>
-            </button></a>
-            <a ui-sref="company.delete({id: company.id})"><button class="btn btn-danger">
-                <span class="fa fa-trash"></span>
-            </button></a>
-        </div>
-    </div>
-    <div class="client-detail">
-        <div class="full-height-scroll" full-scroll>
-
-            <strong>Informations</strong>
-
-            <ul class="list-group clear-list">
-                <li class="list-group-item fist-item">
-                    <span class="pull-right"> <i class="fa fa-phone"> </i> </span>
-                    {{company.phone}}
-                </li>
-                <li class="list-group-item">
-                    <span class="pull-right"> <i class="fa fa-phone"> </i> </span>
-                    {{company.numTva}}
-                </li>
-                <li class="list-group-item">
-                    <span class="pull-right"> <i class="fa fa-phone"> </i> </span>
-                    {{company.paymentPeriod}}
-                </li>
-                <li class="list-group-item">
-                    <span class="pull-right"> <i class="fa fa-phone"> </i> </span>
-                    {{company.invoiceDeliveryDay}}
-                </li>
-            </ul>
-            <strong>Notes</strong>
-            <p>
-                Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
-            </p>
-            <hr/>
-            <strong>Timeline activity</strong>
-            <div id="vertical-timeline" class="vertical-container dark-timeline">
-                <div class="vertical-timeline-block">
-                    <div class="vertical-timeline-icon gray-bg">
-                        <i class="fa fa-coffee"></i>
-                    </div>
-                    <div class="vertical-timeline-content">
-                        <p>Conference on the sales results for the previous year.
-                        </p>
-                        <span class="vertical-date small text-muted"> 2:10 pm - 12.06.2014 </span>
-                    </div>
+                    <ul class="list-group clear-list">
+                        <li class="list-group-item fist-item">
+                            <span class="pull-right"> <i class="fa fa-phone"> </i> </span>
+                            {{vm.company.phone}}
+                        </li>
+                        <li class="list-group-item">
+                            <span class="pull-right"> <i class="fa fa-phone"> </i> </span>
+                            {{vm.company.num_tva}}
+                        </li>
+                        <li class="list-group-item">
+                            <span class="pull-right"> <i class="fa fa-phone"> </i> </span>
+                            {{vm.company.percent_tva}}
+                        </li>
+                        <li class="list-group-item">
+                            <span class="pull-right"> <i class="fa fa-phone"> </i> </span>
+                            {{vm.company.payment_period}}
+                        </li>
+                        <li class="list-group-item">
+                            <span class="pull-right"> <i class="fa fa-phone"> </i> </span>
+                            {{vm.company.invoice_delivery_day}}
+                        </li>
+                    </ul>
                 </div>
-                <div class="vertical-timeline-block">
-                    <div class="vertical-timeline-icon gray-bg">
-                        <i class="fa fa-briefcase"></i>
-                    </div>
-                    <div class="vertical-timeline-content">
-                        <p>Many desktop publishing packages and web page editors now use Lorem.
-                        </p>
-                        <span class="vertical-date small text-muted"> 4:20 pm - 10.05.2014 </span>
-                    </div>
-                </div>
-                <div class="vertical-timeline-block">
-                    <div class="vertical-timeline-icon gray-bg">
-                        <i class="fa fa-bolt"></i>
-                    </div>
-                    <div class="vertical-timeline-content">
-                        <p>There are many variations of passages of Lorem Ipsum available.
-                        </p>
-                        <span class="vertical-date small text-muted"> 06:10 pm - 11.03.2014 </span>
-                    </div>
-                </div>
-                <div class="vertical-timeline-block">
-                    <div class="vertical-timeline-icon navy-bg">
-                        <i class="fa fa-warning"></i>
-                    </div>
-                    <div class="vertical-timeline-content">
-                        <p>The generated Lorem Ipsum is therefore.
-                        </p>
-                        <span class="vertical-date small text-muted"> 02:50 pm - 03.10.2014 </span>
-                    </div>
-                </div>
-                <div class="vertical-timeline-block">
-                    <div class="vertical-timeline-icon gray-bg">
-                        <i class="fa fa-coffee"></i>
-                    </div>
-                    <div class="vertical-timeline-content">
-                        <p>Conference on the sales results for the previous year.
-                        </p>
-                        <span class="vertical-date small text-muted"> 2:10 pm - 12.06.2014 </span>
-                    </div>
-                </div>
-                <div class="vertical-timeline-block">
-                    <div class="vertical-timeline-icon gray-bg">
-                        <i class="fa fa-briefcase"></i>
-                    </div>
-                    <div class="vertical-timeline-content">
-                        <p>Many desktop publishing packages and web page editors now use Lorem.
-                        </p>
-                        <span class="vertical-date small text-muted"> 4:20 pm - 10.05.2014 </span>
+            </div>
+            <div class="client-detail">
+                <div class="full-height-scroll" full-scroll>
+                    <strong>Notes</strong>
+                    <p>
+                        Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
+                    </p>
+                    <hr/>
+                    <strong>Timeline activity</strong>
+                    <div id="vertical-timeline" class="vertical-container dark-timeline">
+                        <div class="vertical-timeline-block">
+                            <div class="vertical-timeline-icon gray-bg">
+                                <i class="fa fa-coffee"></i>
+                            </div>
+                            <div class="vertical-timeline-content">
+                                <p>Conference on the sales results for the previous year.
+                                </p>
+                                <span class="vertical-date small text-muted"> 2:10 pm - 12.06.2014 </span>
+                            </div>
+                        </div>
+                        <div class="vertical-timeline-block">
+                            <div class="vertical-timeline-icon gray-bg">
+                                <i class="fa fa-briefcase"></i>
+                            </div>
+                            <div class="vertical-timeline-content">
+                                <p>Many desktop publishing packages and web page editors now use Lorem.
+                                </p>
+                                <span class="vertical-date small text-muted"> 4:20 pm - 10.05.2014 </span>
+                            </div>
+                        </div>
+                        <div class="vertical-timeline-block">
+                            <div class="vertical-timeline-icon gray-bg">
+                                <i class="fa fa-bolt"></i>
+                            </div>
+                            <div class="vertical-timeline-content">
+                                <p>There are many variations of passages of Lorem Ipsum available.
+                                </p>
+                                <span class="vertical-date small text-muted"> 06:10 pm - 11.03.2014 </span>
+                            </div>
+                        </div>
+                        <div class="vertical-timeline-block">
+                            <div class="vertical-timeline-icon navy-bg">
+                                <i class="fa fa-warning"></i>
+                            </div>
+                            <div class="vertical-timeline-content">
+                                <p>The generated Lorem Ipsum is therefore.
+                                </p>
+                                <span class="vertical-date small text-muted"> 02:50 pm - 03.10.2014 </span>
+                            </div>
+                        </div>
+                        <div class="vertical-timeline-block">
+                            <div class="vertical-timeline-icon gray-bg">
+                                <i class="fa fa-coffee"></i>
+                            </div>
+                            <div class="vertical-timeline-content">
+                                <p>Conference on the sales results for the previous year.
+                                </p>
+                                <span class="vertical-date small text-muted"> 2:10 pm - 12.06.2014 </span>
+                            </div>
+                        </div>
+                        <div class="vertical-timeline-block">
+                            <div class="vertical-timeline-icon gray-bg">
+                                <i class="fa fa-briefcase"></i>
+                            </div>
+                            <div class="vertical-timeline-content">
+                                <p>Many desktop publishing packages and web page editors now use Lorem.
+                                </p>
+                                <span class="vertical-date small text-muted"> 4:20 pm - 10.05.2014 </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

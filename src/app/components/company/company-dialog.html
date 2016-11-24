@@ -4,7 +4,7 @@
     <h4 class="modal-title" translate="company.create">Create or edit an company</h4>
 </div>
 <div class="modal-body">
-    <company-form company="vm.company" on-save-address="vm.onSave($event)" is-saving="vm.isSaving"></company-form>
+    <company-form databases="vm.databases" company="vm.company" on-save-company="vm.onSave($event)" is-saving="vm.isSaving"></company-form>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-default pull-left" data-dismiss="modal" ng-click="vm.clear();">

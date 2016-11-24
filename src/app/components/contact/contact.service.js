@@ -54,7 +54,8 @@
                     id: contactId,
                     'context': angular.toJson(context)
                 }
-            ).$promise
+            )
+                .$promise
                 .then(onSuccess)
                 .catch(onError);
 

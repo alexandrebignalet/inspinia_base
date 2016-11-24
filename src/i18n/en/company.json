@@ -2,11 +2,19 @@
     "company": {
         "company": "company",
         "list": "Companies list",
-        "new": "Create or edit a company",
+        "create": "Create or edit a company",
         "name": "Name",
         "phone": "Phone",
-        "numTva": "No TVA",
-        "paymentPeriod": "Payment period",
+        "numTva": "No VAT",
+        "percentTva": "Percient VAT",
+        "databases": "Databases",
+        "paymentPeriod": {
+            "name": "Payment period",
+            "0": "À la reception de la facture"
+        },
+        "contacts": "Contacts",
+        "address": "Address",
+        "mgGlobal": "Minimum guarantee global",
         "invoiceDeliveryDay": "Invoice delivery day"
     }
 }

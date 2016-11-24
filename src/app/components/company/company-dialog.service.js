@@ -5,10 +5,10 @@
         .module('dataToolApp')
         .factory('CompanyDialogService', CompanyDialogService);
 
-    CompanyDialogService.$inject = ['$state','$uibModal'];
+    CompanyDialogService.$inject = ['$state', '$uibModal'];
 
     /* @ngInject */
-    function CompanyDialogService($state,$uibModal) {
+    function CompanyDialogService($state, $uibModal) {
 
         var service = {
             openDialogModal: openDialogModal,
