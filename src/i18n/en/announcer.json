@@ -9,6 +9,7 @@
         "company": "Company",
         "reine_rouge_id": "Reine Rouge ID",
         "platform": "Platform",
+        "active": "Active",
         "platform-access": {
             "add": "Add platform access",
             "username": "Username",
