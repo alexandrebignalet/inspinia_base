@@ -65,7 +65,7 @@
                 toastMessage = $translate.instant('database.activate.msg');
             }
 
-            Database.patch($event.database)
+            Database.patch($event.entity)
                 .then(onPatchSuccess)
                 .catch(onPatchError);
 
