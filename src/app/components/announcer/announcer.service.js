@@ -22,7 +22,8 @@
             initAnnouncer: initAnnouncer,
             getAll: getAll,
             get: get,
-            save: save
+            save: save,
+            update: update
         };
 
         return service;
@@ -76,7 +77,23 @@
             }
 
             function onError(error) {
-                ToastrService.error('Impossible to create Announcers','XHR Error');
+                ToastrService.error('Impossible to create Announcer','XHR Error');
+                return $q.reject(error);
+            }
+        }
+
+        function update(announcer) {
+            return resource.save(toPayloadFormat(announcer))
+                .$promise
+                .then(onSuccess)
+                .catch(onError);
+
+            function onSuccess() {
+                ToastrService.success('Announcer updated','SUCCESS')
+            }
+
+            function onError(error) {
+                ToastrService.error('Impossible to update Announcer','XHR Error');
                 return $q.reject(error);
             }
         }
@@ -109,13 +126,26 @@
 
             if( tmp.contacts.length > 0 ) {
                 angular.forEach( tmp.contacts, function(contact) {
-                    contacts.push({id: contact})
+                    if(contact.id) {
+                        contacts.push({id: contact.id})
+                    } else {
+                        contacts.push({id: contact})
+                    }
+
                 });
 
                 tmp.contacts = contacts;
             }
 
+            delete tmp.click_domain;
+            delete tmp.active;
+            delete tmp.platform_access;
             delete tmp.useCompanyAddress;
+            delete tmp.$resolved;
+            delete tmp.$promise;
+            delete tmp.id;
+
+            console.log(tmp);
 
             return tmp;
         }

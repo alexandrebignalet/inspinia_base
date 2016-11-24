@@ -27,8 +27,8 @@
 
         vm.$onInit = function() {
             vm.announcer =  vm.entity;
+            vm.announcer.useCompanyAddress = vm.announcer.address != '';
             vm.countries = COUNTRIES;
-            console.log(vm.countries);
         };
 
         // TODO : USE EVENT

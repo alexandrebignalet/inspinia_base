@@ -28,7 +28,7 @@
                             <td>{{::announcer.reinerouge_id}}</td>
                             <td>{{::announcer.country}}</td>
                             <td>
-                                <a ui-sref="announcer.edit"><button class="btn btn-xs btn-primary">
+                                <a ui-sref="announcer.edit({announcerId: announcer.id})"><button class="btn btn-xs btn-primary">
                                     <span class="fa fa-pencil"></span>
                                 </button></a>
                                 <a ui-sref="announcer.delete"><button class="btn btn-xs btn-danger">
