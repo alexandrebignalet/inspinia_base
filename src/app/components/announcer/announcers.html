@@ -18,6 +18,7 @@
                             <th translate="announcer.announcer">Announcer</th>
                             <th>Reine Rouge ID</th>
                             <th translate="announcer.country">Pays</th>
+                            <td translate="announcer.active">Active</td>
                             <th translate="announcer.actions">Actions</th>
                         </tr>
                         </thead>
@@ -27,6 +28,16 @@
                             <td>{{::announcer.announcer}}</td>
                             <td>{{::announcer.reinerouge_id}}</td>
                             <td>{{::announcer.country}}</td>
+                            <td>
+                                <entity-activate
+                                    authorize="true"
+                                    entity="announcer"
+                                    is-saving="vm.isSaving"
+                                    on-activate="vm.onActivate($event)"
+                                >
+
+                                </entity-activate>
+                            </td>
                             <td>
                                 <a ui-sref="announcer.edit({announcerId: announcer.id})"><button class="btn btn-xs btn-primary">
                                     <span class="fa fa-pencil"></span>
