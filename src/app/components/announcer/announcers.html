@@ -35,15 +35,11 @@
                                     is-saving="vm.isSaving"
                                     on-activate="vm.onActivate($event)"
                                 >
-
                                 </entity-activate>
                             </td>
                             <td>
                                 <a ui-sref="announcer.edit({announcerId: announcer.id})"><button class="btn btn-xs btn-primary">
                                     <span class="fa fa-pencil"></span>
-                                </button></a>
-                                <a ui-sref="announcer.delete"><button class="btn btn-xs btn-danger">
-                                    <span class="fa fa-trash"></span>
                                 </button></a>
                             </td>
                         </tr>
@@ -51,9 +47,11 @@
                         <tfoot>
                         <tr>
                             <th>ID</th>
-                            <th>Announcer</th>
+                            <th translate="announcer.announcer">Announcer</th>
                             <th>Reine Rouge ID</th>
-                            <th>Country</th>
+                            <th translate="announcer.country">Pays</th>
+                            <td translate="announcer.active">Active</td>
+                            <th translate="announcer.actions">Actions</th>
                         </tr>
                         </tfoot>
                     </table>

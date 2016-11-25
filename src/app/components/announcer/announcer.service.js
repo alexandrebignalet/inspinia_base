@@ -19,7 +19,7 @@
         /////////////////////////////////////////////
 
         var service = {
-            initAnnouncer: initAnnouncer,
+            init: init,
             getAll: getAll,
             get: get,
             save: save,
@@ -99,7 +99,7 @@
         }
 
 
-        function initAnnouncer() {
+        function init() {
             var announcer = {
                 announcer: '',
                 country: '',
@@ -141,7 +141,6 @@
             }
 
             delete tmp.click_domain;
-            delete tmp.active;
             delete tmp.platform_access;
             delete tmp.useCompanyAddress;
             delete tmp.$resolved;

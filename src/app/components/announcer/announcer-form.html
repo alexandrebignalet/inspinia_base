@@ -1,18 +1,20 @@
-<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" >
 
     <div class="modal-body">
 
         <div class="row">
 
-            <div class="form-group col-md-5">
+            <div class="form-group col-md-5" ng-class="{ 'has-error' : editForm.announcer.$invalid && !editForm.announcer.$pristine}">
                 <div class="form-group">
                     <label class="control-label" for="announcer_announcer" translate="announcer.announcer">Announcer</label>
-                    <input type="text" class="form-control" name="announcer" id="announcer_announcer" ng-model="vm.announcer.announcer" required/>
+                    <input ng-minlength="3" ng-maxlength="30" type="text" class="form-control" name="announcer" id="announcer_announcer" ng-model="vm.announcer.announcer" required/>
                 </div>
-                <div ng-show="editForm.announcer.$invalid">
-                    <p class="help-block"
-                       ng-show="editForm.announcer.$error.required">
+                <div ng-show="editForm.announcer.$invalid && !editForm.announcer.$pristine">
+                    <p class="help-block" ng-show="editForm.announcer.$error.required">
                         This field is required.
+                    </p>
+                    <p class="help-block" ng-show="editForm.announcer.$error.minlength || editForm.announcer.$error.minlength">
+                        This field should contain between 3 and 30 characteres.
                     </p>
                 </div>
             </div>
@@ -28,44 +30,31 @@
                         </ui-select-choices>
                     </ui-select>
                 </div>
-                <div ng-show="editForm.country.$invalid">
-                    <p class="help-block"
-                       ng-show="editForm.country.$error.required">
-                        This field is required.
-                    </p>
-                </div>
             </div>
 
             <div class="form-group col-md-3">
                 <div class="form-group">
                     <label class="control-label" for="announcer_id_reine_rouge" translate="announcer.reine_rouge_id">ID Reine Rouge</label>
-                    <input type="text" class="form-control" name="id_reine_rouge" id="announcer_id_reine_rouge" ng-model="vm.announcer.reinerouge_id" required/>
-                </div>
-                <div ng-show="editForm.id_reine_rouge.$invalid">
-                    <p class="help-block"
-                       ng-show="editForm.id_reine_rouge.$error.required">
-                        This field is required.
-                    </p>
+                    <input type="text" class="form-control" name="id_reine_rouge" id="announcer_id_reine_rouge" ng-model="vm.announcer.reinerouge_id"/>
                 </div>
             </div>
         </div>
 
         <div class="row">
-            <div class="form-group col-md-9">
+            <div class="form-group col-md-9" ng-class="{ 'has-error' : editForm.platform.$invalid && !editForm.platform.$pristine}">
                 <div class="form-group">
                     <label class="control-label" for="announcer_platform" translate="announcer.platform">Platform</label>
-                    <input type="text" class="form-control" name="platform" id="announcer_platform" ng-model="vm.announcer.platform" required/>
+                    <input ng-minlength="3" ng-maxlength="30" type="text" class="form-control" name="platform" id="announcer_platform" ng-model="vm.announcer.platform"/>
                 </div>
                 <div ng-show="editForm.platform.$invalid">
-                    <p class="help-block"
-                       ng-show="editForm.platform.$error.required">
-                        This field is required.
+                    <p class="help-block" ng-show="editForm.platform.$error.minlength || editForm.platform.$error.minlength">
+                        This field should contain between 3 and 30 characteres.
                     </p>
                 </div>
             </div>
         </div>
 
-        <hr>
+        <hr class="hr-line-solid">
 
         <div class="row">
             <div class="form-group col-md-6">
@@ -95,18 +84,18 @@
                 <hr>
                 <div class="">
                     <div class="row">
-                        <span class="col-md-3">Street : </span><span>{{ vm.announcer.company.address.street }}</span><br>
+                        <span class="col-md-3"><span translate="announcer.street">Street</span> : </span><span>{{ vm.announcer.company.address.street }}</span><br>
                     </div>
 
                     <div class="row">
-                        <span class="col-md-3">Town : </span><span>{{ vm.announcer.company.address.town }}</span><br>
+                        <span class="col-md-3"><span translate="announcer.town">Town</span> : </span><span>{{ vm.announcer.company.address.town }}</span><br>
                     </div>
 
                     <div class="row">
-                        <span class="col-md-3">Zipcode : </span><span>{{ vm.announcer.company.address.zipcode }}</span><br>
+                        <span class="col-md-3"><span translate="announcer.zipcode">Zipcode</span> : </span><span>{{ vm.announcer.company.address.zipcode }}</span><br>
                     </div>
                     <div class="row">
-                        <span class="col-md-3">Country : </span><span>{{ vm.announcer.company.address.country }}</span><br>
+                        <span class="col-md-3"><span translate="announcer.country">Country</span> : </span><span>{{ vm.announcer.company.address.country }}</span><br>
                     </div>
 
                     <span>{{ vm.announcer.company.address.complement }}</span>
@@ -114,7 +103,7 @@
             </div>
         </div>
 
-        <hr>
+        <hr class="hr-line-solid">
 
         <div class="row">
             <div class="form-group col-md-12">
@@ -131,20 +120,13 @@
                         </ui-select-choices>
                     </ui-select>
                 </div>
-                <div ng-show="editForm.contacts.$invalid">
-                    <p class="help-block"
-                       ng-show="editForm.contacts.$error.required">
-                        This field is required.
-                    </p>
-                </div>
             </div>
         </div>
     </div>
 
-    <div class="modal-footer">
-        <!--<button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-block btn-primary">-->
-        <button type="submit" class="btn btn-block btn-primary">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
-        </button>
-    </div>
+
+    <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-block btn-primary">
+        <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="announcer.save">Save announcer</span>
+    </button>
+
 </form>
