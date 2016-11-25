@@ -22,53 +22,127 @@
         <div id="company-1" class="tab-pane active">
             <div class="m-b-lg">
                 <div>
-                    <h3>Informations</h3>
-                    <ul class="list-group clear-list">
-                        <li class="list-group-item fist-item">
-                            <span class="pull-right"> {{ ::vm.company.phone }} </span>
-                            <strong> <i class="fa fa-phone"></i> Phone</strong>
-                        </li>
-                        <li class="list-group-item">
-                            <span class="pull-right"> {{ ::vm.company.num_tva }} </i> </span>
-                            <strong>
-                                <span translate="company.numTva"> TVA</span>
-                            </strong>
-                        </li>
-                        <li class="list-group-item">
-                            <span class="pull-right"> {{ ::vm.company.percent_tva }} </span>
-                            <strong>
-                                <span translate="company.percentTva"> Percent TVA</span>
-                            </strong>
-                        </li>
-                        <li class="list-group-item">
-                            <span class="pull-right"> {{ ::vm.company.payment_period }} </span>
-                            <strong>
-                                <span translate="company.paymentPeriod.name"> Payment period</span>
-                            </strong>
-                        </li>
-                        <li class="list-group-item">
-                            <span class="pull-right"> {{ ::vm.company.invoice_delivery_day }} </span>
-                            <strong>
-                                <span translate="company.invoiceDeliveryDay"> Invoice delivery day</span>
-                            </strong>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="full-height-scroll" ng-if="vm.company.contacts.length > 0" full-scroll>
-                <h3>Contacts</h3>
-                <div class="feed-activity-list">
-                    <div class="feed-element" ng-repeat="contact in vm.company.contacts">
-                        <a href class="pull-left">
-                            <img alt="image" class="img-circle" src="assets/images/patterns/toto.jpg">
-                        </a>
-                        <div class="media-body">
-                            <small class="pull-right label label-primary">{{ ::contact.type }}</small>
-                            <strong>{{ ::contact.firstname }} {{ ::contact.surname }}</strong>. <br>
-                            <small class="text-primary"><i class="fa fa-user"></i> {{ ::contact.fonction }}</small> <br>
-                            <small class="text-muted"><i class="fa fa-envelope"></i> {{ ::contact.mail }}</small>
-                            <small class="text-muted"><i class="fa fa-phone"></i> {{ ::contact.phone }}</small>
-                            <small class="text-muted"><i class="fa fa-skype"></i> {{ ::contact.skype }}</small>
+                    <div class="ibox">
+                        <div class="tabs-container">
+                            <uib-tabset>
+                                <uib-tab>
+                                    <uib-tab-heading>
+                                        <i class="fa fa-info"></i>
+                                        <span translate="company.show.informations"> Informations</span>
+                                    </uib-tab-heading>
+                                    <div class="panel-body">
+                                        <ul class="list-group clear-list">
+                                            <li class="list-group-item fist-item">
+                                                <span class="pull-right"> {{ ::vm.company.phone }} </span>
+                                                <strong> <i class="fa fa-phone"></i> Phone</strong>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <span class="pull-right"> {{ ::vm.company.num_tva }} </i> </span>
+                                                <strong>
+                                                    <span translate="company.numTva"> TVA</span>
+                                                </strong>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <span class="pull-right"> {{ ::vm.company.percent_tva }} </span>
+                                                <strong>
+                                                    <span translate="company.percentTva"> Percent TVA</span>
+                                                </strong>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <span class="pull-right"> {{ ::vm.company.payment_period }} </span>
+                                                <strong>
+                                                    <span translate="company.paymentPeriod.name"> Payment period</span>
+                                                </strong>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <span class="pull-right"> {{ ::vm.company.invoice_delivery_day }} </span>
+                                                <strong>
+                                                    <span translate="company.invoiceDeliveryDay"> Invoice delivery day</span>
+                                                </strong>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </uib-tab>
+                                <uib-tab>
+                                    <uib-tab-heading>
+                                        <i class="fa fa-phone"></i>
+                                        <span translate="company.contacts"> Contacts</span>
+                                    </uib-tab-heading>
+                                    <div class="panel-body">
+                                        <div class="full-height-scroll" ng-if="vm.company.contacts.length > 0" full-scroll>
+                                            <div class="feed-activity-list">
+                                                <div class="feed-element" ng-repeat="contact in vm.company.contacts">
+                                                    <a href class="pull-left">
+                                                        <img alt="image" class="img-circle" src="assets/images/patterns/toto.jpg">
+                                                    </a>
+                                                    <div class="media-body">
+                                                        <small class="pull-right label label-primary">{{ ::contact.type }}</small>
+                                                        <strong>{{ ::contact.firstname }} {{ ::contact.surname }}</strong><br>
+                                                        <small class="text-primary"><i class="fa fa-user"></i> {{ ::contact.fonction }}</small> <br>
+                                                        <small class="text-muted"><i class="fa fa-envelope"></i> {{ ::contact.mail }}</small>
+                                                        <small class="text-muted"><i class="fa fa-phone"></i> {{ ::contact.phone }}</small>
+                                                        <small class="text-muted"><i class="fa fa-skype"></i> {{ ::contact.skype }}</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </uib-tab>
+                                <uib-tab>
+                                    <uib-tab-heading>
+                                        <i class="fa fa-flag"></i>
+                                        <span translate="company.announcers"> Announcers</span>
+                                    </uib-tab-heading>
+                                    <div class="panel-body">
+                                        <div class="full-height-scroll" ng-if="vm.company.announcers.length > 0" full-scroll>
+                                            <div class="feed-activity-list">
+                                                <div class="feed-element" ng-repeat="announcer in vm.company.announcers">
+                                                    <a href class="pull-left">
+                                                        <img alt="image" class="img-circle" src="assets/images/patterns/toto.jpg">
+                                                    </a>
+                                                    <div class="media-body">
+                                                        <p class="pull-right">
+                                                            <i ng-class="{'fa fa-circle text-primary': announcer.active, 'fa fa-circle text-danger': !announcer.active}"></i>
+                                                        </p>
+                                                        <strong>
+                                                            {{ ::announcer.announcer }}
+                                                        </strong><br>
+                                                        <p class="text-muted">
+                                                            <span translate="announcer.platform">Platform:</span> {{ ::announcer.platform }}
+                                                        </p>
+                                                        <p class="text-muted">
+                                                            <i class="text-danger fa fa-globe"></i>
+                                                            <span translate="announcer.country">Country:</span> {{ ::announcer.country }}
+                                                        </p>
+                                                        <p class="text-muted">
+                                                            <i class="text-danger fa fa-pied-piper-alt"></i>
+                                                            {{ ::announcer.reinerouge_id }}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </uib-tab>
+                                <uib-tab>
+                                    <uib-tab-heading>
+                                        <i class="fa fa-database"></i>
+                                        <span translate="company.databases"> Databases</span>
+                                    </uib-tab-heading>
+                                    <div class="panel-body">
+
+                                    </div>
+                                </uib-tab>
+                                <uib-tab>
+                                    <uib-tab-heading>
+                                        <i class="fa fa-flag"></i>
+                                        <span translate="company.mgGlobal"> Minimum guarantee</span>
+                                    </uib-tab-heading>
+                                    <div class="panel-body">
+
+                                    </div>
+                                </uib-tab>
+                            </uib-tabset>
                         </div>
                     </div>
                 </div>
