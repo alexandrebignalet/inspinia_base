@@ -43,7 +43,7 @@
 
             vm.onDeleteContact({
                 $event: {
-                    contactId: contact.id,
+                    contact: contact,
                     index: index
                 }
             });
