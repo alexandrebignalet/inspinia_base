@@ -14,14 +14,22 @@
             "name": "Délai de paiement",
             "0": "À la reception de la facture"
         },
+        "confirm": {
+            "delete": "Confimer la suppresion de l'entreprise",
+            "msg": "Êtes-vous sûr de vouloir supprimer l'entreprise ?"
+        },
         "informations": "Informations",
         "contacts": "Contacts",
+        "announcers": "Annonceurs",
         "address": "Adresse",
         "mgGlobal": "Minimum garanti global",
         "invoiceDeliveryDay": "Date de réception factures",
         "validation": {
             "billing": "Une entreprise ne peut avoir qu'un seul contat facturation.",
             "address": "Une entreprise doit avoir une adresse."
+        },
+        "show":{
+            "informations": "Informations"
         }
     }
 }

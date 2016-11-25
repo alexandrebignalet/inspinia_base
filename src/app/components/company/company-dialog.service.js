@@ -46,7 +46,7 @@
         function openDeleteModal(companyId) {
 
             $uibModal.open({
-                component: 'companyDelete',
+                component: 'companyDeleteDialog',
                 backdrop: 'static',
                 size: 'lg',
                 resolve: {
