@@ -1,113 +1,74 @@
 <div class="ibox">
+    <div class="ibox-title">
+        <h2>
+            {{ ::vm.company.name }}
+            <div class="pull-right">
+                <a ui-sref="company.edit({id: vm.company.id})"><button class="btn btn-primary">
+                    <span class="fa fa-pencil"></span>
+                </button></a>
+                <a ui-sref="company.delete({id: vm.company.id})"><button class="btn btn-danger">
+                    <span class="fa fa-trash"></span>
+                </button></a>
+            </div>
+        </h2>
+        <address>
+            <strong>{{ ::vm.company.address.country }}</strong><br>
+            {{ ::vm.company.address.street }}<br>
+            {{ ::vm.company.address.town }}, {{ ::vm.company.address.zipcode }}<br>
+            <small>{{ ::vm.company.address.complement }}</small>
+        </address>
+    </div>
     <div class="ibox-content">
         <div id="company-1" class="tab-pane active">
             <div class="m-b-lg">
-                <h2>
-                    {{ vm.company.name }}
-                    <div class="pull-right">
-                        <a ui-sref="company.edit({id: vm.company.id})"><button class="btn btn-primary">
-                            <span class="fa fa-pencil"></span>
-                        </button></a>
-                        <a ui-sref="company.delete({id: vm.company.id})"><button class="btn btn-danger">
-                            <span class="fa fa-trash"></span>
-                        </button></a>
-                    </div>
-                </h2>
                 <div>
-                    <strong>Informations</strong>
-
+                    <h3>Informations</h3>
                     <ul class="list-group clear-list">
                         <li class="list-group-item fist-item">
-                            <span class="pull-right"> <i class="fa fa-phone"> </i> </span>
-                            {{vm.company.phone}}
+                            <span class="pull-right"> {{ ::vm.company.phone }} </span>
+                            <strong> <i class="fa fa-phone"></i> Phone</strong>
                         </li>
                         <li class="list-group-item">
-                            <span class="pull-right"> <i class="fa fa-phone"> </i> </span>
-                            {{vm.company.num_tva}}
+                            <span class="pull-right"> {{ ::vm.company.num_tva }} </i> </span>
+                            <strong>
+                                <span translate="company.numTva"> TVA</span>
+                            </strong>
                         </li>
                         <li class="list-group-item">
-                            <span class="pull-right"> <i class="fa fa-phone"> </i> </span>
-                            {{vm.company.percent_tva}}
+                            <span class="pull-right"> {{ ::vm.company.percent_tva }} </span>
+                            <strong>
+                                <span translate="company.percentTva"> Percent TVA</span>
+                            </strong>
                         </li>
                         <li class="list-group-item">
-                            <span class="pull-right"> <i class="fa fa-phone"> </i> </span>
-                            {{vm.company.payment_period}}
+                            <span class="pull-right"> {{ ::vm.company.payment_period }} </span>
+                            <strong>
+                                <span translate="company.paymentPeriod.name"> Payment period</span>
+                            </strong>
                         </li>
                         <li class="list-group-item">
-                            <span class="pull-right"> <i class="fa fa-phone"> </i> </span>
-                            {{vm.company.invoice_delivery_day}}
+                            <span class="pull-right"> {{ ::vm.company.invoice_delivery_day }} </span>
+                            <strong>
+                                <span translate="company.invoiceDeliveryDay"> Invoice delivery day</span>
+                            </strong>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div class="client-detail">
-                <div class="full-height-scroll" full-scroll>
-                    <strong>Notes</strong>
-                    <p>
-                        Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
-                    </p>
-                    <hr/>
-                    <strong>Timeline activity</strong>
-                    <div id="vertical-timeline" class="vertical-container dark-timeline">
-                        <div class="vertical-timeline-block">
-                            <div class="vertical-timeline-icon gray-bg">
-                                <i class="fa fa-coffee"></i>
-                            </div>
-                            <div class="vertical-timeline-content">
-                                <p>Conference on the sales results for the previous year.
-                                </p>
-                                <span class="vertical-date small text-muted"> 2:10 pm - 12.06.2014 </span>
-                            </div>
-                        </div>
-                        <div class="vertical-timeline-block">
-                            <div class="vertical-timeline-icon gray-bg">
-                                <i class="fa fa-briefcase"></i>
-                            </div>
-                            <div class="vertical-timeline-content">
-                                <p>Many desktop publishing packages and web page editors now use Lorem.
-                                </p>
-                                <span class="vertical-date small text-muted"> 4:20 pm - 10.05.2014 </span>
-                            </div>
-                        </div>
-                        <div class="vertical-timeline-block">
-                            <div class="vertical-timeline-icon gray-bg">
-                                <i class="fa fa-bolt"></i>
-                            </div>
-                            <div class="vertical-timeline-content">
-                                <p>There are many variations of passages of Lorem Ipsum available.
-                                </p>
-                                <span class="vertical-date small text-muted"> 06:10 pm - 11.03.2014 </span>
-                            </div>
-                        </div>
-                        <div class="vertical-timeline-block">
-                            <div class="vertical-timeline-icon navy-bg">
-                                <i class="fa fa-warning"></i>
-                            </div>
-                            <div class="vertical-timeline-content">
-                                <p>The generated Lorem Ipsum is therefore.
-                                </p>
-                                <span class="vertical-date small text-muted"> 02:50 pm - 03.10.2014 </span>
-                            </div>
-                        </div>
-                        <div class="vertical-timeline-block">
-                            <div class="vertical-timeline-icon gray-bg">
-                                <i class="fa fa-coffee"></i>
-                            </div>
-                            <div class="vertical-timeline-content">
-                                <p>Conference on the sales results for the previous year.
-                                </p>
-                                <span class="vertical-date small text-muted"> 2:10 pm - 12.06.2014 </span>
-                            </div>
-                        </div>
-                        <div class="vertical-timeline-block">
-                            <div class="vertical-timeline-icon gray-bg">
-                                <i class="fa fa-briefcase"></i>
-                            </div>
-                            <div class="vertical-timeline-content">
-                                <p>Many desktop publishing packages and web page editors now use Lorem.
-                                </p>
-                                <span class="vertical-date small text-muted"> 4:20 pm - 10.05.2014 </span>
-                            </div>
+            <div class="full-height-scroll" ng-if="vm.company.contacts.length > 0" full-scroll>
+                <h3>Contacts</h3>
+                <div class="feed-activity-list">
+                    <div class="feed-element" ng-repeat="contact in vm.company.contacts">
+                        <a href class="pull-left">
+                            <img alt="image" class="img-circle" src="assets/images/patterns/toto.jpg">
+                        </a>
+                        <div class="media-body">
+                            <small class="pull-right label label-primary">{{ ::contact.type }}</small>
+                            <strong>{{ ::contact.firstname }} {{ ::contact.surname }}</strong>. <br>
+                            <small class="text-primary"><i class="fa fa-user"></i> {{ ::contact.fonction }}</small> <br>
+                            <small class="text-muted"><i class="fa fa-envelope"></i> {{ ::contact.mail }}</small>
+                            <small class="text-muted"><i class="fa fa-phone"></i> {{ ::contact.phone }}</small>
+                            <small class="text-muted"><i class="fa fa-skype"></i> {{ ::contact.skype }}</small>
                         </div>
                     </div>
                 </div>

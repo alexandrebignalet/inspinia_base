@@ -25,10 +25,10 @@
                 resolve: {
                     companies: [
                         'Company', function(Company) {
-                            return Company.getAll();
+                            return Company.getAll(['companies_all', 'contacts_summary', 'addresses_summary']);
                         }
                     ],
-                    mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
+                    mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                         $translatePartialLoader.addPart('company');
                         $translatePartialLoader.addPart('contact');
                         $translatePartialLoader.addPart('address');
@@ -66,12 +66,18 @@
                 },
                 resolve: {
                     company: ['Company', '$stateParams', function(Company, $stateParams){
-                        return Company.get($stateParams.id)
+                        return Company.get(
+                            $stateParams.id,
+                            ['companies_all', 'contacts_summary', 'addresses_summary', 'databases_summary']
+                        )
+                    }],
+                    databases: ['Database', function(Database){
+                        return Database.getAll();
                     }]
                 },
-                onEnter: ['CompanyDialogService', 'company',
-                    function(CompanyDialogService, company) {
-                        CompanyDialogService.openDialogModal(company);
+                onEnter: ['CompanyDialogService', 'company', 'databases',
+                    function(CompanyDialogService, company, databases) {
+                        CompanyDialogService.openDialogModal(company, databases);
                     }]
             })
             .state('company.delete', {

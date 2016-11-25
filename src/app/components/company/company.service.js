@@ -14,7 +14,7 @@
 
         var resource = $resource( resourceUrl, {}, {
             'save': { method:'POST'},
-            'patch': { method:'PATCH'},
+            'update': { method:'PATCH'},
             'delete':{ method:'DELETE'}
         });
 
@@ -110,13 +110,13 @@
                 id: null,
                 name: null,
                 phone: null,
-                numTva: null,
-                percentTva: null,
+                num_tva: null,
+                percent_tva: null,
                 databases: [],
-                mgGlobal: null,
-                paymentPeriod: null,
-                invoiceDeliveryDay: null,
-                quickBooksId: null,
+                mg_global: null,
+                payment_period: null,
+                invoice_delivery_day: null,
+                quick_books_id: null,
                 contacts: [],
                 address: null
             };
@@ -126,10 +126,10 @@
             var tmp = Object.assign({}, company);
 
             delete tmp.id;
+            delete tmp.lots;
+            delete tmp.announcers;
 
             tmp.address = company.address.id;
-
-            tmp.paymentPeriod = +tmp.paymentPeriod;
 
             if (tmp.contacts.length > 0){
                 var array = [];
