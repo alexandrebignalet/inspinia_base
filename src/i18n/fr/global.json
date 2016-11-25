@@ -40,7 +40,8 @@
                 "maxbytes": "Ce champs doit être inférieur à {{ max }} bytes.",
                 "pattern": "Ce champs doit suivre le pattern {{ pattern }}.",
                 "number": "Ca champs doit être un nombre.",
-                "datetimelocal": "Ce champs doit être un datetime."
+                "datetimelocal": "Ce champs doit être un datetime.",
+                "email": "Email invalide."
             }
         }
     }

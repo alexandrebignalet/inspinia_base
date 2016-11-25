@@ -1,0 +1,27 @@
+{
+    "company": {
+        "company": "Empresa",
+        "list": "Lista de las empresas",
+        "create": "Añadir o editar una empresa",
+        "new": "Añadir nueva empresa",
+        "save": "Guardar la empresa",
+        "name": "Nombre",
+        "phone": "Teléfono",
+        "numTva": "Núm. IVA",
+        "percentTva": "Perciento IVA",
+        "databases": "Bases de datos",
+        "paymentPeriod": {
+            "name": "Periodo de pago",
+            "0": "Tras recibir la factura"
+        },
+        "informations": "Informationes",
+        "contacts": "Contactos",
+        "address": "Direccíon",
+        "mgGlobal": "Garantía mínima global",
+        "invoiceDeliveryDay": "Fecha de entrega AAF",
+        "validation": {
+            "billing": "Una empresa puede tener solo un contacto de facturacíon.",
+            "address": "Una empresa debe haber una direcccíon."
+        }
+    }
+}

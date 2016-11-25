@@ -1,0 +1,27 @@
+{
+    "company": {
+        "company": "company",
+        "list": "Companies list",
+        "create": "Create or edit a company",
+        "new": "Create new company",
+        "save": "Save company",
+        "name": "Name",
+        "phone": "Phone",
+        "numTva": "No VAT",
+        "percentTva": "Percient VAT",
+        "databases": "Databases",
+        "paymentPeriod": {
+            "name": "Payment period",
+            "0": "À la reception de la facture"
+        },
+        "informations": "Informations",
+        "contacts": "Contacts",
+        "address": "Address",
+        "mgGlobal": "Minimum guarantee global",
+        "invoiceDeliveryDay": "Invoice delivery day",
+        "validation": {
+            "billing": "A company must have only on billing contact.",
+            "address": "A company must have an address"
+        }
+    }
+}

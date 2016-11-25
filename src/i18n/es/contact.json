@@ -1,0 +1,18 @@
+{
+    "contact": {
+        "contact": "Contacto",
+        "contacts": "Contactos",
+        "list": "Lista de los contactos",
+        "new": "Añadir o editar un contacto",
+        "surname": "Appelido",
+        "firstname": "Nombre",
+        "company": "Empresa",
+        "phone": "Teléfono",
+        "fonction": "Cargo",
+        "type": "Tipo",
+        "civility": "Tratamiento",
+        "civilityMan": "Sr.",
+        "civilityWoman": "Sra.",
+        "email": "Email"
+    }
+}

@@ -1,16 +1,21 @@
 {
     "address": {
-        "list": "Lista de las direcíones",
-        "create": "Añadir o editar una nueva direcíon",
+        "address": "Dirección",
+        "list": "Lista de las direcciones",
+        "create": "Añadir o editar una nueva dirección",
         "delete": "Eliminar",
         "country": "País",
         "street": "Calle",
-        "town": "Poblacíon",
+        "town": "Población",
         "zipcode": "Código Postal",
         "complement": "Complemento",
         "confirm": {
-            "delete": "Confirmar la eliminacíon de la direcíon",
+            "delete": "Confirmar la eliminación de la dirección",
             "msg": "Seguro?"
+        },
+        "action":{
+            "update": "Actualizar la dirección",
+            "save": "Guardar la dirección"
         }
     }
 }

@@ -31,16 +31,17 @@
                 "title": "Confirm delete"
             },
             "validation": {
-                "required": "Este campo es necesario.",
-                "minlength": "Este campo debe contener {{ min }} carácteres.",
-                "maxlength": "Este campo cannot be longer than {{ max }} characters.",
-                "min": "Este campo debe hacer más de {{ min }}.",
-                "max": "Este field no puede ser más de {{ max }}.",
-                "minbytes": "Este campo debe hacer más de {{ min }} bytes.",
-                "maxbytes": "Este campo no puede ser más de {{ max }} bytes.",
-                "pattern": "Este campo debe seguir el pattern {{ pattern }}.",
-                "number": "Este campo debe ser un número.",
-                "datetimelocal": "Este campo debe ser una fecha con tiempo."
+                "required": "This field is required.",
+                "minlength": "This field should be more than {{ min }} characters.",
+                "maxlength": "This field cannot be longer than {{ max }} characters.",
+                "min": "This field should be more than {{ min }}.",
+                "max": "This field cannot be more than {{ max }}.",
+                "minbytes": "This field should be more than {{ min }} bytes.",
+                "maxbytes": "This field cannot be more than {{ max }} bytes.",
+                "pattern": "This field should follow pattern {{ pattern }}.",
+                "number": "This field should be a number.",
+                "datetimelocal": "This field should be a date and time.",
+                "email": "Email not valid."
             }
         }
     }

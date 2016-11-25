@@ -5,7 +5,7 @@
 </div>
 
 <div class="modal-body">
-    <contact-form companies="vm.companies" entity="vm.contact" on-save-entity="vm.saveEntity(contact)"></contact-form>
+    <contact-form companies="vm.companies" contact="vm.contact" on-save-contact="vm.onSave($event)" is-saving="vm.isSaving"></contact-form>
 </div>
 
 <div class="modal-footer">

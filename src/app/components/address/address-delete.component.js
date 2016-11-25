@@ -6,8 +6,9 @@
         controller: AddressDeleteController,
         controllerAs: 'vm',
         bindings: {
-            modalInstance: '<',
-            resolve: '<'
+            addressId: '<',
+            onDeleteAddress: '&',
+            isDeleting: '<'
         }
     };
 
@@ -15,35 +16,20 @@
         .module('dataToolApp')
         .component('addressDelete', addressDelete);
 
-    AddressDeleteController.$inject = ['Address'];
+    AddressDeleteController.$inject = [];
 
     /* @ngInject */
-    function AddressDeleteController(Address) {
+    function AddressDeleteController() {
         var vm = this;
 
-        vm.clear = clear;
-        vm.confirmDelete = confirmDelete;
+        vm.onSubmit = onSubmit;
 
-        vm.$onInit = function() {
-            vm.addressId = vm.resolve.addressId;
-        };
-
-        function clear() {
-            vm.modalInstance.dismiss();
-        }
-
-        function confirmDelete() {
-            Address.delete(vm.addressId)
-                .then(onSuccess)
-                .catch(onError);
-
-            function onSuccess() {
-                vm.modalInstance.close();
-            }
-
-            function onError() {
-                vm.modalInstance.dismiss();
-            }
+        function onSubmit() {
+            vm.onDeleteAddress({
+                $event: {
+                    addressId: vm.addressId
+                }
+            })
         }
     }
 

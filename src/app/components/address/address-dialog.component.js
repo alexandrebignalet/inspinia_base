@@ -55,8 +55,6 @@
             function onError() {
                 vm.isSaving = false;
             }
-
-
         }
     }
 

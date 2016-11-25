@@ -1,134 +1,198 @@
-<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
-
-        <div class="row">
-            <div class="form-group col-md-2">
-                <label for="contact_civility">Civility</label>
-                <select class="form-control" id="contact_civility" name="civility" ng-model="vm.contact.civility" ng-options="civility for civility in vm.civilities">
-
-                </select>
-                <div ng-show="editForm.civility.$invalid">
-                    <p class="help-block"
-                       ng-show="editForm.civility.$error.required">
-                        This field is required.
-                    </p>
-                </div>
-            </div>
-
-            <div class="form-group col-md-5">
-                <div class="form-group">
-                    <label class="control-label" for="contact_firstname">Firstname</label>
-                    <input type="text" class="form-control" name="firstname" id="contact_firstname" ng-model="vm.contact.firstname" required/>
-                </div>
-                <div ng-show="editForm.firstname.$invalid">
-                    <p class="help-block"
-                       ng-show="editForm.firstname.$error.required">
-                        This field is required.
-                    </p>
-                </div>
-            </div>
-
-            <div class="form-group col-md-5">
-                <div class="form-group">
-                    <label class="control-label" for="contact_surname">Surname</label>
-                    <input type="text" class="form-control" name="surname" id="contact_surname" ng-model="vm.contact.surname" required/>
-                </div>
-                <div ng-show="editForm.surname.$invalid">
-                    <p class="help-block"
-                       ng-show="editForm.surname.$error.required">
-                        This field is required.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="form-group col-md-12">
-                <div class="form-group">
-                    <label class="control-label" for="contact_mail">Mail</label>
-                    <input type="text" class="form-control" name="mail" id="contact_mail" ng-model="vm.contact.mail" required/>
-                </div>
-                <div ng-show="editForm.mail.$invalid">
-                    <p class="help-block"
-                       ng-show="editForm.mail.$error.required">
-                        This field is required.
-                    </p>
-                </div>
-            </div>
-
-            <div class="form-group col-md-6">
-                <div class="form-group">
-                    <label class="control-label" for="contact_phone">Phone</label>
-                    <input type="text" class="form-control" name="phone" id="contact_phone" ng-model="vm.contact.phone" required/>
-                </div>
-                <div ng-show="editForm.phone.$invalid">
-                    <p class="help-block"
-                       ng-show="editForm.phone.$error.required">
-                        This field is required.
-                    </p>
-                </div>
-            </div>
-
-            <div class="form-group col-md-6">
-                <div class="form-group">
-                    <label class="control-label" for="contact_skype">Skype</label>
-                    <input type="text" class="form-control" name="skype" id="contact_skype" ng-model="vm.contact.skype" required/>
-                </div>
-                <div ng-show="editForm.skype.$invalid">
-                    <p class="help-block"
-                       ng-show="editForm.skype.$error.required">
-                        This field is required.
-                    </p>
-                </div>
+<form name="editForm" role="form" ng-submit="vm.onSubmit()">
+    <div class="row">
+        <div class="form-group col-md-2">
+            <label for="contact_civility" translate="contact.civility">Civility</label>
+            <select class="form-control" id="contact_civility" name="civility" ng-model="vm.contact.civility">
+                <option value="Monsieur" translate="contact.civilityMan">M.</option>
+                <option value="Madame" translate="contact.civilityWoman">Mrs.</option>
+            </select>
+            <div ng-show="editForm.civility.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.civility.$error.required" translate="global.entity.validation.required">
+                    This field is required.
+                </p>
             </div>
         </div>
 
-        <hr>
-
-        <div class="row">
-
-            <div class="form-group col-md-4">
-                <label for="contact_company">Company</label>
-                <select class="form-control" id="contact_company" name="company" ng-model="vm.contact.company" ng-options="company.id as company.name for company in vm.companies">
-
-                </select>
-                <div ng-show="editForm.company.$invalid">
-                    <p class="help-block"
-                       ng-show="editForm.company.$error.required">
-                        This field is required.
-                    </p>
-                </div>
+        <div class="form-group col-md-5">
+            <div class="form-group">
+                <label class="control-label" for="contact_firstname" translate="contact.firstname">Firstname</label>
+                <input type="text" class="form-control" name="firstname" id="contact_firstname"
+                       ng-model="vm.contact.firstname" required minlength="3" maxlength="50"/>
             </div>
-
-            <div class="form-group col-md-4">
-                <label for="contact_type">Type</label>
-                <select class="form-control" id="contact_type" name="type" ng-model="vm.contact.type" ng-options="type as type for type in vm.types">
-
-                </select>
-                <div ng-show="editForm.type.$invalid">
-                    <p class="help-block"
-                       ng-show="editForm.type.$error.required">
-                        This field is required.
-                    </p>
-                </div>
+            <div ng-show="editForm.firstname.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.firstname.$error.required" translate="global.entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                   ng-show="editForm.firstname.$error.minlength"
+                   translate="global.entity.validation.minlength" translate-values="{min:3}">
+                    This field should have at least 3 characters.
+                </p>
+                <p class="help-block"
+                   ng-show="editForm.firstname.$error.maxlength"
+                   translate="global.entity.validation.maxlength" translate-values="{max:50}">
+                    This field should have less than 50 characters.
+                </p>
             </div>
-
-            <div class="form-group col-md-4">
-                <div class="form-group">
-                    <label class="control-label" for="contact_fonction">Fonction</label>
-                    <input type="text" class="form-control" name="fonction" id="contact_fonction" ng-model="vm.contact.fonction" required/>
-                </div>
-                <div ng-show="editForm.fonction.$invalid">
-                    <p class="help-block"
-                       ng-show="editForm.fonction.$error.required">
-                        This field is required.
-                    </p>
-                </div>
-            </div>
-
         </div>
 
-        <!--<button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-block btn-primary">-->
-        <button type="submit" class="btn btn-block btn-primary">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
-        </button>
+        <div class="form-group col-md-5">
+            <div class="form-group">
+                <label class="control-label" for="contact_surname" translate="contact.surname">Surname</label>
+                <input type="text" class="form-control" name="surname" id="contact_surname"
+                       ng-model="vm.contact.surname" required minlength="3" maxlength="50"/>
+            </div>
+            <div ng-show="editForm.surname.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.surname.$error.required" translate="global.entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                   ng-show="editForm.surname.$error.minlength"
+                   translate="global.entity.validation.minlength" translate-values="{min:3}">
+                    This field should have at least 3 characters.
+                </p>
+                <p class="help-block"
+                   ng-show="editForm.surname.$error.maxlength"
+                   translate="global.entity.validation.maxlength" translate-values="{max:50}">
+                    This field should have less than 50 characters.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="form-group col-md-12">
+            <div class="form-group">
+                <label class="control-label" for="contact_mail" translate="contact.email">Mail</label>
+                <input type="email" class="form-control" name="mail" id="contact_mail" ng-model="vm.contact.mail" required/>
+            </div>
+            <div ng-show="editForm.mail.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.mail.$error.required" translate="global.entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                   ng-show="editForm.mail.$error.email" translate="global.entity.validation.email">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            <div class="form-group">
+                <label class="control-label" for="contact_phone" translate="contact.phone">Phone</label>
+                <input type="text" class="form-control" name="phone" id="contact_phone" ng-model="vm.contact.phone"
+                       required minlength="3" maxlength="15"/>
+            </div>
+            <div ng-show="editForm.phone.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.phone.$error.required" translate="global.entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                   ng-show="editForm.phone.$error.minlength"
+                   translate="global.entity.validation.minlength" translate-values="{min:3}">
+                    This field should have at least 3 characters.
+                </p>
+                <p class="help-block"
+                   ng-show="editForm.phone.$error.maxlength"
+                   translate="global.entity.validation.maxlength" translate-values="{max:15}">
+                    This field should have less than 15 characters.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            <div class="form-group">
+                <label class="control-label" for="contact_skype">Skype</label>
+                <input type="text" class="form-control" name="skype" id="contact_skype"
+                       ng-model="vm.contact.skype" required minlength="3" maxlength="50"/>
+            </div>
+            <div ng-show="editForm.skype.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.skype.$error.required" translate="global.entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                   ng-show="editForm.skype.$error.minlength"
+                   translate="global.entity.validation.minlength" translate-values="{min:3}">
+                    This field should have at least 3 characters.
+                </p>
+                <p class="help-block"
+                   ng-show="editForm.skype.$error.maxlength"
+                   translate="global.entity.validation.maxlength" translate-values="{max:50}">
+                    This field should have less than 15 characters.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="form-group col-md-4" ng-if="vm.companies">
+            <label for="contact_company" translate="contact.company">Company</label>
+            <label class="control-label" for="contact_company" translate="contact.company">Company</label>
+            <ui-select ng-model="vm.contact.company" theme="bootstrap" id="contact_company">
+                <ui-select-match placeholder="Select a company in the list...">{{$select.selected.name}}</ui-select-match>
+                <ui-select-choices repeat="company in vm.companies | filter: $select.search">
+                    <div ng-bind-html="company.name | highlight: $select.search"></div>
+                    <small ng-bind-html="company.country | highlight: $select.search"></small>
+                </ui-select-choices>
+            </ui-select>
+            <div ng-show="editForm.company.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.company.$error.required" translate="global.entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <div ng-class="{'form-group col-md-4': vm.companies, 'form-group col-md-6': !vm.companies}">
+            <label for="contact_type" translate="contact.type">Type</label>
+            <select class="form-control" id="contact_type" name="type" ng-model="vm.contact.type" ng-options="type as type for type in vm.types">
+
+            </select>
+            <div ng-show="editForm.type.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.type.$error.required" translate="global.entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <div ng-class="{'form-group col-md-4': vm.companies !== undefined, 'form-group col-md-6': vm.companies === undefined}">
+            <div class="form-group">
+                <label class="control-label" for="contact_fonction" translate="contact.fonction">Fonction</label>
+                <input type="text" class="form-control" name="fonction" id="contact_fonction"
+                       ng-model="vm.contact.fonction" required minlength="3" maxlength="50"/>
+            </div>
+            <div ng-show="editForm.fonction.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.fonction.$error.required" translate="global.entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                   ng-show="editForm.fonction.$error.minlength"
+                   translate="global.entity.validation.minlength" translate-values="{min:3}">
+                    This field should have at least 3 characters.
+                </p>
+                <p class="help-block"
+                   ng-show="editForm.fonction.$error.maxlength"
+                   translate="global.entity.validation.maxlength" translate-values="{max:50}">
+                    This field should have less than 15 characters.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-block btn-primary">
+        <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="global.entity.action.save">Save</span>
+    </button>
 </form>

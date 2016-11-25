@@ -1,8 +1,18 @@
 {
     "contact": {
         "list": "Contacts list",
-        "contacts": "contacts",
+        "contacts": "Contacts",
         "contact": "contact",
-        "new": "Create a contact"
+        "new": "Create a contact",
+        "surname": "Lastname",
+        "firstname": "Firstname",
+        "company": "Company",
+        "phone": "Phone number",
+        "fonction": "Position",
+        "type": "Type",
+        "civility": "Civility",
+        "civilityMan": "M.",
+        "civilityWoman": "Mrs.",
+        "email": "Email"
     }
 }

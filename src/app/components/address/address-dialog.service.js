@@ -8,7 +8,7 @@
     AddressDialogService.$inject = ['$state','$uibModal'];
 
     /* @ngInject */
-    function AddressDialogService($state,$uibModal) {
+    function AddressDialogService($state, $uibModal) {
 
         var service = {
             openDialogModal: openDialogModal,
@@ -43,20 +43,21 @@
         function openDeleteModal(addressId) {
 
             $uibModal.open({
-                component: 'addressDelete',
+                component: 'addressDeleteDialog',
                 backdrop: 'static',
-                size: 'lg',
+                size: 'md',
                 resolve: {
                     addressId: function () {
                         return addressId;
                     }
                 }
-            }).result.then(function(){
-                console.log('foo');
-                $state.go('^',null, {reload: true})
-            },function() {
-                $state.go('^')
             })
+                .result
+                .then(function(){
+                    $state.go('^',null, {reload: true})
+                },function() {
+                    $state.go('^')
+                })
 
         }
     }

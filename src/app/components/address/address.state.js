@@ -1,6 +1,3 @@
-/**
- * Created by Axel on 17/11/2016.
- */
 (function() {
     'use strict';
 
@@ -22,7 +19,7 @@
                 },
                 views: {
                     'content@': {
-                        template: '<address addresses="$resolve.addresses"></address>'
+                        template: '<address-main addresses="$resolve.addresses"></address-main>'
                     }
                 },
                 resolve: {
