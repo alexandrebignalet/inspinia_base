@@ -1,7 +1,10 @@
 (function () {
     'use strict';
-
-    var address = {
+    /**
+     * Special name in comparison with the others components to avoid conflits with
+     * <address></address> -> HTML5 built-in directive
+     */
+    var addressMain = {
         templateUrl: 'app/components/address/addresses.html',
         controller: AddressController,
         controllerAs: 'vm',
@@ -12,7 +15,7 @@
 
     angular
         .module('dataToolApp')
-        .component('address', address);
+        .component('addressMain', addressMain);
 
     AddressController.$inject = ['DTOptionsBuilder'];
 

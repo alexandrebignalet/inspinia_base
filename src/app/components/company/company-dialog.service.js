@@ -23,7 +23,7 @@
 
             $uibModal.open({
                 component: 'companyDialog',
-                backdrop: 'true',
+                backdrop: 'static',
                 size: 'lg',
                 resolve: {
                     company: function(){

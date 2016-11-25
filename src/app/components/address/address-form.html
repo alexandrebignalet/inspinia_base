@@ -22,11 +22,11 @@
     <div class="form-group">
         <div class="form-group">
             <label class="control-label" for="address_town" translate="address.town">City</label>
-            <input type="text" class="form-control" name="town" id="address_town" ng-model="vm.address.town" />
+            <input type="text" class="form-control" name="town" id="address_town" ng-model="vm.address.town" required/>
         </div>
         <div ng-show="editForm.town.$invalid">
             <p class="help-block"
-               ng-show="editForm.town.$error.required" translate="global.validation.required">
+               ng-show="editForm.town.$error.required" translate="global.entity.validation.required">
                 This field is required.
             </p>
         </div>
@@ -35,12 +35,17 @@
     <div class="form-group">
         <div class="form-group">
             <label class="control-label" for="address_zipcode" translate="address.zipcode">Zipcode</label>
-            <input type="text" class="form-control" name="zipcode" id="address_zipcode" ng-model="vm.address.zipcode" />
+            <input type="text" class="form-control" name="zipcode" id="address_zipcode" ng-model="vm.address.zipcode"
+                   maxlength="6" required/>
         </div>
         <div ng-show="editForm.zipcode.$invalid">
             <p class="help-block"
-               ng-show="editForm.zipcode.$error.required" translate="global.validation.required">
+               ng-show="editForm.zipcode.$error.required" translate="global.entity.validation.required">
                 This field is required.
+            </p>
+            <p class="help-block"
+               ng-show="editForm.zipcode.$error.maxlength" translate="global.entity.validation.maxlength">
+                This field should have less than 6 characters.
             </p>
         </div>
     </div>
@@ -48,9 +53,9 @@
     <div class="form-group">
         <div class="form-group">
             <label class="control-label" for="address_country" translate="address.country">Country</label>
-            <ui-select ng-model="vm.address.country" theme="bootstrap" id="address_country">
+            <ui-select ng-model="vm.address.country" theme="bootstrap" id="address_country" required>
                 <ui-select-match placeholder="Select or search a country in the list...">{{$select.selected.code}}</ui-select-match>
-                <ui-select-choices repeat="country.code as country in vm.countries | filter: $select.search">
+                <ui-select-choices repeat="country.code as country in vm.countries | propsFilter: {name: $select.search, code: $select.search}">
                     <div ng-bind-html="country.name | highlight: $select.search"></div>
                     <small ng-bind-html="country.code | highlight: $select.search"></small>
                 </ui-select-choices>
@@ -58,13 +63,15 @@
         </div>
         <div ng-show="editForm.country.$invalid">
             <p class="help-block"
-               ng-show="editForm.country.$error.required" translate="global.validation.required">
+               ng-show="editForm.country.$error.required" translate="global.entity.validation.required">
                 This field is required.
             </p>
         </div>
     </div>
 
     <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-block btn-primary">
-        <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        <span class="glyphicon glyphicon-save"></span>&nbsp;
+        <span ng-if="vm.address.id" translate="address.action.update">Update</span>
+        <span ng-if="!vm.address.id" translate="address.action.save">Save</span>
     </button>
 </form>

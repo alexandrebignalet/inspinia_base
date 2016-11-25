@@ -7,5 +7,6 @@
         .constant('NODE_BASE_URL', 'http://datatool.dev:3000')
         .constant('API_BASE_URL', 'http://datatool.dev')
         .constant('TYPE_BILLING', 'Billing')
+        .constant('TYPE_COMMERCIAL', 'Commercial')
         .constant('ACCOUNTING_SYSTEM', 'Datatool');
 })();

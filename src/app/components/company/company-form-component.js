@@ -8,7 +8,9 @@
         bindings: {
             company: '<',
             databases: '<',
-            onSaveCompany: '&'
+            isSaving: '<',
+            onSaveCompany: '&',
+            onDeleteContact: '&'
         }
     };
 
@@ -16,22 +18,17 @@
         .module('dataToolApp')
         .component('companyForm', companyForm);
 
-    CompanyFormController.$inject = ['Contact', 'Address'];
+    CompanyFormController.$inject = [];
 
     /* @ngInject */
-    function CompanyFormController(Contact, Address) {
+    function CompanyFormController() {
         var vm = this;
 
-        vm.isSaving = false;
-        vm.contacts = [];
-        vm.address = null;
-
         vm.onSubmit = onSubmit;
-        vm.onSaveContact = onSaveContact;
-        vm.onSaveAddress = onSaveAddress;
+        vm.onSubmitDeleteContact = onSubmitDeleteContact;
 
         vm.$onInit = function(){
-            vm.newContact = Contact.initContact();
+            vm.address = vm.company.address;
         };
 
         function onSubmit() {
@@ -42,34 +39,14 @@
             });
         }
 
-        function onSaveAddress($event){
-            if (!$event.address) return;
+        function onSubmitDeleteContact(contact, index) {
 
-            vm.isSaving = true;
-
-            if( $event.address.id != null ) {
-                Address.update($event.address)
-                    .then(onSuccess)
-                    .catch(onError);
-            } else {
-                Address.save($event.address)
-                    .then(onSuccess)
-                    .catch(onError);
-            }
-
-            function onSuccess(address) {
-                vm.isSaving = false;
-                vm.modalInstance.close(address);
-            }
-
-            function onError() {
-                vm.isSaving = false;
-            }
-        }
-
-        function onSaveContact(contact){
-            vm.contacts.push(contact);
-            vm.newContact = Contact.initContact();
+            vm.onDeleteContact({
+                $event: {
+                    contactId: contact.id,
+                    index: index
+                }
+            });
         }
     }
 

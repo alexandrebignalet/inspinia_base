@@ -4,7 +4,35 @@
     <h4 class="modal-title" translate="company.create">Create or edit an company</h4>
 </div>
 <div class="modal-body">
-    <company-form databases="vm.databases" company="vm.company" on-save-company="vm.onSave($event)" is-saving="vm.isSaving"></company-form>
+    <company-form databases="vm.databases" company="vm.company" on-save-company="vm.onSaveCompany($event)"
+                  is-saving="vm.isSaving" on-delete-contact="vm.onDeleteContact($event)"></company-form>
+    <div class="ibox">
+        <div class="tabs-container">
+            <uib-tabset>
+                <uib-tab>
+                    <uib-tab-heading>
+                        <i class="fa fa-globe"></i>
+                        <span translate="company.address">Address</span>
+                        <i class="fa fa-circle text-danger" ng-if="!vm.company.address"></i>
+                        <i class="fa fa-circle text-success" ng-if="vm.company.address"></i>
+                    </uib-tab-heading>
+                    <div class="panel-body">
+                        <address-form address="vm.company.address" on-save-address="vm.onSaveAddress($event)" is-saving="vm.isSaving"></address-form>
+                    </div>
+                </uib-tab>
+                <uib-tab>
+                    <uib-tab-heading>
+                        <i class="fa fa-phone"></i>
+                        <span translate="company.contacts"> Contacts</span>
+                        <span class="label label-primary">{{ vm.company.contacts.length }}</span>
+                    </uib-tab-heading>
+                    <div class="panel-body">
+                        <contact-form contact="vm.contact" on-save-contact="vm.onSaveContact($event)" is-saving="vm.isSaving"></contact-form>
+                    </div>
+                </uib-tab>
+            </uib-tabset>
+        </div>
+    </div>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-default pull-left" data-dismiss="modal" ng-click="vm.clear();">

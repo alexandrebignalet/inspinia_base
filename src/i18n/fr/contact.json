@@ -1,8 +1,17 @@
 {
     "contact": {
         "contact": "contact",
-        "contacts": "contacts",
+        "contacts": "Contacts",
         "list": "Liste des contacts",
-        "new": "Ajouter un contact"
+        "new": "Ajouter un contact",
+        "surname": "Nom",
+        "firstname": "Prénom",
+        "phone": "Téléphone",
+        "fonction": "Fonction",
+        "type": "Type",
+        "civility": "Civilité",
+        "civilityMan": "M.",
+        "civilityWoman": "Mme.",
+        "email": "Email"
     }
 }

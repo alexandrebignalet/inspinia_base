@@ -30,6 +30,8 @@
                     ],
                     mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
                         $translatePartialLoader.addPart('company');
+                        $translatePartialLoader.addPart('contact');
+                        $translatePartialLoader.addPart('address');
                         return $translate.refresh();
                     }],
                     loadPlugin: function ($ocLazyLoad) {
