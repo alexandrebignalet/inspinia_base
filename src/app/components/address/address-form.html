@@ -25,8 +25,7 @@
     <div class="form-group" ng-class="{ 'has-error' : editForm.town.$invalid && !editForm.town.$pristine, 'has-success': editForm.town.$valid}">
         <div class="form-group">
             <label class="control-label" for="address_town"><span translate="address.town">City</span></label>
-            <div class="input-group m-b">
-                <span class="input-group-addon"><i class="fa fa-{{ editForm.town.$invalid ? 'times' : 'check'}}"></i></span>
+
                 <input type="text" class="form-control" name="town" id="address_town" ng-model="vm.address.town" required/>
             </div>
         </div>
