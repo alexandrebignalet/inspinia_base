@@ -25,7 +25,7 @@
                 resolve: {
                     announcers: [
                         'Announcer', function(Announcer) {
-                            return Announcer.getAll(['announcers_all','companies_summary']);
+                            return Announcer.getAll(['announcers_all','companies_summary','contacts_summary','addresses_summary']);
                         }
                     ],
                     mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
@@ -58,7 +58,7 @@
                 },
                 onEnter: ['announcerDialogService', 'Announcer', 'companies', 'contacts',
                     function(announcerDialogService, Announcer, companies, contacts) {
-                        var announcer = Announcer.initAnnouncer();
+                        var announcer = Announcer.init();
                         announcerDialogService.openDialogModal(announcer,companies,contacts);
                     }]
             })

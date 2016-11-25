@@ -37,7 +37,7 @@
         vm.$onInit = function() {
             console.log(vm.entity);
         }
-        
+
         vm.$onChanges = function(changes) {
             if (changes.entity) {
                 vm.entity = Object.assign({}, vm.entity);
