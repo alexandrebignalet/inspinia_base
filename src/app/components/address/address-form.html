@@ -1,10 +1,13 @@
 <form name="editForm" role="form" novalidate ng-submit="vm.onSubmit()">
-    <div class="form-group">
+    <div class="form-group" ng-class="{ 'has-error' : (editForm.street.$invalid && !editForm.street.$pristine), 'has-success': editForm.street.$valid}">
         <div class="form-group">
-            <label class="control-label" for="address_street" translate="address.street">Street</label>
-            <input type="text" class="form-control" name="street" id="address_street" ng-model="vm.address.street" required/>
+            <label class="control-label" for="address_street"><span translate="address.street">Street</span></label>
+            <div class="input-group m-b">
+                <span class="input-group-addon"><i class="fa fa-{{ editForm.street.$invalid ? 'times' : 'check'}}"></i></span>
+                <input type="text" class="form-control" name="street" id="address_street" ng-model="vm.address.street" required/>
+            </div>
         </div>
-        <div ng-show="editForm.street.$invalid">
+        <div ng-show="editForm.street.$invalid && !editForm.street.$pristine">
             <p class="help-block"
                ng-show="editForm.street.$error.required" translate="global.entity.validation.required">
                 This field is required.
@@ -14,17 +17,19 @@
 
     <div class="form-group">
         <div class="form-group">
-            <label class="control-label" for="address_complement" translate="address.complement">Complement</label>
+            <label class="control-label" for="address_complement"><span translate="address.complement">Complement</span></label>
             <input type="text" class="form-control" id="address_complement" ng-model="vm.address.complement"/>
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group" ng-class="{ 'has-error' : editForm.town.$invalid && !editForm.town.$pristine, 'has-success': editForm.town.$valid}">
         <div class="form-group">
-            <label class="control-label" for="address_town" translate="address.town">City</label>
-            <input type="text" class="form-control" name="town" id="address_town" ng-model="vm.address.town" required/>
+            <label class="control-label" for="address_town"><span translate="address.town">City</span></label>
+
+                <input type="text" class="form-control" name="town" id="address_town" ng-model="vm.address.town" required/>
+            </div>
         </div>
-        <div ng-show="editForm.town.$invalid">
+        <div ng-show="editForm.town.$invalid && !editForm.town.$pristine">
             <p class="help-block"
                ng-show="editForm.town.$error.required" translate="global.entity.validation.required">
                 This field is required.
@@ -32,13 +37,16 @@
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group" ng-class="{ 'has-error' : editForm.zipcode.$invalid && !editForm.zipcode.$pristine, 'has-success': editForm.zipcode.$valid}">
         <div class="form-group">
-            <label class="control-label" for="address_zipcode" translate="address.zipcode">Zipcode</label>
-            <input type="text" class="form-control" name="zipcode" id="address_zipcode" ng-model="vm.address.zipcode"
-                   maxlength="6" required/>
+            <label class="control-label" for="address_zipcode"><span translate="address.zipcode">Zipcode</span></label>
+            <div class="input-group m-b">
+                <span class="input-group-addon"><i class="fa fa-{{ editForm.zipcode.$invalid ? 'times' : 'check'}}"></i></span>
+                <input type="text" class="form-control" name="zipcode" id="address_zipcode" ng-model="vm.address.zipcode"
+                       maxlength="6" required/>
+            </div>
         </div>
-        <div ng-show="editForm.zipcode.$invalid">
+        <div ng-show="editForm.zipcode.$invalid && !editForm.zipcode.$pristine">
             <p class="help-block"
                ng-show="editForm.zipcode.$error.required" translate="global.entity.validation.required">
                 This field is required.
@@ -50,9 +58,9 @@
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group" ng-class="{ 'has-error' : editForm.country.$invalid && !editForm.country.$pristine}">
         <div class="form-group">
-            <label class="control-label" for="address_country" translate="address.country">Country</label>
+            <label class="control-label" for="address_country"><span translate="address.country">Country</span></label>
             <ui-select ng-model="vm.address.country" theme="bootstrap" id="address_country" required>
                 <ui-select-match placeholder="Select or search a country in the list...">{{$select.selected.code}}</ui-select-match>
                 <ui-select-choices repeat="country.code as country in vm.countries | propsFilter: {name: $select.search, code: $select.search}">
@@ -61,7 +69,7 @@
                 </ui-select-choices>
             </ui-select>
         </div>
-        <div ng-show="editForm.country.$invalid">
+        <div ng-show="editForm.country.$invalid && !editForm.country.$pristine">
             <p class="help-block"
                ng-show="editForm.country.$error.required" translate="global.entity.validation.required">
                 This field is required.

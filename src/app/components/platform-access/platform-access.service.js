@@ -58,7 +58,7 @@
                 .catch(getPlatformAccessError);
 
             function getPlatformAccessSuccess(response) {
-                return response.data;
+                return response;
             }
 
             function getPlatformAccessError(error) {
@@ -85,7 +85,7 @@
         }
 
         function update(platformAccess) {
-            return resource.update({platformId : platformAccess.id}, platformAccess)
+            return resource.update({platformId : platformAccess.id}, toPayloadFormat(platformAccess))
                 .$promise
                 .then(onSaveSuccess)
                 .catch(onSaveError);
@@ -130,6 +130,9 @@
             var tmp = Object.assign({}, platformAccess);
 
             delete tmp.announcer;
+            delete tmp.$promise;
+            delete tmp.$resolved;
+            delete tmp.id;
 
             return tmp;
         }

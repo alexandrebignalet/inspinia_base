@@ -2,11 +2,14 @@
     <div class="ibox">
         <h4><i class="fa fa-briefcase"></i> <span translate="company.informations"> Informations</span></h4>
         <div class="ibox-content">
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-6" ng-class="{ 'has-error' : (editForm.name.$invalid && !editForm.name.$pristine), 'has-success': editForm.name.$valid}">
                 <label for="company_name" translate="company.name">Name</label>
-                <input class="form-control" id="company_name" name="name" ng-model="vm.company.name" type="text"
-                       minlength="3" maxlength="50" required/>
-                <div ng-show="editForm.name.$invalid">
+                <div class="input-group m-b">
+                    <span class="input-group-addon"><i class="fa fa-{{ editForm.name.$invalid ? 'times' : 'check'}}"></i></span>
+                    <input class="form-control" id="company_name" name="name" ng-model="vm.company.name" type="text"
+                           minlength="3" maxlength="50" required/>
+                </div>
+                <div ng-show="editForm.name.$invalid && !editForm.name.$pristine">
                     <p class="help-block"
                        ng-show="editForm.name.$error.required" translate="global.entity.validation.required">
                         This field is required.
@@ -24,15 +27,18 @@
                 </div>
             </div>
 
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-6" ng-class="{ 'has-error' : (editForm.phone.$invalid && !editForm.phone.$pristine), 'has-success': editForm.phone.$valid}">
                 <div class="form-group">
                     <label class="control-label" for="company_phone" translate="company.phone">Phone</label>
-                    <input type="text" class="form-control"
-                           name="phone" id="company_phone" ng-model="vm.company.phone"
-                           minlength="6" maxlength="15"
-                           required/>
+                    <div class="input-group m-b">
+                        <span class="input-group-addon"><i class="fa fa-{{ editForm.phone.$invalid ? 'times' : 'check'}}"></i></span>
+                        <input type="text" class="form-control"
+                               name="phone" id="company_phone" ng-model="vm.company.phone"
+                               minlength="6" maxlength="15"
+                               required/>
+                    </div>
                 </div>
-                <div ng-show="editForm.phone.$invalid">
+                <div ng-show="editForm.phone.$invalid && !editForm.phone.$pristine">
                     <p class="help-block"
                        ng-show="editForm.phone.$error.required" translate="global.entity.validation.required">
                         This field is required.
@@ -51,14 +57,17 @@
             </div>
         </div>
         <div class="ibox-content">
-            <div class="form-group col-md-9">
+            <div class="form-group col-md-9" ng-class="{ 'has-error' : (editForm.numTva.$invalid && !editForm.numTva.$pristine), 'has-success': editForm.numTva.$valid}">
                 <div class="form-group">
                     <label class="control-label" for="company_numTva" translate="company.numTva">No TVA</label>
-                    <input type="text" class="form-control" name="numTva" id="company_numTva"
-                           ng-model="vm.company.num_tva" required
-                           min="2" max="30"/>
+                    <div class="input-group m-b">
+                        <span class="input-group-addon"><i class="fa fa-{{ editForm.numTva.$invalid ? 'times' : 'check'}}"></i></span>
+                        <input type="text" class="form-control" name="numTva" id="company_numTva"
+                               ng-model="vm.company.num_tva" required
+                               min="2" max="30"/>
+                    </div>
                 </div>
-                <div ng-show="editForm.numTva.$invalid">
+                <div ng-show="editForm.numTva.$invalid && !editForm.numTva.$pristine">
                     <p class="help-block"
                        ng-show="editForm.numTva.$error.required" translate="global.entity.validation.required">
                         This field is required.
@@ -76,13 +85,16 @@
                 </div>
             </div>
 
-            <div class="form-group col-md-3">
+            <div class="form-group col-md-3" ng-class="{ 'has-error' : (editForm.percentTva.$invalid && !editForm.percentTva.$pristine), 'has-success': editForm.percentTva.$valid}">
                 <div class="form-group">
                     <label class="control-label" for="company_percentTva" translate="company.percentTva">Percent VAT</label>
-                    <input type="number" class="form-control" name="percentTva" id="company_percentTva"
-                           ng-model="vm.company.percent_tva" required min="0"/>
+                    <div class="input-group m-b">
+                        <span class="input-group-addon"><i class="fa fa-{{ editForm.percentTva.$invalid ? 'times' : 'check'}}"></i></span>
+                        <input type="number" class="form-control" name="percentTva" id="company_percentTva"
+                               ng-model="vm.company.percent_tva" required min="0"/>
+                    </div>
                 </div>
-                <div ng-show="editForm.percentTva.$invalid">
+                <div ng-show="editForm.percentTva.$invalid && !editForm.percentTva.$pristine">
                     <p class="help-block"
                        ng-show="editForm.percentTva.$error.required" translate="global.entity.validation.required">
                         This field is required.
@@ -100,13 +112,16 @@
             </div>
         </div>
         <div class="ibox-content">
-            <div class="form-group col-md-5">
+            <div class="form-group col-md-5" ng-class="{ 'has-error' : (editForm.paymentPeriod.$invalid && !editForm.paymentPeriod.$pristine), 'has-success': editForm.paymentPeriod.$valid}">
                 <div class="form-group">
                     <label class="control-label" for="company_paymentPeriod" translate="company.paymentPeriod.name">Payment period</label>
-                    <select class="form-control" name="paymentPeriod" id="company_paymentPeriod"
-                            ng-options="option.value as option.name for option in vm.paymentPeriodOptions"
-                            ng-model="vm.company.payment_period" required>
-                    </select>
+                    <div class="input-group m-b">
+                        <span class="input-group-addon"><i class="fa fa-{{ editForm.paymentPeriod.$invalid ? 'times' : 'check'}}"></i></span>
+                        <select class="form-control" name="paymentPeriod" id="company_paymentPeriod"
+                                ng-options="option.value as option.name for option in vm.paymentPeriodOptions"
+                                ng-model="vm.company.payment_period" required>
+                        </select>
+                    </div>
                 </div>
                 <div ng-show="editForm.paymentPeriod.$invalid">
                     <p class="help-block"
@@ -116,17 +131,20 @@
                 </div>
             </div>
 
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-4"  ng-class="{ 'has-error' : (editForm.invoiceDeliveryDay.$invalid && !editForm.invoiceDeliveryDay.$pristine), 'has-success': editForm.invoiceDeliveryDay.$valid}">
                 <div class="form-group">
                     <label class="control-label" for="company_invoiceDeliveryDay"
                            translate="company.invoiceDeliveryDay">
                         Invoice delivery day
                     </label>
-                    <input type="number" max="31" min="1" ng-model="vm.company.invoice_delivery_day"
-                           class="form-control" name="invoiceDeliveryDay"
-                           id="company_invoiceDeliveryDay" required />
+                    <div class="input-group m-b">
+                        <span class="input-group-addon"><i class="fa fa-{{ editForm.invoiceDeliveryDay.$invalid ? 'times' : 'check'}}"></i></span>
+                        <input type="number" max="31" min="1" ng-model="vm.company.invoice_delivery_day"
+                               class="form-control" name="invoiceDeliveryDay"
+                               id="company_invoiceDeliveryDay" required />
+                    </div>
                 </div>
-                <div ng-show="editForm.invoiceDeliveryDay.$invalid">
+                <div ng-show="editForm.invoiceDeliveryDay.$invalid && !editForm.invoiceDeliveryDay.$pristine">
                     <p class="help-block"
                        ng-show="editForm.invoiceDeliveryDay.$error.number" translate="global.entity.validation.number">
                         This field must be a number.

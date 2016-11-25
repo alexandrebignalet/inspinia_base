@@ -98,8 +98,8 @@
                         return PlatformAccess.get($stateParams.id);
                     }]
                 },
-                onEnter: ['PlatformAccessDialogService',
-                    function(PlatformAccessDialogService) {
+                onEnter: ['PlatformAccessDialogService', 'platformAccess',
+                    function(PlatformAccessDialogService,platformAccess) {
                         PlatformAccessDialogService.openDialogModal(platformAccess);
                     }]
 

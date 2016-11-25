@@ -14,13 +14,16 @@
             </div>
         </div>
 
-        <div class="form-group col-md-5">
+        <div class="form-group col-md-5" ng-class="{ 'has-error' : (editForm.firstname.$invalid && !editForm.firstname.$pristine), 'has-success': editForm.firstname.$valid}">
             <div class="form-group">
                 <label class="control-label" for="contact_firstname" translate="contact.firstname">Firstname</label>
-                <input type="text" class="form-control" name="firstname" id="contact_firstname"
-                       ng-model="vm.contact.firstname" required minlength="3" maxlength="50"/>
+                <div class="input-group m-b">
+                    <span class="input-group-addon"><i class="fa fa-{{ editForm.firstname.$invalid ? 'times' : 'check'}}"></i></span>
+                    <input type="text" class="form-control" name="firstname" id="contact_firstname"
+                           ng-model="vm.contact.firstname" required minlength="3" maxlength="50"/>
+                </div>
             </div>
-            <div ng-show="editForm.firstname.$invalid">
+            <div ng-show="editForm.firstname.$invalid && !editForm.firstname.$pristine">
                 <p class="help-block"
                    ng-show="editForm.firstname.$error.required" translate="global.entity.validation.required">
                     This field is required.
@@ -38,13 +41,16 @@
             </div>
         </div>
 
-        <div class="form-group col-md-5">
+        <div class="form-group col-md-5" ng-class="{ 'has-error' : (editForm.surname.$invalid && !editForm.surname.$pristine), 'has-success': editForm.surname.$valid}">
             <div class="form-group">
                 <label class="control-label" for="contact_surname" translate="contact.surname">Surname</label>
-                <input type="text" class="form-control" name="surname" id="contact_surname"
-                       ng-model="vm.contact.surname" required minlength="3" maxlength="50"/>
+                <div class="input-group m-b">
+                    <span class="input-group-addon"><i class="fa fa-{{ editForm.surname.$invalid ? 'times' : 'check'}}"></i></span>
+                    <input type="text" class="form-control" name="surname" id="contact_surname"
+                           ng-model="vm.contact.surname" required minlength="3" maxlength="50"/>
+                </div>
             </div>
-            <div ng-show="editForm.surname.$invalid">
+            <div ng-show="editForm.surname.$invalid && !editForm.surname.$pristine">
                 <p class="help-block"
                    ng-show="editForm.surname.$error.required" translate="global.entity.validation.required">
                     This field is required.
@@ -66,12 +72,15 @@
     <hr>
 
     <div class="row">
-        <div class="form-group col-md-12">
+        <div class="form-group col-md-12" ng-class="{ 'has-error' : (editForm.mail.$invalid && !editForm.mail.$pristine), 'has-success': editForm.mail.$valid}">
             <div class="form-group">
                 <label class="control-label" for="contact_mail" translate="contact.email">Mail</label>
-                <input type="email" class="form-control" name="mail" id="contact_mail" ng-model="vm.contact.mail" required/>
+                <div class="input-group m-b">
+                    <span class="input-group-addon"><i class="fa fa-{{ editForm.mail.$invalid ? 'times' : 'check'}}"></i></span>
+                    <input type="email" class="form-control" name="mail" id="contact_mail" ng-model="vm.contact.mail" required/>
+                </div>
             </div>
-            <div ng-show="editForm.mail.$invalid">
+            <div ng-show="editForm.mail.$invalid && !editForm.mail.$pristine">
                 <p class="help-block"
                    ng-show="editForm.mail.$error.required" translate="global.entity.validation.required">
                     This field is required.
@@ -83,13 +92,16 @@
             </div>
         </div>
 
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-6" ng-class="{ 'has-error' : (editForm.phone.$invalid && !editForm.phone.$pristine), 'has-success': editForm.phone.$valid}">
             <div class="form-group">
                 <label class="control-label" for="contact_phone" translate="contact.phone">Phone</label>
-                <input type="text" class="form-control" name="phone" id="contact_phone" ng-model="vm.contact.phone"
+                <div class="input-group m-b">
+                    <span class="input-group-addon"><i class="fa fa-{{ editForm.phone.$invalid ? 'times' : 'check'}}"></i></span>
+                    <input type="text" class="form-control" name="phone" id="contact_phone" ng-model="vm.contact.phone"
                        required minlength="3" maxlength="15"/>
+                </div>
             </div>
-            <div ng-show="editForm.phone.$invalid">
+            <div ng-show="editForm.phone.$invalid && !editForm.phone.$pristine">
                 <p class="help-block"
                    ng-show="editForm.phone.$error.required" translate="global.entity.validation.required">
                     This field is required.
@@ -107,13 +119,16 @@
             </div>
         </div>
 
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-6" ng-class="{ 'has-error' : (editForm.skype.$invalid && !editForm.skype.$pristine), 'has-success': editForm.skype.$valid}">
             <div class="form-group">
                 <label class="control-label" for="contact_skype">Skype</label>
-                <input type="text" class="form-control" name="skype" id="contact_skype"
+                <div class="input-group m-b">
+                    <span class="input-group-addon"><i class="fa fa-{{ editForm.skype.$invalid ? 'times' : 'check'}}"></i></span>
+                    <input type="text" class="form-control" name="skype" id="contact_skype"
                        ng-model="vm.contact.skype" required minlength="3" maxlength="50"/>
+                </div>
             </div>
-            <div ng-show="editForm.skype.$invalid">
+            <div ng-show="editForm.skype.$invalid && !editForm.skype.$pristine">
                 <p class="help-block"
                    ng-show="editForm.skype.$error.required" translate="global.entity.validation.required">
                     This field is required.
@@ -136,7 +151,6 @@
 
     <div class="row">
         <div class="form-group col-md-4" ng-if="vm.companies">
-            <label for="contact_company" translate="contact.company">Company</label>
             <label class="control-label" for="contact_company" translate="contact.company">Company</label>
             <ui-select ng-model="vm.contact.company" theme="bootstrap" id="contact_company">
                 <ui-select-match placeholder="Select a company in the list...">{{$select.selected.name}}</ui-select-match>
@@ -166,13 +180,16 @@
             </div>
         </div>
 
-        <div ng-class="{'form-group col-md-4': vm.companies !== undefined, 'form-group col-md-6': vm.companies === undefined}">
+        <div ng-class="{'form-group col-md-4': vm.companies !== undefined, 'form-group col-md-6': vm.companies === undefined, 'has-error' : (editForm.fonction.$invalid && !editForm.fonction.$pristine), 'has-success': editForm.fonction.$valid}">
             <div class="form-group">
                 <label class="control-label" for="contact_fonction" translate="contact.fonction">Fonction</label>
-                <input type="text" class="form-control" name="fonction" id="contact_fonction"
+                <div class="input-group m-b">
+                    <span class="input-group-addon"><i class="fa fa-{{ editForm.fonction.$invalid ? 'times' : 'check'}}"></i></span>
+                    <input type="text" class="form-control" name="fonction" id="contact_fonction"
                        ng-model="vm.contact.fonction" required minlength="3" maxlength="50"/>
+                </div>
             </div>
-            <div ng-show="editForm.fonction.$invalid">
+            <div ng-show="editForm.fonction.$invalid && !editForm.fonction.$pristine">
                 <p class="help-block"
                    ng-show="editForm.fonction.$error.required" translate="global.entity.validation.required">
                     This field is required.

@@ -9,7 +9,7 @@
                         <small></small>
                     </h5>
                     <div class="ibox-tools">
-                        <a ui-sref="announcer.platform-access.create" class="btn btn-primary b-r-xs"><span translate="announcer.platform-access.add">Add Platform Access</span></a>
+                        <button ui-sref="announcer.platform-access.create" class="btn btn-outline btn-primary b-r-xs"><span translate="announcer.platform-access.add">Add Platform Access</span></button>
                     </div>
                 </div>
                 <div class="ibox-content">
@@ -27,7 +27,7 @@
                         <tbody>
                             <tr ng-repeat="announcer in vm.announcers">
                                 <td>{{announcer.announcer}}
-                                    <a ui-sref="announcer.platform-access.createForAnnouncer({announcerId: announcer.id})" class="btn btn-xs btn-primary pull-right" role="button">
+                                    <a ui-sref="announcer.platform-access.createForAnnouncer({announcerId: announcer.id})" class="btn btn-outline btn-xs btn-primary pull-right" role="button">
                                         <span class="fa fa-plus"></span>
                                     </a>
                                 </td>
@@ -35,8 +35,8 @@
                                     <p ng-repeat="platform in announcer.platform_access">
                                         {{ platform.username }}
                                         <span class="pull-right">
-                                            <a ui-sref="announcer.platform-access.edit({id: platform.id})" class="btn btn-xs btn-white"><i class="fa fa-edit"></i>  </a>
-                                            <a ui-sref="announcer.platform-access.delete({id: platform.id})" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i>  </a>
+                                            <button ui-sref="announcer.platform-access.edit({id: platform.id})" class="btn btn-outline btn-xs btn-white"><i class="fa fa-edit"></i></button>
+                                            <button ui-sref="announcer.platform-access.delete({id: platform.id})" class="btn btn-outline btn-xs btn-danger"><i class="fa fa-trash"></i>  </button>
                                         </span>
                                     </p>
                                 </td>

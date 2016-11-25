@@ -19,12 +19,13 @@
             </tbody>
         </table>
     </div>
-    <div class="form-group">
+    <div class="form-group" ng-class="{ 'has-error' : editForm.name.$invalid && !editForm.name.$pristine, 'has-success': editForm.name.$valid}">
         <label class="control-label" translate="database.name" for="database_name">Name</label>
-        <div>
+        <div class="input-group m-b">
+            <span class="input-group-addon"><i class="fa fa-{{ editForm.name.$invalid ? 'times' : 'check'}}"></i></span>
             <input id="database_name" type="text" class="form-control" name="name" ng-model="vm.database.name" required  />
         </div>
-        <div ng-show="editForm.name.$invalid">
+        <div ng-show="editForm.name.$invalid && !editForm.name.$pristine">
             <p class="help-block"
                ng-show="editForm.name.$error.required" translate="global.entity.validation.required">
                 This field is required.
@@ -49,9 +50,10 @@
             </p>
         </div>
     </div>
-    <div class="form-group">
+    <div class="form-group"  ng-class="{ 'has-error' : editForm.type.$invalid && !editForm.type.$pristine, 'has-success': editForm.type.$valid}">
         <label class="control-label" translate="database.type" for="database_type">Type</label>
-        <div>
+        <div class="input-group m-b">
+            <span class="input-group-addon"><i class="fa fa-{{ editForm.type.$error.required ? 'times' : 'check'}}"></i></span>
             <select class="form-control" ng-model="vm.database.type" name="type" id="database_type" required>
                 <option value=""></option>
                 <option value="External">External</option>

@@ -1,24 +1,31 @@
 
-<div class="contact-box">
-
+<div class="ibox">
+    <div class="ibox-content">
         <div class="col-sm-4">
 
             <div class="text-center">
-                <img alt="image" class="img-circle m-t-xs img-responsive" src="assets/images/patterns/toto.jpg">
+                <img alt="image" class="img-circle m-t-xs img-thumbnail" src="assets/images/patterns/toto.jpg">
 
                 <div class="m-t-xs font-bold">{{ vm.contact.fonction }}</div>
             </div>
         </div>
         <div class="col-sm-8">
-            <div>
-
-
-                <small> {{vm.contact.civility }}</small>
+            <div class="m-b-lg">
 
                 <h3>
-                    <strong>{{ vm.contact.firstname }} {{ vm.contact.surname }}</strong>
-                    <a class="text-danger pull-right" ui-sref="contact.delete({contactId: vm.contact.id})"><i class="fa fa-trash"></i></a>
-                    <a class="text-info pull-right" ui-sref="contact.edit({contactId: vm.contact.id})"><i class="fa fa-pencil"></i></a>
+                    <small>{{ vm.contact.civility }}</small>
+                    <div class="pull-right">
+                        <a ui-sref="contact.edit({contactId: vm.contact.id})"><button class="btn btn-outline btn-sm btn-primary">
+                            <span class="fa fa-pencil"></span>
+                        </button></a>
+                        <a ui-sref="contact.delete({contactId: vm.contact.id})"><button class="btn btn-outline btn-sm btn-danger">
+                            <span class="fa fa-trash"></span>
+                        </button></a>
+                    </div>
+
+                    <br>
+                    <span>{{ vm.contact.firstname }} {{ vm.contact.surname }}</span>
+
                 </h3>
             </div>
             <hr>
@@ -28,6 +35,6 @@
             <p><i class="fa fa-phone"></i> {{vm.contact.phone }}</p>
         </div>
         <div class="clearfix"></div>
-
+    </div>
 </div>
 

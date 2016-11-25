@@ -4,10 +4,13 @@
 
         <div class="row">
 
-            <div class="form-group col-md-5" ng-class="{ 'has-error' : editForm.announcer.$invalid && !editForm.announcer.$pristine}">
+            <div class="form-group col-md-5" ng-class="{ 'has-error' : editForm.announcer.$invalid && !editForm.announcer.$pristine, 'has-success': editForm.announcer.$valid}">
                 <div class="form-group">
                     <label class="control-label" for="announcer_announcer" translate="announcer.announcer">Announcer</label>
-                    <input ng-minlength="3" ng-maxlength="30" type="text" class="form-control" name="announcer" id="announcer_announcer" ng-model="vm.announcer.announcer" required/>
+                    <div class="input-group m-b">
+                        <span class="input-group-addon"><i class="fa fa-{{ editForm.announcer.$invalid ? 'times' : 'check'}}"></i></span>
+                        <input ng-minlength="3" ng-maxlength="30" type="text" class="form-control" name="announcer" id="announcer_announcer" ng-model="vm.announcer.announcer" required/>
+                    </div>
                 </div>
                 <div ng-show="editForm.announcer.$invalid && !editForm.announcer.$pristine">
                     <p class="help-block" ng-show="editForm.announcer.$error.required">
