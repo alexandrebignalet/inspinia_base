@@ -6,9 +6,10 @@
         controller: AnnouncerFormController,
         controllerAs: 'vm',
         bindings: {
-            entity: '<',
+            announcer: '<',
             companies: '<',
             contacts: '<',
+            isSaving: '<',
             onSaveEntity: '&'
         }
     };
@@ -19,6 +20,7 @@
 
     AnnouncerFormController.$inject = ['COUNTRIES'];
 
+
     /* @ngInject */
     function AnnouncerFormController(COUNTRIES) {
         var vm = this;
@@ -26,16 +28,18 @@
         vm.save = save;
 
         vm.$onInit = function() {
-            vm.announcer =  vm.entity;
+            vm.announcer.useCompanyAddress = (vm.announcer.address != '' && vm.announcer.address != null);
             vm.countries = COUNTRIES;
-            console.log(vm.countries);
         };
 
         // TODO : USE EVENT
 
         function save() {
-            console.log(vm.announcer);
-            vm.onSaveEntity({announcer: vm.announcer});
+            vm.onSaveEntity({
+                $event: {
+                    announcer: vm.announcer
+                }
+            });
         }
     }
 

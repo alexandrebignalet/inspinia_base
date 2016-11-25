@@ -1,22 +1,22 @@
 (function () {
     'use strict';
 
-    var databaseActivate = {
+    var entityActivate = {
         template: '<div>'+
         '<button type="button"' +
         'ng-disabled="vm.isSaving" ng-click="vm.update()"' +
         ' ng-class="{' +
-        '\'btn btn-primary btn-circle\': vm.database.active,' +
-        '\'btn btn-danger btn-circle btn-outline\': !vm.database.active' +
+        '\'btn btn-primary btn-circle\': vm.entity.active,' +
+        '\'btn btn-danger btn-circle btn-outline\': !vm.entity.active' +
         '}">' +
         '<span class="fa fa-power-off"></span>'+
         '</button>'+
         '</div>',
 
-        controller: DatabaseActivateController,
+        controller: EntityActivateController,
         controllerAs: 'vm',
         bindings: {
-            database: '<',
+            entity: '<',
             authorize: '<',
             onActivate: '&',
             isSaving: '<'
@@ -25,29 +25,33 @@
 
     angular
         .module('dataToolApp')
-        .component('databaseActivate', databaseActivate);
+        .component('entityActivate', entityActivate);
 
-    DatabaseActivateController.$inject = [];
+    EntityActivateController.$inject = [];
 
     /* @ngInject */
-    function DatabaseActivateController() {
+    function EntityActivateController() {
         var vm = this;
         vm.update = update;
 
+        vm.$onInit = function() {
+            console.log(vm.entity);
+        }
+
         vm.$onChanges = function(changes) {
-            if (changes.database) {
-                vm.database = Object.assign({}, vm.database);
+            if (changes.entity) {
+                vm.entity = Object.assign({}, vm.entity);
             }
         };
 
         function update(){
             if (!vm.authorize) return;
 
-            vm.database.active = !vm.database.active;
+            vm.entity.active = !vm.entity.active;
 
             vm.onActivate({
                 $event: {
-                    database: vm.database
+                    entity: vm.entity
                 }
             });
         }

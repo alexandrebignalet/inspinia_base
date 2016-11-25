@@ -13,15 +13,17 @@
         var resourceUrl = API_BASE_URL+'/api/announcers/:id';
 
         var resource = $resource(resourceUrl, {}, {
-            'update': {method: 'PUT'}
+            'update': {method: 'PATCH'}
         });
 
         /////////////////////////////////////////////
 
         var service = {
-            initAnnouncer: initAnnouncer,
+            init: init,
             getAll: getAll,
-            get: get
+            get: get,
+            save: save,
+            update: update
         };
 
         return service;
@@ -71,11 +73,33 @@
                 .catch(onError);
 
             function onSuccess() {
-                //ToastrService.
+                ToastrService.success('Announcer created','SUCCESS')
+            }
+
+            function onError(error) {
+                ToastrService.error('Impossible to create Announcer','XHR Error');
+                return $q.reject(error);
             }
         }
 
-        function initAnnouncer() {
+        function update(announcer) {
+            return resource.update({id: announcer.id},toPayloadFormat(announcer))
+                .$promise
+                .then(onSuccess)
+                .catch(onError);
+
+            function onSuccess() {
+                ToastrService.success('Announcer updated','SUCCESS')
+            }
+
+            function onError(error) {
+                ToastrService.error('Impossible to update Announcer','XHR Error');
+                return $q.reject(error);
+            }
+        }
+
+
+        function init() {
             var announcer = {
                 announcer: '',
                 country: '',
@@ -84,9 +108,48 @@
                 reinerouge_id: '',
                 contacts: [],
                 address: ''
-            }
+            };
 
             return announcer;
+        }
+
+        function toPayloadFormat(announcer) {
+            var tmp = Object.assign({}, announcer);
+            var contacts = [];
+
+            if( tmp.useCompanyAddress ){
+                tmp.address = {id: tmp.company.address.id }
+            } else {
+                tmp.address = '';
+            }
+
+            if( tmp.company ) {
+                tmp.company = {id: tmp.company.id }
+            }
+
+            if( tmp.contacts.length > 0 ) {
+                angular.forEach( tmp.contacts, function(contact) {
+                    if(contact.id) {
+                        contacts.push({id: contact.id})
+                    } else {
+                        contacts.push({id: contact})
+                    }
+
+                });
+
+                tmp.contacts = contacts;
+            }
+
+            delete tmp.click_domain;
+            delete tmp.platform_access;
+            delete tmp.useCompanyAddress;
+            delete tmp.$resolved;
+            delete tmp.$promise;
+            delete tmp.id;
+
+            console.log(tmp);
+
+            return tmp;
         }
     }
 

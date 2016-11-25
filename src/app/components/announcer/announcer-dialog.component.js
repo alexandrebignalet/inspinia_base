@@ -34,25 +34,26 @@
             vm.modalInstance.dismiss();
         }
 
-        function saveEntity(announcer) {
+        function saveEntity($event) {
 
             vm.isSaving = true;
 
-            if( announcer.id ) {
-                Announcer.update(announcer)
+            if( $event.announcer.id ) {
+                Announcer.update($event.announcer)
                     .then(success)
                     .catch(error);
             } else {
-                Announcer.save(announcer)
+                Announcer.save($event.announcer)
                     .then(success)
                     .catch(error);
             }
 
             function error() {
-
+                vm.isSaving = false;
             }
 
             function success() {
+                vm.isSaving = false;
                 vm.modalInstance.close('success');
             }
 

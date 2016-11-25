@@ -9,6 +9,13 @@
         "reine_rouge_id": "ID Reine Rouge",
         "contacts": "Contacts",
         "company": "Companie",
+        "platform": "Platform",
+        "street" : "Rue",
+        "town" : "Ville",
+        "zipcode" : "CP",
+        "activate.msg": "Annonceur activé.",
+        "desactivate.msg": "Annonceur désactivé.",
+        "save": "Enregistrer l'annonceur",
         "platform-access": {
             "add": "Ajouter un accès platform",
             "username": "Nom d'utilisateur",
