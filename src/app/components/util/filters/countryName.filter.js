@@ -11,9 +11,14 @@
         ////////////////
 
         function countryNameFilter(item) {
-            var country = $filter("filter")(COUNTRIES, {code: item},true);
+            console.log(item);
+            if(item != '' && item.length == 2){
+                var country = $filter("filter")(COUNTRIES, {code: item},true);
 
-            return country[0].name;
+                return country[0].name;
+            } else {
+                return item;
+            }
         }
     }
 

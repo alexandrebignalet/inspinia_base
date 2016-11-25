@@ -13,6 +13,7 @@
         "street" : "Street",
         "town" : "Town",
         "zipcode" : "Zipcode",
+        "address" : "Address",
         "activate.msg": "Announceur enabled.",
         "desactivate.msg": "Annonceur disabled.",
         "save": "Save announcer",
@@ -21,6 +22,6 @@
             "username": "Username",
             "password": "Password",
             "description": "Description"
-    }
+        }
     }
 }

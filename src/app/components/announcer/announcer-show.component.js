@@ -20,6 +20,10 @@
     function AnnouncerShowController() {
         var vm = this;
 
+        vm.$onChanges = function(obj) {
+            console.log(obj);
+        }
+
     }
 })();
 
