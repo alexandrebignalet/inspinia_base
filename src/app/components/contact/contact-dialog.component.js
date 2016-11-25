@@ -19,9 +19,10 @@
 
     /* @ngInject */
     function ContactDialogController(Contact) {
-        var vm              = this;
-        vm.clear            = clear;
-        vm.saveEntity       = saveEntity;
+        var vm = this;
+
+        vm.clear = clear;
+        vm.onSave = onSave;
 
         vm.$onInit = function () {
             vm.companies = vm.resolve.companies;
@@ -32,26 +33,27 @@
             vm.modalInstance.dismiss();
         }
 
-        function saveEntity(contact) {
+        function onSave($event) {
 
             vm.isSaving = true;
 
-            if( contact.id ) {
-                Contact.update(contact)
+            if( $event.contact.id ) {
+                Contact.update($event.contact)
                     .then(success)
                     .catch(error);
             } else {
-                Contact.save(contact)
-                    .then(success)
-                    .catch(error);
+                Contact.save($event.contact)
+                    .then(onSuccess)
+                    .catch(onError);
             }
 
-            function error() {
-
+            function onError() {
+                vm.isSaving = false;
             }
 
-            function success() {
-                vm.modalInstance.close('success');
+            function onSuccess(entity) {
+                vm.isSaving = false;
+                vm.modalInstance.close(entity);
             }
 
 

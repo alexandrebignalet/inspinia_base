@@ -34,13 +34,14 @@
                 "required": "Este campo es necesario.",
                 "minlength": "Este campo debe contener {{ min }} carácteres.",
                 "maxlength": "Este campo cannot be longer than {{ max }} characters.",
-                "min": "Este campo should be more than {{ min }}.",
-                "max": "Este field cannot be more than {{ max }}.",
-                "minbytes": "This campo should be more than {{ min }} bytes.",
-                "maxbytes": "This campo cannot be more than {{ max }} bytes.",
-                "pattern": "This campo should follow pattern {{ pattern }}.",
-                "number": "This campo should be a number.",
-                "datetimelocal": "This campo should be a date and time."
+                "min": "Este campo debe hacer más de {{ min }}.",
+                "max": "Este field no puede ser más de {{ max }}.",
+                "minbytes": "Este campo debe hacer más de {{ min }} bytes.",
+                "maxbytes": "Este campo no puede ser más de {{ max }} bytes.",
+                "pattern": "Este campo debe seguir el pattern {{ pattern }}.",
+                "number": "Este campo debe ser un número.",
+                "datetimelocal": "Este campo debe ser una fecha con tiempo.",
+                "email": "Email no es correcto."
             }
         }
     }

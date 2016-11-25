@@ -1,5 +1,6 @@
 {
     "address": {
+        "address": "Address",
         "list": "Addresses list",
         "create": "Create or edit an address",
         "delete": "Delete",
@@ -11,6 +12,10 @@
         "confirm": {
             "delete": "Confirm delete address",
             "msg": "Are you sure you want to delete this address ?"
+        },
+        "action":{
+            "update": "Update address",
+            "save": "Save address"
         }
     }
 }

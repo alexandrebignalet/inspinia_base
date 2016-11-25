@@ -6,9 +6,10 @@
         controller: ContactFormController,
         controllerAs: 'vm',
         bindings: {
-            entity: '<',
+            contact: '<',
             companies: '<',
-            onSaveEntity: '&'
+            onSaveContact: '&',
+            isSaving: '<'
         }
     };
 
@@ -16,34 +17,30 @@
         .module('dataToolApp')
         .component('contactForm', contactForm);
 
-    ContactFormController.$inject = [];
+    ContactFormController.$inject = ['TYPE_BILLING', 'TYPE_COMMERCIAL'];
 
     /* @ngInject */
-    function ContactFormController() {
+    function ContactFormController(TYPE_BILLING, TYPE_COMMERCIAL) {
         var vm = this;
-        vm.isSaving = false;
-        vm.save = save;
+        vm.onSubmit = onSubmit;
 
         vm.types = [
-            'Billing',
-            'Commercial'
+            TYPE_BILLING,
+            TYPE_COMMERCIAL
         ];
 
-        vm.civilities = [
-            'Monsieur',
-            'Madame'
-        ];
-
-        vm.$onInit = function() {
-            vm.contact =  vm.entity;
-            if( vm.contact.company ) {
-                vm.contact.company = parseInt(vm.contact.company.id);
+        vm.$onChange = function(changes){
+            if(changes.contact){
+                vm.contact = changes.contact;
             }
-            console.log(vm.contact);
         };
 
-        function save() {
-            vm.onSaveEntity({contact: vm.contact});
+        function onSubmit() {
+            vm.onSaveContact({
+                $event: {
+                    contact: vm.contact
+                }
+            });
         }
     }
 

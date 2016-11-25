@@ -112,12 +112,12 @@
                 phone: null,
                 numTva: null,
                 percentTva: null,
-                databases: null,
+                databases: [],
                 mgGlobal: null,
                 paymentPeriod: null,
                 invoiceDeliveryDay: null,
                 quickBooksId: null,
-                contacts: null,
+                contacts: [],
                 address: null
             };
         }
@@ -126,6 +126,26 @@
             var tmp = Object.assign({}, company);
 
             delete tmp.id;
+
+            tmp.address = company.address.id;
+
+            tmp.paymentPeriod = +tmp.paymentPeriod;
+
+            if (tmp.contacts.length > 0){
+                var array = [];
+                for(var i = 0; i < tmp.contacts.length; i++){
+                    array.push({'id': tmp.contacts[i]['id']});
+                }
+                tmp.contacts = array;
+            }
+
+            if (tmp.databases.length > 0){
+                var array = [];
+                for(var i = 0; i < tmp.databases.length; i++){
+                    array.push({'id': tmp.databases[i]['id']});
+                }
+                tmp.databases = array;
+            }
 
             return tmp;
         }

@@ -3,6 +3,8 @@
         "company": "Entreprise",
         "list": "Liste des entreprises",
         "create": "Créer ou éditer une entreprise",
+        "save": "Enregistrer l'entreprise",
+        "new": "Créer une nouvelle entreprise",
         "name": "Nom",
         "phone": "Téléphone",
         "numTva": "Num. TVA",
@@ -12,9 +14,14 @@
             "name": "Délai de paiement",
             "0": "À la reception de la facture"
         },
+        "informations": "Informations",
         "contacts": "Contacts",
         "address": "Adresse",
         "mgGlobal": "Minimum garanti global",
-        "invoiceDeliveryDay": "Date de réception factures"
+        "invoiceDeliveryDay": "Date de réception factures",
+        "validation": {
+            "billing": "Une entreprise ne peut avoir qu'un seul contat facturation.",
+            "address": "Une entreprise doit avoir une adresse."
+        }
     }
 }

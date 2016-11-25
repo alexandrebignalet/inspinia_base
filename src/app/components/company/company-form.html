@@ -1,166 +1,237 @@
 <form name="editForm" ng-submit="vm.onSubmit()">
-    <div class="row">
-        <div class="form-group col-md-6">
-            <label for="company_name" translate="company.name">Name</label>
-            <input class="form-control" id="company_name" name="name" ng-model="vm.company.name" type="text" required/>
-            <div ng-show="editForm.name.$invalid">
-                <p class="help-block"
-                   ng-show="editForm.name.$error.required">
-                    This field is required.
-                </p>
+    <div class="ibox">
+        <h4><i class="fa fa-briefcase"></i> <span translate="company.informations"> Informations</span></h4>
+        <div class="ibox-content">
+            <div class="form-group col-md-6">
+                <label for="company_name" translate="company.name">Name</label>
+                <input class="form-control" id="company_name" name="name" ng-model="vm.company.name" type="text"
+                       minlength="3" maxlength="50" required/>
+                <div ng-show="editForm.name.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.name.$error.required" translate="global.entity.validation.required">
+                        This field is required.
+                    </p>
+                    <p class="help-block"
+                       ng-show="editForm.name.$error.minlength"
+                       translate="global.entity.validation.minlength"
+                       translate-values="{min:3}" >
+                    </p>
+                    <p class="help-block"
+                       ng-show="editForm.name.$error.maxlength"
+                       translate="global.entity.validation.maxlength"
+                       translate-values="{max:50}" >
+                    </p>
+                </div>
             </div>
-        </div>
 
-        <div class="form-group col-md-6">
-            <div class="form-group">
-                <label class="control-label" for="company_phone" translate="company.phone">Phone</label>
-                <input type="tel" class="form-control" name="phone" id="company_phone" ng-model="vm.company.phone" required/>
-            </div>
-            <div ng-show="editForm.phone.$invalid">
-                <p class="help-block"
-                   ng-show="editForm.phone.$error.required">
-                    This field is required.
-                </p>
+            <div class="form-group col-md-6">
+                <div class="form-group">
+                    <label class="control-label" for="company_phone" translate="company.phone">Phone</label>
+                    <input type="text" class="form-control"
+                           name="phone" id="company_phone" ng-model="vm.company.phone"
+                           minlength="6" maxlength="15"
+                           required/>
+                </div>
+                <div ng-show="editForm.phone.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.phone.$error.required" translate="global.entity.validation.required">
+                        This field is required.
+                    </p>
+                    <p class="help-block"
+                       ng-show="editForm.phone.$error.minlength"
+                       translate="global.entity.validation.minlength"
+                       translate-values="{min:6}" >
+                    </p>
+                    <p class="help-block"
+                       ng-show="editForm.phone.$error.maxlength"
+                       translate="global.entity.validation.maxlength"
+                       translate-values="{max:15}" >
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="form-group col-md-9">
-            <div class="form-group">
-                <label class="control-label" for="company_numTva" translate="company.numTva">No TVA</label>
-                <input type="text" class="form-control" name="numTva" id="company_numTva" ng-model="vm.company.numTva" required/>
+        <div class="ibox-content">
+            <div class="form-group col-md-9">
+                <div class="form-group">
+                    <label class="control-label" for="company_numTva" translate="company.numTva">No TVA</label>
+                    <input type="text" class="form-control" name="numTva" id="company_numTva"
+                           ng-model="vm.company.numTva" required
+                           min="2" max="30"/>
+                </div>
+                <div ng-show="editForm.numTva.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.numTva.$error.required" translate="global.entity.validation.required">
+                        This field is required.
+                    </p>
+                    <p class="help-block"
+                       ng-show="editForm.numTva.$error.min"
+                       translate="global.entity.validation.min"
+                       translate-values="{min:2}" >
+                    </p>
+                    <p class="help-block"
+                       ng-show="editForm.numTva.$error.max"
+                       translate="global.entity.validation.max"
+                       translate-values="{max:30}" >
+                    </p>
+                </div>
             </div>
-            <div ng-show="editForm.numTva.$invalid">
-                <p class="help-block"
-                   ng-show="editForm.numTva.$error.required">
-                    This field is required.
-                </p>
-            </div>
-        </div>
 
-        <div class="form-group col-md-3">
-            <div class="form-group">
-                <label class="control-label" for="company_percentTva" translate="company.percentTva">Percent VAT</label>
-                <input type="tel" class="form-control" name="percentTva" id="company_percentTva" ng-model="vm.company.percentTva" required/>
-            </div>
-            <div ng-show="editForm.percentTva.$invalid">
-                <p class="help-block"
-                   ng-show="editForm.percentTva.$error.required">
-                    This field is required.
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="form-group col-md-6">
-            <div class="form-group">
-                <label class="control-label" for="company_paymentPeriod" translate="company.paymentPeriod.name">Payment period</label>
-                <select class="form-control" name="paymentPeriod" id="company_paymentPeriod" ng-model="vm.company.paymentPeriod" required>
-                    <option value="0" translate="company.paymentPeriod.0">On invoice received</option>
-                    <option value="10">NET 10</option>
-                    <option value="15">NET 15</option>
-                    <option value="30">NET 30</option>
-                    <option value="60">NET 60</option>
-                </select>
-            </div>
-            <div ng-show="editForm.paymentPeriod.$invalid">
-                <p class="help-block"
-                   ng-show="editForm.paymentPeriod.$error.required">
-                    This field is required.
-                </p>
+            <div class="form-group col-md-3">
+                <div class="form-group">
+                    <label class="control-label" for="company_percentTva" translate="company.percentTva">Percent VAT</label>
+                    <input type="number" class="form-control" name="percentTva" id="company_percentTva"
+                           ng-model="vm.company.percentTva" required min="0"/>
+                </div>
+                <div ng-show="editForm.percentTva.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.percentTva.$error.required" translate="global.entity.validation.required">
+                        This field is required.
+                    </p>
+                    <p class="help-block"
+                       ng-show="editForm.percentTva.$error.number" translate="global.entity.validation.number">
+                        This field is required.
+                    </p>
+                    <p class="help-block"
+                       ng-show="editForm.percentTva.$error.min"
+                       translate="global.entity.validation.min"
+                       translate-values="{min:0}" >
+                    </p>
+                </div>
             </div>
         </div>
+        <div class="ibox-content">
+            <div class="form-group col-md-5">
+                <div class="form-group">
+                    <label class="control-label" for="company_paymentPeriod" translate="company.paymentPeriod.name">Payment period</label>
+                    <select class="form-control" name="paymentPeriod" id="company_paymentPeriod"
+                            ng-model="vm.company.paymentPeriod" required>
+                        <option value="0" translate="company.paymentPeriod.0">On invoice received</option>
+                        <option value="10">NET 10</option>
+                        <option value="15">NET 15</option>
+                        <option value="30">NET 30</option>
+                        <option value="60">NET 60</option>
+                    </select>
+                </div>
+                <div ng-show="editForm.paymentPeriod.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.paymentPeriod.$error.required" translate="global.entity.validation.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
 
-        <div class="form-group col-md-3">
-            <div class="form-group">
-                <label class="control-label" for="company_invoiceDeliveryDay" translate="company.invoiceDeliveryDay">Invoice delivery day</label>
-                <select class="form-control" name="invoiceDeliveryDay" id="company_invoiceDeliveryDay" ng-model="vm.company.invoiceDeliveryDay" required>
-                    <option ng-repeat="number in range(31) track by $index" value="$index">{{ $index }}</option>
-                </select>
+            <div class="form-group col-md-4">
+                <div class="form-group">
+                    <label class="control-label" for="company_invoiceDeliveryDay"
+                           translate="company.invoiceDeliveryDay">
+                        Invoice delivery day
+                    </label>
+                    <input type="number" max="31" min="1" ng-model="vm.company.invoiceDeliveryDay"
+                           class="form-control" name="invoiceDeliveryDay"
+                           id="company_invoiceDeliveryDay" required />
+                </div>
+                <div ng-show="editForm.invoiceDeliveryDay.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.invoiceDeliveryDay.$error.number" translate="global.entity.validation.number">
+                        This field must be a number.
+                    </p>
+                    <p class="help-block"
+                       ng-show="editForm.invoiceDeliveryDay.$error.required" translate="global.entity.validation.required">
+                        This field is required.
+                    </p>
+                    <p class="help-block"
+                       ng-show="editForm.invoiceDeliveryDay.$error.min"
+                       translate="global.entity.validation.min"
+                       translate-values="{ min: 1 }">
+                        This field must have a value upper than 1.
+                    </p>
+                    <p class="help-block"
+                       ng-show="editForm.invoiceDeliveryDay.$error.max"
+                       translate="global.entity.validation.max"
+                       translate-values="{ max: 31 }">
+                        This field must have a value lesser than 31.
+                    </p>
+                </div>
             </div>
-            <div ng-show="editForm.invoiceDeliveryDay.$invalid">
-                <p class="help-block"
-                   ng-show="editForm.invoiceDeliveryDay.$error.required">
-                    This field is required.
-                </p>
-            </div>
-        </div>
-        <div class="form-group col-md-3">
-            <div class="form-group">
-                <label class="control-label" for="company_quickBooksId">Quickbooks ID</label>
-                <input type="number" class="form-control" id="company_quickBooksId" ng-model="vm.company.quickBooksId"/>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="form-group col-md-8">
-            <div class="form-group">
-                <label class="control-label" for="company_databases" translate="company.databases">Databases</label>
-                <ui-select multiple ng-model="vm.company.databases" theme="bootstrap" id="company_databases">
-                    <ui-select-match placeholder="Select or search a database in the list...">{{$select.selected.name}}</ui-select-match>
-                    <ui-select-choices repeat="database.name as database in vm.databases | filter: $select.search">
-                        <div ng-bind-html="database.name | highlight: $select.search"></div>
-                        <small ng-bind-html="database.country | highlight: $select.search"></small>
-                    </ui-select-choices>
-                </ui-select>
-            </div>
-        </div>
-        <div class="form-group col-md-4">
-            <div class="form-group">
-                <label class="control-label" for="company_mgGlobal" translate="company.mgGlobal">Minimum guarantee global</label>
-                <input type="number" class="form-control" id="company_mgGlobal" ng-model="vm.company.mgGlobal"/>
-            </div>
-        </div>
-    </div>
-    <div class="row" ng-if="vm.contacts.length > 0">
-        <div class="col-md-12">
-            <div class="feed-activity-list">
-                <div class="feed-element col-md-3" ng-repeat="contact in ::vm.contacts">
-                    <a href="#" class="pull-left">
-                        <img alt="image" class="img-circle" src="assets/images/patterns/toto.jpg">
-                    </a>
-                    <div class="media-body">
-                        <small class="pull-right label label-primary">{{ ::contact.type }}</small>
-                        <strong>{{ ::contact.firstname }} {{ ::contact.surname }}</strong>. <br>
-                        <small class="text-primary"><i class="fa fa-user"></i> {{ ::contact.fonction }}</small> <br>
-                        <small class="text-muted"><i class="fa fa-envelope"></i> {{ ::contact.mail }}</small>
-                        <small class="text-muted"><i class="fa fa-phone"></i> {{ ::contact.phone }}</small>
-                        <small class="text-muted"><i class="fa fa-skype"></i> {{ ::contact.skype }}</small>
+            <div class="form-group col-md-3">
+                <div class="form-group">
+                    <label class="control-label" for="company_quickBooksId">Quickbooks ID</label>
+                    <input type="number" class="form-control" id="company_quickBooksId"
+                           ng-model="vm.company.quickBooksId"
+                           name="quickBooksId" />
+                    <div ng-show="editForm.quickBooksId.$invalid">
+                        <p class="help-block"
+                           ng-show="editForm.quickBooksId.$error.number" translate="global.entity.validation.number">
+                            This field must be a number.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="ibox-content">
+            <div class="form-group col-md-8">
+                <div class="form-group">
+                    <label class="control-label" for="company_databases" translate="company.databases">Databases</label>
+                    <ui-select multiple ng-model="vm.company.databases" theme="bootstrap" id="company_databases">
+                        <ui-select-match placeholder="Select or search a database in the list...">{{$item.name}}</ui-select-match>
+                        <ui-select-choices repeat="database in vm.databases | propsFilter: {name: $select.search}">
+                            <div ng-bind-html="database.name | highlight: $select.search"></div>
+                            <small ng-bind-html="database.country | highlight: $select.search"></small>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <div class="form-group">
+                    <label class="control-label" for="company_mgGlobal" translate="company.mgGlobal">Minimum guarantee global</label>
+                    <input type="number" class="form-control" id="company_mgGlobal" ng-model="vm.company.mgGlobal"/>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="tabs-container">
-        <uib-tabset>
-            <uib-tab>
-                <uib-tab-heading>
-                    <i class="fa fa-phone"></i> <span translate="company.contacts">Contacts</span>
-                </uib-tab-heading>
-                <div class="panel-body">
-                    <contact-form entity="vm.newContact" on-save-entity="vm.onSaveContact(contact)"></contact-form>
+    <div class="ibox" ng-if="vm.company.address || vm.company.contacts.length > 0">
+        <div class="col-md-6" ng-if="vm.company.contacts.length > 0">
+            <h4><i class="fa fa-phone"></i> <span translate="contact.contacts">Contacts</span></h4>
+            <div class="ibox-content col-md-12">
+                <div class="feed-activity-list">
+                    <div class="feed-element" ng-repeat="contact in vm.company.contacts">
+                        <a href class="pull-left">
+                            <img alt="image" class="img-circle" src="assets/images/patterns/toto.jpg">
+                        </a>
+                        <div class="media-body">
+                            <small class="pull-right label label-primary">{{ ::contact.type }}</small>
+                            <button class="btn btn-danger btn-xs pull-right"
+                                    ng-click="vm.onSubmitDeleteContact(contact, $index)" type="button">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                            <strong>{{ ::contact.firstname }} {{ ::contact.surname }}</strong>. <br>
+                            <small class="text-primary"><i class="fa fa-user"></i> {{ ::contact.fonction }}</small> <br>
+                            <small class="text-muted"><i class="fa fa-envelope"></i> {{ ::contact.mail }}</small>
+                            <small class="text-muted"><i class="fa fa-phone"></i> {{ ::contact.phone }}</small>
+                            <small class="text-muted"><i class="fa fa-skype"></i> {{ ::contact.skype }}</small>
+                        </div>
+                    </div>
                 </div>
-            </uib-tab>
-            <uib-tab>
-                <uib-tab-heading>
-                    <i class="fa fa-globe"></i> <span translate="company.address">Address</span>
-                </uib-tab-heading>
-                <div class="panel-body">
-                    <strong>Donec quam felis</strong>
-
-                    <p>Thousand unknown plants are noticed by me: when I hear the buzz of the little world among
-                        the stalks, and grow familiar with the countless indescribable forms of the insects
-                        and flies, then I feel the presence of the Almighty, who formed us in his own image, and
-                        the breath </p>
-
-                    <p>I am alone, and feel the charm of existence in this spot, which was created for the bliss
-                        of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite
-                        sense of mere tranquil existence, that I neglect my talents. I should be incapable of
-                        drawing a single stroke at the present moment; and yet.</p>
-                </div>
-            </uib-tab>
-        </uib-tabset>
-
+            </div>
+        </div>
+        <div class="col-md-6" ng-if="vm.company.address">
+            <h4><i class="fa fa-globe"></i> <span translate="address.address">Address</span></h4>
+            <div class="ibox-content col-md-12">
+                <address>
+                    <strong>{{ vm.company.address.country }}</strong><br>
+                    {{ vm.company.address.street }}<br>
+                    {{ vm.company.address.town }}, {{ vm.company.address.zipcode }}<br>
+                    <small>{{ vm.company.address.complement }}</small>
+                </address>
+            </div>
+        </div>
+    </div>
+    <div class="ibox">
+        <button class="btn btn-primary btn-block"
+                type="submit"
+                ng-disabled="editForm.$invalid || vm.isSaving || !vm.company.address"
+                translate="company.save">
+                Save company
+        </button>
     </div>
 </form>

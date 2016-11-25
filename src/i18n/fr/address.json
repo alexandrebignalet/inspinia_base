@@ -1,5 +1,6 @@
 {
     "address": {
+        "address": "Adresse",
         "list": "Liste des adresses",
         "create": "Créer ou éditer une nouvelle addresse",
         "delete": "Supprimer",
@@ -11,6 +12,10 @@
         "confirm": {
             "delete": "Confirmer la suppression de l'adresse",
             "msg": "Êtes vous sûr de vouloir supprimer cette addresse ?"
+        },
+        "action":{
+            "update": "Mettre à jour l'addresse",
+            "save": "Enregistrer l'addresse"
         }
     }
 }

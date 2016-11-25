@@ -73,7 +73,7 @@
         }
 
         function save(contact){
-            return resource.save(contact, onSuccess, onError).$promise;
+            return resource.save(toPayloadFormat(contact), onSuccess, onError).$promise;
 
             function onSuccess(response) {
                 ToastrService.success('Contact created', 'SUCCESS');
@@ -116,8 +116,7 @@
         }
 
         function initContact() {
-
-            var contact = {
+            return {
                 firstname: '',
                 surname: '',
                 civility: 'Monsieur',
@@ -127,9 +126,7 @@
                 mail: '',
                 phone: '',
                 skype: ''
-            };
-
-            return contact;
+            }
         }
 
         function toPayloadFormat(contact) {
@@ -137,11 +134,10 @@
 
             delete tmp.id;
             delete tmp.announcers;
+            if (tmp.company){ tmp.company = tmp.company.id }
 
             return tmp;
         }
-
-
     }
 
 })();

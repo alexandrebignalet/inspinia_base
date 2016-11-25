@@ -19,7 +19,7 @@
                 },
                 views: {
                     'content@': {
-                        template: '<address addresses="$resolve.addresses"></address>'
+                        template: '<address-main addresses="$resolve.addresses"></address-main>'
                     }
                 },
                 resolve: {
