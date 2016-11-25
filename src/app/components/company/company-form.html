@@ -55,7 +55,7 @@
                 <div class="form-group">
                     <label class="control-label" for="company_numTva" translate="company.numTva">No TVA</label>
                     <input type="text" class="form-control" name="numTva" id="company_numTva"
-                           ng-model="vm.company.numTva" required
+                           ng-model="vm.company.num_tva" required
                            min="2" max="30"/>
                 </div>
                 <div ng-show="editForm.numTva.$invalid">
@@ -80,7 +80,7 @@
                 <div class="form-group">
                     <label class="control-label" for="company_percentTva" translate="company.percentTva">Percent VAT</label>
                     <input type="number" class="form-control" name="percentTva" id="company_percentTva"
-                           ng-model="vm.company.percentTva" required min="0"/>
+                           ng-model="vm.company.percent_tva" required min="0"/>
                 </div>
                 <div ng-show="editForm.percentTva.$invalid">
                     <p class="help-block"
@@ -104,12 +104,8 @@
                 <div class="form-group">
                     <label class="control-label" for="company_paymentPeriod" translate="company.paymentPeriod.name">Payment period</label>
                     <select class="form-control" name="paymentPeriod" id="company_paymentPeriod"
-                            ng-model="vm.company.paymentPeriod" required>
-                        <option value="0" translate="company.paymentPeriod.0">On invoice received</option>
-                        <option value="10">NET 10</option>
-                        <option value="15">NET 15</option>
-                        <option value="30">NET 30</option>
-                        <option value="60">NET 60</option>
+                            ng-options="option.value as option.name for option in vm.paymentPeriodOptions"
+                            ng-model="vm.company.payment_period" required>
                     </select>
                 </div>
                 <div ng-show="editForm.paymentPeriod.$invalid">
@@ -126,7 +122,7 @@
                            translate="company.invoiceDeliveryDay">
                         Invoice delivery day
                     </label>
-                    <input type="number" max="31" min="1" ng-model="vm.company.invoiceDeliveryDay"
+                    <input type="number" max="31" min="1" ng-model="vm.company.invoice_delivery_day"
                            class="form-control" name="invoiceDeliveryDay"
                            id="company_invoiceDeliveryDay" required />
                 </div>
@@ -157,7 +153,7 @@
                 <div class="form-group">
                     <label class="control-label" for="company_quickBooksId">Quickbooks ID</label>
                     <input type="number" class="form-control" id="company_quickBooksId"
-                           ng-model="vm.company.quickBooksId"
+                           ng-model="vm.company.quick_books_id"
                            name="quickBooksId" />
                     <div ng-show="editForm.quickBooksId.$invalid">
                         <p class="help-block"
@@ -184,7 +180,7 @@
             <div class="form-group col-md-4">
                 <div class="form-group">
                     <label class="control-label" for="company_mgGlobal" translate="company.mgGlobal">Minimum guarantee global</label>
-                    <input type="number" class="form-control" id="company_mgGlobal" ng-model="vm.company.mgGlobal"/>
+                    <input type="number" class="form-control" id="company_mgGlobal" ng-model="vm.company.mg_global"/>
                 </div>
             </div>
         </div>
@@ -199,12 +195,12 @@
                             <img alt="image" class="img-circle" src="assets/images/patterns/toto.jpg">
                         </a>
                         <div class="media-body">
-                            <small class="pull-right label label-primary">{{ ::contact.type }}</small>
                             <button class="btn btn-danger btn-xs pull-right"
                                     ng-click="vm.onSubmitDeleteContact(contact, $index)" type="button">
-                                <i class="fa fa-trash"></i>
+                                <i class="fa fa-remove"></i>
                             </button>
                             <strong>{{ ::contact.firstname }} {{ ::contact.surname }}</strong>. <br>
+                            <small class="text-primary"><i class="fa fa-gear"></i> {{ ::contact.type }}</small><br>
                             <small class="text-primary"><i class="fa fa-user"></i> {{ ::contact.fonction }}</small> <br>
                             <small class="text-muted"><i class="fa fa-envelope"></i> {{ ::contact.mail }}</small>
                             <small class="text-muted"><i class="fa fa-phone"></i> {{ ::contact.phone }}</small>

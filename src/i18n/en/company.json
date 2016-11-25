@@ -8,7 +8,7 @@
         "name": "Name",
         "phone": "Phone",
         "numTva": "No VAT",
-        "percentTva": "Percient VAT",
+        "percentTva": "Percent VAT",
         "databases": "Databases",
         "paymentPeriod": {
             "name": "Payment period",

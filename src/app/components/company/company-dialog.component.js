@@ -131,17 +131,22 @@
         }
 
         function onDeleteContact($event) {
-            if (!$event.contactId) return;
+            if (!$event.contact) return;
 
             vm.isSaving = true;
 
-            Contact.delete($event.contactId)
+            Contact.delete($event.contact.id)
                 .then(onSuccess)
                 .catch(onError);
 
             function onSuccess() {
                 vm.isSaving = false;
+
                 vm.company.contacts.splice($event.index, 1);
+
+                if($event.contact.type === TYPE_BILLING){
+                    vm.hasBillingContact = false;
+                }
             }
 
             function onError() {
