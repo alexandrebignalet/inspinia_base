@@ -1,0 +1,9 @@
+{
+    "login":{
+        "welcome": "Welcome to DataEngine",
+        "username": "Username",
+        "password": "Password",
+        "signin": "Sign in",
+        "forgotPassword": "Forgot password ?"
+    }
+}
