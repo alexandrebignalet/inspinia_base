@@ -1,0 +1,14 @@
+<li uib-dropdown class="dropdown pointer">
+    <a class="dropdown-toggle" uib-dropdown-toggle href>
+        <span>
+            <span class="glyphicon glyphicon-flag"></span>
+            <span class="hidden-sm" translate="global.menu.language">Language</span>
+            <b class="caret"></b>
+        </span>
+    </a>
+    <ul class="dropdown-menu" uib-dropdown-menu ng-if="vm.languages.length > 1">
+        <li ng-repeat="language in vm.languages">
+            <a href="" ng-click="vm.changeLanguage(language);">{{ language | findLanguageFromKey }}</a>
+        </li>
+    </ul>
+</li>

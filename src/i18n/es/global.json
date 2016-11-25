@@ -5,6 +5,7 @@
         "menu": {
             "language": "Idiomas"
         },
+        "logout": "Cerrar sesión",
         "save": "Guardar",
         "delete": "Eliminar",
         "actions": "Actiones",

@@ -20,6 +20,15 @@
                     'content@': {
                         template: '<login></login>'
                     }
+                },
+                resolve:{
+                    mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('login');
+                        return $translate.refresh();
+                    }],
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load(['iCheckButtons']);
+                    }
                 }
             });
     }
