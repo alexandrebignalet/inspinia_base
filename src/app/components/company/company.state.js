@@ -25,7 +25,13 @@
                 resolve: {
                     companies: [
                         'Company', function(Company) {
-                            return Company.getAll(['companies_all', 'contacts_summary', 'addresses_summary']);
+                            return Company.getAll(
+                                [
+                                    'companies_all', 'contacts_summary',
+                                    'addresses_summary', 'databases_summary',
+                                    'announcers_summary'
+                                ]
+                            );
                         }
                     ],
                     mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {

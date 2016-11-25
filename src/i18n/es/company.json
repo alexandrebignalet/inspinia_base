@@ -14,14 +14,22 @@
             "name": "Periodo de pago",
             "0": "Tras recibir la factura"
         },
+        "confirm": {
+            "delete": "Confirmar la eliminación de una empresa",
+            "msg": "Seguro ?"
+        },
         "informations": "Informationes",
         "contacts": "Contactos",
+        "announcers": "Annunciantes",
         "address": "Direccíon",
         "mgGlobal": "Garantía mínima global",
         "invoiceDeliveryDay": "Fecha de entrega AAF",
         "validation": {
             "billing": "Una empresa puede tener solo un contacto de facturacíon.",
             "address": "Una empresa debe haber una direcccíon."
+        },
+        "show":{
+            "informations": "Informacíones"
         }
     }
 }

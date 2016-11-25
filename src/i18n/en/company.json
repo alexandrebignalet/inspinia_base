@@ -14,14 +14,22 @@
             "name": "Payment period",
             "0": "À la reception de la facture"
         },
+        "confirm": {
+            "delete": "Confirm the company deletion",
+            "msg": "Are you sure to delete this company ?"
+        },
         "informations": "Informations",
         "contacts": "Contacts",
+        "announcers": "Announcers",
         "address": "Address",
         "mgGlobal": "Minimum guarantee global",
         "invoiceDeliveryDay": "Invoice delivery day",
         "validation": {
             "billing": "A company must have only on billing contact.",
             "address": "A company must have an address"
+        },
+        "show":{
+            "informations": "Informations"
         }
     }
 }
