@@ -5,10 +5,10 @@
         .module('dataToolApp')
         .factory('contactDialogService', contactDialogService);
 
-    contactDialogService.$inject = ['$state','$uibModal','Company'];
+    contactDialogService.$inject = ['$state', '$uibModal'];
 
     /* @ngInject */
-    function contactDialogService($state,$uibModal,Company) {
+    function contactDialogService($state, $uibModal) {
 
         var service = {
             openDialogModal: openDialogModal,
@@ -19,7 +19,7 @@
 
         ////////////////
 
-        function openDialogModal(contact,companies) {
+        function openDialogModal(contact, companies) {
 
             $uibModal.open({
                 component: 'contactDialog',

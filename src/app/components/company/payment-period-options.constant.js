@@ -10,23 +10,23 @@
         return [
             {
                 name: "On invoice received",
-                value: 0,
+                value: 0
             },
             {
                 name: "NET 10",
-                value: 10,
+                value: 10
             },
             {
                 name: "NET 15",
-                value: 15,
+                value: 15
             },
             {
                 name: "NET 30",
-                value: 30,
+                value: 30
             },
             {
                 name: "NET 60",
-                value: 60,
+                value: 60
             }
         ]
     }

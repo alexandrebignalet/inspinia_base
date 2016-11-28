@@ -39,8 +39,8 @@
 
             if( $event.contact.id ) {
                 Contact.update($event.contact)
-                    .then(success)
-                    .catch(error);
+                    .then(onSuccess)
+                    .catch(onError);
             } else {
                 Contact.save($event.contact)
                     .then(onSuccess)
