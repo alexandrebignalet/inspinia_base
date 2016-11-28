@@ -19,17 +19,20 @@
                 },
                 views: {
                     'content@': {
-                        template: '<router routers="$resolve.routers"></router>'
+                        template: '<router routers="$resolve.routers" pricing-tiers="$resolve.pricingTiers"></router>'
                     }
                 },
                 resolve: {
                     routers: [
                         'Router', function(Router) {
-                            return Router.getAll(['routers_all']);
-                        }
-                    ],
+                            return Router.getAll();
+                    }],
+                    pricingTiers: ['PricingTier', function(PricingTier){
+                        return PricingTier.getAll();
+                    }],
                     mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
                         $translatePartialLoader.addPart('router');
+                        $translatePartialLoader.addPart('pricing-tier');
                         return $translate.refresh();
                     }],
                     loadPlugin: function ($ocLazyLoad) {

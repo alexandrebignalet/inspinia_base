@@ -1,0 +1,40 @@
+<div class="table-responsive">
+    <table datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.DTColumnDefs" class="table table-striped table-bordered table-hover dataTables-example">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th translate="pricingTier.name">Name</th>
+            <th translate="pricingTier.comment">Comment</th>
+            <th translate="pricingTier.thisCpm">ThisCpm</th>
+            <th>CPM</th>
+            <th translate="pricingTier.minimalValue">Minimal value</th>
+            <th translate="pricingTier.actions">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="pricingTier in vm.pricingTiers">
+            <td>{{::pricingTier.id}}</td>
+            <td>{{::pricingTier.name}}</td>
+            <td>{{::pricingTier.comment}}</td>
+            <td>{{::pricingTier.this_cpm}}</td>
+            <td>
+                <i class="text-primary fa fa-ok" ng-if="pricingTier.cpm"></i>
+                <i class="text-danger fa fa-remove" ng-if="!pricingTier.cpm"></i>
+            </td>
+            <td>{{::pricingTier.minimal_value}}</td>
+            <td>
+                <a ui-sref="router.pricing-tier-edit({id: pricingTier.id})">
+                    <button class="btn btn-primary">
+                        <i class="fa fa-pencil"></i>
+                    </button>
+                </a>
+                <a href>
+                    <button class="btn btn-danger">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

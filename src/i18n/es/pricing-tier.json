@@ -1,0 +1,11 @@
+{
+    "pricingTier":{
+        "pricingTier": "Offerta",
+        "pricingTiers": "Offertass",
+        "name": "Nombre",
+        "comment": "Commentario",
+        "minimalValue": "Valor minimale",
+        "thisCpm": "Valor del CPM",
+        "actions": "Actíones"
+    }
+}

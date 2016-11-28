@@ -1,0 +1,15 @@
+{
+    "pricingTier":{
+        "pricingTier": "Offer",
+        "pricingTiers": "Offers",
+        "name": "Name",
+        "comment": "Comment",
+        "thisCpm": "CPM value",
+        "minimalValue": "Minimal value",
+        "actions": "Actions",
+        "action": {
+            "save": "Save the pricing plan",
+            "update": "Update the pricing plan"
+        }
+    }
+}
