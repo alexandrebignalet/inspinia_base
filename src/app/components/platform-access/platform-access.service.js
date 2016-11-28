@@ -5,10 +5,10 @@
         .module('dataToolApp')
         .factory('PlatformAccess', PlatformAccess);
 
-    PlatformAccess.$inject = ['$resource', '$q', 'ToastrService', 'API_BASE_URL', 'Announcer'];
+    PlatformAccess.$inject = ['$resource', '$q', 'ToastrService', 'API_BASE_URL'];
 
     /* @ngInject */
-    function PlatformAccess($resource, $q, ToastrService, API_BASE_URL, Announcer) {
+    function PlatformAccess($resource, $q, ToastrService, API_BASE_URL) {
 
         var resource = $resource(API_BASE_URL, {}, {
             'get': {

@@ -26,7 +26,6 @@
 
         vm.$onInit = function() {
             vm.contactId = vm.resolve.contactId.id;
-            console.log(vm.contactId);
         };
 
         function clear() {

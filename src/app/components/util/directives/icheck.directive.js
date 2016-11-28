@@ -23,7 +23,6 @@
                 value = $attrs['value'];
 
                 $scope.$watch($attrs['ngModel'], function(){
-                    console.log('watched '+$attrs['ngModel']+' -> updated')
                     angular.element(element).iCheck('update');
                 });
 
