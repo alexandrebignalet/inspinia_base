@@ -37,7 +37,20 @@
                     }
                 }
             })
+            .state('router.create', {
+                parent: 'router',
+                url: '/create',
+                data: {
+                    pageTitle: 'Create a router',
+                    authorities: ['ROLE_ADMIN', 'ROLE_SUPER_ADMIN']
+                },
 
+                onEnter: ['routerDialogService', 'Router',
+                    function(routerDialogService,Router ) {
+                        var router = Router.init();
+                        routerDialogService.openDialogModal(router);
+                    }]
+            })
         ;
     }
 })();

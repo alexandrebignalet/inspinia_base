@@ -22,7 +22,8 @@
         /////////////////////////////////////////////
 
         var service = {
-            getAll: getAll
+            getAll: getAll,
+            init: init
         };
 
         return service;
@@ -45,6 +46,28 @@
                 ToastrService.error('Impossible to retrieve Routers','XHR Error');
                 return $q.reject(error);
             }
+        }
+
+        function init() {
+            var router = {
+                name : '',
+                ContactName : '',
+                email : '',
+                description : '',
+                BillingContactName : '',
+                ContactEmail : '',
+                PhysicalAddress : '',
+                PysicalAddressSecond : '',
+                PostalNumber : '',
+                town : '',
+                Country : '',
+                CompanyRegistryNumber : '',
+                VATNumber : '',
+                BillingPeriod : '',
+                PaymentEndofmonth: ''
+            };
+
+            return router;
         }
 
 
