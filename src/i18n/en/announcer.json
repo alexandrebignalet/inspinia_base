@@ -17,6 +17,7 @@
         "activate.msg": "Announceur enabled.",
         "desactivate.msg": "Annonceur disabled.",
         "save": "Save announcer",
+        "informations": "Informations",
         "platform-access": {
             "add": "Add platform access",
             "username": "Username",

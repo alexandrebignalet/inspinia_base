@@ -1,129 +1,138 @@
 <form name="editForm" role="form" novalidate ng-submit="vm.save()" >
 
-    <div class="modal-body">
+    <div class="ibox">
+        <h4><i class="fa fa-briefcase"></i> <span translate="announcer.informations"> Informations</span></h4>
+        <div class="ibox-content">
+            <div class="row">
 
-        <div class="row">
-
-            <div class="form-group col-md-5" ng-class="{ 'has-error' : editForm.announcer.$invalid && !editForm.announcer.$pristine, 'has-success': editForm.announcer.$valid}">
-                <div class="form-group">
-                    <label class="control-label" for="announcer_announcer" translate="announcer.announcer">Announcer</label>
-                    <div class="input-group m-b">
-                        <span class="input-group-addon"><i class="fa fa-{{ editForm.announcer.$invalid ? 'times' : 'check'}}"></i></span>
-                        <input ng-minlength="3" ng-maxlength="30" type="text" class="form-control" name="announcer" id="announcer_announcer" ng-model="vm.announcer.announcer" required/>
+                <div class="form-group col-md-5" ng-class="{ 'has-error' : editForm.announcer.$invalid && !editForm.announcer.$pristine, 'has-success': editForm.announcer.$valid}">
+                    <div class="form-group">
+                        <label class="control-label" for="announcer_announcer" translate="announcer.announcer">Announcer</label>
+                        <div class="input-group m-b">
+                            <span class="input-group-addon"><i class="fa fa-{{ editForm.announcer.$invalid ? 'times' : 'check'}}"></i></span>
+                            <input ng-minlength="3" ng-maxlength="30" type="text" class="form-control" name="announcer" id="announcer_announcer" ng-model="vm.announcer.announcer" required/>
+                        </div>
+                    </div>
+                    <div ng-show="editForm.announcer.$invalid && !editForm.announcer.$pristine">
+                        <p class="help-block" ng-show="editForm.announcer.$error.required">
+                            This field is required.
+                        </p>
+                        <p class="help-block" ng-show="editForm.announcer.$error.minlength || editForm.announcer.$error.minlength">
+                            This field should contain between 3 and 30 characteres.
+                        </p>
                     </div>
                 </div>
-                <div ng-show="editForm.announcer.$invalid && !editForm.announcer.$pristine">
-                    <p class="help-block" ng-show="editForm.announcer.$error.required">
-                        This field is required.
-                    </p>
-                    <p class="help-block" ng-show="editForm.announcer.$error.minlength || editForm.announcer.$error.minlength">
-                        This field should contain between 3 and 30 characteres.
-                    </p>
+
+                <div class="form-group col-md-4">
+                    <label class="control-label" translate="announcer.country" for="announcer_country">Country</label>
+                    <div>
+                        <ui-select ng-model="vm.announcer.country" theme="bootstrap" id="announcer_country">
+                            <ui-select-match placeholder="Select a country...">{{$select.selected.code}}</ui-select-match>
+                            <ui-select-choices repeat="country.code as country in vm.countries | filter: $select.search">
+                                <div ng-bind-html="country.name | highlight: $select.search"></div>
+                                <small ng-bind-html="country.code | highlight: $select.search"></small>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <div class="form-group">
+                        <label class="control-label" for="announcer_id_reine_rouge" translate="announcer.reine_rouge_id">ID Reine Rouge</label>
+                        <input type="text" class="form-control" name="id_reine_rouge" id="announcer_id_reine_rouge" ng-model="vm.announcer.reinerouge_id"/>
+                    </div>
                 </div>
             </div>
 
-            <div class="form-group col-md-4">
-                <label class="control-label" translate="announcer.country" for="announcer_country">Country</label>
-                <div>
-                    <ui-select ng-model="vm.announcer.country" theme="bootstrap" id="announcer_country">
-                        <ui-select-match placeholder="Select a country...">{{$select.selected.code}}</ui-select-match>
-                        <ui-select-choices repeat="country.code as country in vm.countries | filter: $select.search">
-                            <div ng-bind-html="country.name | highlight: $select.search"></div>
-                            <small ng-bind-html="country.code | highlight: $select.search"></small>
-                        </ui-select-choices>
-                    </ui-select>
+            <div class="row">
+                <div class="form-group col-md-9" ng-class="{ 'has-error' : editForm.platform.$invalid && !editForm.platform.$pristine}">
+                    <div class="form-group">
+                        <label class="control-label" for="announcer_platform" translate="announcer.platform">Platform</label>
+                        <input ng-minlength="3" ng-maxlength="30" type="text" class="form-control" name="platform" id="announcer_platform" ng-model="vm.announcer.platform"/>
+                    </div>
+                    <div ng-show="editForm.platform.$invalid">
+                        <p class="help-block" ng-show="editForm.platform.$error.minlength || editForm.platform.$error.minlength">
+                            This field should contain between 3 and 30 characteres.
+                        </p>
+                    </div>
                 </div>
             </div>
 
-            <div class="form-group col-md-3">
-                <div class="form-group">
-                    <label class="control-label" for="announcer_id_reine_rouge" translate="announcer.reine_rouge_id">ID Reine Rouge</label>
-                    <input type="text" class="form-control" name="id_reine_rouge" id="announcer_id_reine_rouge" ng-model="vm.announcer.reinerouge_id"/>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="form-group col-md-9" ng-class="{ 'has-error' : editForm.platform.$invalid && !editForm.platform.$pristine}">
-                <div class="form-group">
-                    <label class="control-label" for="announcer_platform" translate="announcer.platform">Platform</label>
-                    <input ng-minlength="3" ng-maxlength="30" type="text" class="form-control" name="platform" id="announcer_platform" ng-model="vm.announcer.platform"/>
-                </div>
-                <div ng-show="editForm.platform.$invalid">
-                    <p class="help-block" ng-show="editForm.platform.$error.minlength || editForm.platform.$error.minlength">
-                        This field should contain between 3 and 30 characteres.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <hr class="hr-line-solid">
-
-        <div class="row">
-            <div class="form-group col-md-6">
-                <label class="control-label" translate="announcer.company" for="announcer_company">Company</label>
-                <div>
-                    <ui-select ng-model="vm.announcer.company" theme="bootstrap" id="announcer_company">
-                        <ui-select-match placeholder="Select a company...">{{$select.selected.name}}</ui-select-match>
-                        <ui-select-choices repeat="company as company in vm.companies | filter: $select.search">
-                            <div ng-bind-html="company.name | highlight: $select.search"></div>
-                        </ui-select-choices>
-                    </ui-select>
-                </div>
-                <div ng-if="vm.announcer.company != null" class="m-t-sm">
-                    <input id="address" icheck type="checkbox" ng-model="vm.announcer.useCompanyAddress"><i></i>
-                    <span>Use company address</span>
-                </div>
-                <div ng-show="editForm.company.$invalid">
-                    <p class="help-block"
-                       ng-show="editForm.company.$error.required">
-                        This field is required.
-                    </p>
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <label class="control-label" translate="announcer.contacts" for="announcer_contacts">Contacts</label>
+                    <div>
+                        <ui-select multiple ng-model="vm.announcer.contacts" theme="bootstrap" id="announcer_contacts">
+                            <ui-select-match placeholder="Select contacts...">{{ $item.surname }} {{ $item.firstname }}</ui-select-match>
+                            <ui-select-choices repeat="contact.id as contact in vm.contacts | filter: $select.search">
+                                <div>
+                                    <span ng-bind-html="contact.surname | highlight: $select.search"></span>
+                                    <span ng-bind-html="contact.firstname | highlight: $select.search"></span>
+                                </div>
+                                <small ng-bind-html="contact.company.name | highlight: $select.search"></small>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
                 </div>
             </div>
 
-            <div ng-if="vm.announcer.useCompanyAddress" class="m-t-sm col-md-offset-1 border-left col-md-5">
-                <h4>Address</h4>
-                <hr>
-                <div class="">
-                    <div class="row">
-                        <span class="col-md-3"><span translate="announcer.street">Street</span> : </span><span>{{ vm.announcer.company.address.street }}</span><br>
+            <hr class="hr-line-solid">
+
+
+            <div class="row">
+                <div class="form-group col-md-5">
+                    <label class="control-label" translate="announcer.company" for="announcer_company">Company</label>
+                    <div class="m-t-sm m-b-sm">
+                        <input id="new_company" ng-change="vm.onChangeCreateCompany()" icheck type="checkbox" ng-model="vm.createCompany"><i></i>
+                        <span>Create new company</span>
                     </div>
 
-                    <div class="row">
-                        <span class="col-md-3"><span translate="announcer.town">Town</span> : </span><span>{{ vm.announcer.company.address.town }}</span><br>
+                    <div>
+                        <ui-select ng-disabled="vm.createCompany" ng-model="vm.announcer.company" theme="bootstrap" id="announcer_company">
+                            <ui-select-match placeholder="Select a company...">{{$select.selected.name}}</ui-select-match>
+                            <ui-select-choices repeat="company as company in vm.companies | filter: $select.search">
+                                <div ng-bind-html="company.name | highlight: $select.search"></div>
+                            </ui-select-choices>
+                        </ui-select>
+
                     </div>
 
-                    <div class="row">
-                        <span class="col-md-3"><span translate="announcer.zipcode">Zipcode</span> : </span><span>{{ vm.announcer.company.address.zipcode }}</span><br>
+                    <div ng-if="vm.announcer.company.id != null" class="m-t-sm">
+                        <input id="address" icheck type="checkbox" ng-model="vm.announcer.useCompanyAddress"><i></i>
+                        <span>Use company address</span>
                     </div>
-                    <div class="row">
-                        <span class="col-md-3"><span translate="announcer.country">Country</span> : </span><span>{{ vm.announcer.company.address.country }}</span><br>
+                    <div ng-show="editForm.company.$invalid">
+                        <p class="help-block"
+                           ng-show="editForm.company.$error.required">
+                            This field is required.
+                        </p>
                     </div>
+                </div>
 
-                    <span>{{ vm.announcer.company.address.complement }}</span>
+                <div ng-if="vm.announcer.useCompanyAddress" class="m-t-sm col-md-offset-1 border-left col-md-6">
+                    <h4>Address</h4>
+                    <hr>
+                    <div class="">
+                        <div class="row">
+                            <span class="col-md-3"><span translate="announcer.street">Street</span> : </span><span>{{ vm.announcer.company.address.street }}</span><br>
+                        </div>
+
+                        <div class="row">
+                            <span class="col-md-3"><span translate="announcer.town">Town</span> : </span><span>{{ vm.announcer.company.address.town }}</span><br>
+                        </div>
+
+                        <div class="row">
+                            <span class="col-md-3"><span translate="announcer.zipcode">Zipcode</span> : </span><span>{{ vm.announcer.company.address.zipcode }}</span><br>
+                        </div>
+                        <div class="row">
+                            <span class="col-md-3"><span translate="announcer.country">Country</span> : </span><span>{{ vm.announcer.company.address.country }}</span><br>
+                        </div>
+
+                        <span>{{ vm.announcer.company.address.complement }}</span>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <hr class="hr-line-solid">
-
-        <div class="row">
-            <div class="form-group col-md-12">
-                <label class="control-label" translate="announcer.contacts" for="announcer_contacts">Contacts</label>
-                <div>
-                    <ui-select multiple ng-model="vm.announcer.contacts" theme="bootstrap" id="announcer_contacts">
-                        <ui-select-match placeholder="Select contacts...">{{ $item.surname }} {{ $item.firstname }}</ui-select-match>
-                        <ui-select-choices repeat="contact.id as contact in vm.contacts | filter: $select.search">
-                            <div>
-                                <span ng-bind-html="contact.surname | highlight: $select.search"></span>
-                                <span ng-bind-html="contact.firstname | highlight: $select.search"></span>
-                            </div>
-                            <small ng-bind-html="contact.company.name | highlight: $select.search"></small>
-                        </ui-select-choices>
-                    </ui-select>
-                </div>
-            </div>
         </div>
     </div>
 
