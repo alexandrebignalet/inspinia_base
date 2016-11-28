@@ -1,0 +1,57 @@
+<div class="ibox">
+    <div class="ibox-title">
+        <div class="pull-right">
+            <a ui-sref="announcer.edit({announcerId: vm.announcer.id})"><button class="btn btn-outline btn-primary">
+                <span class="fa fa-pencil"></span>
+            </button></a>
+        </div>
+
+        <h2><span>{{ vm.announcer.announcer }}</span></h2><br>
+
+    </div>
+    <div class="ibox-content">
+
+
+        <div class="row">
+            <strong class="col-md-3"> <span class="pull-right" translate="announcer.status">Status</span></strong><span class="col-md-8"><span class="label label-{{vm.announcer.active ? 'primary' : 'danger' }}">{{ vm.announcer.active ? 'ENABLED' : 'DISABLED' }}</span></span><br>
+        </div>
+        <br>
+
+        <div class="row">
+            <strong class="col-md-3"> <span class="pull-right" translate="announcer.company">Company</span></strong><span class="col-md-8">{{ vm.announcer.company.name }}</span><br>
+        </div>
+        <div class="row">
+            <strong class="col-md-3"> <span class="pull-right" translate="announcer.country">Country</span></strong><span class="col-md-8">{{ vm.announcer.country | countryNameFilter }}</span><br>
+        </div>
+        <div class="row">
+            <strong class="col-md-3"> <span class="pull-right" translate="announcer.reine_rouge_id">Reine Rouge ID</span></strong><span class="col-md-8">{{ vm.announcer.reinerouge_id }}</span><br>
+        </div>
+
+        <div class="row">
+            <strong class="col-md-3"> <span class="pull-right" translate="announcer.platform">Platform</span></strong><span class="col-md-8">{{ vm.announcer.platform }}</span><br>
+        </div>
+
+
+
+        <div ng-if="vm.announcer.address != null">
+            <br>
+            <div class="row">
+
+                <strong class="col-md-3"> <span class="pull-right" translate="announcer.address">Address</span></strong><span class="col-md-8">{{ vm.announcer.address.street}}</span><br>
+            </div>
+            <div class="row">
+                <strong class="col-md-3"> </strong><span class="col-md-8">{{ vm.announcer.address.town }}</span><br>
+            </div>
+            <div class="row">
+                <strong class="col-md-3"> </strong><span class="col-md-8 text-uppercase">{{ vm.announcer.address.country | countryNameFilter }}</span><br>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <contact-show format="'summary'" ng-repeat="contact in vm.announcer.contacts" contact="contact"></contact-show>
+        </div>
+    </div>
+
+</div>

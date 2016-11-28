@@ -14,6 +14,10 @@
             "name": "Payment period",
             "0": "À la reception de la facture"
         },
+        "action": {
+            "update": "Update company",
+            "save": "Save company"
+        },
         "confirm": {
             "delete": "Confirm the company deletion",
             "msg": "Are you sure to delete this company ?"
