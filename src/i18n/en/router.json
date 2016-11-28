@@ -1,5 +1,9 @@
 {
     "router": {
-        "router": "Router"
+        "router": "Router",
+        "create": "Create a router",
+        "name": "Name",
+        "contactemail": "Contact email",
+        "actions": "Actions"
     }
 }
