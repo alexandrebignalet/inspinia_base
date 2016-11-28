@@ -4,6 +4,20 @@
         "create": "Créer un router",
         "name": "Nom",
         "contactemail": "Email de contact",
-        "actions": "Actions"
+        "actions": "Actions",
+        "description": "Description",
+        "contact_name": "Nom du contact",
+        "contact_email": "Email du contact",
+        "contact_name_billing": "Nom du contact de facturation",
+        "contact_email_billing": "Email du contact de facturation",
+        "physical_address": "Address postal",
+        "physical_address_second": "Deuxième partie",
+        "postal_number": "Code postal",
+        "town": "Ville",
+        "country": "Pays",
+        "company_registry_number": "Numéros d'enregistrement de l'entreprise (SIRET,EIN,NUF, etc ...)",
+        "vat_number": "TVA",
+        "billing_period": "Période de facturation",
+        "payment_end_of_month": "Paiement en fin de mois"
     }
 }

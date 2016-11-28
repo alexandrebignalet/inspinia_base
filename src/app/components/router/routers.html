@@ -23,7 +23,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr ng-repeat="router in ::vm.routers">
+                            <tr ng-click="vm.showRouter(router)" ng-repeat="router in ::vm.routers">
                                 <td>{{::router.id}}</td>
                                 <td>{{::router.name}}</td>
                                 <td>{{::router._contactemail}}</td>
@@ -40,12 +40,11 @@
                             </tfoot>
                         </table>
                     </div>
-
                 </div>
             </div>
         </div>
         <div class="col-sm-4">
-
+            <router-show router="vm.showedRouter"></router-show>
         </div>
     </div>
 </div>

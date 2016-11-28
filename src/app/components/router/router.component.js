@@ -19,17 +19,22 @@
     /* @ngInject */
     function RouterController() {
         var vm = this;
-        
+        vm.showRouter = showRouter;
+
         ////////////////
 
+        function showRouter(router) {
+            vm.showedRouter = router;
+        }
 
         vm.$onInit = function () {
-            console.log(vm.routers);
-          
+            if( vm.routers.length > 0) {
+                vm.showedRouter = vm.routers[0];
+            }
         };
 
-   
-        
+
+
     }
 
 })();
