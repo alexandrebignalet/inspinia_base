@@ -6,15 +6,12 @@
 <div class="modal-body">
 
 
-    <div class="ibox">
-        <div class="ibox-content">
-            <announcer-form companies="vm.companies" contacts="vm.contacts" announcer="vm.announcer"
-                            is-saving="vm.isSaving"
-                            emit-on-change-create-company="vm.onChangeCreateCompany($event)"
-                            on-save-announcer="vm.onSaveAnnouncer($event)">
-            </announcer-form>
-        </div>
-    </div>
+    <announcer-form companies="vm.companies" contacts="vm.contacts" announcer="vm.announcer"
+                    is-saving="vm.isSaving"
+                    emit-on-change-create-company="vm.onChangeCreateCompany($event)"
+                    on-save-announcer="vm.onSaveAnnouncer($event)">
+    </announcer-form>
+    <br>
     <div ng-if="vm.createCompany" class="ibox">
         <div class="tabs-container">
             <uib-tabset>

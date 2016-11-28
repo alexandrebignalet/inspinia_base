@@ -37,7 +37,9 @@
 
         function onChangeCreateCompany($event) {
             vm.createCompany = $event.createCompany;
-            vm.announcer.company = vm.company;
+            if( vm.createCompany && vm.company.id ) {
+                vm.announcer.company = vm.company;
+            }
         }
 
         function onSaveCompany($event) {

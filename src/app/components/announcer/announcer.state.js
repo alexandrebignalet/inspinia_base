@@ -82,6 +82,12 @@
                     authorities: ['ROLE_ADMIN', 'ROLE_SUPER_ADMIN']
                 },
                 resolve: {
+                    mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
+                        $translatePartialLoader.addPart('announcer');
+                        $translatePartialLoader.addPart('company');
+                        $translatePartialLoader.addPart('address');
+                        return $translate.refresh();
+                    }],
                     announcer: [
                         'Announcer', '$stateParams', function(Announcer, $stateParams) {
                         var announcerId = $stateParams.announcerId;
@@ -98,11 +104,17 @@
                         'Company', function (Company) {
                             return Company.getAll(['companies_all','addresses_summary'])
                         }
+                    ],
+                    databases: [
+                        'Database', function(Database) {
+                            return Database.getAll(['databases_summary'])
+                        }
                     ]
                 },
-                onEnter: ['announcerDialogService', 'Announcer', 'companies', 'contacts', 'announcer',
-                    function(announcerDialogService, Announcer, companies, contacts, announcer) {
-                        announcerDialogService.openDialogModal(announcer,companies,contacts);
+                onEnter: ['announcerDialogService', 'Announcer', 'Company', 'companies', 'contacts', 'announcer','databases',
+                    function(announcerDialogService, Announcer, Company, companies, contacts, announcer,databases) {
+                        var company = Company.init();
+                        announcerDialogService.openDialogModal(announcer,company,companies,contacts,databases);
                     }]
             })
         ;
