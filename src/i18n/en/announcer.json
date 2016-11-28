@@ -13,6 +13,7 @@
         "street" : "Street",
         "town" : "Town",
         "zipcode" : "Zipcode",
+        "status" : "Status",
         "address" : "Address",
         "activate.msg": "Announceur enabled.",
         "desactivate.msg": "Annonceur disabled.",

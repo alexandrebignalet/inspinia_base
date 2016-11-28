@@ -6,7 +6,8 @@
         controller: ContactShowController,
         controllerAs: 'vm',
         bindings: {
-            contact: '<'
+            contact: '<',
+            format: '<'
         }
     };
 
@@ -17,7 +18,18 @@
     ContactShowController.$inject = [];
 
     /* @ngInject */
-    function ContactShowController() {}
+    function ContactShowController() {
+        var vm = this;
+        vm.showButtons = true;
+        vm.showPicture = true;
+
+        vm.$onInit = function() {
+            if( vm.format ==  'summary' ){
+                vm.showButtons = false;
+                vm.showPicture = false;
+            }
+        }
+    }
 })();
 
 
