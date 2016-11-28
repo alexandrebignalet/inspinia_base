@@ -17,18 +17,7 @@
     ContactShowController.$inject = [];
 
     /* @ngInject */
-    function ContactShowController() {
-        var vm = this;
-
-        vm.$onInit = function() {
-            console.log(vm.contact);
-        };
-
-    }
-
-
-
-
+    function ContactShowController() {}
 })();
 
 

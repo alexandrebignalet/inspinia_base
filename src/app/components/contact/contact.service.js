@@ -75,7 +75,7 @@
         function save(contact){
             return resource.save(toPayloadFormat(contact), onSuccess, onError).$promise;
 
-            function onSuccess(response) {
+            function onSuccess() {
                 ToastrService.success('Contact created', 'SUCCESS');
             }
 
@@ -90,7 +90,7 @@
                 .then(onSuccess)
                 .catch(onError);
 
-            function onSuccess(response) {
+            function onSuccess() {
                 ToastrService.success('Contact edited', 'SUCCESS');
             }
 

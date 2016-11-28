@@ -132,19 +132,19 @@
             tmp.address = company.address.id;
 
             if (tmp.contacts.length > 0){
-                var array = [];
+                var tmpContacts = [];
                 for(var i = 0; i < tmp.contacts.length; i++){
-                    array.push({'id': tmp.contacts[i]['id']});
+                    tmpContacts.push({'id': tmp.contacts[i]['id']});
                 }
-                tmp.contacts = array;
+                tmp.contacts = tmpContacts;
             }
 
             if (tmp.databases.length > 0){
-                var array = [];
-                for(var i = 0; i < tmp.databases.length; i++){
-                    array.push({'id': tmp.databases[i]['id']});
+                var tmpDatabases = [];
+                for(var y = 0; y < tmp.databases.length; y++){
+                    tmpDatabases.push({'id': tmp.databases[y]['id']});
                 }
-                tmp.databases = array;
+                tmp.databases = tmpDatabases;
             }
 
             return tmp;
