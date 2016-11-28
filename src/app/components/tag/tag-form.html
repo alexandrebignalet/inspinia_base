@@ -1,0 +1,39 @@
+<form name="editForm" ng-submit="vm.onSubmit()" role="form" novalidate>
+    <div class="form-group" ng-class="{ 'has-error' : editForm.tag.$invalid && !editForm.tag.$pristine}">
+        <div class="input-group">
+            <span class="input-group-btn" ng-if="vm.tag.id">
+                <button type="button" class="btn btn-default" ng-click="vm.clear()">
+                    <span class="fa fa-plus"></span>&nbsp;
+                </button>
+            </span>
+            <input  name="tag" placeholder="{{ 'tag.tag' | translate}}" ng-model="vm.tag.tag" type="text"
+                    class="form-control" required minlength="3"/>
+            <span class="input-group-btn">
+                <button type="submit" id="tag_submit" ng-disabled="editForm.$invalid || vm.isSaving"
+                        class="btn btn-primary">
+                    <span class="glyphicon glyphicon-save"></span>&nbsp;
+                    <span ng-if="vm.tag.id" translate="tag.action.update">Update</span>
+                    <span ng-if="!vm.tag.id" translate="tag.action.save">Save</span>
+                </button>
+            </span>
+            <span class="input-group-btn" ng-if="vm.tag.id">
+                <button type="button" id="tag_delete" ng-disabled="vm.isSaving" ng-click="vm.onSubmitDeleteTag()"
+                        class="btn btn-danger">
+                    <span class="fa fa-trash"></span>&nbsp;
+                </button>
+            </span>
+        </div>
+        <div ng-show="editForm.tag.$invalid && !editForm.tag.$pristine">
+            <p class="help-block"
+               ng-show="editForm.tag.$error.required" translate="global.entity.validation.required">
+                This field is required.
+            </p>
+            <p class="help-block"
+               ng-show="editForm.tag.$error.minlength"
+               translate="global.entity.validation.minlength"
+               translate-values="{min: 3}">
+                This field should have less than 3 characters.
+            </p>
+        </div>
+    </div>
+</form>

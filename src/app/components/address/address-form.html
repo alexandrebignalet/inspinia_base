@@ -59,22 +59,20 @@
     </div>
 
     <div class="form-group" ng-class="{ 'has-error' : editForm.country.$invalid && !editForm.country.$pristine}">
-        <div class="form-group">
-            <label class="control-label" for="address_country"><span translate="address.country">Country</span></label>
-            <ui-select ng-model="vm.address.country" theme="bootstrap" id="address_country" required>
-                <ui-select-match placeholder="Select or search a country in the list...">{{$select.selected.code}}</ui-select-match>
-                <ui-select-choices repeat="country.code as country in vm.countries | propsFilter: {name: $select.search, code: $select.search}">
-                    <div ng-bind-html="country.name | highlight: $select.search"></div>
-                    <small ng-bind-html="country.code | highlight: $select.search"></small>
-                </ui-select-choices>
-            </ui-select>
-        </div>
-        <div ng-show="editForm.country.$invalid && !editForm.country.$pristine">
-            <p class="help-block"
-               ng-show="editForm.country.$error.required" translate="global.entity.validation.required">
-                This field is required.
-            </p>
-        </div>
+        <label class="control-label" for="address_country"><span translate="address.country">Country</span></label>
+        <ui-select ng-model="vm.address.country" theme="bootstrap" id="address_country" required>
+            <ui-select-match placeholder="Select or search a country in the list...">{{$select.selected.code}}</ui-select-match>
+            <ui-select-choices repeat="country.code as country in vm.countries | propsFilter: {name: $select.search, code: $select.search}">
+                <div ng-bind-html="country.name | highlight: $select.search"></div>
+                <small ng-bind-html="country.code | highlight: $select.search"></small>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+    <div ng-show="editForm.country.$invalid && !editForm.country.$pristine">
+        <p class="help-block"
+           ng-show="editForm.country.$error.required" translate="global.entity.validation.required">
+            This field is required.
+        </p>
     </div>
 
     <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-block btn-primary">

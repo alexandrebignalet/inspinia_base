@@ -1,0 +1,17 @@
+{
+    "tag": {
+        "tags": "Etiquetas",
+        "tag": "",
+        "list": "Lista de las etiquetas",
+        "create": "Añadir o editar una etiqueta",
+        "delete": "Eliminar",
+        "confirm": {
+            "delete": "Confirmar la eliminación de la etiqueta",
+            "msg": "¿ Seguro de eliminar la etiqueta ?"
+        },
+        "action":{
+            "update": "Actualizar etiqueta",
+            "save": "Guardar etiqueta"
+        }
+    }
+}

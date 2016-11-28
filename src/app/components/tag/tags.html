@@ -1,0 +1,61 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5 translate="tag.list">Tags list
+                        <small></small>
+                    </h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="row m-b-md">
+                        <div class="form-group col-md-offset-3 col-md-9">
+                            <ul uib-pagination class="pagination-sm"
+                                total-items="tagsFiltered.length"
+                                max-size="vm.pagination.maxSize"
+                                num-pages="vm.pagination.numPages"
+                                ng-model="vm.pagination.currentPage"
+                                items-per-page="vm.pagination.itemsPerPage"
+                                boundary-links="true" rotate="false"
+                                previous-text="{{ 'global.action.previous' | translate }}"
+                                next-text="{{ 'global.action.next' | translate }}"
+                                first-text="{{ 'global.action.first' | translate }}"
+                                last-text="{{ 'global.action.last' | translate }}">
+                            </ul>
+                        </div>
+                        <div class="form-group col-md-offset-2 col-md-3">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-search"></i>
+                                </span>
+                                <input type="text" class="form-control"
+                                       placeholder="{{ 'global.action.search' | translate }}"
+                                       ng-model-options="{ debounce: 250 }" ng-model="vm.search"/>
+                            </div>
+                        </div>
+                        <div class="col-md-offset-1 col-md-3">
+                            <tag-form tag="vm.selectedTag" on-save-tag="vm.onSaveTag($event)"
+                                      is-saving="vm.isSaving" reset="vm.resetForm($event)"
+                                      on-delete-tag="vm.onDeleteTag($event)">
+                            </tag-form>
+                        </div>
+                    </div>
+                    <div class="row border-top">
+                        <div class="inline m-xs p-xs b-r-lg" ng-repeat="tag in tagsFiltered =
+                            (vm.tags | propsFilter: {tag: vm.search } | orderBy: 'tag')
+                            .slice((vm.pagination.currentPage - 1) * vm.pagination.itemsPerPage)
+                             | limitTo: vm.pagination.itemsPerPage">
+
+                            <tag-show tag="tag" ng-click="vm.selectTag(tag)"></tag-show>
+
+                            <span ng-if="$index % 10 == 0">
+                                <br>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
