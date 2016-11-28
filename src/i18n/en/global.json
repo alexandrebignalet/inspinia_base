@@ -9,6 +9,13 @@
         "save": "Save",
         "delete": "Delete",
         "actions": "Actions",
+        "action": {
+            "search": "Recherche",
+            "next": "Suivant",
+            "previous": "Précédent",
+            "first": "Première",
+            "last": "Dernière"
+        },
         "entity": {
             "select": {
                 "country": "Country"

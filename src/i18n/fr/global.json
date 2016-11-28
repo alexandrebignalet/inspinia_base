@@ -9,6 +9,13 @@
         "save": "Enregistrer",
         "delete": "Supprimer",
         "actions": "Actions",
+        "action": {
+            "search": "Search",
+            "next": "Next",
+            "previous": "Previous",
+            "first": "First",
+            "last": "Last"
+        },
         "entity": {
             "select": {
                 "country": "Pays"
