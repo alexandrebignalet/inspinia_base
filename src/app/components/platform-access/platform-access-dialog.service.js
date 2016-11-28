@@ -8,10 +8,10 @@
         .module('dataToolApp')
         .factory('PlatformAccessDialogService', PlatformAccessDialogService);
 
-    PlatformAccessDialogService.$inject = ['$state','$uibModal', 'Announcer'];
+    PlatformAccessDialogService.$inject = ['$state', '$uibModal'];
 
     /* @ngInject */
-    function PlatformAccessDialogService($state,$uibModal,Announcer) {
+    function PlatformAccessDialogService($state, $uibModal) {
 
         var service = {
             openDialogModal: openDialogModal,
@@ -58,7 +58,6 @@
                     }
                 }
             }).result.then(function(){
-                console.log('foo');
                 $state.go('^',null, {reload: true})
             },function() {
                 $state.go('^')

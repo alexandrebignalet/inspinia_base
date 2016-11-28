@@ -7,7 +7,9 @@
                         <small></small>
                     </h5>
                     <div class="ibox-tools">
-                        <a ui-sref="address.create" class="btn btn-primary btn" translate="address.create">Create new address</a>
+                        <a ui-sref="address.create">
+                            <button class="btn btn-primary btn-outline" translate="address.create">Create new address</button>
+                        </a>
                     </div>
                 </div>
                 <div class="ibox-content">
@@ -32,12 +34,16 @@
                                 <td>{{::address.country}}</td>
                                 <td>{{::address.complement}}</td>
                                 <td>
-                                    <a ui-sref="address.edit({id: address.id})"><button class="btn btn-primary">
-                                        <span class="fa fa-pencil"></span>
-                                    </button></a>
-                                    <a ui-sref="address.delete({id: address.id})"><button class="btn btn-danger">
-                                        <span class="fa fa-trash"></span>
-                                    </button></a>
+                                    <a ui-sref="address.edit({id: address.id})">
+                                        <button class="btn btn-primary btn-outline">
+                                            <span class="fa fa-pencil"></span>
+                                        </button>
+                                    </a>
+                                    <a ui-sref="address.delete({id: address.id})">
+                                        <button class="btn btn-danger btn-outline">
+                                            <span class="fa fa-trash"></span>
+                                        </button>
+                                    </a>
                                 </td>
                             </tr>
                         </tbody>

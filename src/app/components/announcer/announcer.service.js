@@ -83,7 +83,7 @@
         }
 
         function update(announcer) {
-            return resource.update({id: announcer.id},toPayloadFormat(announcer))
+            return resource.update({id: announcer.id}, toPayloadFormat(announcer))
                 .$promise
                 .then(onSuccess)
                 .catch(onError);
@@ -100,7 +100,7 @@
 
 
         function init() {
-            var announcer = {
+            return {
                 announcer: '',
                 country: '',
                 platform: '',
@@ -109,8 +109,6 @@
                 contacts: [],
                 address: ''
             };
-
-            return announcer;
         }
 
         function toPayloadFormat(announcer) {
@@ -147,7 +145,6 @@
             delete tmp.$promise;
             delete tmp.id;
 
-            console.log(tmp);
 
             return tmp;
         }

@@ -46,7 +46,7 @@
 
             function onSuccess(address) {
                 vm.isDeleting = false;
-                vm.modalInstance.close();
+                vm.modalInstance.close(address);
             }
 
             function onError() {
