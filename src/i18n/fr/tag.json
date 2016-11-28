@@ -1,0 +1,17 @@
+{
+    "tag": {
+        "tag": "Tag",
+        "tags": "Tags",
+        "list": "Liste des tags",
+        "create": "Créer ou editer un tag",
+        "delete": "Supprimer",
+        "confirm": {
+            "delete": "Comfirmer la suppression d'un tag",
+            "msg": "Êtes-vous sûr de supprimer ce tag ?"
+        },
+        "action":{
+            "update": "Mettre à jour le tag",
+            "save": "Enregister le tag"
+        }
+    }
+}
