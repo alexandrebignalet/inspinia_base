@@ -1,7 +1,7 @@
 
 <div class="ibox">
     <div class="ibox-content">
-        <div class="col-sm-4">
+        <div ng-if="vm.showPicture" class="col-sm-4">
 
             <div class="text-center">
                 <img alt="image" class="img-circle m-t-xs img-thumbnail" src="assets/images/patterns/toto.jpg">
@@ -9,12 +9,12 @@
                 <div class="m-t-xs font-bold">{{ vm.contact.fonction }}</div>
             </div>
         </div>
-        <div class="col-sm-8">
-            <div class="m-b-lg">
+        <div class="col-sm-{{ vm.showPicture ? '8' : '12' }}">
+            <div ng-class="{'m-b-lg' : vm.showPicture}">
 
                 <h3>
                     <small>{{ vm.contact.civility }}</small>
-                    <div class="pull-right">
+                    <div ng-if="vm.showButtons" class="pull-right">
                         <a ui-sref="contact.edit({contactId: vm.contact.id})"><button class="btn btn-outline btn-sm btn-primary">
                             <span class="fa fa-pencil"></span>
                         </button></a>
@@ -28,8 +28,9 @@
 
                 </h3>
             </div>
-            <hr>
+            <hr ng-if="vm.showPicture">
             <p><i class="fa fa-briefcase"></i> {{vm.contact.company.name }} TDF </p>
+            <p ng-if="!vm.showPicture"><i class="fa fa-gear"></i> {{vm.contact.fonction}}</p>
             <p><i class="fa fa-tag"></i> {{vm.contact.type }} </p>
             <p><i class="fa fa-envelope"></i> {{vm.contact.mail }}</p>
             <p><i class="fa fa-phone"></i> {{vm.contact.phone }}</p>

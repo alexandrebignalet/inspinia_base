@@ -19,38 +19,28 @@
     /* @ngInject */
     function AnnouncerController(DTOptionsBuilder, DTColumnDefBuilder, ToastrService, $translate, Announcer) {
         var vm = this;
-        vm.title = 'AnnouncerController';
-        vm.onActivate = onActivate;
         vm.isSaving = false;
-
+        vm.onActivate = onActivate;
+        vm.showAnnouncer = showAnnouncer;
 
         ////////////////
 
         vm.$onInit = function () {
-            vm.dtOptions = DTOptionsBuilder.newOptions()
-                .withDOM('<"html5buttons"B>lfrtip')
-                .withBootstrap()
-                .withButtons([
-                    {extend: 'copy'},
-                    {extend: 'csv'},
-                    {extend: 'excel', title: 'ExampleFile'},
-                    {extend: 'pdf', title: 'ExampleFile'},
-                    {extend: 'print',
-                        customize: function (win){
-                            angular.element(win.document.body).addClass('white-bg');
-                            angular.element(win.document.body).css('font-size', '10px');
-
-                            angular.element(win.document.body).find('table')
-                                .addClass('compact')
-                                .css('font-size', 'inherit');
-                        }
-                    }
-                ]);
 
             vm.DTColumnDefs = [
-                DTColumnDefBuilder.newColumnDef(4).notSortable()
+                DTColumnDefBuilder.newColumnDef(5).notSortable()
             ];
         };
+
+        vm.$onInit = function() {
+            if( vm.announcers.length > 0) {
+                vm.showedAnnouncer = vm.announcers[0];
+            }
+        };
+
+        function showAnnouncer(announcer) {
+            vm.showedAnnouncer = announcer;
+        }
 
 
         function onActivate($event){

@@ -19,7 +19,7 @@
 
         ////////////////
 
-        function openDialogModal(announcer,companies,contacts) {
+        function openDialogModal(announcer,company,companies,contacts,databases) {
 
             $uibModal.open({
                 component: 'announcerDialog',
@@ -29,6 +29,8 @@
                     announcer: function() { return announcer},
                     companies: function() { return companies},
                     contacts: function() { return contacts},
+                    company: function() { return company},
+                    databases: function() { return databases},
                     loadPlugin: function ($ocLazyLoad) {
                         return $ocLazyLoad.load(['iCheckButtons']);
                     }

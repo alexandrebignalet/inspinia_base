@@ -13,9 +13,12 @@
         "street" : "Rue",
         "town" : "Ville",
         "zipcode" : "CP",
+        "address" : "Address",
+        "status" : "Status",
         "activate.msg": "Annonceur activé.",
         "desactivate.msg": "Annonceur désactivé.",
         "save": "Enregistrer l'annonceur",
+        "informations": "Informations",
         "platform-access": {
             "add": "Ajouter un accès platform",
             "username": "Nom d'utilisateur",

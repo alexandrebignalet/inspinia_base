@@ -14,6 +14,10 @@
             "name": "Délai de paiement",
             "0": "À la reception de la facture"
         },
+        "action": {
+            "update": "Mettre à jour la companie",
+            "save": "Enregistrer la companie"
+        },
         "confirm": {
             "delete": "Confimer la suppresion de l'entreprise",
             "msg": "Êtes-vous sûr de vouloir supprimer l'entreprise ?"

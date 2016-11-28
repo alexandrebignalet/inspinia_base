@@ -60,7 +60,7 @@
                 <option value="Intern">Internal</option>
             </select>
         </div>
-        <div ng-show="editForm.type.$invalid">
+        <div ng-show="editForm.type.$invalid && !editForm.type.$pristine">
             <p class="help-block"
                ng-show="editForm.type.$error.required" translate="global.entity.validation.required">
                 This field is required.

@@ -4,11 +4,46 @@
     <h4 class="modal-title">New Announcer</h4>
 </div>
 <div class="modal-body">
+
+
     <announcer-form companies="vm.companies" contacts="vm.contacts" announcer="vm.announcer"
                     is-saving="vm.isSaving"
-                    on-save-entity="vm.saveEntity($event)">
-
+                    emit-on-change-create-company="vm.onChangeCreateCompany($event)"
+                    on-save-announcer="vm.onSaveAnnouncer($event)">
     </announcer-form>
+    <br>
+    <div ng-if="vm.createCompany" class="ibox">
+        <div class="tabs-container">
+            <uib-tabset>
+
+                <uib-tab>
+                    <uib-tab-heading>
+                        <i class="fa fa-phone"></i>
+                        <span translate="announcer.company"> Company</span>
+                    </uib-tab-heading>
+                    <div class="panel-body">
+                        <company-form databases="vm.databases"
+                                      company="vm.company"
+                                      on-save-company="vm.onSaveCompany($event)"
+                                      is-saving="vm.isSaving"></company-form>
+                    </div>
+                </uib-tab>
+
+                <uib-tab>
+                    <uib-tab-heading>
+                        <i class="fa fa-globe"></i>
+                        <span translate="company.address">Address</span>
+                        <i class="fa fa-circle text-danger" ng-if="!vm.company.address"></i>
+                        <i class="fa fa-circle text-success" ng-if="vm.company.address"></i>
+                    </uib-tab-heading>
+                    <div class="panel-body">
+                        <address-form address="vm.company.address" on-save-address="vm.onSaveAddress($event)" is-saving="vm.isSaving"></address-form>
+                    </div>
+                </uib-tab>
+            </uib-tabset>
+        </div>
+    </div>
+
 </div>
 
 <div class="modal-footer">
