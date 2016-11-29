@@ -43,6 +43,9 @@
                                 view: 'router.pricing-plan'
                             }
                         ];
+                    },
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load(['datatables']);
                     }
                 }
             });

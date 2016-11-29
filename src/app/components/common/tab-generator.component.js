@@ -14,9 +14,9 @@
         .module('dataToolApp')
         .component('tabGenerator', tabGenerator);
 
-    TabController.$inject = ['$state']
+    TabController.$inject = ['$state', '$rootScope']
 
-    function TabController($state){
+    function TabController($state, $rootScope){
         var vm = this;
 
         vm.go = goToState;
@@ -24,6 +24,10 @@
         function goToState(stateName){
             $state.go(stateName);
         }
+
+        $rootScope.$watch('transition', function(n){
+            vm.loading = n;
+        })
     }
 })();
 

@@ -19,6 +19,7 @@
                 $rootScope.toState = toState;
                 $rootScope.toStateParams = toStateParams;
                 $rootScope.fromState = fromState;
+                $rootScope.transition = true;
 
                 // Redirect to a state with an external URL (http://stackoverflow.com/a/30221248/1098564)
                 if (toState.external) {
@@ -34,6 +35,7 @@
             var stateChangeSuccess = $rootScope.$on('$stateChangeSuccess',  function(event, toState) {
                 $rootScope.pageTitle = toState.data.pageTitle;
                 $rootScope.name = toState.name;
+                $rootScope.transition = false;
             });
 
             $rootScope.$on('$destroy', function () {

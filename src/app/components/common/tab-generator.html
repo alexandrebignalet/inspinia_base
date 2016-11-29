@@ -10,7 +10,18 @@
                                 <span translate="{{ tab.titleTranslate }}"></span>
                             </uib-tab-heading>
                             <div class="panel-body">
-                                <div ui-view="{{tab.view}}"></div>
+                                <div ui-view="{{tab.view}}" ng-if="!vm.loading"></div>
+                                <div class="sk-spinner sk-spinner-cube-grid" ng-if="vm.loading">
+                                    <div class="sk-cube"></div>
+                                    <div class="sk-cube"></div>
+                                    <div class="sk-cube"></div>
+                                    <div class="sk-cube"></div>
+                                    <div class="sk-cube"></div>
+                                    <div class="sk-cube"></div>
+                                    <div class="sk-cube"></div>
+                                    <div class="sk-cube"></div>
+                                    <div class="sk-cube"></div>
+                                </div>
                             </div>
                         </uib-tab>
                     </uib-tabset>

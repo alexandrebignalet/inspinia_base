@@ -10,8 +10,26 @@
     function stateConfig($stateProvider) {
 
         $stateProvider
-            .state('router.pricing-plan-create', {
-                parent: 'router',
+            .state('pricing-plan', {
+                parent: 'router-main',
+                url: '/pricing-plan',
+                data: {
+                    pageTitle: 'Pricing plan',
+                    authorities: ['ROLE_ADMIN', 'ROLE_SUPER_ADMIN']
+                },
+                views: {
+                    'pricing-plan':{
+                        template: '<pricing-plan pricing-plans="$resolve.pricingPlans"></pricing-plan>'
+                    }
+                },
+                resolve: {
+                    pricingPlans: ['PricingPlan', function(PricingPlan){
+                        return PricingPlan.getAll(['plans_all', 'tiers_summary', 'routers_summary']);
+                    }]
+                }
+            })
+            .state('pricing-plan.create', {
+                parent: 'router-main',
                 url: '/pricing-plan/create',
                 data: {
                     pageTitle: 'Create a pricing plan',
@@ -31,8 +49,8 @@
                         PricingPlanDialogService.openDialogModal(pricingPlan, pricingTiers, routers);
                     }]
             })
-            .state('router.pricing-plan-edit', {
-                parent: 'router',
+            .state('pricing-plan.edit', {
+                parent: 'router-main',
                 url: '/pricing-plan/{id}/edit',
                 data: {
                     pageTitle: 'Edit a pricing plan',
@@ -55,8 +73,8 @@
                         PricingPlanDialogService.openDialogModal(pricingPlan, pricingTiers, routers);
                     }]
             })
-            .state('router.pricing-plan-delete', {
-                parent: 'router',
+            .state('pricing-plan.delete', {
+                parent: 'router-main',
                 url: '/pricing-plan/{id}/delete',
                 data: {
                     pageTitle: 'Delete a pricing plan',

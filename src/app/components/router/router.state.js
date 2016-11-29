@@ -29,10 +29,7 @@
                     mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
                         $translatePartialLoader.addPart('router');
                         return $translate.refresh();
-                    }],
-                    loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(['datatables']);
-                    }
+                    }]
                 }
             })
             .state('router.create', {
