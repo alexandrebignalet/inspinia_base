@@ -51,6 +51,26 @@
                         routerDialogService.openDialogModal(router);
                     }]
             })
+            .state('router.edit', {
+                parent: 'router',
+                url: '/edit/:routerId',
+                data: {
+                    pageTitle: 'Edit a router',
+                    authorities: ['ROLE_ADMIN', 'ROLE_SUPER_ADMIN']
+                },
+                resolve: {
+                    router: [
+                        'Router','$stateParams', function (Router,$stateParams) {
+                            var routerId = $stateParams.routerId;
+                            return Router.get(routerId,['routers_all'])
+                        }
+                    ]
+                },
+                onEnter: ['routerDialogService', 'router',
+                    function(routerDialogService, router ) {
+                        routerDialogService.openDialogModal(router);
+                    }]
+            })
         ;
     }
 })();

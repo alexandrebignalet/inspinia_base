@@ -27,7 +27,9 @@
                                 <td>{{::router.id}}</td>
                                 <td>{{::router.name}}</td>
                                 <td>{{::router._contactemail}}</td>
-                                <td></td></span></td>
+                                <td><a ui-sref="router.edit({routerId: router.id})"><button class="btn btn-outline btn-primary">
+                                    <span class="fa fa-pencil"></span>
+                                </button></a></td>
                             </tr>
                             </tbody>
                             <tfoot>

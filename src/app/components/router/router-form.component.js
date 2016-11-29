@@ -24,11 +24,12 @@
         vm.onSubmit = onSubmit;
 
         vm.$onInit = function() {
+            console.log(vm.router);
             vm.countries = COUNTRIES;
         };
 
         function onSubmit() {
-            
+
             vm.onSaveRouter({
                 $event: {
                     router: vm.router

@@ -23,8 +23,10 @@
 
         var service = {
             getAll: getAll,
-            save: save,
-            init: init
+            get:    get,
+            save:   save,
+            update: update,
+            init:   init
         };
 
         return service;
@@ -49,6 +51,27 @@
             }
         }
 
+        function get(routerId, context) {
+            return resource.get({
+                id: routerId,
+                'context': angular.toJson(context)
+            })
+                .$promise
+                .then(onGetSuccess)
+                .catch(onGetError);
+
+            function onGetSuccess(response) {
+                console.log(response);
+
+                return toFormFormat(response);
+            }
+
+            function onGetError(error) {
+                ToastrService.error('Impossible to retrieve Router', 'XHR Error');
+                return $q.reject(error);
+            }
+        }
+
         function save(router) {
             return resource.save(router, onSaveSuccess, onSaveError).$promise;
 
@@ -60,6 +83,53 @@
                 ToastrService.error('Impossible to create router', 'ERROR');
                 $q.reject(error);
             }
+        }
+        function update(router) {
+            return resource.update({id: router.id}, toPayloadFormat(router)).$promise
+                .then(onSuccess)
+                .catch(onError);
+
+            function onSuccess() {
+                ToastrService.success('Router edited', 'SUCCESS');
+            }
+
+            function onError(error) {
+                ToastrService.error('Impossible to edit router', 'XHR Error');
+                return $q.reject(error);
+            }
+        }
+
+
+        function toFormFormat(router) {
+
+            var tmp = {
+                id: router.id,
+                name : router.name,
+                ContactName : router._contact_name,
+                email : router.email,
+                description : router.description,
+                BillingContactName : router._billing_contact_name,
+                Contactemail : router._contactemail,
+                PhysicalAddress : router._physical_address,
+                PhysicalAddressSecond : router._physical_address_second,
+                PostalNumber : router._postal_number,
+                town : router.town,
+                Country : router._country,
+                CompanyRegistryNumber : router._company_registry_number,
+                VATNumber : router._v_a_t_number,
+                BillingPeriod : router._billing_period,
+                PaymentEndofmonth: router._payment_endofmonth
+            };
+
+            return tmp;
+        }
+
+        function toPayloadFormat(router) {
+            var tmp = Object.assign({}, router);
+
+            delete tmp.id;
+
+            return tmp;
         }
 
         function init() {

@@ -38,7 +38,9 @@
             vm.isSaving = true;
 
             if( router.id ){
-                console.log('ROUTER HAS ID');
+                Router.update(router)
+                    .then(onSaveSuccess)
+                    .catch(onSaveError);
             } else {
                 Router.save(router)
                     .then(onSaveSuccess)
@@ -46,14 +48,11 @@
             }
 
             function onSaveSuccess(response) {
-                console.log('SUCCESS SAVE');
-                console.log(response);
                 vm.isSaving = false;
+                vm.modalInstance.close();
             }
 
             function onSaveError(error) {
-                console.log('ERROR SAVE');
-                console.log(error);
                 vm.isSaving = false;
             }
         }
