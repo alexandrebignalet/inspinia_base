@@ -1,0 +1,19 @@
+{
+    "pricingPlan":{
+        "pricingPlan": "Pricing plan",
+        "pricingPlans": "Pricing plans",
+        "name": "Name",
+        "comment": "Comment",
+        "router": "Router",
+        "pricingTier": "Pricing tier",
+        "actions": "Actions",
+        "action": {
+            "save": "Save princing plan",
+            "update": "Update pricing plan"
+        },
+        "confirm": {
+            "delete": "Confirm delete pricing plan",
+            "msg": "Are your sure to delete this pricing plan ?"
+        }
+    }
+}

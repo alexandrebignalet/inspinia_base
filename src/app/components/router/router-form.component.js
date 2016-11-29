@@ -24,7 +24,6 @@
         vm.onSubmit = onSubmit;
 
         vm.$onInit = function() {
-            console.log(vm.router);
             vm.countries = COUNTRIES;
         };
 

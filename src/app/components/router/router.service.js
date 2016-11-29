@@ -61,8 +61,6 @@
                 .catch(onGetError);
 
             function onGetSuccess(response) {
-                console.log(response);
-
                 return toFormFormat(response);
             }
 
@@ -75,7 +73,7 @@
         function save(router) {
             return resource.save(router, onSaveSuccess, onSaveError).$promise;
 
-            function onSaveSuccess(response) {
+            function onSaveSuccess() {
                 ToastrService.success('Router created', 'SUCCESS');
             }
 

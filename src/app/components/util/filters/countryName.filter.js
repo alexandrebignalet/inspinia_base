@@ -11,7 +11,6 @@
         ////////////////
 
         function countryNameFilter(item) {
-            console.log(item);
             if(item != '' && item.length == 2){
                 var country = $filter("filter")(COUNTRIES, {code: item},true);
 
