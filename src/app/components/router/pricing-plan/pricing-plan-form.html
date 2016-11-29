@@ -1,0 +1,78 @@
+<form name="editForm" role="form" novalidate ng-submit="vm.onSubmit()">
+    <div ng-class="{ 'has-error' : (editForm.name.$invalid && !editForm.name.$pristine), 'has-success': editForm.name.$valid}">
+        <div class="form-group">
+            <label class="control-label" for="pricingPlan_name"><span translate="pricingPlan.name">Name</span></label>
+            <div class="input-group m-b">
+                <span class="input-group-addon"><i class="fa fa-{{ editForm.name.$invalid ? 'times' : 'check'}}"></i></span>
+                <input type="text" class="form-control" name="name" id="pricingPlan_name" ng-model="vm.pricingPlan.name" required/>
+            </div>
+        </div>
+        <div ng-show="editForm.name.$invalid && !editForm.name.$pristine">
+            <p class="help-block"
+               ng-show="editForm.name.$error.required" translate="global.entity.validation.required">
+                This field is required.
+            </p>
+        </div>
+    </div>
+
+    <div ng-class="{ 'has-error' : (editForm.comment.$invalid && !editForm.comment.$pristine), 'has-success': editForm.comment.$valid}">
+        <div class="form-group">
+            <label class="control-label" for="pricingPlan_comment"><span translate="pricingPlan.comment">Comment</span></label>
+            <div class="input-group m-b">
+                <span class="input-group-addon"><i class="fa fa-{{ editForm.comment.$invalid ? 'times' : 'check'}}"></i></span>
+                <input type="text" name="comment" class="form-control" id="pricingPlan_comment" ng-model="vm.pricingPlan.comment"/>
+            </div>
+        </div>
+
+        <div ng-show="editForm.comment.$invalid && !editForm.comment.$pristine">
+            <p class="help-block"
+               ng-show="editForm.comment.$error.required" translate="global.entity.validation.required">
+                This field is required.
+            </p>
+        </div>
+    </div>
+
+    <div ng-class="{ 'has-error' : (editForm.pricingTier.$invalid && !editForm.pricingTier.$pristine), 'has-success': editForm.pricingTier.$valid}">
+        <div class="form-group">
+            <label class="control-label" for="pricingPlan_pricingTier"><span translate="pricingPlan.pricingTier">Pricing plan</span></label>
+            <ui-select ng-model="vm.pricingPlan.id_tranche" theme="bootstrap" id="pricingPlan_pricingTier" required name="pricingTier">
+                <ui-select-match placeholder="Select a pricing tier in the list...">{{$select.selected.name}}</ui-select-match>
+                <ui-select-choices repeat="pricingTier.name as pricingTier in vm.pricingTiers | propsFilter: {name: $select.search}">
+                    <div ng-bind-html="pricingTier.name | highlight: $select.search"></div>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+
+        <div ng-show="editForm.pricingTier.$invalid && !editForm.pricingTier.$pristine">
+            <p class="help-block"
+               ng-show="editForm.pricingTier.$error.required" translate="global.entity.validation.required">
+                This field is required.
+            </p>
+        </div>
+    </div>
+
+    <div ng-class="{ 'has-error' : (editForm.router.$invalid && !editForm.router.$pristine), 'has-success': editForm.router.$valid}">
+        <div class="form-group">
+            <label class="control-label" for="pricingPlan_router"><span translate="pricingPlan.router">Router</span></label>
+            <ui-select ng-model="vm.pricingPlan.id_router" theme="bootstrap" id="pricingPlan_router" required name="router">
+                <ui-select-match placeholder="Select a router in the list...">{{$select.selected.name}}</ui-select-match>
+                <ui-select-choices repeat="router.name as router in vm.routers | propsFilter: {name: $select.search}">
+                    <div ng-bind-html="router.name | highlight: $select.search"></div>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+
+        <div ng-show="editForm.router.$invalid && !editForm.router.$pristine">
+            <p class="help-block"
+               ng-show="editForm.router.$error.required" translate="global.entity.validation.required">
+                This field is required.
+            </p>
+        </div>
+    </div>
+
+    <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-block btn-primary">
+        <span class="glyphicon glyphicon-save"></span>&nbsp;
+        <span ng-if="vm.pricingPlan.id" translate="pricingPlan.action.update">Update</span>
+        <span ng-if="!vm.pricingPlan.id" translate="pricingPlan.action.save">Save</span>
+    </button>
+</form>

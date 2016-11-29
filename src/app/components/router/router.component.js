@@ -7,7 +7,8 @@
         controllerAs: 'vm',
         bindings: {
             routers : '<',
-            pricingTiers: '<'
+            pricingTiers: '<',
+            pricingPlans: '<'
         }
     };
 

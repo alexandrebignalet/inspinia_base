@@ -1,5 +1,5 @@
 <form name="editForm" role="form" novalidate ng-submit="vm.onSubmit()">
-    <div class="form-group" ng-class="{ 'has-error' : (editForm.name.$invalid && !editForm.name.$pristine), 'has-success': editForm.name.$valid}">
+    <div ng-class="{ 'has-error' : (editForm.name.$invalid && !editForm.name.$pristine), 'has-success': editForm.name.$valid}">
         <div class="form-group">
             <label class="control-label" for="pricingTier_name"><span translate="pricingTier.name">Name</span></label>
             <div class="input-group m-b">
@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <div class="form-group" ng-class="{ 'has-error' : (editForm.name.$invalid && !editForm.name.$pristine), 'has-success': editForm.name.$valid}">
+    <div ng-class="{ 'has-error' : (editForm.comment.$invalid && !editForm.comment.$pristine), 'has-success': editForm.comment.$valid}">
         <div class="form-group">
             <label class="control-label" for="pricingTier_comment"><span translate="pricingTier.comment">Comment</span></label>
             <div class="input-group m-b">
@@ -32,11 +32,13 @@
         </div>
     </div>
 
-    <div class="form-group" ng-class="{ 'has-error' : editForm.minimalValue.$invalid && !editForm.minimalValue.$pristine, 'has-success': editForm.minimalValue.$valid}">
+    <div ng-class="{ 'has-error' : editForm.minimalValue.$invalid && !editForm.minimalValue.$pristine, 'has-success': editForm.minimalValue.$valid}">
         <div class="form-group">
             <label class="control-label" for="pricingTier_minimalValue"><span translate="pricingTier.minimalValue">Minimal value</span></label>
-
-            <input type="number" step="2" class="form-control" name="minimalValue" id="pricingTier_minimalValue" ng-model="vm.pricingTier.minimal_value" required/>
+            <div class="input-group m-b">
+                <span class="input-group-addon"><i class="fa fa-{{ editForm.minimalValue.$invalid ? 'times' : 'check'}}"></i></span>
+                <input type="number" step="2" class="form-control" name="minimalValue" id="pricingTier_minimalValue" ng-model="vm.pricingTier.minimal_value" required/>
+            </div>
         </div>
 
         <div ng-show="editForm.minimalValue.$invalid && !editForm.minimalValue.$pristine">
@@ -47,11 +49,13 @@
         </div>
     </div>
 
-    <div class="form-group" ng-class="{ 'has-error' : editForm.thisCpm.$invalid && !editForm.thisCpm.$pristine, 'has-success': editForm.thisCpm.$valid}">
+    <div ng-class="{ 'has-error' : editForm.thisCpm.$invalid && !editForm.thisCpm.$pristine, 'has-success': editForm.thisCpm.$valid}">
         <div class="form-group">
             <label class="control-label" for="pricingTier_thisCpm"><span translate="pricingTier.thisCpm">This CPM</span></label>
-
-            <input type="number" step="2" class="form-control" name="thisCpm" id="pricingTier_thisCpm" ng-model="vm.pricingTier.thisCpm" required/>
+            <div class="input-group m-b">
+                <span class="input-group-addon"><i class="fa fa-{{ editForm.thisCpm.$invalid ? 'times' : 'check'}}"></i></span>
+                <input type="number" step="2" class="form-control" name="thisCpm" id="pricingTier_thisCpm" ng-model="vm.pricingTier.this_cpm" required/>
+            </div>
         </div>
 
         <div ng-show="editForm.thisCpm.$invalid && !editForm.thisCpm.$pristine">

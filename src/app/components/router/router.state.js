@@ -19,20 +19,25 @@
                 },
                 views: {
                     'content@': {
-                        template: '<router routers="$resolve.routers" pricing-tiers="$resolve.pricingTiers"></router>'
+                        template: '<router routers="$resolve.routers" ' +
+                                          'pricing-tiers="$resolve.pricingTiers"' +
+                                          'pricing-plans="$resolve.pricingPlans"></router>'
                     }
                 },
                 resolve: {
-                    routers: [
-                        'Router', function(Router) {
-                            return Router.getAll();
+                    routers: ['Router', function(Router) {
+                        return Router.getAll();
                     }],
                     pricingTiers: ['PricingTier', function(PricingTier){
                         return PricingTier.getAll();
                     }],
+                    pricingPlans: ['PricingPlan', function(PricingPlan){
+                        return PricingPlan.getAll(['pricing_plans_all', 'routers_summary', 'princing_tiers_summary']);
+                    }],
                     mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
                         $translatePartialLoader.addPart('router');
                         $translatePartialLoader.addPart('pricing-tier');
+                        $translatePartialLoader.addPart('pricing-plan');
                         return $translate.refresh();
                     }],
                     loadPlugin: function ($ocLazyLoad) {

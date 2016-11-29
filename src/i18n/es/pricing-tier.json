@@ -6,6 +6,14 @@
         "comment": "Commentario",
         "minimalValue": "Valor minimale",
         "thisCpm": "Valor del CPM",
-        "actions": "Actíones"
+        "actions": "Actíones",
+        "action": {
+            "save": "Guargar la offerta",
+            "update": "Actualizar la offerta"
+        },
+        "confirm": {
+            "delete": "Confirmar la eliminación de la offerta",
+            "msg": "Seguro de la eliminación de la offerta ?"
+        }
     }
 }

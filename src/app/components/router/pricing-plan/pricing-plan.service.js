@@ -6,14 +6,14 @@
 
     angular
         .module('dataToolApp')
-        .factory('PricingTier', PricingTier);
+        .factory('PricingPlan', PricingPlan);
 
-    PricingTier.$inject = ['$resource', '$q', 'ToastrService', 'API_BASE_URL'];
+    PricingPlan.$inject = ['$resource', '$q', 'ToastrService', 'API_BASE_URL'];
 
     /* @ngInject */
-    function  PricingTier($resource, $q, ToastrService, API_BASE_URL) {
+    function  PricingPlan($resource, $q, ToastrService, API_BASE_URL) {
 
-        var resourceUrl = API_BASE_URL+'/api/pricing-tiers/:id';
+        var resourceUrl = API_BASE_URL+'/api/pricing-plans/:id';
 
         var resource = $resource(resourceUrl, {}, {
             'update': {method: 'PATCH'}
@@ -39,15 +39,15 @@
                 'context': angular.toJson(context)
             })
                 .$promise
-                .then(getPricingTiersThen)
-                .catch(getPricingTiersCatch);
+                .then(getPricingPlansThen)
+                .catch(getPricingPlansCatch);
 
-            function getPricingTiersThen(data) {
-                return data.tiers;
+            function getPricingPlansThen(data) {
+                return data.pricing_plans;
             }
 
-            function getPricingTiersCatch(error) {
-                ToastrService.error('Impossible to retrieve PricingTiers','XHR Error');
+            function getPricingPlansCatch(error) {
+                ToastrService.error('Impossible to retrieve PricingPlans','XHR Error');
                 return $q.reject(error);
             }
         }
@@ -55,23 +55,23 @@
         function get(id, context) {
             return resource.get({'id': id, 'context': context})
                 .$promise
-                .then(getPricingTierThen)
-                .catch(getPricingTierCatch);
+                .then(getPricingPlanThen)
+                .catch(getPricingPlanCatch);
 
-            function getPricingTierThen(data){
+            function getPricingPlanThen(data){
                 delete data.$promise;
                 delete data.$resolved;
 
                 return data
             }
-            function getPricingTierCatch(error){
+            function getPricingPlanCatch(error){
                 ToastrService.error(error, 'XHR Error');
                 return $q.reject(error);
             }
         }
 
-        function save(pricingTier){
-            return resource.save(toPayloadFormat(pricingTier))
+        function save(pricingPlan){
+            return resource.save(toPayloadFormat(pricingPlan))
                 .$promise
                 .then(onSaveSuccess)
                 .catch(onSaveError);
@@ -83,8 +83,8 @@
             }
         }
 
-        function update(pricingTier){
-            return resource.update({'id': pricingTier.id}, toPayloadFormat(pricingTier))
+        function update(pricingPlan){
+            return resource.update({'id': pricingPlan.id}, toPayloadFormat(pricingPlan))
                 .$promise
                 .then(onSaveSuccess)
                 .catch(onSaveError);
@@ -96,8 +96,8 @@
             }
         }
 
-        function remove(pricingTierId){
-            return resource.delete({'id': pricingTierId})
+        function remove(pricingPlanId){
+            return resource.delete({'id': pricingPlanId})
                 .$promise
                 .then(onSaveSuccess)
                 .catch(onSaveError);
@@ -113,17 +113,16 @@
             return {
                 name: null,
                 comment: null,
-                minimal_value: null,
-                thisCpm: null,
-                cpm: null
+                idTranche: null,
+                idRouter: null
             }
         }
 
-        function toPayloadFormat(pricingTier){
-            var tmp = Object.assign({}, pricingTier);
+        function toPayloadFormat(pricingPlan){
+            var tmp = Object.assign({}, pricingPlan);
 
             delete tmp.id;
-            delete tmp.list_planche;
+            delete tmp.list_databases;
 
             return tmp;
         }

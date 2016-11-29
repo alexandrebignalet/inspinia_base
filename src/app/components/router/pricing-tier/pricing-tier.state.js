@@ -35,6 +35,18 @@
                         var pricingTier = PricingTier.get($stateParams.id);
                         PricingTierDialogService.openDialogModal(pricingTier);
                     }]
+            })
+            .state('router.pricing-tier-delete', {
+                parent: 'router',
+                url: '/pricing-tier/{id}/delete',
+                data: {
+                    pageTitle: 'Delete a pricing tier',
+                    authorities: ['ROLE_ADMIN', 'ROLE_SUPER_ADMIN']
+                },
+                onEnter: ['$stateParams', 'PricingTierDialogService',
+                    function($stateParams, PricingTierDialogService) {
+                        PricingTierDialogService.openDeleteModal($stateParams.id);
+                    }]
             });
     }
 })();

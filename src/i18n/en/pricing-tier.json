@@ -10,6 +10,10 @@
         "action": {
             "save": "Save the pricing plan",
             "update": "Update the pricing plan"
+        },
+        "confirm": {
+            "delete": "Confirm delete pricing tier",
+            "msg": "Are you sure you want to delete this pricing tier ?"
         }
     }
 }
