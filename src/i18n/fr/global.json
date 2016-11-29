@@ -10,11 +10,11 @@
         "delete": "Supprimer",
         "actions": "Actions",
         "action": {
-            "search": "Search",
-            "next": "Next",
-            "previous": "Previous",
-            "first": "First",
-            "last": "Last"
+            "search": "Recherche",
+            "next": "Suivant",
+            "previous": "Précédent",
+            "first": "Première",
+            "last": "Dernière"
         },
         "entity": {
             "select": {

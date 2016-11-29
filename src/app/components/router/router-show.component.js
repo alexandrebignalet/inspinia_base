@@ -17,14 +17,7 @@
     RouterShowController.$inject = [];
 
     /* @ngInject */
-    function RouterShowController() {
-        var vm = this;
-
-        vm.$onChanges = function(obj) {
-            console.log(obj);
-        }
-
-    }
+    function RouterShowController() {}
 })();
 
 

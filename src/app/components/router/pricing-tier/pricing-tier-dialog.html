@@ -1,0 +1,13 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="vm.clear()">&times;</button>
+
+    <h4 class="modal-title" translate="pricingTier.create">Create or edit an pricing tier</h4>
+</div>
+<div class="modal-body">
+    <pricing-tier-form pricing-tier="vm.pricingTier" on-save-pricing-tier="vm.onSave($event)" is-saving="vm.isSaving"></pricing-tier-form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default pull-left" data-dismiss="modal" ng-click="vm.clear();">
+        <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+    </button>
+</div>

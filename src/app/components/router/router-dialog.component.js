@@ -47,12 +47,12 @@
                     .catch(onSaveError);
             }
 
-            function onSaveSuccess(response) {
+            function onSaveSuccess() {
                 vm.isSaving = false;
                 vm.modalInstance.close();
             }
 
-            function onSaveError(error) {
+            function onSaveError() {
                 vm.isSaving = false;
             }
         }

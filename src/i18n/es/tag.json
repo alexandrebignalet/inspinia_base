@@ -1,7 +1,7 @@
 {
     "tag": {
         "tags": "Etiquetas",
-        "tag": "",
+        "tag": "Etiqueta",
         "list": "Lista de las etiquetas",
         "create": "Añadir o editar una etiqueta",
         "delete": "Eliminar",

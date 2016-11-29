@@ -18,8 +18,7 @@
         return directive;
 
         function link(scope, element) {
-            
-            console.log('full');
+
             scope.$evalAsync(
                 function(){
                     element.slimscroll({

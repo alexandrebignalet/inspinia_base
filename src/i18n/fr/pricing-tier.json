@@ -1,0 +1,19 @@
+{
+    "pricingTier":{
+        "pricingTier": "Offre",
+        "pricingTiers": "Offres",
+        "name": "Nom",
+        "comment": "Commentaire",
+        "minimalValue": "Valeur minimale",
+        "thisCpm": "Valeur du CPM",
+        "actions": "Actions",
+        "action": {
+            "save": "Enregistrer l'offre",
+            "update": "Mettre à jour l'offre"
+        },
+        "confirm": {
+            "delete": "Confirmer la suppression de l'offre",
+            "msg": "Êtes-vous sûr de supprimer cette offre ?"
+        }
+    }
+}

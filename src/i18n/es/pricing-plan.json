@@ -1,0 +1,19 @@
+{
+    "pricingPlan":{
+        "pricingPlan": "Plan de tarifa",
+        "pricingPlans": "Plan de tarifas",
+        "name": "Nombre",
+        "comment": "Commentario",
+        "router": "Enrutador",
+        "pricingTier": "Offerta",
+        "actions": "Actiones",
+        "action": {
+            "save": "Guardar el plan de tarifa",
+            "update": "Actualizar el plan de tarifa"
+        },
+        "confirm": {
+            "delete": "Confirmar la eliminación del plan de tarifa",
+            "msg": "¿ Seguro de eliminar el plan de tarifa ?"
+        }
+    }
+}

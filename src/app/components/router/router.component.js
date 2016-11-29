@@ -6,7 +6,9 @@
         controller: RouterController,
         controllerAs: 'vm',
         bindings: {
-            routers : '<'
+            routers : '<',
+            pricingTiers: '<',
+            pricingPlans: '<'
         }
     };
 
