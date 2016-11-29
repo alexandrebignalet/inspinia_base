@@ -1,0 +1,23 @@
+{
+    "router": {
+        "router": "Router",
+        "create": "Create a router",
+        "name": "Name",
+        "contactemail": "Contact email",
+        "actions": "Actions",
+        "description": "Description",
+        "contact_name": "Contact name",
+        "contact_email": "Contact email",
+        "contact_name_billing": "Billing contact name",
+        "contact_email_billing": "Billing contact email",
+        "physical_address": "Postal address",
+        "physical_address_second": "Second part",
+        "postal_number": "Postal number",
+        "town": "Town",
+        "country": "Country",
+        "company_registry_number": "Company registry number",
+        "vat_number": "VAT",
+        "billing_period": "Billing period",
+        "payment_end_of_month": "Payment end of the month"
+    }
+}
