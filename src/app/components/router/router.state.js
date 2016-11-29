@@ -11,33 +11,23 @@
 
         $stateProvider
             .state('router', {
-                parent: 'components',
+                parent: 'router-main',
                 url: '/router',
                 data: {
                     pageTitle: 'Router',
                     authorities: ['ROLE_ADMIN', 'ROLE_USER', 'ROLE_SUPER_ADMIN']
                 },
                 views: {
-                    'content@': {
-                        template: '<router routers="$resolve.routers" ' +
-                                          'pricing-tiers="$resolve.pricingTiers"' +
-                                          'pricing-plans="$resolve.pricingPlans"></router>'
+                    'router': {
+                        template: '<router routers="$resolve.routers"></router>'
                     }
                 },
                 resolve: {
                     routers: ['Router', function(Router) {
                         return Router.getAll();
                     }],
-                    pricingTiers: ['PricingTier', function(PricingTier){
-                        return PricingTier.getAll();
-                    }],
-                    pricingPlans: ['PricingPlan', function(PricingPlan){
-                        return PricingPlan.getAll(['plans_all', 'routers_summary', 'tiers_summary']);
-                    }],
                     mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
                         $translatePartialLoader.addPart('router');
-                        $translatePartialLoader.addPart('pricing-tier');
-                        $translatePartialLoader.addPart('pricing-plan');
                         return $translate.refresh();
                     }],
                     loadPlugin: function ($ocLazyLoad) {

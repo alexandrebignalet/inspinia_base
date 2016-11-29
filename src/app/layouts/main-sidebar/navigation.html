@@ -39,7 +39,7 @@
             </li>
 
             <li ng-class="{active: vm.state.includes('announcer')}">
-                <a ui-sref="announcer"><i class="fa fa-bullhorn"></i> <span class="nav-label">Announcer</span><span class="fa arrow"></span></a>
+                <a ui-sref="announcer"><i class="fa fa-bullhorn"></i> <span class="nav-label">Announcer</span><span class="fa fa-arrow"></span></a>
                 <ul class="nav nav-second-level collapse" ng-class="{in: vm.state.includes('announcer')}">
                     <li ui-sref-active="active">
                         <a ui-sref="announcer"><i class="fa fa-bullhorn"></i> <span class="nav-label">Announcer</span></a>
@@ -50,10 +50,9 @@
                 </ul>
             </li>
 
-            <li ui-sref-active="active">
-                <a ui-sref="router"><i class="fa fa-sitemap"></i> <span class="nav-label">Router</span></a>
+            <li ng-class="{active: vm.state.includes('router-main')}">
+                <a ui-sref="router"><i class="fa fa-bullhorn"></i> <span class="nav-label">Router Management</span><span class="fa fa-arrow"></span></a>
             </li>
-
         </ul>
     </div>
 </nav>

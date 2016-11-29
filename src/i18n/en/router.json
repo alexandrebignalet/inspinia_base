@@ -1,6 +1,7 @@
 {
     "router": {
         "router": "Router",
+        "routers": "Routers",
         "create": "Create a router",
         "name": "Name",
         "contactemail": "Contact email",
@@ -18,6 +19,8 @@
         "company_registry_number": "Company registry number",
         "vat_number": "VAT",
         "billing_period": "Billing period",
-        "payment_end_of_month": "Payment end of the month"
+        "payment_end_of_month": "Payment end of the month",
+        "pricingTiers": "Pricing tiers",
+        "pricingPlans": "Pricing plans"
     }
 }

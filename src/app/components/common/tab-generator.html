@@ -1,0 +1,24 @@
+<div class="wrapper wrapper-content  animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="ibox">
+                <div class="tabs-container">
+                    <uib-tabset>
+                        <uib-tab ng-repeat="tab in vm.tabs" select="vm.go(tab.state)">
+                            <uib-tab-heading>
+                                <i class="{{ tab.icon }}"></i>
+                                <span translate="{{ tab.titleTranslate }}"></span>
+                            </uib-tab-heading>
+                            <div class="panel-body">
+                                <div ui-view="{{tab.view}}"></div>
+                            </div>
+                        </uib-tab>
+                    </uib-tabset>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <router-show router="vm.showedRouter"></router-show>
+        </div>
+    </div>
+</div>

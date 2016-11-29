@@ -10,8 +10,33 @@
     function stateConfig($stateProvider) {
 
         $stateProvider
-            .state('router.pricing-tier-create', {
-                parent: 'router',
+            .state('pricing-tier', {
+                parent: 'router-main',
+                url: '/pricing-tier',
+                data: {
+                    pageTitle: 'Pricing tier',
+                    authorities: ['ROLE_ADMIN', 'ROLE_SUPER_ADMIN']
+                },
+                views: {
+                    'pricing-tier':{
+                        template: '<pricing-tier pricing-tiers="$resolve.pricingTiers"></pricing-tier>'
+                    }
+                },
+                resolve: {
+                    pricingTiers: ['PricingTier', function(PricingTier){
+                        return PricingTier.getAll();
+                    }],
+                    mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
+                        $translatePartialLoader.addPart('pricing-tier');
+                        return $translate.refresh();
+                    }],
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load(['datatables']);
+                    }
+                }
+            })
+            .state('pricing-tier.create', {
+                parent: 'pricing-tier',
                 url: '/pricing-tier/create',
                 data: {
                     pageTitle: 'Create a pricing tier',
@@ -23,8 +48,8 @@
                         PricingTierDialogService.openDialogModal(pricingTier);
                     }]
             })
-            .state('router.pricing-tier-edit', {
-                parent: 'router',
+            .state('pricing-tier.edit', {
+                parent: 'pricing-tier',
                 url: '/pricing-tier/{id}/edit',
                 data: {
                     pageTitle: 'Edit a pricing tier',
@@ -36,8 +61,8 @@
                         PricingTierDialogService.openDialogModal(pricingTier);
                     }]
             })
-            .state('router.pricing-tier-delete', {
-                parent: 'router',
+            .state('pricing-tier-delete', {
+                parent: 'pricing-tier',
                 url: '/pricing-tier/{id}/delete',
                 data: {
                     pageTitle: 'Delete a pricing tier',

@@ -1,7 +1,8 @@
 {
     "router": {
-        "router": "Router",
-        "create": "Créer un router",
+        "router": "Routeur",
+        "routers": "Routeurs",
+        "create": "Créer un routeur",
         "name": "Nom",
         "contactemail": "Email de contact",
         "actions": "Actions",
@@ -18,6 +19,8 @@
         "company_registry_number": "Numéros d'enregistrement de l'entreprise (SIRET,EIN,NUF, etc ...)",
         "vat_number": "TVA",
         "billing_period": "Période de facturation",
-        "payment_end_of_month": "Paiement en fin de mois"
+        "payment_end_of_month": "Paiement en fin de mois",
+        "pricingTiers": "Offres",
+        "pricingPlans": "Plans tarifaire"
     }
 }
