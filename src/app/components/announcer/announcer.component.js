@@ -27,16 +27,15 @@
 
         vm.$onInit = function () {
 
+            if( vm.announcers.length > 0) {
+                vm.showedAnnouncer = vm.announcers[0];
+            }
+
             vm.DTColumnDefs = [
                 DTColumnDefBuilder.newColumnDef(5).notSortable()
             ];
         };
 
-        vm.$onInit = function() {
-            if( vm.announcers.length > 0) {
-                vm.showedAnnouncer = vm.announcers[0];
-            }
-        };
 
         function showAnnouncer(announcer) {
             vm.showedAnnouncer = announcer;

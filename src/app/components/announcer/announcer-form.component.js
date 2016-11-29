@@ -35,7 +35,6 @@
             vm.countries = COUNTRIES;
         };
 
-
         function onChangeCreateCompany() {
             if( vm.createCompany ){
                 vm.announcer.useCompanyAddress = false;
