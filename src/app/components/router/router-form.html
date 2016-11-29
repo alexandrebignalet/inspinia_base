@@ -1,7 +1,6 @@
 <form name="editForm" role="form" ng-submit="vm.onSubmit()">
     <div class="row">
 
-
         <div class="form-group col-md-5" ng-class="{ 'has-error' : (editForm.name.$invalid && !editForm.name.$pristine), 'has-success': editForm.name.$valid}">
             <div class="form-group">
                 <label class="control-label" for="router_name" translate="router.name">Name</label>
@@ -28,75 +27,20 @@
                 </p>
             </div>
         </div>
-
-        <div class="form-group col-md-5" ng-class="{ 'has-error' : (editForm.contactName.$invalid && !editForm.contactName.$pristine), 'has-success': editForm.contactName.$valid}">
-            <div class="form-group">
-                <label class="control-label" for="router_contactName" translate="router.contactName">ContactName</label>
-                <div class="input-group m-b">
-                    <span class="input-group-addon"><i class="fa fa-{{ editForm.contactName.$invalid ? 'times' : 'check'}}"></i></span>
-                    <input type="text" class="form-control" name="contactName" id="router_contactName"
-                           ng-model="vm.router.contactName" required minlength="3" maxlength="50"/>
-                </div>
-            </div>
-            <div ng-show="editForm.contactName.$invalid && !editForm.contactName.$pristine">
-                <p class="help-block"
-                   ng-show="editForm.contactName.$error.required" translate="global.entity.validation.required">
-                    This field is required.
-                </p>
-                <p class="help-block"
-                   ng-show="editForm.contactName.$error.minlength"
-                   translate="global.entity.validation.minlength" translate-values="{min:3}">
-                    This field should have at least 3 characters.
-                </p>
-                <p class="help-block"
-                   ng-show="editForm.contactName.$error.maxlength"
-                   translate="global.entity.validation.maxlength" translate-values="{max:50}">
-                    This field should have less than 50 characters.
-                </p>
-            </div>
-        </div>
+    </div>
 
 
-        <div class="form-group col-md-5" ng-class="{ 'has-error' : (editForm.email.$invalid && !editForm.email.$pristine), 'has-success': editForm.email.$valid}">
-            <div class="form-group">
-                <label class="control-label" for="router_email" translate="router.email">Email</label>
-                <div class="input-group m-b">
-                    <span class="input-group-addon"><i class="fa fa-{{ editForm.email.$invalid ? 'times' : 'check'}}"></i></span>
-                    <input type="text" class="form-control" name="email" id="router_email"
-                           ng-model="vm.router.email" required minlength="3" maxlength="50"/>
-                </div>
-            </div>
-            <div ng-show="editForm.email.$invalid && !editForm.email.$pristine">
-                <p class="help-block"
-                   ng-show="editForm.email.$error.required" translate="global.entity.validation.required">
-                    This field is required.
-                </p>
-                <p class="help-block"
-                   ng-show="editForm.email.$error.minlength"
-                   translate="global.entity.validation.minlength" translate-values="{min:3}">
-                    This field should have at least 3 characters.
-                </p>
-                <p class="help-block"
-                   ng-show="editForm.email.$error.maxlength"
-                   translate="global.entity.validation.maxlength" translate-values="{max:50}">
-                    This field should have less than 50 characters.
-                </p>
-            </div>
-        </div>
-        <div class="form-group col-md-5" ng-class="{ 'has-error' : (editForm.description.$invalid && !editForm.description.$pristine), 'has-success': editForm.description.$valid}">
+    <div class="row">
+        <div class="form-group col-md-12" ng-class="{ 'has-error' : (editForm.description.$invalid && !editForm.description.$pristine)}">
             <div class="form-group">
                 <label class="control-label" for="router_description" translate="router.description">Description</label>
-                <div class="input-group m-b">
-                    <span class="input-group-addon"><i class="fa fa-{{ editForm.description.$invalid ? 'times' : 'check'}}"></i></span>
-                    <input type="text" class="form-control" name="description" id="router_description"
-                           ng-model="vm.router.description" required minlength="3" maxlength="50"/>
-                </div>
+
+                <input type="text" class="form-control" name="description" id="router_description"
+                       ng-model="vm.router.description" minlength="3" maxlength="50"/>
+
             </div>
             <div ng-show="editForm.description.$invalid && !editForm.description.$pristine">
-                <p class="help-block"
-                   ng-show="editForm.description.$error.required" translate="global.entity.validation.required">
-                    This field is required.
-                </p>
+
                 <p class="help-block"
                    ng-show="editForm.description.$error.minlength"
                    translate="global.entity.validation.minlength" translate-values="{min:3}">
@@ -109,14 +53,65 @@
                 </p>
             </div>
         </div>
+    </div>
 
+    <hr class="hr-line-solid">
+
+    <div class="row">
+        <div class="form-group col-md-5" ng-class="{ 'has-error' : (editForm.contactName.$invalid && !editForm.contactName.$pristine)}">
+            <div class="form-group">
+                <label class="control-label" for="router_contactName" translate="router.contact_name">ContactName</label>
+
+                    <input type="text" class="form-control" name="contactName" id="router_contactName"
+                           ng-model="vm.router.ContactName" minlength="3" maxlength="35"/>
+
+            </div>
+            <div ng-show="editForm.contactName.$invalid && !editForm.contactName.$pristine">
+
+                <p class="help-block"
+                   ng-show="editForm.contactName.$error.minlength"
+                   translate="global.entity.validation.minlength" translate-values="{min:3}">
+                    This field should have at least 3 characters.
+                </p>
+                <p class="help-block"
+                   ng-show="editForm.contactName.$error.maxlength"
+                   translate="global.entity.validation.maxlength" translate-values="{max:35}">
+                    This field should have less than 50 characters.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group col-md-7" ng-class="{ 'has-error' : (editForm.email.$invalid && !editForm.email.$pristine)}">
+            <div class="form-group">
+                <label class="control-label" for="router_email" translate="router.contact_email">Email</label>
+
+                    <input type="text" class="form-control" name="email" id="router_email"
+                           ng-model="vm.router.email" minlength="3" maxlength="35"/>
+
+            </div>
+            <div ng-show="editForm.email.$invalid && !editForm.email.$pristine">
+                <p class="help-block"
+                   ng-show="editForm.email.$error.minlength"
+                   translate="global.entity.validation.minlength" translate-values="{min:3}">
+                    This field should have at least 3 characters.
+                </p>
+                <p class="help-block"
+                   ng-show="editForm.email.$error.maxlength"
+                   translate="global.entity.validation.maxlength" translate-values="{max:35}">
+                    This field should have less than 50 characters.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
         <div class="form-group col-md-5" ng-class="{ 'has-error' : (editForm.billingContactName.$invalid && !editForm.billingContactName.$pristine), 'has-success': editForm.billingContactName.$valid}">
             <div class="form-group">
-                <label class="control-label" for="router_billingContactName" translate="router.billingContactName">BillingContactName</label>
+                <label class="control-label" for="router_billingContactName" translate="router.contact_name_billing">BillingContactName</label>
                 <div class="input-group m-b">
                     <span class="input-group-addon"><i class="fa fa-{{ editForm.billingContactName.$invalid ? 'times' : 'check'}}"></i></span>
                     <input type="text" class="form-control" name="billingContactName" id="router_billingContactName"
-                           ng-model="vm.router.billingContactName" required minlength="3" maxlength="50"/>
+                           ng-model="vm.router.BillingContactName" required minlength="3" maxlength="35"/>
                 </div>
             </div>
             <div ng-show="editForm.billingContactName.$invalid && !editForm.billingContactName.$pristine">
@@ -131,19 +126,19 @@
                 </p>
                 <p class="help-block"
                    ng-show="editForm.billingContactName.$error.maxlength"
-                   translate="global.entity.validation.maxlength" translate-values="{max:50}">
+                   translate="global.entity.validation.maxlength" translate-values="{max:35}">
                     This field should have less than 50 characters.
                 </p>
             </div>
         </div>
 
-        <div class="form-group col-md-5" ng-class="{ 'has-error' : (editForm.contactEmail.$invalid && !editForm.contactEmail.$pristine), 'has-success': editForm.contactEmail.$valid}">
+        <div class="form-group col-md-7" ng-class="{ 'has-error' : (editForm.contactEmail.$invalid && !editForm.contactEmail.$pristine), 'has-success': editForm.contactEmail.$valid}">
             <div class="form-group">
-                <label class="control-label" for="router_contactEmail" translate="router.contactEmail">ContactEmail</label>
+                <label class="control-label" for="router_contactEmail" translate="router.contact_email_billing">ContactEmail</label>
                 <div class="input-group m-b">
                     <span class="input-group-addon"><i class="fa fa-{{ editForm.contactEmail.$invalid ? 'times' : 'check'}}"></i></span>
                     <input type="text" class="form-control" name="contactEmail" id="router_contactEmail"
-                           ng-model="vm.router.contactEmail" required minlength="3" maxlength="50"/>
+                           ng-model="vm.router.Contactemail" required minlength="3" maxlength="35"/>
                 </div>
             </div>
             <div ng-show="editForm.contactEmail.$invalid && !editForm.contactEmail.$pristine">
@@ -158,53 +153,47 @@
                 </p>
                 <p class="help-block"
                    ng-show="editForm.contactEmail.$error.maxlength"
-                   translate="global.entity.validation.maxlength" translate-values="{max:50}">
+                   translate="global.entity.validation.maxlength" translate-values="{max:35}">
                     This field should have less than 50 characters.
                 </p>
             </div>
         </div>
+    </div>
 
-        <div class="form-group col-md-5" ng-class="{ 'has-error' : (editForm.physicalAddress.$invalid && !editForm.physicalAddress.$pristine), 'has-success': editForm.physicalAddress.$valid}">
+    <hr class="hr-line-solid">
+
+    <div class="row">
+        <div class="form-group col-md-6" ng-class="{ 'has-error' : (editForm.physicalAddress.$invalid && !editForm.physicalAddress.$pristine)}">
             <div class="form-group">
-                <label class="control-label" for="router_physicalAddress" translate="router.physicalAddress">PhysicalAddress</label>
-                <div class="input-group m-b">
-                    <span class="input-group-addon"><i class="fa fa-{{ editForm.physicalAddress.$invalid ? 'times' : 'check'}}"></i></span>
-                    <input type="text" class="form-control" name="physicalAddress" id="router_physicalAddress"
-                           ng-model="vm.router.physicalAddress" required minlength="3" maxlength="50"/>
-                </div>
+                <label class="control-label" for="router_physicalAddress" translate="router.physical_address">PhysicalAddress</label>
+
+                <input type="text" class="form-control" name="physicalAddress" id="router_physicalAddress"
+                       ng-model="vm.router.PhysicalAddress" minlength="5" maxlength="75"/>
+
             </div>
             <div ng-show="editForm.physicalAddress.$invalid && !editForm.physicalAddress.$pristine">
                 <p class="help-block"
-                   ng-show="editForm.physicalAddress.$error.required" translate="global.entity.validation.required">
-                    This field is required.
-                </p>
-                <p class="help-block"
                    ng-show="editForm.physicalAddress.$error.minlength"
-                   translate="global.entity.validation.minlength" translate-values="{min:3}">
+                   translate="global.entity.validation.minlength" translate-values="{min:5}">
                     This field should have at least 3 characters.
                 </p>
                 <p class="help-block"
                    ng-show="editForm.physicalAddress.$error.maxlength"
-                   translate="global.entity.validation.maxlength" translate-values="{max:50}">
+                   translate="global.entity.validation.maxlength" translate-values="{max:75}">
                     This field should have less than 50 characters.
                 </p>
             </div>
         </div>
 
-        <div class="form-group col-md-5" ng-class="{ 'has-error' : (editForm.physicalAddressSecond.$invalid && !editForm.physicalAddressSecond.$pristine), 'has-success': editForm.physicalAddressSecond.$valid}">
+        <div class="form-group col-md-6" ng-class="{ 'has-error' : (editForm.physicalAddressSecond.$invalid && !editForm.physicalAddressSecond.$pristine)}">
             <div class="form-group">
-                <label class="control-label" for="router_physicalAddressSecond" translate="router.physicalAddressSecond">PhysicalAddressSecond</label>
-                <div class="input-group m-b">
-                    <span class="input-group-addon"><i class="fa fa-{{ editForm.physicalAddressSecond.$invalid ? 'times' : 'check'}}"></i></span>
-                    <input type="text" class="form-control" name="physicalAddressSecond" id="router_physicalAddressSecond"
-                           ng-model="vm.router.physicalAddressSecond" required minlength="3" maxlength="50"/>
-                </div>
+                <label class="control-label" for="router_physicalAddressSecond" translate="router.physical_address_second">PhysicalAddressSecond</label>
+
+                <input type="text" class="form-control" name="physicalAddressSecond" id="router_physicalAddressSecond"
+                           ng-model="vm.router.PhysicalAddressSecond" minlength="3" maxlength="75"/>
+
             </div>
             <div ng-show="editForm.physicalAddressSecond.$invalid && !editForm.physicalAddressSecond.$pristine">
-                <p class="help-block"
-                   ng-show="editForm.physicalAddressSecond.$error.required" translate="global.entity.validation.required">
-                    This field is required.
-                </p>
                 <p class="help-block"
                    ng-show="editForm.physicalAddressSecond.$error.minlength"
                    translate="global.entity.validation.minlength" translate-values="{min:3}">
@@ -212,54 +201,23 @@
                 </p>
                 <p class="help-block"
                    ng-show="editForm.physicalAddressSecond.$error.maxlength"
-                   translate="global.entity.validation.maxlength" translate-values="{max:50}">
+                   translate="global.entity.validation.maxlength" translate-values="{max:75}">
                     This field should have less than 50 characters.
                 </p>
             </div>
         </div>
+    </div>
 
-        <div class="form-group col-md-5" ng-class="{ 'has-error' : (editForm.postalNumber.$invalid && !editForm.postalNumber.$pristine), 'has-success': editForm.postalNumber.$valid}">
-            <div class="form-group">
-                <label class="control-label" for="router_postalNumber" translate="router.postalNumber">PostalNumber</label>
-                <div class="input-group m-b">
-                    <span class="input-group-addon"><i class="fa fa-{{ editForm.postalNumber.$invalid ? 'times' : 'check'}}"></i></span>
-                    <input type="text" class="form-control" name="postalNumber" id="router_postalNumber"
-                           ng-model="vm.router.postalNumber" required minlength="3" maxlength="50"/>
-                </div>
-            </div>
-            <div ng-show="editForm.postalNumber.$invalid && !editForm.postalNumber.$pristine">
-                <p class="help-block"
-                   ng-show="editForm.postalNumber.$error.required" translate="global.entity.validation.required">
-                    This field is required.
-                </p>
-                <p class="help-block"
-                   ng-show="editForm.postalNumber.$error.minlength"
-                   translate="global.entity.validation.minlength" translate-values="{min:3}">
-                    This field should have at least 3 characters.
-                </p>
-                <p class="help-block"
-                   ng-show="editForm.postalNumber.$error.maxlength"
-                   translate="global.entity.validation.maxlength" translate-values="{max:50}">
-                    This field should have less than 50 characters.
-                </p>
-            </div>
-        </div>
-
-
-        <div class="form-group col-md-5" ng-class="{ 'has-error' : (editForm.town.$invalid && !editForm.town.$pristine), 'has-success': editForm.town.$valid}">
+    <div class="row">
+        <div class="form-group col-md-4" ng-class="{ 'has-error' : (editForm.town.$invalid && !editForm.town.$pristine)}">
             <div class="form-group">
                 <label class="control-label" for="router_town" translate="router.town">Town</label>
-                <div class="input-group m-b">
-                    <span class="input-group-addon"><i class="fa fa-{{ editForm.town.$invalid ? 'times' : 'check'}}"></i></span>
+
                     <input type="text" class="form-control" name="town" id="router_town"
-                           ng-model="vm.router.town" required minlength="3" maxlength="50"/>
-                </div>
+                           ng-model="vm.router.town" minlength="3" maxlength="45"/>
+
             </div>
             <div ng-show="editForm.town.$invalid && !editForm.town.$pristine">
-                <p class="help-block"
-                   ng-show="editForm.town.$error.required" translate="global.entity.validation.required">
-                    This field is required.
-                </p>
                 <p class="help-block"
                    ng-show="editForm.town.$error.minlength"
                    translate="global.entity.validation.minlength" translate-values="{min:3}">
@@ -267,7 +225,29 @@
                 </p>
                 <p class="help-block"
                    ng-show="editForm.town.$error.maxlength"
-                   translate="global.entity.validation.maxlength" translate-values="{max:50}">
+                   translate="global.entity.validation.maxlength" translate-values="{max:45}">
+                    This field should have less than 50 characters.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group col-md-4" ng-class="{ 'has-error' : (editForm.postalNumber.$invalid && !editForm.postalNumber.$pristine)}">
+            <div class="form-group">
+                <label class="control-label" for="router_postalNumber" translate="router.postal_number">PostalNumber</label>
+
+                <input type="text" class="form-control" name="postalNumber" id="router_postalNumber"
+                       ng-model="vm.router.PostalNumber" minlength="4" maxlength="15"/>
+
+            </div>
+            <div ng-show="editForm.postalNumber.$invalid && !editForm.postalNumber.$pristine">
+                <p class="help-block"
+                   ng-show="editForm.postalNumber.$error.minlength"
+                   translate="global.entity.validation.minlength" translate-values="{min:4}">
+                    This field should have at least 3 characters.
+                </p>
+                <p class="help-block"
+                   ng-show="editForm.postalNumber.$error.maxlength"
+                   translate="global.entity.validation.maxlength" translate-values="{max:15}">
                     This field should have less than 50 characters.
                 </p>
             </div>
@@ -286,20 +266,21 @@
             </div>
         </div>
 
-        <div class="form-group col-md-5" ng-class="{ 'has-error' : (editForm.companyRegistryNumber.$invalid && !editForm.companyRegistryNumber.$pristine), 'has-success': editForm.companyRegistryNumber.$valid}">
+    </div>
+
+    <hr class="hr-line-solid">
+
+    <div class="row">
+        <div class="form-group col-md-5" ng-class="{ 'has-error' : (editForm.companyRegistryNumber.$invalid && !editForm.companyRegistryNumber.$pristine)}">
             <div class="form-group">
-                <label class="control-label" for="router_companyRegistryNumber" translate="router.companyRegistryNumber">CompanyRegistryNumber</label>
-                <div class="input-group m-b">
-                    <span class="input-group-addon"><i class="fa fa-{{ editForm.companyRegistryNumber.$invalid ? 'times' : 'check'}}"></i></span>
-                    <input type="text" class="form-control" name="companyRegistryNumber" id="router_companyRegistryNumber"
-                           ng-model="vm.router.companyRegistryNumber" required minlength="3" maxlength="50"/>
-                </div>
+                <label class="control-label" for="router_companyRegistryNumber" translate="router.company_registry_number">CompanyRegistryNumber</label>
+
+                <input type="text" class="form-control" name="companyRegistryNumber" id="router_companyRegistryNumber"
+                           ng-model="vm.router.CompanyRegistryNumber" minlength="3" maxlength="16"/>
+
             </div>
             <div ng-show="editForm.companyRegistryNumber.$invalid && !editForm.companyRegistryNumber.$pristine">
-                <p class="help-block"
-                   ng-show="editForm.companyRegistryNumber.$error.required" translate="global.entity.validation.required">
-                    This field is required.
-                </p>
+
                 <p class="help-block"
                    ng-show="editForm.companyRegistryNumber.$error.minlength"
                    translate="global.entity.validation.minlength" translate-values="{min:3}">
@@ -307,68 +288,66 @@
                 </p>
                 <p class="help-block"
                    ng-show="editForm.companyRegistryNumber.$error.maxlength"
-                   translate="global.entity.validation.maxlength" translate-values="{max:50}">
+                   translate="global.entity.validation.maxlength" translate-values="{max:16}">
                     This field should have less than 50 characters.
                 </p>
             </div>
         </div>
-
-        <div class="form-group col-md-5" ng-class="{ 'has-error' : (editForm.billingPeriod.$invalid && !editForm.billingPeriod.$pristine), 'has-success': editForm.billingPeriod.$valid}">
-            <div class="form-group">
-                <label class="control-label" for="router_billingPeriod" translate="router.billingPeriod">BillingPeriod</label>
-                <div class="input-group m-b">
-                    <span class="input-group-addon"><i class="fa fa-{{ editForm.billingPeriod.$invalid ? 'times' : 'check'}}"></i></span>
-                    <input type="text" class="form-control" name="billingPeriod" id="router_billingPeriod"
-                           ng-model="vm.router.billingPeriod" required minlength="3" maxlength="50"/>
-                </div>
+        <div class="form-group col-md-4" ng-class="{ 'has-error' : (editForm.billingPeriod.$invalid && !editForm.billingPeriod.$pristine)}">
+            <div class="form-group"><br>
+                <label class="control-label" for="router_billingPeriod" translate="router.billing_period">BillingPeriod</label>
+                    <input type="number" class="form-control" name="billingPeriod" id="router_billingPeriod"
+                           ng-model="vm.router.BillingPeriod" min="0" max="1000"/>
             </div>
             <div ng-show="editForm.billingPeriod.$invalid && !editForm.billingPeriod.$pristine">
+
                 <p class="help-block"
-                   ng-show="editForm.billingPeriod.$error.required" translate="global.entity.validation.required">
-                    This field is required.
+                   ng-show="editForm.billingPeriod.$error.min"
+                   translate="global.entity.validation.minlength" translate-values="{min:0}">
+                    This field should have a minimum value of 3.
                 </p>
                 <p class="help-block"
-                   ng-show="editForm.billingPeriod.$error.minlength"
-                   translate="global.entity.validation.minlength" translate-values="{min:3}">
-                    This field should have at least 3 characters.
-                </p>
-                <p class="help-block"
-                   ng-show="editForm.billingPeriod.$error.maxlength"
-                   translate="global.entity.validation.maxlength" translate-values="{max:50}">
-                    This field should have less than 50 characters.
+                   ng-show="editForm.billingPeriod.$error.max"
+                   translate="global.entity.validation.maxlength" translate-values="{max:1000}">
+                    This field should have a maximum value of 1000.
                 </p>
             </div>
         </div>
 
-        <div class="form-group col-md-5" ng-class="{ 'has-error' : (editForm.paymentEndofmonth.$invalid && !editForm.paymentEndofmonth.$pristine), 'has-success': editForm.paymentEndofmonth.$valid}">
+        <div class="form-group m-t-xl col-md-3" ng-class="{ 'has-error' : (editForm.paymentEndofmonth.$invalid && !editForm.paymentEndofmonth.$pristine)}">
             <div class="form-group">
-                <label class="control-label" for="router_paymentEndofmonth" translate="router.paymentEndofmonth">PaymentEndofmonth</label>
-                <div class="input-group m-b">
-                    <span class="input-group-addon"><i class="fa fa-{{ editForm.paymentEndofmonth.$invalid ? 'times' : 'check'}}"></i></span>
-                    <input type="text" class="form-control" name="paymentEndofmonth" id="router_paymentEndofmonth"
-                           ng-model="vm.router.paymentEndofmonth" required minlength="3" maxlength="50"/>
-                </div>
-            </div>
-            <div ng-show="editForm.paymentEndofmonth.$invalid && !editForm.paymentEndofmonth.$pristine">
-                <p class="help-block"
-                   ng-show="editForm.paymentEndofmonth.$error.required" translate="global.entity.validation.required">
-                    This field is required.
-                </p>
-                <p class="help-block"
-                   ng-show="editForm.paymentEndofmonth.$error.minlength"
-                   translate="global.entity.validation.minlength" translate-values="{min:3}">
-                    This field should have at least 3 characters.
-                </p>
-                <p class="help-block"
-                   ng-show="editForm.paymentEndofmonth.$error.maxlength"
-                   translate="global.entity.validation.maxlength" translate-values="{max:50}">
-                    This field should have less than 50 characters.
-                </p>
+
+                <input id="router_paymentEndofmonth" class="form-control" icheck type="checkbox" ng-model="vm.router.PaymentEndofmonth"><i></i>
+                <label class="control-label" for="router_paymentEndofmonth" translate="router.payment_end_of_month">PaymentEndofmonth</label>
             </div>
         </div>
+
+
     </div>
 
+    <div class="row">
+        <div class="form-group col-md-12" ng-class="{ 'has-error' : (editForm.VATNumber.$invalid && !editForm.VATNumber.$pristine)}">
+            <div class="form-group">
+                <label class="control-label" for="router_VATNumber" translate="router.vat_number">VATNumber</label>
+                    <input type="text" class="form-control" name="VATNumber" id="router_VATNumber"
+                           ng-model="vm.router.VATNumber" minlength="3" maxlength="55"/>
+            </div>
+            <div ng-show="editForm.VATNumber.$invalid && !editForm.VATNumber.$pristine">
 
+                <p class="help-block"
+                   ng-show="editForm.VATNumber.$error.minlength"
+                   translate="global.entity.validation.minlength" translate-values="{min:3}">
+                    This field should have at least 3 characters.
+                </p>
+                <p class="help-block"
+                   ng-show="editForm.VATNumber.$error.maxlength"
+                   translate="global.entity.validation.maxlength" translate-values="{max:55}">
+                    This field should have less than 50 characters.
+                </p>
+            </div>
+        </div>
+
+    </div>
 
 
 

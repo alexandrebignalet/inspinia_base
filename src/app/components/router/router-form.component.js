@@ -29,13 +29,11 @@
 
         function onSubmit() {
             
-            console.log(vm.router);
-            
-            /*vm.onSaveRouter({
+            vm.onSaveRouter({
                 $event: {
                     router: vm.router
                 }
-            });*/
+            });
         }
     }
 

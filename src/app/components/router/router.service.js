@@ -23,6 +23,7 @@
 
         var service = {
             getAll: getAll,
+            save: save,
             init: init
         };
 
@@ -48,23 +49,36 @@
             }
         }
 
+        function save(router) {
+            return resource.save(router, onSaveSuccess, onSaveError).$promise;
+
+            function onSaveSuccess(response) {
+                ToastrService.success('Router created', 'SUCCESS');
+            }
+
+            function onSaveError(error) {
+                ToastrService.error('Impossible to create router', 'ERROR');
+                $q.reject(error);
+            }
+        }
+
         function init() {
             var router = {
-                name : '',
-                ContactName : '',
-                email : '',
-                description : '',
-                BillingContactName : '',
-                ContactEmail : '',
-                PhysicalAddress : '',
-                PysicalAddressSecond : '',
-                PostalNumber : '',
-                town : '',
+                name : 'Nelmio',
+                ContactName : 'Contact name',
+                email : 'email@g.c',
+                description : 'Thats a good description',
+                BillingContactName : 'Billing contact name',
+                Contactemail : 'contact@email.com',
+                PhysicalAddress : 'Physical address',
+                PhysicalAddressSecond : 'Second address',
+                PostalNumber : '64000',
+                town : 'Barcelona',
                 Country : '',
-                CompanyRegistryNumber : '',
-                VATNumber : '',
-                BillingPeriod : '',
-                PaymentEndofmonth: ''
+                CompanyRegistryNumber : '123546798',
+                VATNumber : 'Vatnumber123165',
+                BillingPeriod : 10,
+                PaymentEndofmonth: true
             };
 
             return router;

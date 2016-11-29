@@ -25,7 +25,10 @@
                 backdrop: 'true',
                 size: 'lg',
                 resolve: {
-                    router: function() { return router}
+                    router: function() { return router},
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load(['iCheckButtons']);
+                    }
                 }
             }).result.then(function () {
                 $state.go('^', null, {reload: true})

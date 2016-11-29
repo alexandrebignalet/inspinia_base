@@ -33,7 +33,29 @@
         }
 
         function onSaveRouter($event) {
-            var contact = $event.contact;
+            var router = $event.router;
+
+            vm.isSaving = true;
+
+            if( router.id ){
+                console.log('ROUTER HAS ID');
+            } else {
+                Router.save(router)
+                    .then(onSaveSuccess)
+                    .catch(onSaveError);
+            }
+
+            function onSaveSuccess(response) {
+                console.log('SUCCESS SAVE');
+                console.log(response);
+                vm.isSaving = false;
+            }
+
+            function onSaveError(error) {
+                console.log('ERROR SAVE');
+                console.log(error);
+                vm.isSaving = false;
+            }
         }
     }
 
