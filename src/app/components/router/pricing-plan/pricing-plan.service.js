@@ -53,7 +53,7 @@
         }
 
         function get(id, context) {
-            return resource.get({'id': id, 'context': context})
+            return resource.get({'id': id, 'context': angular.toJson(context)})
                 .$promise
                 .then(getPricingPlanThen)
                 .catch(getPricingPlanCatch);
@@ -113,8 +113,8 @@
             return {
                 name: null,
                 comment: null,
-                idTranche: null,
-                idRouter: null
+                id_tranche: null,
+                id_router: null
             }
         }
 
@@ -123,6 +123,15 @@
 
             delete tmp.id;
             delete tmp.list_databases;
+
+            tmp.id_router = tmp.id_router.id;
+
+            var trancheIds = [];
+            for (var i = 0; i < tmp.id_tranche.length ; i++){
+                trancheIds.push({'id': tmp.id_tranche[i].id});
+            }
+
+            tmp.id_tranche = trancheIds;
 
             return tmp;
         }

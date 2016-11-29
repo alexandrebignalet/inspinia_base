@@ -2,7 +2,7 @@
     'use strict';
 
     var pricingPlan = {
-        templateUrl: 'app/components/router/pricing-tier/pricing-tiers.html',
+        templateUrl: 'app/components/router/pricing-plan/pricing-plans.html',
         controller: PricingPlanController,
         controllerAs: 'vm',
         bindings: {

@@ -48,7 +48,10 @@
                 },
                 onEnter: ['$stateParams', 'PricingPlanDialogService', 'PricingPlan','pricingTiers', 'routers',
                     function($stateParams, PricingPlanDialogService, PricingPlan, pricingTiers, routers) {
-                        var pricingPlan = PricingPlan.get($stateParams.id);
+                        var pricingPlan = PricingPlan.get(
+                            $stateParams.id,
+                            ['plans_all', 'routers_summary', 'tiers_summary']
+                        );
                         PricingPlanDialogService.openDialogModal(pricingPlan, pricingTiers, routers);
                     }]
             })

@@ -15,8 +15,11 @@
             <td>{{::pricingPlan.id}}</td>
             <td>{{::pricingPlan.name}}</td>
             <td>{{::pricingPlan.comment}}</td>
-            <td>{{::pricingPlan.id_tranche}}</td>
-            <td>{{::pricingPlan.id_router}}</td>
+            <td>
+                <i class="fa fa-check text-primary" ng-if="pricingPlan.id_tranche.length > 0"></i>
+                <i class="fa fa-remove text-danger" ng-if="pricingPlan.id_tranche.length == 0"></i>
+            </td>
+            <td>{{::pricingPlan.id_router.name}}</td>
             <td>
                 <a ui-sref="router.pricing-plan-edit({id: pricingPlan.id})">
                     <button class="btn btn-primary">

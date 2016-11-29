@@ -32,7 +32,7 @@
                         return PricingTier.getAll();
                     }],
                     pricingPlans: ['PricingPlan', function(PricingPlan){
-                        return PricingPlan.getAll(['pricing_plans_all', 'routers_summary', 'princing_tiers_summary']);
+                        return PricingPlan.getAll(['plans_all', 'routers_summary', 'tiers_summary']);
                     }],
                     mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
                         $translatePartialLoader.addPart('router');
