@@ -1,5 +1,6 @@
 {
     "pricingPlan":{
+        "create": "Create a pricing plan",
         "pricingPlan": "Pricing plan",
         "pricingPlans": "Pricing plans",
         "name": "Name",

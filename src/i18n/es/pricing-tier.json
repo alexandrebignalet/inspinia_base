@@ -1,5 +1,6 @@
 {
     "pricingTier":{
+        "create": "Añadir una offerta",
         "pricingTier": "Offerta",
         "pricingTiers": "Offertass",
         "name": "Nombre",

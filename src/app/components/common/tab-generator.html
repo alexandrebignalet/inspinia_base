@@ -1,0 +1,25 @@
+<div class="tabs-container">
+    <uib-tabset active="vm.active">
+        <uib-tab ng-repeat="tab in ::vm.tabs" select="vm.go($event, tab.state)">
+            <uib-tab-heading>
+                <i class="{{ ::tab.icon }}"></i>
+                <span translate="{{ ::tab.titleTranslate }}"></span>
+            </uib-tab-heading>
+            <div class="panel-body">
+                <div ui-view="{{::tab.view}}" ng-if="!vm.loading"></div>
+
+                <div class="sk-spinner sk-spinner-cube-grid" ng-if="vm.loading">
+                    <div class="sk-cube"></div>
+                    <div class="sk-cube"></div>
+                    <div class="sk-cube"></div>
+                    <div class="sk-cube"></div>
+                    <div class="sk-cube"></div>
+                    <div class="sk-cube"></div>
+                    <div class="sk-cube"></div>
+                    <div class="sk-cube"></div>
+                    <div class="sk-cube"></div>
+                </div>
+            </div>
+        </uib-tab>
+    </uib-tabset>
+</div>

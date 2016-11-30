@@ -1,0 +1,11 @@
+<form name="deleteForm" ng-submit="vm.onSubmit()">
+    <div class="row">
+        <h3 class="text-center" translate="router.confirm.msg">Are you sure you want to delete this pricing tier ?</h3>
+        <br>
+        <div class="col-md-offset-4 col-md-4">
+            <button class="btn btn-danger btn-block" type="submit" ng-disabled="deleteForm.$invalid || vm.isDeleting">
+                <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="global.entity.action.delete">Delete</span>
+            </button>
+        </div>
+    </div>
+</form>

@@ -13,7 +13,7 @@
     function ocLazyLoaderConfig($ocLazyLoadProvider) {
 
         $ocLazyLoadProvider["config"]({
-            debug: true,
+            debug: false,
             serie: true,
             modules: [
                 {
