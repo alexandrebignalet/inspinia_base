@@ -186,8 +186,11 @@
             <div class="form-group col-md-8">
                 <div class="form-group">
                     <label class="control-label" for="company_databases" translate="company.databases">Databases</label>
-                    <ui-select multiple ng-model="vm.company.databases" theme="bootstrap" id="company_databases">
-                        <ui-select-match placeholder="Select or search a database in the list...">{{$item.name}}</ui-select-match>
+                    <ui-select limit-display="5" multiple ng-model="vm.company.databases" theme="bootstrap" id="company_databases">
+                        <ui-select-match placeholder="Select or search a database in the list..." >
+                            {{$item.name}}
+                        </ui-select-match>
+                        <!--<span ng-if="$select.selected.length > 4">{{$select.selected.length}} selected</span>-->
                         <ui-select-choices repeat="database in vm.databases | propsFilter: {name: $select.search} track by database.name">
                             <div ng-bind-html="database.name | highlight: $select.search"></div>
                             <small ng-bind-html="database.country | highlight: $select.search"></small>
