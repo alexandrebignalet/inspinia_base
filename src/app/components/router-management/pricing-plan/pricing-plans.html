@@ -1,0 +1,38 @@
+<div class="table-responsive animated fadeIn">
+    <table datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.DTColumnDefs" class="table table-striped table-bordered table-hover dataTables-example">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th translate="pricingPlan.name">Name</th>
+            <th translate="pricingPlan.comment">Comment</th>
+            <th translate="pricingPlan.pricingTier">Pricing plan</th>
+            <th translate="pricingPlan.router">Router</th>
+            <th translate="pricingPlan.actions">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-click="vm.showPricingPlan(pricingPlan)" ng-repeat="pricingPlan in ::vm.pricingPlans">
+            <td>{{::pricingPlan.id}}</td>
+            <td>{{::pricingPlan.name}}</td>
+            <td>{{::pricingPlan.comment}}</td>
+            <td>
+                <i class="fa fa-check text-primary" ng-if="pricingPlan.id_tranche.length > 0"></i>
+                <i class="fa fa-remove text-danger" ng-if="pricingPlan.id_tranche.length == 0"></i>
+            </td>
+            <td>{{::pricingPlan.id_router.name}}</td>
+            <td>
+                <a ui-sref="pricing-plan.edit({id: pricingPlan.id})">
+                    <button class="btn btn-primary btn-outline">
+                        <i class="fa fa-pencil"></i>
+                    </button>
+                </a>
+                <a ui-sref="pricing-plan.delete({id: pricingPlan.id})">
+                    <button class="btn btn-danger btn-outline">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

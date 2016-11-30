@@ -1,5 +1,6 @@
 {
     "pricingPlan":{
+        "create": "Créer un plan tarifaire",
         "pricingPlan": "Plan tarifaire",
         "pricingPlans": "Plan tarifaires",
         "name": "Nom",

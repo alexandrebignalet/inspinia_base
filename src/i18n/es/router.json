@@ -1,0 +1,33 @@
+{
+    "router": {
+        "list": "Administración de los enrutadores",
+        "router": "Enrutador",
+        "routers": "Enrutadores",
+        "create": "Añadir a nuevo enrutador",
+        "name": "Nombre",
+        "save": "Guardar el enrutador",
+        "update": "Actualizar el enrutador",
+        "contactemail": "Email del contacto",
+        "actions": "Actiones",
+        "description": "Descripción",
+        "contact_name": "Nombre del contacto",
+        "contact_email": "Email del contacto",
+        "contact_name_billing": "Nombre del contacto de facturación",
+        "contact_email_billing": "Email del contacto de facturación",
+        "physical_address": "Código postal",
+        "physical_address_second": "Complemento",
+        "postal_number": "Numero postal",
+        "town": "Población",
+        "country": "País",
+        "company_registry_number": "Número de registro de la empresa",
+        "vat_number": "IVA",
+        "billing_period": "Período de facturación",
+        "payment_end_of_month": "Pago fin de mes",
+        "pricingTiers": "Niveles de precios",
+        "pricingPlans": "Planes de precios",
+        "confirm": {
+            "delete": "Confirmar eliminación del enrutador",
+            "msg": "¿ Seguro de eliminar este enrutador ?"
+        }
+    }
+}
