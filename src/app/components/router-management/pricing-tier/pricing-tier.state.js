@@ -16,11 +16,15 @@
                 data: {
                     pageTitle: 'Pricing tier',
                     authorities: ['ROLE_ADMIN', 'ROLE_SUPER_ADMIN'],
-                    activeTab: 1
+                    activeTab: 2
                 },
                 views: {
                     'pricing-tier':{
-                        template: '<pricing-tier pricing-tiers="$resolve.pricingTiers"></pricing-tier>'
+                        template: '<pricing-tier pricing-tiers="$resolve.pricingTiers"' +
+                                                'on-show-pricing-tier="vm.onSelect($event)"></pricing-tier>'
+                    },
+                    'show-entity': {
+                        template: '<pricing-tier-show pricing-tier="vm.pricingTierSelected"></pricing-tier-show>'
                     }
                 },
                 resolve: {

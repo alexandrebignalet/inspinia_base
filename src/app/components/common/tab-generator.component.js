@@ -8,7 +8,8 @@
         bindings: {
             tabs: '<',
             active: '<',
-            loading: '<'
+            loading: '<',
+            onSelectElement: '&'
         }
     };
 
@@ -16,17 +17,13 @@
         .module('dataToolApp')
         .component('tabGenerator', tabGenerator);
 
-    TabController.$inject = ['$state', '$scope'];
+    TabController.$inject = ['$state'];
 
-    function TabController($state, $scope){
+    function TabController($state){
         var vm = this;
 
         vm.go = goToState;
-
-
-        $scope.$watch('vm.active', function(m){
-            console.log(m)
-        })
+        vm.onSelect = onSelect;
 
         function goToState($event, stateName){
             if ($event) {
@@ -40,6 +37,12 @@
 
         function changeTab(state){
             vm.active = state.data.activeTab;
+        }
+
+        function onSelect($event){
+            vm.onSelectElement({
+                $event: $event
+            });
         }
     }
 })();

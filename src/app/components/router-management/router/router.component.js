@@ -6,7 +6,8 @@
         controller: RouterController,
         controllerAs: 'vm',
         bindings: {
-            routers: '<'
+            routers: '<',
+            onShowRouter: '&'
         }
     };
 
@@ -19,7 +20,11 @@
     function RouterController(DTOptionsBuilder, DTColumnDefBuilder){
         var vm = this;
 
+        vm.showRouter = showRouter;
+
         vm.$onInit = function(){
+            vm.onShowRouter({ $event: { router: vm.routers[0] } });
+
             vm.DTColumnDefs = [
                 DTColumnDefBuilder.newColumnDef(4).notSortable()
             ];
@@ -43,6 +48,14 @@
                         }
                     }
                 ]);
+        };
+
+        function showRouter (router){
+            vm.onShowRouter({
+                $event: {
+                    router: router
+                }
+            })
         }
     }
 })();

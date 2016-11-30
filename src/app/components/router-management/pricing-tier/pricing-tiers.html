@@ -1,4 +1,4 @@
-<div class="table-responsive">
+<div class="table-responsive animated fadeIn">
     <table datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.DTColumnDefs" class="table table-striped table-bordered table-hover dataTables-example">
         <thead>
         <tr>
@@ -12,7 +12,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="pricingTier in ::vm.pricingTiers">
+        <tr ng-click="vm.showPricingTier(pricingTier)" ng-repeat="pricingTier in ::vm.pricingTiers">
             <td>{{::pricingTier.id}}</td>
             <td>{{::pricingTier.name}}</td>
             <td>{{::pricingTier.comment}}</td>

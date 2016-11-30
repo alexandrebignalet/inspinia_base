@@ -17,29 +17,42 @@
         var vm = this;
 
         vm.activeTab = $state.current.data.activeTab || 0;
+        vm.onShow = onShow;
 
         vm.$onInit = function (){
             vm.tabs = [
                 {
-                    icon: 'fa fa-sitemap',
+                    icon: 'fa fa-compass',
                     titleTranslate: 'router.routers',
                     state: 'router',
                     view: 'router'
                 },
                 {
-                    icon: 'fa fa-sitemap',
-                    titleTranslate: 'router.pricingTiers',
-                    state: 'pricing-tier',
-                    view: 'pricing-tier'
-                },
-                {
-                    icon: 'fa fa-sitemap',
+                    icon: 'fa fa-cubes',
                     titleTranslate: 'router.pricingPlans',
                     state: 'pricing-plan',
                     view: 'pricing-plan'
+                },
+                {
+                    icon: 'fa fa-cube',
+                    titleTranslate: 'router.pricingTiers',
+                    state: 'pricing-tier',
+                    view: 'pricing-tier'
                 }
             ];
         };
+
+        function onShow($event){
+            if($event.pricingPlan){
+                vm.pricingPlanSelected = $event.pricingPlan;
+            }
+            if($event.router){
+                vm.routerSelected = $event.router;
+            }
+            if($event.pricingTier){
+                vm.pricingTierSelected = $event.pricingTier;
+            }
+        }
 
         var stateChanged = $rootScope.$on('$stateChangeSuccess', function(event, toState){
             vm.activeTab = toState.data.activeTab;
@@ -57,6 +70,5 @@
                 stateChanged();
             }
         });
-
     }
 })();

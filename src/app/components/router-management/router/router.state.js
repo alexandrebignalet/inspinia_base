@@ -20,7 +20,11 @@
                 },
                 views: {
                     'router': {
-                        template: '<router routers="$resolve.routers"></router>'
+                        template: '<router routers="$resolve.routers"' +
+                                          'on-show-router="vm.onSelect($event)"></router>'
+                    },
+                    'show-entity': {
+                        template: '<router-show router="vm.routerSelected"></router-show>'
                     }
                 },
                 resolve: {

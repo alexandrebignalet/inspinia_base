@@ -6,7 +6,8 @@
         controller: PricingPlanController,
         controllerAs: 'vm',
         bindings: {
-            pricingPlans: '<'
+            pricingPlans: '<',
+            onShowPricingPlan: '&'
         }
     };
 
@@ -19,7 +20,11 @@
     function PricingPlanController(DTOptionsBuilder, DTColumnDefBuilder){
         var vm = this;
 
+        vm.showPricingPlan = showPricingPlan;
+
         vm.$onInit = function () {
+            vm.onShowPricingPlan({ $event: { pricingPlan: vm.pricingPlans[0] } });
+
             vm.DTColumnDefs = [
                 DTColumnDefBuilder.newColumnDef(5).notSortable()
             ];
@@ -44,5 +49,15 @@
                     }
                 ]);
         };
+
+        function showPricingPlan(pricingPlan){
+            vm.onShowPricingPlan({
+                $event: {
+                    pricingPlan: pricingPlan
+                }
+            });
+        }
+
+
     }
 })();

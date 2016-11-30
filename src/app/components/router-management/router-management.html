@@ -8,19 +8,27 @@
 
                         <div class="input-group-btn" uib-dropdown>
                             <button ui-sref="router.create" class="btn btn-primary btn-outline">
-                                <span translate="router.create" class="ng-scope">Create new router</span>
+                                <i class="fa fa-compass"></i>
+                                <span translate="router.create">Create new router</span>
                             </button>
                             <button class="btn btn-primary btn-outline" uib-dropdown-toggle type="button">
                                 <span class="caret"></span></button>
                             <ul class="pull-right" uib-dropdown-menu>
-                                <li><a ui-sref="pricing-tier.create" translate="pricingTier.create">Create pricing tier</a></li>
-                                <li><a ui-sref="pricing-plan.create" translate="pricingPlan.create">Create pricing plan</a></li>
+                                <li><a ui-sref="pricing-plan.create">
+                                    <i class="fa fa-cubes"></i>
+                                    <span translate="pricingPlan.create">Create pricing plan</span>
+                                </a></li>
+                                <li><a ui-sref="pricing-tier.create">
+                                    <i class="fa fa-cube"></i>
+                                    <span>Create pricing tier</span>
+                                </a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div class="ibox-content">
-                    <tab-generator tabs="vm.tabs" active="vm.activeTab" loading="vm.loading"></tab-generator>
+                    <tab-generator tabs="vm.tabs" active="vm.activeTab"
+                                   loading="vm.loading" on-select-element="vm.onShow($event)"></tab-generator>
                 </div>
             </div>
         </div>

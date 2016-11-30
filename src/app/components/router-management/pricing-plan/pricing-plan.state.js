@@ -16,11 +16,15 @@
                 data: {
                     pageTitle: 'Pricing plan',
                     authorities: ['ROLE_ADMIN', 'ROLE_SUPER_ADMIN'],
-                    activeTab: 2
+                    activeTab: 1
                 },
                 views: {
                     'pricing-plan':{
-                        template: '<pricing-plan pricing-plans="$resolve.pricingPlans"></pricing-plan>'
+                        template: '<pricing-plan pricing-plans="$resolve.pricingPlans"' +
+                                                'on-show-pricing-plan="vm.onSelect($event)"></pricing-plan>'
+                    },
+                    'show-entity': {
+                        template: '<pricing-plan-show pricing-plan="vm.pricingPlanSelected"></pricing-plan-show>'
                     }
                 },
                 resolve: {

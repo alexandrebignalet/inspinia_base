@@ -6,7 +6,8 @@
         controller: PricingTierController,
         controllerAs: 'vm',
         bindings: {
-            pricingTiers: '<'
+            pricingTiers: '<',
+            onShowPricingTier: '&'
         }
     };
 
@@ -19,7 +20,11 @@
     function PricingTierController(DTOptionsBuilder, DTColumnDefBuilder){
         var vm = this;
 
+        vm.showPricingTier = showPricingTier;
+
         vm.$onInit = function () {
+            vm.onShowPricingTier({ $event: { pricingTier: vm.pricingTiers[0] } });
+
             vm.DTColumnDefs = [
                 DTColumnDefBuilder.newColumnDef(6).notSortable()
             ];
@@ -44,5 +49,13 @@
                     }
                 ]);
         };
+
+        function showPricingTier(pricingTier){
+            vm.onShowPricingTier({
+                $event: {
+                    pricingTier: pricingTier
+                }
+            });
+        }
     }
 })();
