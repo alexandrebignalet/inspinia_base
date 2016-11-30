@@ -48,6 +48,10 @@
                     files: ['/bower_components/iCheck/skins/square/_all.css']
                 },
                 {
+                    name: 'angular-daterangepicker',
+                    files: ['/bower_components/angular-daterangepicker/js/angular-daterangepicker.min.js']
+                },
+                {
                     name: 'bootstrapJs',
                     files: ['/bower_components/bootstrap/dist/js/bootstrap.min.js']
                 }

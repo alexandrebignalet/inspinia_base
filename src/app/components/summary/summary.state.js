@@ -26,7 +26,10 @@
                     mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
                         $translatePartialLoader.addPart('summary');
                         return $translate.refresh();
-                    }]
+                    }],
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load(['angular-daterangepicker']);
+                    }
                 }
             })
         ;
