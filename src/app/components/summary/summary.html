@@ -8,7 +8,74 @@
                     </h5>
                 </div>
                 <div class="ibox-content">
-                    <date-range-picker ></date-range-picker>
+
+                    <div class="row">
+                        <div  class="col-md-2 m-b-xl" >
+                            <date-range-picker on-change-dates="vm.onChangeDates($event)"></date-range-picker>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-3">
+                            <label >Databases</label>
+                            <ui-select multiple ng-change="vm.onChangeFilter()" ng-model="vm.selectedDatabases" theme="bootstrap" >
+                                <ui-select-match placeholder="Select databases in the list...">{{$item.name}}</ui-select-match>
+                                <ui-select-choices repeat="database in vm.dataFilters.databases | propsFilter: {name: $select.search} track by database.name">
+                                    <div ng-bind-html="database.name | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label >Companies</label>
+                            <ui-select multiple ng-change="vm.onChangeFilter()" ng-model="vm.selectedCompanies" theme="bootstrap">
+                                <ui-select-match placeholder="Select company in the list...">{{$item.name}}</ui-select-match>
+                                <ui-select-choices repeat="company in vm.dataFilters.companies | propsFilter: {name: $select.search} track by company.name">
+                                    <div ng-bind-html="company.name | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label >Types</label>
+                            <ui-select multiple ng-change="vm.test()" ng-model="vm.selectedTypes" search-enabled="false" theme="bootstrap">
+                                <ui-select-match placeholder="Select type in the list...">{{$item}}</ui-select-match>
+                                <ui-select-choices repeat="type in vm.dataFilters.types">
+                                    <div ng-bind-html="type"></div>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label >Routers</label>
+                            <ui-select multiple ng-change="vm.test()" ng-model="vm.selectedRouters" theme="bootstrap">
+                                <ui-select-match placeholder="Select router in the list...">{{$item.name}}</ui-select-match>
+                                <ui-select-choices repeat="router in vm.dataFilters.routers| propsFilter: {name: $select.search} track by router.name">
+                                    <div ng-bind-html="router.name | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Nom</th>
+                                    <th>Entreprise</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="stat in vm.statsFiltered">
+                                    <td>{{ stat.database_name }}</td>
+                                    <td>{{ stat.company_name }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

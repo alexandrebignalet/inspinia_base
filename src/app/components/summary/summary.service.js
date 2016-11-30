@@ -3,38 +3,48 @@
 
     angular
         .module('dataToolApp')
-        .factory('Contact', Contact);
+        .factory('SummaryStat', SummaryStat);
 
-    Contact.$inject = ['$resource', '$q', 'ToastrService', 'API_BASE_URL'];
+    SummaryStat.$inject = ['$resource', '$http', '$q', 'ToastrService', 'API_BASE_URL'];
 
     /* @ngInject */
-    function  Contact($resource, $q, ToastrService, API_BASE_URL) {
+    function  SummaryStat($resource, $http, $q, ToastrService, API_BASE_URL) {
+
+        var resourceUrl = API_BASE_URL + '/';
+        var dateFormat = 'YYYY-MM-DD';
+
+        /////////////////////////////////////////////
 
         var service = {
-            getSummaryByRouter: getSummaryByRouter,
             getSummaryStats: getSummaryStats,
-            getTranche:getTranche
+            getTranches: getTranches
         };
-
-        var resourceUrl = API_BASE_URL + '/api/summary';
-
 
         return service;
 
-        ////////////////
+        /////////////////////////////////////////////
 
-        function getSummaryByRouter() {
+        function getSummaryStats(startDate,endDate) {
 
+            var startDateFormatted  = formatDateToQuery(startDate);
+            var endDateFormatted    = formatDateToQuery(endDate);
+
+            return $http({
+                method: 'GET',
+                url: resourceUrl + 'summary/' + startDateFormatted + '/' + endDateFormatted
+            });
         }
 
-        function getSummaryStats() {
-
+        function getTranches() {
+            return $http({
+                method: 'GET',
+                url: resourceUrl + 'tranche/all'
+            });
         }
 
-        function getTranche() {
-
+        function formatDateToQuery(date) {
+            return date.format(dateFormat);
         }
-
     }
 
 })();

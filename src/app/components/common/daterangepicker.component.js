@@ -26,14 +26,13 @@
         var vm = this;
         vm.dates = {};
         vm.options = {};
-        vm.onChangeDates = onChangeDates;
 
         // TODO : RANGES AND TRANSLATION AND CUSTOM DISPLAY
 
         vm.$onInit = function(){
             vm.dates = {
-                startDate: moment().startOf('month'),
-                endDate: moment()
+                startDate: moment().startOf('month').subtract(3, 'months'),
+                endDate: moment().subtract(3, 'months')
             };
 
             vm.options = {
