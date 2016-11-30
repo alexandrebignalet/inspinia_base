@@ -1,0 +1,14 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            ng-click="vm.clear()">&times;</button>
+    <h4 class="modal-title" translate="router.confirm.delete"><span></span>Confirm delete router</h4>
+</div>
+<div class="modal-body">
+    <router-delete router-id="vm.routerId" on-delete-router="vm.onDelete($event)"
+                   is-deleting="vm.isDeleting"></router-delete>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+        <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+    </button>
+</div>

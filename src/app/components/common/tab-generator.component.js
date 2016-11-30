@@ -6,7 +6,9 @@
         controller: TabController,
         controllerAs: 'vm',
         bindings: {
-            tabs: '<'
+            tabs: '<',
+            active: '<',
+            loading: '<'
         }
     };
 
@@ -14,20 +16,31 @@
         .module('dataToolApp')
         .component('tabGenerator', tabGenerator);
 
-    TabController.$inject = ['$state', '$rootScope']
+    TabController.$inject = ['$state', '$scope'];
 
-    function TabController($state, $rootScope){
+    function TabController($state, $scope){
         var vm = this;
 
         vm.go = goToState;
 
-        function goToState(stateName){
-            $state.go(stateName);
+
+        $scope.$watch('vm.active', function(m){
+            console.log(m)
+        })
+
+        function goToState($event, stateName){
+            if ($event) {
+                $event.preventDefault();
+            }
+
+            $state
+                .go(stateName)
+                .then(changeTab);
         }
 
-        $rootScope.$watch('transition', function(n){
-            vm.loading = n;
-        })
+        function changeTab(state){
+            vm.active = state.data.activeTab;
+        }
     }
 })();
 

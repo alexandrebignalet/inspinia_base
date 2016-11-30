@@ -1,9 +1,12 @@
 {
     "router": {
+        "list": "Gestions des routeurs",
         "router": "Routeur",
         "routers": "Routeurs",
         "create": "Créer un routeur",
         "name": "Nom",
+        "save": "Enregistrer le routeur",
+        "update": "Mettre à jour le routeur",
         "contactemail": "Email de contact",
         "actions": "Actions",
         "description": "Description",
@@ -21,6 +24,10 @@
         "billing_period": "Période de facturation",
         "payment_end_of_month": "Paiement en fin de mois",
         "pricingTiers": "Offres",
-        "pricingPlans": "Plans tarifaire"
+        "pricingPlans": "Plans tarifaire",
+        "confirm": {
+            "delete": "Confirmer la suppression du routeur",
+            "msg": "Êtes-vous sûr de supprimer ce routeur ?"
+        }
     }
 }

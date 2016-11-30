@@ -1,0 +1,31 @@
+<div class="wrapper wrapper-content  animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5 translate="router.list" class="ng-scope">Router management</h5>
+                    <div class="ibox-tools">
+
+                        <div class="input-group-btn" uib-dropdown>
+                            <button ui-sref="router.create" class="btn btn-primary btn-outline">
+                                <span translate="router.create" class="ng-scope">Create new router</span>
+                            </button>
+                            <button class="btn btn-primary btn-outline" uib-dropdown-toggle type="button">
+                                <span class="caret"></span></button>
+                            <ul class="pull-right" uib-dropdown-menu>
+                                <li><a ui-sref="pricing-tier.create" translate="pricingTier.create">Create pricing tier</a></li>
+                                <li><a ui-sref="pricing-plan.create" translate="pricingPlan.create">Create pricing plan</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <tab-generator tabs="vm.tabs" active="vm.activeTab" loading="vm.loading"></tab-generator>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div ui-view="show-entity"></div>
+        </div>
+    </div>
+</div>

@@ -1,10 +1,12 @@
 {
     "router": {
+        "list": "Router management",
         "router": "Router",
         "routers": "Routers",
         "create": "Create a router",
         "name": "Name",
-        "contactemail": "Contact email",
+        "save": "Save router",
+        "update": "Update router",
         "actions": "Actions",
         "description": "Description",
         "contact_name": "Contact name",
@@ -21,6 +23,10 @@
         "billing_period": "Billing period",
         "payment_end_of_month": "Payment end of the month",
         "pricingTiers": "Pricing tiers",
-        "pricingPlans": "Pricing plans"
+        "pricingPlans": "Pricing plans",
+        "confirm": {
+            "delete": "Confirm delete router",
+            "msg": "Are you sure you want to delete this router ?"
+        }
     }
 }

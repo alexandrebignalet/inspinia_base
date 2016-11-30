@@ -1,7 +1,8 @@
 {
     "pricingTier":{
-        "pricingTier": "Offer",
-        "pricingTiers": "Offers",
+        "create": "Create an pricing tier",
+        "pricingTier": "Pricing tier",
+        "pricingTiers": "Pricing tiers",
         "name": "Name",
         "comment": "Comment",
         "thisCpm": "CPM value",
