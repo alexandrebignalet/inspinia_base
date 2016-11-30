@@ -11,7 +11,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-click="vm.showPricingPlan(pricingPlan)" ng-repeat="pricingPlan in vm.pricingPlans">
+        <tr ng-click="vm.showPricingPlan(pricingPlan)" ng-repeat="pricingPlan in ::vm.pricingPlans">
             <td>{{::pricingPlan.id}}</td>
             <td>{{::pricingPlan.name}}</td>
             <td>{{::pricingPlan.comment}}</td>
