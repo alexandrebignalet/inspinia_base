@@ -7,7 +7,7 @@
         controllerAs: 'vm',
         bindings: {
             stats: '<',
-            onChangeStats: '&'
+            onChangeFilters: '&'
         }
     };
 
@@ -37,15 +37,14 @@
 
         function onChanges(){
             parseData();
-            onChangeFilter();
         }
 
         function onChangeFilter() {
-            var filteredStats = updateFilteredStats();
 
-            vm.onChangeStats({
+            vm.filters.countChange++;
+            vm.onChangeFilters({
                 $event: {
-                    filteredStats: filteredStats
+                    filters: vm.filters
                 }
             })
         }
@@ -61,12 +60,13 @@
                 composeFilterWithStat(stat);
             });
 
-            vm.selectedDatabases = vm.dataFilters.databases;
-            vm.selectedCompanies = vm.dataFilters.companies;
-            vm.selectedRouters   = vm.dataFilters.routers;
-            vm.selectedTypes     = vm.dataFilters.types;
-
-            updateFilteredStats();
+            vm.filters = {
+                countChange: 0,
+                selectedDatabases: vm.dataFilters.databases,
+                selectedCompanies: vm.dataFilters.companies,
+                selectedRouters: vm.dataFilters.routers,
+                selectedTypes: vm.dataFilters.types
+            }
         }
 
         vm.dataFilters = {
@@ -75,15 +75,6 @@
             types: [],
             routers: []
         };
-
-        function updateFilteredStats() {
-            var filtered = $filter('propsOnArrayFilter')(vm.stats,'database_id',vm.selectedDatabases,'id');
-            filtered     = $filter('propsOnArrayFilter')(filtered,'company_id',vm.selectedCompanies,'id');
-            filtered     = $filter('propsOnArrayFilter')(filtered,'router_id',vm.selectedRouters,'id');
-            filtered     = $filter('propsOnArrayFilter')(filtered,'database_type',vm.selectedTypes,'name');
-
-            return filtered;
-        }
 
         function composeFilterWithStat(stat) {
             addDatabaseToFilter(stat);

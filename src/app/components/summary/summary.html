@@ -16,18 +16,18 @@
                         </div>
                     </div>
 
-                    <summary-filters stats="vm.stats" on-change-stats="vm.onChangeStats($event)"></summary-filters>
+                    <summary-filters stats="vm.stats" on-change-filters="vm.onChangeFilters($event)"></summary-filters>
 
                 </div>
             </div>
         </div>
     </div>
-
+<button ng-click="vm.test()">click</button>
     <div class="row">
 
         <div class="col-sm-12">
             <div class="ibox">
-                <summary-router-show ng-repeat="router in vm.routers" filters="vm.filtersValue" router="router"></summary-router-show>
+                <summary-router-show ng-repeat="router in vm.routers" filters-value="vm.filtersValue" router="router"></summary-router-show>
             </div>
         </div>
     </div>

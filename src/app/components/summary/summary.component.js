@@ -14,26 +14,29 @@
         .module('dataToolApp')
         .component('summary', summary);
 
-    SummaryController.$inject = ['SummaryStat','DTOptionsBuilder'];
+    SummaryController.$inject = ['SummaryStat'];
 
     /* @ngInject */
-    function SummaryController(SummaryStat,DTOptionsBuilder) {
+    function SummaryController(SummaryStat) {
         var vm = this;
         vm.summaryStats = [];
         vm.stats = [];
         vm.companies = [];
         vm.dates = {};
         vm.routers = [];
+        vm.filters = [];
         vm.onChangeDates = onChangeDates;
-        vm.onChangeStats = onChangeStats;
+        vm.onChangeFilters = onChangeFilters;
+
+        vm.test = function() {
+            vm.filtersValue = null;
+        }
 
         vm.$onInit = function(){
 
         };
 
-        vm.dtOptions = DTOptionsBuilder.newOptions()
-            .withOption('paging', false)
-            .withDOM('t');
+
 
         function formatStats(stats) {
             angular.forEach(stats, function(stat) {
@@ -87,9 +90,9 @@
             return stat;
         }
 
-        function onChangeStats($event) {
+        function onChangeFilters($event) {
             console.log($event);
-            vm.filteredStats = $event.filteredStats;
+            vm.filtersValue = $event.filters;
         }
 
         function onChangeDates($event) {
