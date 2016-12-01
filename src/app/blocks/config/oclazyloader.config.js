@@ -50,6 +50,15 @@
                 {
                     name: 'bootstrapJs',
                     files: ['/bower_components/bootstrap/dist/js/bootstrap.min.js']
+                },
+                {
+                    name: 'datepicker',
+                    files: [
+                        '/bower_components/angular-datepicker/dist/angular-datepicker.min.css',
+                        '/bower_components/angular-datepicker/dist/angular-datepicker.min.js',
+                        '/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css',
+                        '/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js'
+                    ]
                 }
             ]
         });
