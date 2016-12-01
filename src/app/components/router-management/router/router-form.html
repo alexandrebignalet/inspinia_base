@@ -255,7 +255,7 @@
         <div class="form-group col-md-4">
             <label class="control-label" translate="router.country" for="router_country">Country</label>
             <div>
-                <ui-select ng-model="vm.router.Country" theme="bootstrap" id="router_country">
+                <ui-select ng-model="vm.router.Country" theme="bootstrap" id="router_country" limit="10">
                     <ui-select-match placeholder="Select a country...">{{$select.selected.code}}</ui-select-match>
                     <ui-select-choices repeat="country.code as country in vm.countries | propsFilter:{ name:$select.search}">
                         <div ng-bind-html="country.name | highlight: $select.search"></div>

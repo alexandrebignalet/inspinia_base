@@ -46,6 +46,10 @@
                 {
                     name: 'iCheckButtons',
                     files: ['/bower_components/iCheck/skins/square/_all.css']
+                },
+                {
+                    name: 'bootstrapJs',
+                    files: ['/bower_components/bootstrap/dist/js/bootstrap.min.js']
                 }
             ]
         });
