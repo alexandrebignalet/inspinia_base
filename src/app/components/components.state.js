@@ -29,7 +29,7 @@
                 resolve: {
                     loadPlugin: function ($ocLazyLoad) {
                         return $ocLazyLoad.load([
-                            'metisMenu'
+                            'metisMenu', 'bootstrapJs'
                         ]);
                     }
                 }

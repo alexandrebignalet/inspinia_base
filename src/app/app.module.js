@@ -18,6 +18,7 @@
         'ui.bootstrap',
         'tmh.dynamicLocale',
         'pascalprecht.translate',
-        'ui.select'
+        'ui.select',
+        'am.multiselect'
     ]);
 })();
