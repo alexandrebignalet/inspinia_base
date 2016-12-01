@@ -14,10 +14,10 @@
         .module('dataToolApp')
         .component('summary', summary);
 
-    SummaryController.$inject = ['SummaryStat'];
+    SummaryController.$inject = ['SummaryStat','DTOptionsBuilder'];
 
     /* @ngInject */
-    function SummaryController(SummaryStat) {
+    function SummaryController(SummaryStat,DTOptionsBuilder) {
         var vm = this;
         vm.summaryStats = [];
         vm.stats = [];
@@ -31,7 +31,9 @@
 
         };
 
-
+        vm.dtOptions = DTOptionsBuilder.newOptions()
+            .withOption('paging', false)
+            .withDOM('t');
 
         function formatStats(stats) {
             angular.forEach(stats, function(stat) {
@@ -43,10 +45,25 @@
         }
 
         function addRouter(stat){
-            if( indexOfArrayObject(stat.router_id, vm.routers, 'id') == -1 ){
-                var router = {
+            var indexRouter = indexOfArrayObject(stat.router_id, vm.routers, 'id');
+            if( indexRouter == -1 ){
 
-                }
+                var router = {
+                    id: stat.router_id,
+                    name: stat.router_name,
+                    sentVolume: stat.real.volume,
+                    income: 0,
+                    margin: 0,
+                    cpmCost: 0,
+                    cost: 0,
+                    stats: [stat]
+                };
+
+                vm.routers.push(router);
+
+            } else {
+                vm.routers[indexRouter].stats.push(stat);
+                vm.routers[indexRouter].sentVolume += stat.real.volume;
             }
         }
 

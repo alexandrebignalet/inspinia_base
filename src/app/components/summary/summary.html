@@ -1,6 +1,7 @@
 <div class="wrapper wrapper-content  animated fadeInRight">
     <div class="row">
         <div class="col-sm-12">
+
             <div class="ibox">
                 <div class="ibox-title">
                     <h5 translate="summary.summary">Summary
@@ -10,16 +11,84 @@
                 <div class="ibox-content">
 
                     <div class="row">
-                        <div  class="col-md-2 m-b-xl" >
+                        <div  class="col-md-2 m-b-md" >
                             <date-range-picker on-change-dates="vm.onChangeDates($event)"></date-range-picker>
                         </div>
                     </div>
 
                     <summary-filters stats="vm.stats" on-change-stats="vm.onChangeStats($event)"></summary-filters>
 
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-sm-15">
+                    <div class="ibox-title">
+                        <h5>Sent volume</h5>
+                    </div>
+                    <div class="ibox">
+                        <div class="ibox-content">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-15">
+                    <div class="ibox">
+                        <div class="ibox-title">
+                            <h5 class="test">Income</h5>
+                        </div>
+                        <div class="ibox-content">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-15">
+                    <div class="ibox-title">
+                        <h5>Margin</h5>
+                    </div>
+                    <div class="ibox">
+                        <div class="ibox-content">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-15">
+                    <div class="ibox-title">
+                        <h5>CPM Cost</h5>
+                    </div>
+                    <div class="ibox">
+                        <div class="ibox-content">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-15">
+                    <div class="ibox-title">
+                        <h5>Cost</h5>
+                    </div>
+                    <div class="ibox">
+                        <div class="ibox-content">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox">
+                <div class="ibox-content">
                     <div class="row">
                         <div class="col-md-12">
-                            <table datatable="ng" class="table">
+                            <table datatable="ng" dt-options="vm.dtOptions" class="table">
                                 <thead>
                                 <tr>
                                     <th>Name</th>
