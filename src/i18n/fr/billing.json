@@ -1,0 +1,9 @@
+{
+    "billing": {
+        "invoiceRequest":{
+            "title": "Suivi des appels à facture (AAF)",
+            "selectMonth": "Selectionner un mois",
+            "load": "Charger"
+        }
+    }
+}
