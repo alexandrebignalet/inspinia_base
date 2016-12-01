@@ -91,8 +91,9 @@
         }
 
         function onChangeFilters($event) {
-            console.log($event);
+
             vm.filtersValue = $event.filters;
+            vm.filtersValue = Object.assign({},vm.filtersValue);
         }
 
         function onChangeDates($event) {

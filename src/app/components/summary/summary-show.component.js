@@ -22,9 +22,9 @@
         var vm = this;
 
         vm.$onChanges = function (changes) {
-            console.log(changes);
             updateFilteredStats();
         };
+
 
         vm.dtOptions = DTOptionsBuilder.newOptions()
             .withOption('paging', false)
