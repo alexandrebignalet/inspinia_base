@@ -19,8 +19,6 @@
                 items.forEach(function(item) {
                     var itemMatches = false;
 
-
-                    console.log(indexOfArrayObject(item[propItem], array, propArray));
                     itemMatches = indexOfArrayObject(item[propItem], array, propArray) != -1;
 
                     if (itemMatches) {

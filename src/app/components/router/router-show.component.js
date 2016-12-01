@@ -22,7 +22,6 @@
 
 
         vm.$onChanges = function(obj) {
-            console.log(obj);
         }
 
     }

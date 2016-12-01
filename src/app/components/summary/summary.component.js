@@ -14,36 +14,85 @@
         .module('dataToolApp')
         .component('summary', summary);
 
-    SummaryController.$inject = ['SummaryStat','$filter'];
+    SummaryController.$inject = ['SummaryStat'];
 
     /* @ngInject */
-    function SummaryController(SummaryStat, $filter) {
+    function SummaryController(SummaryStat) {
         var vm = this;
         vm.summaryStats = [];
         vm.stats = [];
         vm.companies = [];
-        vm.types = ['Internal', 'External'];
-
-
+        vm.dates = {};
+        vm.routers = [];
         vm.onChangeDates = onChangeDates;
+        vm.onChangeStats = onChangeStats;
 
         vm.$onInit = function(){
 
         };
 
+
+
+        function formatStats(stats) {
+            angular.forEach(stats, function(stat) {
+                stat = formatStat(stat);
+                addRouter(stat);
+            });
+
+            return stats;
+        }
+
+        function addRouter(stat){
+            if( indexOfArrayObject(stat.router_id, vm.routers, 'id') == -1 ){
+                var router = {
+
+                }
+            }
+        }
+
+        function formatStat(stat) {
+            stat.real = {
+                volume: +stat.total_sent,
+                income: ( stat.total_incomes ? +stat.total_incomes : 0 ),
+                cost: 0,
+                cpmCost: 0,
+                margin: 0,
+                ecpm:  +stat.total_incomes / +stat.total_sent * 1000
+            };
+
+            stat.estimate = {
+                volume: (stat.real.volume / vm.dates.selectedDays) * vm.dates.lastDay,
+                income: (stat.real.income / vm.dates.selectedDays) * vm.dates.lastDay,
+                cost: 0,
+                margin: 0
+            };
+
+            return stat;
+        }
+
+        function onChangeStats($event) {
+            console.log($event);
+            vm.filteredStats = $event.filteredStats;
+        }
+
         function onChangeDates($event) {
 
             var dates = $event.dates;
-            var startDate = dates.startDate;
-            var endDate = dates.endDate;
 
-            SummaryStat.getSummaryStats(startDate, endDate)
+            vm.dates = {
+                startDate: dates.startDate,
+                endDate: dates.endDate,
+                selectedDays: getSelectedDays(dates.startDate,dates.endDate),
+                lastDay: dates.endDate.endOf("month").format('DD')
+            };
+
+            SummaryStat.getSummaryStats(dates.startDate, dates.endDate)
                 .then(onSuccess)
                 .catch(onError);
 
             function onSuccess(response) {
-                vm.stats = response.data;
-                parseData();
+                var stats = response.data;
+                vm.stats = formatStats(stats);
             }
 
             function onError(error) {
@@ -51,80 +100,11 @@
             }
         }
 
-        vm.dataFilters = {
-            databases: [],
-            companies: [],
-            types: vm.types,
-            routers: []
-        };
+        function getSelectedDays(startDate,endDate) {
 
+            return endDate.diff(startDate,'days');
 
-        vm.onChangeFilter = function() {
-            var filtered = $filter('propsOnArrayFilter')(vm.stats,'database_id',vm.selectedDatabases,'id');
-            filtered = $filter('propsOnArrayFilter')(filtered,'company_id',vm.selectedCompanies,'id');
-            vm.statsFiltered = filtered;
-            console.log(vm.statsFiltered);
-        };
-
-        vm.routers = [];
-
-        function parseData() {
-            angular.forEach(vm.stats, function(stat) {
-                composeFilterWithStat(stat);
-
-
-            });
-            console.log(vm.dataFilters);
-            vm.selectedDatabases = vm.dataFilters.databases;
-            vm.selectedCompanies = vm.dataFilters.companies;
         }
-
-
-        /*------------------------------------//
-
-                    FILTER SECTION
-
-        //------------------------------------*/
-
-        function composeFilterWithStat(stat) {
-            addDatabaseToFilter(stat);
-            addCompanyToFilter(stat);
-            addRouterToFilter(stat);
-        }
-
-        function addDatabaseToFilter(stat) {
-
-            if( indexOfArrayObject(stat.database_id, vm.dataFilters.databases, 'id') == -1){
-                var database = {
-                    id: stat.database_id,
-                    name: stat.database_name
-                };
-                vm.dataFilters.databases.push(database);
-            }
-        }
-
-        function addCompanyToFilter(stat) {
-
-            if( indexOfArrayObject(stat.company_id, vm.dataFilters.companies, 'id') == -1) {
-                var company = {
-                    id: stat.company_id,
-                    name: stat.company_name
-                };
-                vm.dataFilters.companies.push(company);
-            }
-        }
-
-        function addRouterToFilter(stat) {
-
-            if( indexOfArrayObject(stat.router_id, vm.dataFilters.routers, 'id') == -1) {
-                var router = {
-                    id: stat.router_id,
-                    name: stat.router_name
-                };
-                vm.dataFilters.routers.push(router);
-            }
-        }
-
 
         function indexOfArrayObject(value,array,field) {
             for( var res = 0 ; res < array.length ; res++ ) {

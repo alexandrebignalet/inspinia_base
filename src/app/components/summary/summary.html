@@ -15,62 +15,45 @@
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="form-group col-md-3">
-                            <label >Databases</label>
-                            <ui-select multiple ng-change="vm.onChangeFilter()" ng-model="vm.selectedDatabases" theme="bootstrap" >
-                                <ui-select-match placeholder="Select databases in the list...">{{$item.name}}</ui-select-match>
-                                <ui-select-choices repeat="database in vm.dataFilters.databases | propsFilter: {name: $select.search} track by database.name">
-                                    <div ng-bind-html="database.name | highlight: $select.search"></div>
-                                </ui-select-choices>
-                            </ui-select>
-                        </div>
-
-                        <div class="form-group col-md-3">
-                            <label >Companies</label>
-                            <ui-select multiple ng-change="vm.onChangeFilter()" ng-model="vm.selectedCompanies" theme="bootstrap">
-                                <ui-select-match placeholder="Select company in the list...">{{$item.name}}</ui-select-match>
-                                <ui-select-choices repeat="company in vm.dataFilters.companies | propsFilter: {name: $select.search} track by company.name">
-                                    <div ng-bind-html="company.name | highlight: $select.search"></div>
-                                </ui-select-choices>
-                            </ui-select>
-                        </div>
-
-                        <div class="form-group col-md-3">
-                            <label >Types</label>
-                            <ui-select multiple ng-change="vm.test()" ng-model="vm.selectedTypes" search-enabled="false" theme="bootstrap">
-                                <ui-select-match placeholder="Select type in the list...">{{$item}}</ui-select-match>
-                                <ui-select-choices repeat="type in vm.dataFilters.types">
-                                    <div ng-bind-html="type"></div>
-                                </ui-select-choices>
-                            </ui-select>
-                        </div>
-
-                        <div class="form-group col-md-3">
-                            <label >Routers</label>
-                            <ui-select multiple ng-change="vm.test()" ng-model="vm.selectedRouters" theme="bootstrap">
-                                <ui-select-match placeholder="Select router in the list...">{{$item.name}}</ui-select-match>
-                                <ui-select-choices repeat="router in vm.dataFilters.routers| propsFilter: {name: $select.search} track by router.name">
-                                    <div ng-bind-html="router.name | highlight: $select.search"></div>
-                                </ui-select-choices>
-                            </ui-select>
-                        </div>
-                    </div>
-
+                    <summary-filters stats="vm.stats" on-change-stats="vm.onChangeStats($event)"></summary-filters>
 
                     <div class="row">
-                        <div class="col-md-6">
-                            <table class="table">
+                        <div class="col-md-12">
+                            <table datatable="ng" class="table">
                                 <thead>
                                 <tr>
-                                    <th>Nom</th>
-                                    <th>Entreprise</th>
+                                    <th>Name</th>
+                                    <th>Company</th>
+                                    <th>Country</th>
+                                    <th>Type</th>
+                                    <th>Volume</th>
+                                    <th>CPM Cost</th>
+                                    <th>Income</th>
+                                    <th>Cost</th>
+                                    <th>Margin</th>
+                                    <th>eCPM</th>
+                                    <th>Estimated Volume</th>
+                                    <th>Estimated Incomes</th>
+                                    <th>Estimated Costs</th>
+                                    <th>Estimated Margin</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr ng-repeat="stat in vm.statsFiltered">
+                                <tr ng-repeat="stat in vm.filteredStats">
                                     <td>{{ stat.database_name }}</td>
                                     <td>{{ stat.company_name }}</td>
+                                    <td>{{ stat.database_country }}</td>
+                                    <td>{{ stat.database_type }}</td>
+                                    <td>{{ stat.real.volume | number:0 }}</td>
+                                    <td>{{ stat.real.cpmCost | number:2 }}</td>
+                                    <td>{{ stat.real.income | currency:"€":2 }}</td>
+                                    <td>{{ stat.real.cost | currency:"€":2 }}</td>
+                                    <td>{{ stat.real.margin | currency:"€":2 }}</td>
+                                    <td>{{ stat.real.ecpm | number:2 }}</td>
+                                    <td>{{ stat.estimate.volume | number:0 }}</td>
+                                    <td>{{ stat.estimate.income | currency:"€":2 }}</td>
+                                    <td>{{ stat.estimate.cost | currency:"€":2 }}</td>
+                                    <td>{{ stat.estimate.margin| currency:"€":2  }}</td>
                                 </tr>
                                 </tbody>
                             </table>
