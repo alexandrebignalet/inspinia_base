@@ -183,11 +183,26 @@
             </div>
         </div>
         <div class="ibox-content">
+
+            <div class="form-group col-md-8">
+                <label class="control-label" for="company_databases" translate="company.databases">Databases</label>
+                <am-multiselect id="company_databases" multiple="true"
+                                ms-selected ="There are {{vm.company.databases.length}} databases(s) selected"
+                                template-url="app/layouts/select-template.html"
+                                ng-model="vm.company.databases" ms-header="Select some databases"
+                                options="database as database.name for database in vm.databases"
+                                change="selected()">
+                </am-multiselect>
+            </div>
+
             <div class="form-group col-md-8">
                 <div class="form-group">
                     <label class="control-label" for="company_databases" translate="company.databases">Databases</label>
                     <ui-select multiple ng-model="vm.company.databases" theme="bootstrap" id="company_databases">
-                        <ui-select-match placeholder="Select or search a database in the list...">{{$item.name}}</ui-select-match>
+                        <ui-select-match placeholder="Select or search a database in the list..." >
+                            {{$item.name}}
+                        </ui-select-match>
+                        <!--<span ng-if="$select.selected.length > 4">{{$select.selected.length}} selected</span>-->
                         <ui-select-choices repeat="database in vm.databases | propsFilter: {name: $select.search} track by database.name">
                             <div ng-bind-html="database.name | highlight: $select.search"></div>
                             <small ng-bind-html="database.country | highlight: $select.search"></small>

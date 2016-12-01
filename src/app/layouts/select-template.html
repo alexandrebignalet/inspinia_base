@@ -1,0 +1,26 @@
+<div ng-switch="multiple">
+    <button type="button" class="btn btn-default btn-block dropdown-toggle" ng-click="toggleSelect()" ng-disabled="disabled" ng-class="{'error': !valid()}">
+        {{header}}
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        <li ng-class="{'input-group': multiple}">
+                <span class="input-group-btn" ng-switch-when="true">
+                    <button class="btn btn-default" ng-click="checkAll()" type="button">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </span>
+                <input  class="form-control" type="text" ng-model="searchText.label" autofocus="autofocus" placeholder="Filter">
+                <span class="input-group-btn" ng-switch-when="true">
+                    <button class="btn btn-default" ng-click="uncheckAll()" type="button">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                </span>
+        </li>
+        <li ng-repeat="i in items | filter:searchText" ng-class="{'bg-success': i.checked}">
+            <a ng-click="select(i); focus()">
+                <i class="fa" ng-class="{'fa-check': i.checked, 'empty': !i.checked}"></i>&nbsp;{{i.label}}
+            </a>
+        </li>
+    </ul>
+</div>

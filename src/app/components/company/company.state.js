@@ -54,7 +54,9 @@
                 },
                 resolve: {
                     databases: ['Database', function(Database){
-                        return Database.getAll();
+                        //those databases will be used for the select,
+                        // the model should be strictly the same as company's database !
+                        return Database.getAll(['databases_summary']);
                     }]
                 },
                 onEnter: ['CompanyDialogService', 'Company', 'databases',
@@ -78,7 +80,9 @@
                         )
                     }],
                     databases: ['Database', function(Database){
-                        return Database.getAll();
+                        //those databases will be used for the select,
+                        // the model should be strictly the same as company's database !
+                        return Database.getAll(['databases_summary']);
                     }]
                 },
                 onEnter: ['CompanyDialogService', 'company', 'databases',
