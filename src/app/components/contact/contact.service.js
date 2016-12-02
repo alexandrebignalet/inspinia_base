@@ -5,10 +5,10 @@
         .module('dataToolApp')
         .factory('Contact', Contact);
 
-    Contact.$inject = ['$resource', '$q', 'ToastrService', 'API_BASE_URL'];
+    Contact.$inject = ['$resource', '$q', 'ToastrService', 'API_BASE_URL', 'TYPE_BILLING'];
 
     /* @ngInject */
-    function  Contact($resource, $q, ToastrService, API_BASE_URL) {
+    function  Contact($resource, $q, ToastrService, API_BASE_URL, TYPE_BILLING) {
 
         var service = {
             init: initContact,
@@ -16,7 +16,8 @@
             get: get,
             save:save,
             update:update,
-            delete:deleteContact
+            delete:deleteContact,
+            isBillingTyped: isBillingTyped
         };
 
         var resourceUrl = API_BASE_URL + '/api/contacts/:id';
@@ -127,6 +128,10 @@
                 phone: '',
                 skype: ''
             }
+        }
+
+        function isBillingTyped(contact){
+            return contact.type === TYPE_BILLING
         }
 
         function toPayloadFormat(contact) {

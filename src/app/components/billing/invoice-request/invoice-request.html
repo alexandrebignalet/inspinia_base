@@ -1,35 +1,24 @@
 <div class="wrapper wrapper-content  animated fadeInRight">
     <div class="row">
         <div class="col-md-6">
-            <div class="ibox float-e-margins">
+            <div class="ibox">
                 <div class="ibox-title">
-                    <h5 translate="billing.invoiceRequest.title"> Invoice request</h5>
-                    <div class="ibox-tools">
-                        <a class="collapse-link">
-                            <i class="fa fa-chevron-up"></i>
-                        </a>
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="fa fa-wrench"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#">Config option 1</a>
-                            </li>
-                            <li><a href="#">Config option 2</a>
-                            </li>
-                        </ul>
-                        <a class="close-link">
-                            <i class="fa fa-times"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="ibox-content">
-                    <invoice-request-main-form announcers="vm.announcers" on-filtering="vm.onFiltersReceived($event)"></invoice-request-main-form>
+                    <invoice-request-main-form announcers="vm.announcers"
+                                               on-filtering="vm.onFiltersReceived($event)">
+                    </invoice-request-main-form>
                 </div>
             </div>
         </div>
-        <div class="col-md-6" ng-if="vm.announcer" ng-class="{'animated fadeInRight': vm.announcer}">
-            <company-show company="vm.announcer.company" ng-if="vm.announcer.company"></company-show>
-            <a ui-sref="announcer.edit({id: vm.announcer.id})" translate="announcer">Add a company</a>
+        <div class="col-md-6" ng-if="vm.announcer" ng-class="{'animated fadeIn': vm.isLoading}">
+            <company-show-min company="vm.announcer.company" ng-if="vm.announcer.company"></company-show-min>
+        </div>
+    </div>
+    <div class="ibox" ng-if="vm.sendings">
+        <div class="ibox-content">
+            <invoice-request-array sendings="vm.sendings"
+                                   on-patch="vm.onUpdateSending($event)"
+                                   is-loading="vm.isLoading">
+            </invoice-request-array>
         </div>
     </div>
 </div>

@@ -5,10 +5,10 @@
         .module('dataToolApp')
         .factory('Company', Company);
 
-    Company.$inject = ['$resource', '$q', 'ToastrService', 'API_BASE_URL'];
+    Company.$inject = ['$resource', '$q', 'ToastrService', 'API_BASE_URL', 'Contact'];
 
     /* @ngInject */
-    function  Company($resource, $q, ToastrService, API_BASE_URL) {
+    function  Company($resource, $q, ToastrService, API_BASE_URL, Contact) {
 
         var resourceUrl = API_BASE_URL + '/api/companies/:id';
 
@@ -24,7 +24,8 @@
             save: save,
             update: update,
             delete: remove,
-            init: init
+            init: init,
+            getBillingContact: getBillingContact
         };
 
         return service;
@@ -120,6 +121,26 @@
                 contacts: [],
                 address: null
             };
+        }
+
+        function getBillingContact(company){
+            if (!company.contacts){
+                ToastrService.warning(company.name + ' doesn\'t have any contacts.');
+                return;
+            }
+
+            return findBillingContact(company.contacts);
+
+            function findBillingContact(contacts){
+
+                for(var i = 0; i < contacts.length ; i++){
+                    if (Contact.isBillingTyped(contacts[i])){
+                        return contacts[i];
+                    }
+                }
+
+                return null;
+            }
         }
 
         function toPayloadFormat(company){

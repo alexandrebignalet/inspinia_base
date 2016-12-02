@@ -4,6 +4,7 @@
         "contacts": "Contacts",
         "list": "Liste des contacts",
         "new": "Ajouter un contact",
+        "empty": "Aucun contact de facturation",
         "surname": "Nom",
         "firstname": "Prénom",
         "phone": "Téléphone",

@@ -37,6 +37,7 @@
                     mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
                         $translatePartialLoader.addPart('billing');
                         $translatePartialLoader.addPart('company');
+                        $translatePartialLoader.addPart('contact');
                         return $translate.refresh();
                     }]
                 }
