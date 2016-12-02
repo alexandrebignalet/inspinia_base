@@ -1,21 +1,16 @@
 <div class="wrapper wrapper-content  animated fadeInRight">
     <div class="row">
         <div class="col-sm-12">
-
             <div class="ibox">
                 <div class="ibox-title">
-
                     <h2><span translate="summary.filters">Filters</span>
-
                         <div class="pull-right">
-                            <a class="" ng-click="isCollapsedFilters = !isCollapsedFilters">
+                            <a ng-click="isCollapsedFilters = !isCollapsedFilters">
                                 <span ng-if="!isCollapsedFilters" class="fa fa-chevron-up"></span>
                                 <span ng-if="isCollapsedFilters" class="fa fa-chevron-down"></span>
                             </a>
                         </div>
                     </h2>
-
-
                 </div>
                 <div uib-collapse="isCollapsedFilters">
                     <div class="ibox-content">
@@ -31,7 +26,6 @@
         </div>
     </div>
     <div class="row">
-
         <div class="col-sm-12">
             <div class="ibox">
                 <summary-router-show ng-repeat="router in vm.routers" filters-value="vm.filtersValue" router="router"></summary-router-show>

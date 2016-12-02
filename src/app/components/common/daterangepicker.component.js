@@ -3,7 +3,6 @@
 
     var dateRangePicker = {
         templateUrl: 'app/components/common/daterangepicker.html',
-
         controller: DateRangePickerController,
         controllerAs: 'vm',
         bindings: {

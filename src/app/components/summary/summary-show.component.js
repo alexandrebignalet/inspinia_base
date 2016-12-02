@@ -15,7 +15,7 @@
         .module('dataToolApp')
         .component('summaryRouterShow', summaryRouterShow);
 
-    SummaryRouterShowController.$inject = ['$filter','DTOptionsBuilder'];
+    SummaryRouterShowController.$inject = ['$filter','DTOptionsBuilder','DTColumnDefBuilder'];
 
     /* @ngInject */
     function SummaryRouterShowController($filter,DTOptionsBuilder) {
@@ -24,8 +24,6 @@
         vm.$onChanges = function (changes) {
             updateFilteredStats();
         };
-
-
 
         vm.dtOptions = DTOptionsBuilder.newOptions()
             .withOption('paging', false)
