@@ -7,7 +7,7 @@
         controllerAs: 'vm',
         bindings: {
             router: '<',
-            filtersValue: '<'
+            filtersValue: '='
         }
     };
 
@@ -20,11 +20,24 @@
     /* @ngInject */
     function SummaryRouterShowController($filter,DTOptionsBuilder) {
         var vm = this;
+        var previousFilters = {};
+        //vm.$doCheck = doCheck;
 
         vm.$onChanges = function (changes) {
             updateFilteredStats();
         };
 
+
+        function doCheck() {
+            if(previousFilters) {
+
+                if( !angular.equals(previousFilters.countChange, vm.filtersValue.countChange )) {
+                    console.log('foo');
+                    previousFilters = angular.copy(vm.filtersValue);
+                    vm.filtersValue =  angular.copy(vm.filtersValue)
+                }
+            }
+        }
 
         vm.dtOptions = DTOptionsBuilder.newOptions()
             .withOption('paging', false)

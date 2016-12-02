@@ -93,7 +93,10 @@
         function onChangeFilters($event) {
 
             vm.filtersValue = $event.filters;
-            vm.filtersValue = Object.assign({},vm.filtersValue);
+            console.log('WALA');
+            console.log(vm.filtersValue);
+            console.log('WALA');
+
         }
 
         function onChangeDates($event) {
