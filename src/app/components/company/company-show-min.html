@@ -1,0 +1,61 @@
+<div class="ibox">
+    <div class="ibox-title">
+        <h2>
+            {{ vm.company.name }}
+            <div class="pull-right">
+                <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">
+                    <span ng-if="!isCollapsed" class="fa fa-chevron-up"></span>
+                    <span ng-if="isCollapsed" class="fa fa-chevron-down"></span>
+                </button>
+                <a ui-sref="company.edit({id: vm.company.id})"><button class="btn btn-primary btn-outline">
+                    <span class="fa fa-pencil"></span>
+                </button></a>
+                <a ui-sref="company.delete({id: vm.company.id})"><button class="btn btn-danger btn-outline">
+                    <span class="fa fa-trash"></span>
+                </button></a>
+            </div>
+        </h2>
+    </div>
+    <div class="ibox-content" uib-collapse="isCollapsed">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                    <th translate="company.numTva"></th>
+                    <th translate="company.paymentPeriod.name"></th>
+                    <th translate="company.invoiceDeliveryDay"></th>
+                    <th translate="company.phone"></th>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>{{ vm.company.num_tva }}</td>
+                        <td>{{ vm.company.payment_period }}</td>
+                        <td>{{ vm.company.invoice_delivery_day }}</td>
+                        <td>
+                            <a href="tel: {{ vm.company.phone }}">
+                                <span class="fa fa-phone"></span>
+                                {{ vm.company.phone }}
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <address>
+                    <strong>{{ vm.company.address.country }}</strong><br>
+                    {{ vm.company.address.street }}<br>
+                    {{ vm.company.address.town }}, {{ vm.company.address.zipcode }}<br>
+                    <small>{{ vm.company.address.complement }}</small>
+                </address>
+            </div>
+            <div class="col-md-10">
+                <contact-show contact="vm.billingContact"></contact-show>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+    </div>
+</div>

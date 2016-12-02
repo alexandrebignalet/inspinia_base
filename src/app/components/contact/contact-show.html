@@ -1,6 +1,11 @@
-
+<div class="widget style1 yellow-bg p-lg" ng-if="!vm.contact">
+    <h3 class="font-bold">
+        <i class="fa fa-user"></i>
+        <span translate="contact.empty"> No contact</span>
+    </h3>
+</div>
 <div class="ibox">
-    <div class="ibox-content">
+    <div class="ibox-content" ng-if="vm.contact">
         <div ng-if="vm.showPicture" class="col-sm-4">
 
             <div class="text-center">
@@ -29,11 +34,15 @@
                 </h3>
             </div>
             <hr ng-if="vm.showPicture">
-            <p><i class="fa fa-briefcase"></i> {{vm.contact.company.name }} TDF </p>
+            <p><i class="fa fa-briefcase" ng-if="vm.contact.company"></i> {{vm.contact.company.name }} </p>
             <p ng-if="!vm.showPicture"><i class="fa fa-gear"></i> {{vm.contact.fonction}}</p>
             <p><i class="fa fa-tag"></i> {{vm.contact.type }} </p>
             <p><i class="fa fa-envelope"></i> {{vm.contact.mail }}</p>
-            <p><i class="fa fa-phone"></i> {{vm.contact.phone }}</p>
+            <p><a href="skype: {{ vm.contact.skype }}" title="{{ vm.contact.skype }}">
+                <i class="fa fa-skype"></i>
+                {{ vm.contact.skype }}
+            </a></p>
+            <p><a href="tel: {{ vm.contact.phone }}"><i class="fa fa-phone"></i> {{ vm.contact.phone }}</a></p>
         </div>
         <div class="clearfix"></div>
     </div>

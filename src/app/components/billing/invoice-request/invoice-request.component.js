@@ -14,42 +14,17 @@
         .module('dataToolApp')
         .component('invoiceRequest', invoiceRequest);
 
-    InvoiceRequestController.$inject = ['DTOptionsBuilder', 'Billing'];
+    InvoiceRequestController.$inject = ['Billing'];
 
     /* @ngInject */
-    function InvoiceRequestController(DTOptionsBuilder, Billing) {
+    function InvoiceRequestController(Billing) {
         var vm = this;
 
         vm.isLoading = false;
+
         vm.onFiltersReceived = onFiltersReceived;
+        vm.onUpdateSending = onUpdateSending;
 
-        vm.$onInit = onInit;
-
-        function onInit() {
-            vm.dtOptions = DTOptionsBuilder.newOptions()
-                .withDOM('<"html5buttons"B>lfrtip')
-                .withBootstrap()
-                .withButtons([
-                    {extend: 'copy'},
-                    {extend: 'csv'},
-                    {extend: 'excel', title: 'ExampleFile'},
-                    {extend: 'pdf', title: 'ExampleFile'},
-                    {extend: 'print',
-                        customize: function (win){
-                            angular.element(win.document.body).addClass('white-bg');
-                            angular.element(win.document.body).css('font-size', '10px');
-
-                            angular.element(win.document.body).find('table')
-                                .addClass('compact')
-                                .css('font-size', 'inherit');
-                        }
-                    }
-                ]);
-
-            // vm.DTColumnDefs = [
-            //     DTColumnDefBuilder.newColumnDef(5).notSortable()
-            // ];
-        }
 
         function onFiltersReceived($event){
             if(!$event.date || !$event.announcer){ return; }
@@ -70,6 +45,45 @@
             function onError(){
                 vm.isLoading = false;
             }
+        }
+
+        function onUpdateSending($event){
+            console.log(!$event.sending, !$event.tabIndexName, !$event.sendingIndex, $event.sendingIndex)
+            if(!$event.sending || !$event.tabIndexName || angular.isDefined($event.sendingIndex)){ return; }
+
+            vm.isLoading = true;
+
+            Billing.update($event.sending)
+                .then(onSuccess)
+                .catch(onError);
+
+            function onSuccess(){
+                var newBillingState = Billing.getBillingState($event.sending);
+                sortSending($event.sending, $event.tabIndexName, $event.sendingIndex, newBillingState);
+                vm.isLoading = false;
+            }
+            function onError(){
+                vm.isLoading = false;
+            }
+        }
+
+        /**
+         * Sort a sending according on his billing state
+         *
+         * On update success, a sending will change of billing state
+         * So it has to change of array (toCharged[] -> charged[])
+         * Remove sending from the fist array then add it to the go one.
+         * @param sending
+         * @param tabIndexName: current tab name
+         * @param sendingIndex: the index of the sending in the vm.sendings[tabIndexName]
+         * @param newBillingState
+         */
+        function sortSending (sending, tabIndexName, sendingIndex, newBillingState) {
+            //remove the sending from the old billing state array
+            vm.sendings[tabIndexName].list.splice(sendingIndex, 1);
+
+            //add to the new billing state array
+            vm.sendings[newBillingState].list.push(sending);
         }
     }
 })();

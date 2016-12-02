@@ -19,6 +19,7 @@
         'tmh.dynamicLocale',
         'pascalprecht.translate',
         'ui.select',
-        'am.multiselect'
+        'am.multiselect',
+        'angularMoment'
     ]);
 })();

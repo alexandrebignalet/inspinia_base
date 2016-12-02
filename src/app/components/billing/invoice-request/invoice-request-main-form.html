@@ -1,6 +1,6 @@
-<form name="requestDataForm" ng-submit="vm.onSubmit()" novalidate class="form p-md">
+<form name="requestDataForm" ng-submit="vm.onSubmit()" novalidate>
     <div class="row">
-        <div class="form-group col-md-4">
+        <div class="form-group-lg col-md-4">
             <button type="button" date-time ng-model="vm.month" min-view="month" auto-close="true" class="btn btn-default btn-block">
                 <i class="fa fa-calendar"></i>
                 {{ vm.month.format('MMMM YYYY')}}
@@ -22,7 +22,7 @@
                 </p>
             </div>
         </div>
-        <div class="form-group col-md-4">
+        <div class="form-group-lg col-md-4">
             <button class="btn btn-success btn-block" type="submit"
                     ng-disabled="requestDataForm.$invalid || vm.isLoading"
                     translate="billing.invoiceRequest.load"> Load</button>
