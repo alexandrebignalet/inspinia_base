@@ -5,13 +5,14 @@
         .module('dataToolApp')
         .factory('ToastrService', ToastrService);
 
-    ToastrService.$inject = ['$rootScope'];
+    ToastrService.$inject = ['$rootScope', 'toastr'];
 
     /* @ngInject */
-    function ToastrService($rootScope) {
+    function ToastrService($rootScope, toastr) {
         var service = {
             success: success,
-            error: error
+            error: error,
+            warning: warning
         };
 
         var cleanHttpErrorListener = $rootScope.$on('dataToolApp.httpError', onHttpError);
@@ -29,6 +30,10 @@
             return toastr['error'](message, title);
         }
 
+        function warning(message, title) {
+            return toastr['warning'](message, title);
+        }
+
         function onHttpError(event, httpResponse){
             event.stopPropagation();
             switch (httpResponse.status) {
@@ -38,11 +43,15 @@
                     break;
 
                 case 400:
-                    error('Validation failed', 'Bad request')
+                    error('Validation failed', 'Bad request');
                     break;
 
                 case 404:
                     error('Not found', httpResponse.config.url);
+                    break;
+
+                case 500:
+                    error('An error has occured', 'Server error');
                     break;
 
                 default:

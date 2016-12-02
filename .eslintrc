@@ -9,7 +9,7 @@
         "angular": true,
         "module": true,
         "inject": true,
-        "toastr": true
-
+        "toastr": true,
+        "moment": true
     }
 }

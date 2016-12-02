@@ -34,6 +34,13 @@
                 .catch(getBillingDataCatch);
 
             function getBillingDataThen (response) {
+
+                if (response.data.count === 0 ){
+                    ToastrService.warning('No data available on those dates', 'No data');
+                } else {
+                    ToastrService.success('Data retrieved', 'Success');
+                }
+
                 return {
                     sendings: response.data.sendings,
                     count: response.data.count

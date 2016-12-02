@@ -1,12 +1,12 @@
 <form name="requestDataForm" ng-submit="vm.onSubmit()" novalidate class="form p-md">
     <div class="row">
-        <div class="form-group col-md-3">
+        <div class="form-group col-md-4">
             <button type="button" date-time ng-model="vm.month" min-view="month" auto-close="true" class="btn btn-default btn-block">
                 <i class="fa fa-calendar"></i>
                 {{ vm.month.format('MMMM YYYY')}}
             </button>
         </div>
-        <div class="form-group col-md-3">
+        <div class="form-group col-md-4">
             <ui-select ng-model="vm.announcerSelected" theme="bootstrap" required name="announcer">
                 <ui-select-match placeholder="Select or search an announcer in the list..." >
                     {{$select.selected.announcer}}
@@ -22,8 +22,8 @@
                 </p>
             </div>
         </div>
-        <div class="form-group col-md-3">
-            <button class="btn btn-success" type="submit"
+        <div class="form-group col-md-4">
+            <button class="btn btn-success btn-block" type="submit"
                     ng-disabled="requestDataForm.$invalid || vm.isLoading"
                     translate="billing.invoiceRequest.load"> Load</button>
         </div>
