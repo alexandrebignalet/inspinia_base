@@ -71,7 +71,7 @@
                     function(announcerDialogService, Announcer, Company, companies, contacts,databases) {
                         var announcer = Announcer.init();
                         var company = Company.init();
-                        announcerDialogService.openDialogModal(announcer,company,companies,contacts,databases);
+                        announcerDialogService.openDialogModal(announcer, company, companies, contacts, databases);
                     }]
             })
             .state('announcer.edit', {

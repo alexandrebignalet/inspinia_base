@@ -5,9 +5,11 @@
         templateUrl: 'app/components/billing/invoice-request/invoice-request-main-form.html',
         controller: InvoiceRequestMainFormController,
         controllerAs: 'vm',
+        require: '/bower_components/moment/moment',
         bindings: {
             announcers : '<',
-            onDataReceived: '<'
+            isLoading: '<',
+            onFiltering: '&'
         }
     };
 
@@ -15,10 +17,10 @@
         .module('dataToolApp')
         .component('invoiceRequestMainForm', invoiceRequestMainForm);
 
-    InvoiceRequestMainFormController.$inject = ['Billing'];
+    InvoiceRequestMainFormController.$inject = ['moment'];
 
     /* @ngInject */
-    function InvoiceRequestMainFormController(Billing) {
+    function InvoiceRequestMainFormController(moment) {
         var vm = this;
 
         vm.onSubmit = onSubmit;
@@ -27,7 +29,6 @@
 
         function onInit(){
             vm.announcerSelected = vm.announcers[0];
-            vm.isLoading = false;
             vm.month = moment();
         }
 
@@ -35,16 +36,15 @@
             var startDate = vm.month.startOf('month').format('YYYY-MM-DD');
             var endDate = vm.month.endOf('month').format('YYYY-MM-DD');
 
-            Billing.get(vm.announcerSelected.id, startDate, endDate)
-                .then(onBillingDataReceived);
-
-            function onBillingDataReceived(billingData){
-                vm.onDataReceived({
-                    $event: {
-                        data: billingData
+            vm.onFiltering({
+                $event: {
+                    announcer: vm.announcerSelected,
+                    date: {
+                        start: startDate,
+                        end: endDate
                     }
-                })
-            }
+                }
+            });
         }
     }
 

@@ -14,13 +14,14 @@
         .module('dataToolApp')
         .component('invoiceRequest', invoiceRequest);
 
-    InvoiceRequestController.$inject = ['DTOptionsBuilder', 'ToastrService'];
+    InvoiceRequestController.$inject = ['DTOptionsBuilder', 'Billing'];
 
     /* @ngInject */
-    function InvoiceRequestController(DTOptionsBuilder, ToastrService) {
+    function InvoiceRequestController(DTOptionsBuilder, Billing) {
         var vm = this;
 
-        vm.onDataReceived = onDataReceived;
+        vm.isLoading = false;
+        vm.onFiltersReceived = onFiltersReceived;
 
         vm.$onInit = onInit;
 
@@ -50,12 +51,24 @@
             // ];
         }
 
-        function onDataReceived($event){
-            console.log($event);
-            if(!$event.data){ return; }
+        function onFiltersReceived($event){
+            if(!$event.date || !$event.announcer){ return; }
 
-            if($event.data.length === 0){
-                ToastrService.error('No Data', 'Empty');
+            vm.isLoading = true;
+
+            vm.announcer = $event.announcer;
+            vm.date = $event.date;
+
+            Billing.get(vm.announcer.id, vm.date.start, vm.date.end)
+                .then(onSuccess)
+                .catch(onError);
+
+            function onSuccess(data){
+                vm.sendings = data.sendings;
+                vm.isLoading = false;
+            }
+            function onError(){
+                vm.isLoading = false;
             }
         }
     }
