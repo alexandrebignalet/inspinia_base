@@ -1,115 +1,130 @@
-<div class="ibox-content">
-    <div class="row">
+<div class="ibox-title">
+    <h2>
+        {{vm.router.name}}
+        <div class="pull-right">
+        <a class="" ng-click="isCollapsedRouter = !isCollapsedRouter">
+            <span ng-if="!isCollapsedRouter" class="fa fa-chevron-up"></span>
+            <span ng-if="isCollapsedRouter" class="fa fa-chevron-down"></span>
+        </a>
+    </div>
 
-        <div class="col-md-12">
-            <div class="row">
-                <div class="col-sm-15">
-                    <div class="widget style1 lazur-bg">
-                        <div class="row">
+    </h2>
+</div>
 
-                            <div class="col-xs-12 text-right">
-                                <span> Volume sent </span>
+<div uib-collapse="isCollapsedRouter">
+    <div class="ibox-content">
+        <div class="row">
 
-                                <h2 class="font-bold">{{ 12545321 | number}}</h2>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-sm-15">
+                        <div class="widget style1 lazur-bg">
+                            <div class="row">
+
+                                <div class="col-xs-12 text-right">
+                                    <span> Volume sent </span>
+
+                                    <h2 class="font-bold">{{ 12545321 | number}}</h2>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-sm-15">
-                    <div class="widget style1 lazur-bg">
-                        <div class="row">
+                    <div class="col-sm-15">
+                        <div class="widget style1 lazur-bg">
+                            <div class="row">
 
-                            <div class="col-xs-12 text-right">
-                                <span> Income </span>
+                                <div class="col-xs-12 text-right">
+                                    <span> Income </span>
 
-                                <h2 class="font-bold">{{ 12545321 | number}}</h2>
+                                    <h2 class="font-bold">{{ 12545321 | number}}</h2>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-15">
-                    <div class="widget style1 lazur-bg">
-                        <div class="row">
+                    <div class="col-sm-15">
+                        <div class="widget style1 lazur-bg">
+                            <div class="row">
 
-                            <div class="col-xs-12 text-right">
-                                <span> Margin </span>
+                                <div class="col-xs-12 text-right">
+                                    <span> Margin </span>
 
-                                <h2 class="font-bold">{{ 12545321 | number}}</h2>
+                                    <h2 class="font-bold">{{ 12545321 | number}}</h2>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-15">
-                    <div class="widget style1 lazur-bg">
-                        <div class="row">
+                    <div class="col-sm-15">
+                        <div class="widget style1 lazur-bg">
+                            <div class="row">
 
-                            <div class="col-xs-12 text-right">
-                                <span> CPM Cost </span>
+                                <div class="col-xs-12 text-right">
+                                    <span> CPM Cost </span>
 
-                                <h2 class="font-bold">{{ 12545321 | number}}</h2>
+                                    <h2 class="font-bold">{{ 12545321 | number}}</h2>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-15">
-                    <div class="widget style1 lazur-bg">
-                        <div class="row">
+                    <div class="col-sm-15">
+                        <div class="widget style1 lazur-bg">
+                            <div class="row">
 
-                            <div class="col-xs-12 text-right">
-                                <span> Cost </span>
+                                <div class="col-xs-12 text-right">
+                                    <span> Cost </span>
 
-                                <h2 class="font-bold">{{ 12545321 | number}}</h2>
+                                    <h2 class="font-bold">{{ 12545321 | number}}</h2>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <hr>
+        <hr>
 
-    <div class="row">
-        <div class="col-md-12">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Company</th>
-                    <th>Country</th>
-                    <th>Type</th>
-                    <th>Volume</th>
-                    <th>CPM Cost</th>
-                    <th>Income</th>
-                    <th>Cost</th>
-                    <th>Margin</th>
-                    <th>eCPM</th>
-                    <th>Estimated Volume</th>
-                    <th>Estimated Incomes</th>
-                    <th>Estimated Costs</th>
-                    <th>Estimated Margin</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr ng-repeat="stat in vm.filteredStats">
-                    <td>{{ stat.database_name }}</td>
-                    <td>{{ stat.company_name }}</td>
-                    <td>{{ stat.database_country }}</td>
-                    <td>{{ stat.database_type }}</td>
-                    <td>{{ stat.real.volume | number:0 }}</td>
-                    <td>{{ stat.real.cpmCost | number:2 }}</td>
-                    <td>{{ stat.real.income | currency:"€":2 }}</td>
-                    <td>{{ stat.real.cost | currency:"€":2 }}</td>
-                    <td>{{ stat.real.margin | currency:"€":2 }}</td>
-                    <td>{{ stat.real.ecpm | number:2 }}</td>
-                    <td>{{ stat.estimate.volume | number:0 }}</td>
-                    <td>{{ stat.estimate.income | currency:"€":2 }}</td>
-                    <td>{{ stat.estimate.cost | currency:"€":2 }}</td>
-                    <td>{{ stat.estimate.margin| currency:"€":2  }}</td>
-                </tr>
-                </tbody>
-            </table>
+        <div class="row">
+            <div class="col-md-12">
+                <table datatable="ng" dt-options="vm.dtOptions" class="table">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Company</th>
+                        <th>Country</th>
+                        <th>Type</th>
+                        <th>Volume</th>
+                        <th>CPM Cost</th>
+                        <th>Income</th>
+                        <th>Cost</th>
+                        <th>Margin</th>
+                        <th>eCPM</th>
+                        <th>Estimated Volume</th>
+                        <th>Estimated Incomes</th>
+                        <th>Estimated Costs</th>
+                        <th>Estimated Margin</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="stat in vm.filteredStats">
+                        <td>{{ stat.database_name }}</td>
+                        <td>{{ stat.company_name }}</td>
+                        <td>{{ stat.database_country }}</td>
+                        <td>{{ stat.database_type }}</td>
+                        <td>{{ stat.real.volume | number:0 }}</td>
+                        <td>{{ stat.real.cpmCost | number:2 }}</td>
+                        <td>{{ stat.real.income | currency:"€":2 }}</td>
+                        <td>{{ stat.real.cost | currency:"€":2 }}</td>
+                        <td>{{ stat.real.margin | currency:"€":2 }}</td>
+                        <td>{{ stat.real.ecpm | number:2 }}</td>
+                        <td>{{ stat.estimate.volume | number:0 }}</td>
+                        <td>{{ stat.estimate.income | currency:"€":2 }}</td>
+                        <td>{{ stat.estimate.cost | currency:"€":2 }}</td>
+                        <td>{{ stat.estimate.margin| currency:"€":2  }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

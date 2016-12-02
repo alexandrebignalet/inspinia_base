@@ -24,6 +24,7 @@
         vm.$onChanges = onChanges;
         vm.onChangeFilter = onChangeFilter;
 
+        vm.filtersValue = Immutable.fromJS();
 
         /*------------------------------------//
 
@@ -42,9 +43,12 @@
         function onChangeFilter() {
 
             vm.filters.countChange++;
+
+            vm.filtersValue = Immutable.fromJS(vm.filters);
+
             vm.onChangeFilters({
                 $event: {
-                    filters: vm.filters
+                    filters: vm.filtersValue
                 }
             })
         }
@@ -64,16 +68,19 @@
                 countChange: 0,
                 selectedDatabases: vm.dataFilters.databases,
                 selectedCompanies: vm.dataFilters.companies,
-                selectedRouters: vm.dataFilters.routers,
-                selectedTypes: vm.dataFilters.types
-            }
+                selectedRouters:   vm.dataFilters.routers,
+                selectedTypes:     vm.dataFilters.types
+            };
+
+            vm.filtersValue = Immutable.fromJS(vm.filters)
+
         }
 
         vm.dataFilters = {
             databases: [],
             companies: [],
-            types: [],
-            routers: []
+            types:     [],
+            routers:   []
         };
 
         function composeFilterWithStat(stat) {

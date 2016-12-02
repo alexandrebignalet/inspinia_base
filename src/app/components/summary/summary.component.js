@@ -28,10 +28,6 @@
         vm.onChangeDates = onChangeDates;
         vm.onChangeFilters = onChangeFilters;
 
-        vm.test = function() {
-            vm.filtersValue = null;
-        }
-
         vm.$onInit = function(){
 
         };
@@ -93,9 +89,7 @@
         function onChangeFilters($event) {
 
             vm.filtersValue = $event.filters;
-            console.log('WALA');
             console.log(vm.filtersValue);
-            console.log('WALA');
 
         }
 

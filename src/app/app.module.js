@@ -11,7 +11,6 @@
         'ngAria',
         'ngResource',
         'ui.router',
-        'ui.bootstrap',
         'oc.lazyLoad',
         'chart.js',
         'ngStorage',

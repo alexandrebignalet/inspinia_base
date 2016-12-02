@@ -4,20 +4,28 @@
 
             <div class="ibox">
                 <div class="ibox-title">
-                    <h5 translate="summary.summary">Summary
-                        <small></small>
-                    </h5>
-                </div>
-                <div class="ibox-content">
 
-                    <div class="row">
-                        <div  class="col-md-2 m-b-md" >
-                            <date-range-picker on-change-dates="vm.onChangeDates($event)"></date-range-picker>
+                    <h2><span translate="summary.filters">Filters</span>
+
+                        <div class="pull-right">
+                            <a class="" ng-click="isCollapsedFilters = !isCollapsedFilters">
+                                <span ng-if="!isCollapsedFilters" class="fa fa-chevron-up"></span>
+                                <span ng-if="isCollapsedFilters" class="fa fa-chevron-down"></span>
+                            </a>
                         </div>
+                    </h2>
+
+
+                </div>
+                <div uib-collapse="isCollapsedFilters">
+                    <div class="ibox-content">
+                        <div class="row" >
+                            <div  class="col-md-3 m-b-md" >
+                                <date-range-picker on-change-dates="vm.onChangeDates($event)"></date-range-picker>
+                            </div>
+                        </div>
+                        <summary-filters stats="vm.stats" on-change-filters="vm.onChangeFilters($event)"></summary-filters>
                     </div>
-
-                    <summary-filters stats="vm.stats" on-change-filters="vm.onChangeFilters($event)"></summary-filters>
-
                 </div>
             </div>
         </div>
@@ -26,7 +34,7 @@
 
         <div class="col-sm-12">
             <div class="ibox">
-                <summary-router-show filters-value="vm.filtersValue" router="vm.routers[0]"></summary-router-show>
+                <summary-router-show ng-repeat="router in vm.routers" filters-value="vm.filtersValue" router="router"></summary-router-show>
             </div>
         </div>
     </div>

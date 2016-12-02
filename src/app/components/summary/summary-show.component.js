@@ -7,7 +7,7 @@
         controllerAs: 'vm',
         bindings: {
             router: '<',
-            filtersValue: '='
+            filtersValue: '<'
         }
     };
 
@@ -20,34 +20,28 @@
     /* @ngInject */
     function SummaryRouterShowController($filter,DTOptionsBuilder) {
         var vm = this;
-        var previousFilters = {};
-        //vm.$doCheck = doCheck;
 
         vm.$onChanges = function (changes) {
             updateFilteredStats();
         };
 
 
-        function doCheck() {
-            if(previousFilters) {
-
-                if( !angular.equals(previousFilters.countChange, vm.filtersValue.countChange )) {
-                    console.log('foo');
-                    previousFilters = angular.copy(vm.filtersValue);
-                    vm.filtersValue =  angular.copy(vm.filtersValue)
-                }
-            }
-        }
 
         vm.dtOptions = DTOptionsBuilder.newOptions()
             .withOption('paging', false)
             .withDOM('t');
 
         function updateFilteredStats() {
-            var filtered = $filter('propsOnArrayFilter')(vm.router.stats,'database_id',vm.filtersValue.selectedDatabases,'id');
-            filtered     = $filter('propsOnArrayFilter')(filtered,'company_id',vm.filtersValue.selectedCompanies,'id');
-            filtered     = $filter('propsOnArrayFilter')(filtered,'router_id',vm.filtersValue.selectedRouters,'id');
-            filtered     = $filter('propsOnArrayFilter')(filtered,'database_type',vm.filtersValue.selectedTypes,'name');
+
+            var selectedDatabases = vm.filtersValue.get('selectedDatabases').toArray();
+            var selectedCompanies = vm.filtersValue.get('selectedCompanies').toArray();
+            var selectedTypes = vm.filtersValue.get('selectedTypes').toArray();
+            var selectedRouters = vm.filtersValue.get('selectedRouters').toArray();
+
+            var filtered = $filter('propsOnArrayFilter')(vm.router.stats,'database_id',selectedDatabases,'id');
+            filtered     = $filter('propsOnArrayFilter')(filtered,'company_id',selectedCompanies,'id');
+            filtered     = $filter('propsOnArrayFilter')(filtered,'router_id',selectedRouters,'id');
+            filtered     = $filter('propsOnArrayFilter')(filtered,'database_type',selectedTypes,'name');
 
             vm.filteredStats = filtered;
         }

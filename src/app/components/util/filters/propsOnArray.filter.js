@@ -34,7 +34,7 @@
         }
         function indexOfArrayObject(value,array,field) {
             for( var res = 0 ; res < array.length ; res++ ) {
-                if (array[res][field] == value) { return res }
+                if (array[res].toObject()[field] == value) { return res }
             }
             return -1;
         }

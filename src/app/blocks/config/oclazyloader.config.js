@@ -54,6 +54,10 @@
                 {
                     name: 'bootstrapJs',
                     files: ['/bower_components/bootstrap/dist/js/bootstrap.min.js']
+                },
+                {
+                    name: 'immutable',
+                    files: ['/bower_components/immutable/dist/immutable.js']
                 }
             ]
         });
