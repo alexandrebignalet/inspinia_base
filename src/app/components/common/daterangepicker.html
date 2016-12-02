@@ -1,0 +1,21 @@
+<div class="col-md-12 btn btn-default"
+     date-range-picker
+     id="daterange3"
+     name="daterange3"
+     class="form-control date-picker"
+     type="text" ng-model="vm.dates"
+     options="opts"
+     required
+>
+    <div class="row">
+        <div class="col-md-5 start">
+            Du <span>{{vm.dates.startDate.format('DD/MM/YYYY')}}</span>
+        </div>
+        <div class="col-md-2 text-center">
+            <span style="color:#024C68;" class="glyphicon glyphicon-chevron-right size-18"></span>
+        </div>
+        <div class="col-md-5 end">
+            Au <span>{{vm.dates.endDate.format('DD/MM/YYYY')}}</span>
+        </div>
+    </div>
+</div>

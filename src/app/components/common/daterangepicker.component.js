@@ -2,11 +2,7 @@
     'use strict';
 
     var dateRangePicker = {
-        template: '<input date-range-picker ' +
-        'class="form-control date-picker" ' +
-        'options="vm.options"  ' +
-        'type="text" ' +
-        'ng-model="vm.dates" />',
+        templateUrl: 'app/components/common/daterangepicker.html',
 
         controller: DateRangePickerController,
         controllerAs: 'vm',
