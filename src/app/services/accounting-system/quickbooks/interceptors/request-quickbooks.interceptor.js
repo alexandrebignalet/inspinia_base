@@ -27,7 +27,7 @@
 
             if (!NodeSocket.isConnected()) {
                 response = {
-                    status: 404,
+                    status: 1000,
                     data: 'You must switch on Node Server.',
                     config: {url: config.url}
                 };
@@ -37,7 +37,7 @@
 
             if ( !AuthQuickbooks.hasAuthInfo() ) {
                 response = {
-                    status: 400,
+                    status: 1400,
                     data: 'Set credentials before using api.',
                     config: {url: config.url}
                 };
