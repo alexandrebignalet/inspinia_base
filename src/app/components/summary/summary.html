@@ -32,4 +32,11 @@
             </div>
         </div>
     </div>
+    <div ng-if="vm.routers.length > 0" class="row">
+        <div class="col-sm-12">
+            <div class="ibox">
+                <router-comparator routers="vm.routers"></router-comparator>
+            </div>
+        </div>
+    </div>
 </div>

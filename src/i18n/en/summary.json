@@ -1,6 +1,7 @@
 {
     "summary": {
-        "summary": "Summary"
-        "filters": "Filters"
+        "summary": "Summary",
+        "filters": "Filters",
+        "comparator": "Comparator"
     }
 }
