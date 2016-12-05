@@ -16,18 +16,20 @@
         .module('dataToolApp')
         .component('invoiceRequestArray', invoiceRequestArray);
 
-    InvoiceRequestArrayController.$inject = ['DTOptionsBuilder', 'DTColumnDefBuilder'];
+    InvoiceRequestArrayController.$inject = ['DTOptionsBuilder', 'DTColumnDefBuilder', 'CommentSending', 'ToastrService'];
 
-    function InvoiceRequestArrayController(DTOptionsBuilder, DTColumnDefBuilder){
+    function InvoiceRequestArrayController(DTOptionsBuilder, DTColumnDefBuilder, CommentSending, ToastrService){
         var vm = this;
 
         vm.update = update;
         vm.$onInit = onInit;
 
         function onInit(){
+            vm.isSaving = false;
+
             vm.pagination = {
                 currentPage: 1,
-                itemsPerPage: 10,
+                itemsPerPage: 50,
                 maxSize: 6
             };
 

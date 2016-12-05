@@ -1,0 +1,34 @@
+<form content="editForm" ng-submit="vm.onSubmit()">
+    <div class="form-group" ng-class="{ 'has-error' : (editForm.content.$invalid && !editForm.content.$pristine), 'has-success': editForm.content.$valid}">
+        <label for="comment_content" translate="comment.content">Content</label>
+        <div class="input-group m-b">
+            <span class="input-group-addon"><i class="fa fa-{{ editForm.content.$invalid ? 'times' : 'check'}}"></i></span>
+            <input class="form-control" id="comment_content" name="content" ng-model="vm.comment.content" type="text"
+                   minlength="3" maxlength="250" required/>
+            <span class="input-group-btn">
+                        <button class="btn btn-primary"
+                                type="submit"
+                                ng-disabled="editForm.$invalid || vm.isSaving">
+                            <span class="glyphicon glyphicon-save"></span>&nbsp;
+                            <span ng-if="!vm.comment.id" translate="comment.action.save">Save</span>
+                        </button>
+                    </span>
+        </div>
+        <div ng-show="editForm.content.$invalid && !editForm.content.$pristine">
+            <p class="help-block"
+               ng-show="editForm.content.$error.required" translate="global.entity.validation.required">
+                This field is required.
+            </p>
+            <p class="help-block"
+               ng-show="editForm.content.$error.minlength"
+               translate="global.entity.validation.minlength"
+               translate-values="{min:3}" >
+            </p>
+            <p class="help-block"
+               ng-show="editForm.content.$error.maxlength"
+               translate="global.entity.validation.maxlength"
+               translate-values="{max:250}" >
+            </p>
+        </div>
+    </div>
+</form>
