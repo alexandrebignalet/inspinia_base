@@ -19,20 +19,20 @@
 
         function responseError (response) {
 
-            if ( !response.config.url.includes(NODE_API_BASE_URL) ) {
-                return response
-            }
+            // if ( !response.config.url.includes(NODE_API_BASE_URL) ) {
+            //     return response
+            // }
 
             switch (response.status) {
                 case 401:
-                    AuthQuickbooks.setAvailable(false)
-                    console.log('401 error', response)
+                    AuthQuickbooks.setAvailable(false);
+                    console.log('401 error', response);
                     break;
                 case 400:
-                    console.log('400 error', response)
+                    console.log('400 error', response);
                     break;
                 default:
-                    console.log('400 error', response.status, response)
+                    console.log('400 error', response.status, response);
                     break;
             }
 

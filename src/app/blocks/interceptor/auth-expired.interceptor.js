@@ -16,7 +16,7 @@
         return service;
 
         function responseError(response) {
-            if (response.status === 401) {
+            if (response.status === 401 ) {
                 delete $localStorage.authenticationToken;
                 delete $sessionStorage.authenticationToken;
                 var Principal = $injector.get('Principal');
@@ -25,6 +25,7 @@
                     Auth.authorize(true);
                 }
             }
+
             return $q.reject(response);
         }
     }
