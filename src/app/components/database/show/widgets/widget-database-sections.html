@@ -1,21 +1,219 @@
 <div class="ibox">
     <div class="ibox-title">
-        <h3><span translate="database.categroies">Category</span></h3>
+        <h3><span translate="database.categories">Categories</span></h3>
     </div>
     <div class="ibox-content">
         <div class="row">
             <div class="col-md-4">
-                <h4><span translate="database.tops">Tops</span></h4>
+                <h4 class="text-center"><span translate="database.tops">Tops</span></h4>
+                <div>
+                    <canvas id="doughnut2" class="chart chart-doughnut"
+                            chart-data="vm.data" chart-labels="vm.labels">
+                    </canvas>
+                </div>
             </div>
             <div class="col-md-4">
-                <h4><span translate="database.average">Average</span></h4>
+                <h4 class="text-center"><span translate="database.average">Average</span></h4>
+                <div>
+                    <canvas id="doughnut3" class="chart chart-doughnut"
+                            chart-data="vm.data" chart-labels="vm.labels">
+                    </canvas>
+                </div>
             </div>
             <div class="col-md-4">
-                <h4><span translate="database.flops">Flops</span></h4>
+                <h4 class="text-center"><span translate="database.flops">Flops</span></h4>
                 <div>
                     <canvas id="doughnut" class="chart chart-doughnut"
                             chart-data="vm.data" chart-labels="vm.labels">
                     </canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ibox-title">
+        <h3><span translate="database.campaigns">Campaigns</span></h3>
+    </div>
+    <div class="ibox-content">
+        <div class="row">
+            <div class="col-md-4">
+                <h4 class="text-center"><span translate="database.tops">Tops</span></h4>
+                <table class="table">
+                    <tr>
+                        <td>1</td>
+                        <td>Campaign</td>
+                        <td>Price</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Campaign</td>
+                        <td>Price</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Campaign</td>
+                        <td>Price</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Campaign</td>
+                        <td>Price</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Campaign</td>
+                        <td>Price</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-4">
+                <h4 class="text-center"><span translate="database.average">Average</span></h4>
+                <table class="table">
+                    <tr>
+                        <td>1</td>
+                        <td>Campaign</td>
+                        <td>Price</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Campaign</td>
+                        <td>Price</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Campaign</td>
+                        <td>Price</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Campaign</td>
+                        <td>Price</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Campaign</td>
+                        <td>Price</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-4">
+                <h4 class="text-center"><span translate="database.flops">Flops</span></h4>
+                <table class="table">
+                    <tr>
+                        <td>1</td>
+                        <td>Campaign</td>
+                        <td>Price</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Campaign</td>
+                        <td>Price</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Campaign</td>
+                        <td>Price</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Campaign</td>
+                        <td>Price</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Campaign</td>
+                        <td>Price</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <button type="button" class="btn btn-block btn-outline btn-primary"><span translate="show-more">Show more</span></button>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="ibox-title">
+                        <h3>Revenue by business model</h3>
+                    </div>
+                    <div class="ibox-content">
+                        <div>
+                            <canvas id="doughnut6" class="chart chart-doughnut"
+                                    chart-data="vm.data" chart-labels="vm.labels">
+                            </canvas>
+                        </div>
+                        <table class="table">
+                            <tr>
+                                <td>1</td>
+                                <td>Campaign</td>
+                                <td>Price</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Campaign</td>
+                                <td>Price</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Campaign</td>
+                                <td>Price</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Campaign</td>
+                                <td>Price</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Campaign</td>
+                                <td>Price</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="ibox-title">
+                        <h3>
+                            Camapaign by business model
+                        </h3>
+                    </div>
+                    <div class="ibox-content">
+                        <div>
+                            <canvas id="doughnut5" class="chart chart-doughnut"
+                                    chart-data="vm.data" chart-labels="vm.labels">
+                            </canvas>
+                        </div>
+                        <table class="table">
+                            <tr>
+                                <td>1</td>
+                                <td>Campaign</td>
+                                <td>Price</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Campaign</td>
+                                <td>Price</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Campaign</td>
+                                <td>Price</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Campaign</td>
+                                <td>Price</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Campaign</td>
+                                <td>Price</td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
