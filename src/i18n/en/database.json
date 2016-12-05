@@ -21,6 +21,10 @@
         "expertSenderApiUrl": "ExpertSender Api Url",
         "dialog": {
             "createOrEdit": "Create or edit a database"
-        }
+        },
+        "tops": "Tops",
+        "flops": "Flops",
+        "average": "Average",
+        "categories": "Categories"
     }
 }
