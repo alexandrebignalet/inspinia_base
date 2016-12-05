@@ -25,6 +25,8 @@
         "tops": "Tops",
         "flops": "Flops",
         "average": "Moyenne",
-        "categories": "Catégories"
+        "categories": "Catégories",
+        "campaigns": "Campagnes",
+        "ahow-more": "Montrer plus"
     }
 }
