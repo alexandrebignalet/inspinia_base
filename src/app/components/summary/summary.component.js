@@ -6,7 +6,7 @@
         controller: SummaryController,
         controllerAs: 'vm',
         bindings: {
-
+            tranches: '<'
         }
     };
 
@@ -29,7 +29,7 @@
         vm.onChangeFilters = onChangeFilters;
 
         vm.$onInit = function(){
-
+            console.log(vm.tranches);
         };
 
 

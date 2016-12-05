@@ -2,6 +2,24 @@
     "summary": {
         "summary": "Résumé",
         "filters": "Filters",
-        "comparator": "Comaparateur"
+        "comparator": "Comaparateur",
+        "databases": "Bases de données",
+        "companies": "Companies",
+        "types": "Types",
+        "routers": "Routers",
+        "name": "Nom",
+        "company": "Companie",
+        "country": "Pays",
+        "type": "Type",
+        "volume": "Volume",
+        "cpm-cost": "Coût CPM",
+        "incomes": "Chiffre d'affaire",
+        "cost": "Coûtt",
+        "margin": "Marge",
+        "ecpm": "eCPM",
+        "estimated-volume": "Volume estimé",
+        "estimated-incomes": "Chiffre d0affaire estimé",
+        "estimated-cost": "Coût estimé",
+        "estimated-margin": "Marge estimé"
     }
 }

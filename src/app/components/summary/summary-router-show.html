@@ -22,7 +22,7 @@
                             <div class="row">
 
                                 <div class="col-xs-12 text-right">
-                                    <span> Volume sent </span>
+                                    <span translate="summary.volume-sent">Volume sent</span>
 
                                     <h2 class="font-bold">{{ 12545321 | number}}</h2>
                                 </div>
@@ -35,7 +35,7 @@
                             <div class="row">
 
                                 <div class="col-xs-12 text-right">
-                                    <span> Income </span>
+                                    <span translate="summary.incomes">Incomes</span>
 
                                     <h2 class="font-bold">{{ 12545321 | number}}</h2>
                                 </div>
@@ -47,7 +47,7 @@
                             <div class="row">
 
                                 <div class="col-xs-12 text-right">
-                                    <span> Margin </span>
+                                    <span translate="summary.margin">Margin</span>
 
                                     <h2 class="font-bold">{{ 12545321 | number}}</h2>
                                 </div>
@@ -59,7 +59,7 @@
                             <div class="row">
 
                                 <div class="col-xs-12 text-right">
-                                    <span> CPM Cost </span>
+                                    <span translate="summary.cpm-cost">CPM Cost</span>
 
                                     <h2 class="font-bold">{{ 12545321 | number}}</h2>
                                 </div>
@@ -71,7 +71,7 @@
                             <div class="row">
 
                                 <div class="col-xs-12 text-right">
-                                    <span> Cost </span>
+                                    <span translate="summary.cost">Cost</span>
 
                                     <h2 class="font-bold">{{ 12545321 | number}}</h2>
                                 </div>
@@ -89,20 +89,20 @@
                 <table datatable="ng" dt-options="vm.dtOptions" class="table">
                     <thead>
                     <tr>
-                        <th>Name</th>
-                        <th style="width: 15%">Company</th>
-                        <th>Country</th>
-                        <th>Type</th>
-                        <th>Volume</th>
-                        <th>CPM Cost</th>
-                        <th>Income</th>
-                        <th>Cost</th>
-                        <th>Margin</th>
-                        <th>eCPM</th>
-                        <th>Estimated Volume</th>
-                        <th>Estimated Incomes</th>
-                        <th>Estimated Costs</th>
-                        <th>Estimated Margin</th>
+                        <th><span translate="summary.name">Name</span></th>
+                        <th style="width: 20%"><span translate="summary.company">Company</span></th>
+                        <th><span translate="summary.country">Country</span></th>
+                        <th><span translate="summary.type">Type</span></th>
+                        <th><span translate="summary.volume">Volume</span></th>
+                        <th><span translate="summary.cpm-cost">CPM Cost</span></th>
+                        <th><span translate="summary.incomes">Incomes</span></th>
+                        <th><span translate="summary.cost">Cost</span></th>
+                        <th><span translate="summary.margin"></span></th>
+                        <th><span translate="summary.ecpm">eCPM</span></th>
+                        <th><span translate="summary.estimated-volume">Estimated Volumes</span></th>
+                        <th><span translate="summary.estimated-incomes">Estimated Incomes</span></th>
+                        <th><span translate="summary.estimated-cost">Estimated Cost</span></th>
+                        <th><span translate="summary.estimated-margin">Estimated Margin</span></th>
                     </tr>
                     </thead>
                     <tbody>

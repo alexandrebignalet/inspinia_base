@@ -19,7 +19,7 @@
                 },
                 views: {
                     'content@': {
-                        template: '<summary></summary>'
+                        template: '<summary tranches="$resolve.tranches.data"></summary>'
                     }
                 },
                 resolve: {
