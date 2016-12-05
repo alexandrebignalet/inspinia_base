@@ -24,7 +24,8 @@
             getAll: getAll,
             save: save,
             patch: patch,
-            init: init
+            init: init,
+            lastNCampaigns: lastNCampaigns
         };
 
         return service;
@@ -102,6 +103,22 @@
                 return $q.reject(error);
             }
         }
+
+        /* ------------------------------- /
+        //
+        //         DATABASE SHOW          //
+        //
+        / ------------------------------- */
+
+        function lastNCampaigns(database_id, numberOfCampaigns) {
+            return $http({
+                method: 'GET',
+                // url: urlCampain + database_id + '/lastThtyCampains'
+                url: API_BASE_URL + './../en/databases/' + database_id + '/statistics/last-' + numberOfCampaigns
+            });
+        }
+
+
 
         function init(){
             return {

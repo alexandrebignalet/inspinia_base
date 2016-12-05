@@ -50,6 +50,10 @@
                 {
                     name: 'bootstrapJs',
                     files: ['/bower_components/bootstrap/dist/js/bootstrap.min.js']
+                },
+                {
+                    name: 'chartJs',
+                    files: ['/bower_components/angular-chart.js/dist/angular-chart.js']
                 }
             ]
         });

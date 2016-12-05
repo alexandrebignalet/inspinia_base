@@ -1,0 +1,23 @@
+<div class="ibox">
+    <div class="ibox-title">
+        <h3><span translate="database.categroies">Category</span></h3>
+    </div>
+    <div class="ibox-content">
+        <div class="row">
+            <div class="col-md-4">
+                <h4><span translate="database.tops">Tops</span></h4>
+            </div>
+            <div class="col-md-4">
+                <h4><span translate="database.average">Average</span></h4>
+            </div>
+            <div class="col-md-4">
+                <h4><span translate="database.flops">Flops</span></h4>
+                <div>
+                    <canvas id="doughnut" class="chart chart-doughnut"
+                            chart-data="vm.data" chart-labels="vm.labels">
+                    </canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
