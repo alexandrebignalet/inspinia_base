@@ -3,6 +3,7 @@
 
     angular
     .module('dataToolApp', [
+        'accounting.system',
         'ngAnimate',
         'ngCookies',
         'ngTouch',

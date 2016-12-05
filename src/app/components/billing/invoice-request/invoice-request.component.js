@@ -48,8 +48,7 @@
         }
 
         function onUpdateSending($event){
-            console.log(!$event.sending, !$event.tabIndexName, !$event.sendingIndex, $event.sendingIndex)
-            if(!$event.sending || !$event.tabIndexName || angular.isDefined($event.sendingIndex)){ return; }
+            if(!$event.sending || !$event.tabIndexName || $event.sendingIndex < 0){ return; }
 
             vm.isLoading = true;
 

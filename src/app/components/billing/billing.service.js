@@ -10,7 +10,7 @@
     /* @ngInject */
     function Billing($resource, API_BASE_URL, $q, ToastrService, $http, BILLING_STATES) {
 
-        var resourceUrl = API_BASE_URL+'/emails/:id';
+        var resourceUrl = API_BASE_URL+'/api/emails/:id';
 
         var resource = $resource(resourceUrl, {}, {
             'update' : {method: 'PATCH', headers: { 'Content-Type': 'application/json' }}

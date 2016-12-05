@@ -2,17 +2,20 @@
     <uib-tab
         ng-repeat="sendingStatus in vm.sendings"
         index="sendingStatus.informations.index.no"
-        heading="{{ sendingStatus.informations.name }}">
-        <ul uib-pagination
-            total-items="sendingStatus.list.length" class="pagination-sm"
-            ng-model="vm.pagination.currentPage" ng-if="sendingStatus.list.length > vm.pagination.itemsPerPage"
-            items-per-page="vm.pagination.itemsPerPage" max-size="vm.pagination.maxSize"
-            boundary-links="true" rotate="false"
-            previous-text="{{ 'global.action.previous' | translate }}"
-            next-text="{{ 'global.action.next' | translate }}"
-            first-text="{{ 'global.action.first' | translate }}"
-            last-text="{{ 'global.action.last' | translate }}">
-        </ul>
+        heading="{{ sendingStatus.informations.name }}"
+    >
+        <div class="text-center">
+            <ul uib-pagination
+                total-items="sendingStatus.list.length" class="pagination-sm"
+                ng-model="vm.pagination.currentPage" ng-if="sendingStatus.list.length > vm.pagination.itemsPerPage"
+                items-per-page="vm.pagination.itemsPerPage" max-size="vm.pagination.maxSize"
+                boundary-links="true" rotate="false"
+                previous-text="{{ 'global.action.previous' | translate }}"
+                next-text="{{ 'global.action.next' | translate }}"
+                first-text="{{ 'global.action.first' | translate }}"
+                last-text="{{ 'global.action.last' | translate }}">
+            </ul>
+        </div>
         <!--<div ng-if="sendingStatus.informations.index.no == 2">-->
             <!--<div class="col-md-6">-->
                 <!--<button class="btn btn-success">Load Invoices</button>-->
@@ -46,117 +49,118 @@
         <div ng-if="sendingStatus.list.length == 0" class="col-md-12 alert alert-info text-center">
             <h3>No result</h3>
         </div>
-        <br>
-        <table class="table table-hover table-condensed table-striped table-bordered dataTables-example"
+        <table
+               class="table table-hover table-condensed table-striped dataTables-example"
                ng-if="sendingStatus.list.length > 0">
-            <thead>
-                <th>Campaign ID</th>
-                <th>Date</th>
-                <th>Base</th>
-                <th>Campaign</th>
-                <th data-toggle="tooltip" title="Business models">BM.</th>
-                <th data-toggle="tooltip" title="Quantity">Qt</th>
-                <th data-toggle="tooltip" title="Unit price">UP</th>
-                <th data-toggle="tooltip" title="Revenus calculés">CA ENTERED</th>
-                <th data-toggle="tooltip" title="Revenus de l'aaf">CA AAF</th>
-                <th data-toggle="tooltip" title="Presence on the ICC">AAF</th>
-                <th data-toggle="tooltip" title="Variations between revenues in percent">% VAR</th>
-                <th data-toggle="tooltip" title="Variations between revenues in euros">€ VAR</th>
-                <th data-toggle="tooltip" title="Is the sending billed ?">Charged</th>
-                <th data-toggle="tooltip" title="Is the sending paid ?">Paid</th>
-                <th>Comments</th>
-                <th ng-if="sendingStatus.informations.index.no == 2">DocNumber</th>
-                <th>SAVE</th>
-            </thead>
-            <tbody>
-                <tr ng-repeat="sending in sendingPaginated = (sendingStatus.list | orderBy: 'sendingTime')
-                        .slice((vm.pagination.currentPage - 1)*vm.pagination.itemsPerPage) |
-                            limitTo: vm.pagination.itemsPerPage
-                                track by $index"
-                    ng-form="updateStatisticForm{{sending.id}}">
-                    <td>{{ sending.id }}</td>
-                    <td>{{ sending.sendingTime | amDateFormat:'DD/MM/YYYY'}} </td>
-                    <td><a href>{{ sending.databaseName }}</a></td>
-                    <td><a href>{{ sending.subject }}</a></td>
-                    <td>
-                        <p ng-if="+sending.cpm > 0">CPM</p>
-                        <p ng-if="+sending.cpl > 0">CPL</p>
-                        <p ng-if="+sending.cpc > 0">CPC</p>
-                        <p ng-if="+sending.cpa > 0">CPA</p>
-                    </td>
-                    <td>
-                        <p ng-if="+sending.cpm > 0">{{ +(sending.sent / 1000) | numberLocaleTransformer:2 }}k</p>
-                        <p ng-if="+sending.cpl > 0">{{ +(sending.leads) | numberLocaleTransformer:0 }}</p>
-                        <p ng-if="+sending.cpc > 0">{{ +(sending.clicks) | numberLocaleTransformer:0 }}</p>
-                        <p ng-if="+sending.cpa > 0">{{ +(sending.sales) | numberLocaleTransformer:0 }}</p>
-                    </td>
-                    <td>
-                        <p ng-if="+sending.cpm > 0">{{ +(sending.cpm)| numberLocaleTransformer:2 }}€</p>
-                        <p ng-if="+sending.cpl > 0">{{ +(sending.cpl)| numberLocaleTransformer:2 }}€</p>
-                        <p ng-if="+sending.cpc > 0">{{ +(sending.cpc)| numberLocaleTransformer:2 }}€</p>
-                        <p ng-if="+sending.cpa > 0">{{ +(sending.cpa)| numberLocaleTransformer:2 }}€</p>
-                    </td>
-                    <td>{{ sending.income| numberLocaleTransformer:2 }}€</td>
-                    <td>
-                        <input type="number" step="0.01" class="form-control" ng-model="sending.incomeAaf" name="incomes_aaf" required/>
-                    </td>
-                    <td ng-click="sending.aafNotified = !sending.aafNotified">
-                        <a href ng-if="sending.aafNotified"  class="fa fa-check text-navy"></a>
-                        <a href ng-if="!sending.aafNotified" class="fa fa-remove text-error"></a>
-                    </td>
-                    <td>
-                        <span ng-if="+sending.income != 0 && +sending.incomeAaf > +sending.income">
-                            {{ - ( +sending.incomeAaf / +sending.income * 100 ) | numberLocaleTransformer:2 }}%
-                        </span>
-                        <span ng-if="+sending.income != 0 && +sending.incomeAaf < +sending.income">
-                            {{ ( +sending.incomeAaf / +sending.income * 100 ) | numberLocaleTransformer:2 }}%
-                        </span>
-                        <span ng-if="+sending.incomeAaf == +sending.income"
-                              class="glyphicon glyphicon-ok-circle text-navy">
-                        </span>
-                        <span ng-if="+sending.income == 0 && +sending.incomeAaf != 0"
-                              class="glyphicon glyphicon-remove-circle">
-                        </span>
-                    </td>
-                    <td>
-                        <span ng-class="{'text-error': +sending.incomeAaf > +sending.income,
-                                         'text-navy': +sending.incomeAaf < +sending.income}">
-                            {{ +sending.income - +sending.incomeAaf | numberLocaleTransformer:2 }}€
-                        </span>
-                        <span ng-if="+sending.incomeAaf == +sending.income"
-                              class="glyphicon glyphicon-ok-circle text-navy">
-                        </span>
-                    </td>
-                    <td>
-                        <span ng-if="sending.charged"  class="fa fa-check text-navy"></span>
-                        <span ng-if="!sending.charged" class="fa fa-remove text-error"></span>
-                    </td>
-                    <td>
-                        <span ng-if="sending.paid"  class="fa fa-check text-navy"></span>
-                        <span ng-if="!sending.paid" class="fa fa-remove text-error"></span>
-                    </td>
-                    <td>
-                        <a href ng-click="vm.openCommentModal(sending)">
-                            <span class="label label-primary" ng-if="sending.comments.length > 0">
-                                {{ sending.comments.length }}
+                <thead>
+                    <th>Campaign ID</th>
+                    <th>Date</th>
+                    <th>Base</th>
+                    <th>Campaign</th>
+                    <th data-toggle="tooltip" title="Business models">BM.</th>
+                    <th data-toggle="tooltip" title="Quantity">Qt</th>
+                    <th data-toggle="tooltip" title="Unit price">UP</th>
+                    <th data-toggle="tooltip" title="Revenus calculés">CA ENTERED</th>
+                    <th data-toggle="tooltip" title="Revenus de l'aaf">CA AAF</th>
+                    <th data-toggle="tooltip" title="Presence on the ICC">AAF</th>
+                    <th data-toggle="tooltip" title="Variations between revenues in percent">% VAR</th>
+                    <th data-toggle="tooltip" title="Variations between revenues in euros">€ VAR</th>
+                    <th data-toggle="tooltip" title="Is the sending billed ?">Charged</th>
+                    <th data-toggle="tooltip" title="Is the sending paid ?">Paid</th>
+                    <th>Comments</th>
+                    <th ng-if="sendingStatus.informations.index.no == 2">DocNumber</th>
+                    <th>SAVE</th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="sending in sendingPaginated = (sendingStatus.list | orderBy: 'sendingTime')
+                            .slice((vm.pagination.currentPage - 1)*vm.pagination.itemsPerPage) |
+                                limitTo: vm.pagination.itemsPerPage
+                                    track by $index"
+                        ng-form="updateStatisticForm{{sending.id}}">
+                        <td>{{ sending.id }}</td>
+                        <td>{{ sending.sendingTime | amDateFormat:'DD/MM/YYYY'}} </td>
+                        <td><a href>{{ sending.databaseName }}</a></td>
+                        <td><a href>{{ sending.subject }}</a></td>
+                        <td>
+                            <p ng-if="+sending.cpm > 0">CPM</p>
+                            <p ng-if="+sending.cpl > 0">CPL</p>
+                            <p ng-if="+sending.cpc > 0">CPC</p>
+                            <p ng-if="+sending.cpa > 0">CPA</p>
+                        </td>
+                        <td>
+                            <p ng-if="+sending.cpm > 0">{{ +(sending.sent / 1000) | numberLocaleTransformer:2 }}k</p>
+                            <p ng-if="+sending.cpl > 0">{{ +(sending.leads) | numberLocaleTransformer:0 }}</p>
+                            <p ng-if="+sending.cpc > 0">{{ +(sending.clicks) | numberLocaleTransformer:0 }}</p>
+                            <p ng-if="+sending.cpa > 0">{{ +(sending.sales) | numberLocaleTransformer:0 }}</p>
+                        </td>
+                        <td>
+                            <p ng-if="+sending.cpm > 0">{{ +(sending.cpm)| numberLocaleTransformer:2 }}€</p>
+                            <p ng-if="+sending.cpl > 0">{{ +(sending.cpl)| numberLocaleTransformer:2 }}€</p>
+                            <p ng-if="+sending.cpc > 0">{{ +(sending.cpc)| numberLocaleTransformer:2 }}€</p>
+                            <p ng-if="+sending.cpa > 0">{{ +(sending.cpa)| numberLocaleTransformer:2 }}€</p>
+                        </td>
+                        <td>{{ sending.income| numberLocaleTransformer:2 }}€</td>
+                        <td>
+                            <input type="number" step="0.01" class="form-control" ng-model="sending.incomeAaf" name="incomes_aaf" required/>
+                        </td>
+                        <td ng-click="sending.aafNotified = !sending.aafNotified">
+                            <a href ng-if="sending.aafNotified"  class="fa fa-check-square-o text-navy"></a>
+                            <a href ng-if="!sending.aafNotified" class="fa fa-square-o text-danger"></a>
+                        </td>
+                        <td>
+                            <span ng-if="+sending.income != 0 && +sending.incomeAaf > +sending.income">
+                                {{ - ( +sending.incomeAaf / +sending.income * 100 ) | numberLocaleTransformer:2 }}%
                             </span>
-                            <span class="label label-default" ng-if="sending.comments.length == 0">
-                                {{ sending.comments.length }}
+                            <span ng-if="+sending.income != 0 && +sending.incomeAaf < +sending.income">
+                                {{ ( +sending.incomeAaf / +sending.income * 100 ) | numberLocaleTransformer:2 }}%
                             </span>
-                        </a>
-                    </td>
-                    <td ng-if="sendingStatus.informations.index.no == 2">
-                        {{sending.invoice}}
-                    </td>
-                    <td>
-                        <button class="btn btn-primary" type="button"
-                                ng-click="vm.update(sending, sendingStatus.informations.index.name, $index)"
-                                ng-disabled="(updateStatisticForm{{sending.id}}.$invalid || !sending.aafNotified) || vm.isLoading">
-                            <span class="glyphicon glyphicon-floppy-save"></span>
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                            <span ng-if="+sending.incomeAaf == +sending.income"
+                                  class="fa fa-check-circle-o text-navy">
+                            </span>
+                            <span ng-if="+sending.income == 0 && +sending.incomeAaf != 0"
+                                  class="text-danger fa fa-times-circle">
+                            </span>
+                        </td>
+                        <td>
+                            <span   ng-if="+sending.incomeAaf != +sending.income"
+                                    ng-class="{'text-danger': +sending.incomeAaf > +sending.income,
+                                             'text-navy': +sending.incomeAaf < +sending.income}">
+                                {{ +sending.income - +sending.incomeAaf | numberLocaleTransformer:2 }}€
+                            </span>
+                            <span ng-if="+sending.incomeAaf == +sending.income"
+                                  class="fa fa-check-circle-o text-navy">
+                            </span>
+                        </td>
+                        <td>
+                            <span ng-if="sending.charged"  class="fa fa-check-square-o text-navy"></span>
+                            <span ng-if="!sending.charged" class="fa fa-square-o text-danger"></span>
+                        </td>
+                        <td>
+                            <span ng-if="sending.paid"  class="fa fa-check-square-o text-navy"></span>
+                            <span ng-if="!sending.paid" class="fa fa-square-o text-danger"></span>
+                        </td>
+                        <td>
+                            <a ui-sref="comment-sending-create({id: sending.id})">
+                                <span class="label label-primary" ng-if="sending.comments.length > 0">
+                                    {{ sending.comments.length }}
+                                </span>
+                                <span class="label label-default" ng-if="sending.comments.length == 0">
+                                    {{ sending.comments.length }}
+                                </span>
+                            </a>
+                        </td>
+                        <td ng-if="sendingStatus.informations.index.no == 2">
+                            {{sending.invoice}}
+                        </td>
+                        <td>
+                            <button class="btn btn-primary" type="button"
+                                    ng-click="vm.update(sending, sendingStatus.informations.index.name, $index)"
+                                    ng-disabled="(updateStatisticForm{{sending.id}}.$invalid || !sending.aafNotified) || vm.isLoading">
+                                <span class="glyphicon glyphicon-floppy-save"></span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
     </uib-tab>
 </uib-tabset>
