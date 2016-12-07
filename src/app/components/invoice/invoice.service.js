@@ -75,8 +75,7 @@
         }
 
         function save(invoice){
-            return resource
-                .save(toPayloadFormat(invoice))
+            return resource.save(invoice)
                 .$promise
                 .then(onSaveSuccess)
                 .catch(onSaveError);
@@ -112,14 +111,6 @@
             return {
                 id: null
             };
-        }
-
-        function toPayloadFormat(invoice){
-            var tmp = Object.assign({}, invoice);
-
-            delete tmp.id;
-
-            return tmp;
         }
 
         /**
