@@ -27,6 +27,10 @@
         "average": "Average",
         "categories": "Categories",
         "campaigns": "Campaigns",
-        "show-more": "Show more"
+        "show-more": "Show more",
+        "avg-volume-title": "Average volume sent per day on the last 15 days",
+        "all": "All",
+        "eCpm-last-15-days": "eCPM on the last 15 days",
+        "no-segment-available": "No segmentation available for these campaigns"
     }
 }
