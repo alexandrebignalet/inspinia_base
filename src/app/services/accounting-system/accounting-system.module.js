@@ -10,7 +10,7 @@
     run.$inject = ['AccountingSystem', 'ACCOUNTING_SYSTEMS'];
 
     function run (AccountingSystem, ACCOUNTING_SYSTEMS) {
-        AccountingSystem.set(ACCOUNTING_SYSTEMS.QUICKBOOKS);
+        AccountingSystem.init(ACCOUNTING_SYSTEMS.QUICKBOOKS);
     }
 
 })();

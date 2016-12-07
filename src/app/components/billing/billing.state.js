@@ -19,11 +19,11 @@
                     authorities: ['ROLE_ADMIN', 'ROLE_SUPER_ADMIN']
                 },
                 resolve: {
-                    mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
+                    mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                         $translatePartialLoader.addPart('billing');
                         return $translate.refresh();
                     }]
                 }
-            });
+            })
     }
 })();
