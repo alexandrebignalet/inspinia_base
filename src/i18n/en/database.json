@@ -31,6 +31,9 @@
         "avg-volume-title": "Average volume sent per day on the last 15 days",
         "all": "All",
         "eCpm-last-15-days": "eCPM on the last 15 days",
-        "no-segment-available": "No segmentation available for these campaigns"
+        "no-segment-available": "No segmentation available for these campaigns",
+        "last-cpm-campaigns-two-months": "CPM Campaigns for the last 2 months",
+        "volume-sent": "Volume sent",
+        "cpm": "CPM"
     }
 }
