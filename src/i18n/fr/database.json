@@ -27,6 +27,10 @@
         "average": "Moyenne",
         "categories": "Catégories",
         "campaigns": "Campagnes",
-        "ahow-more": "Montrer plus"
+        "ahow-more": "Montrer plus",
+        "avg-volume-title": "Volume moyen envoyé par jour sur les 15 derniers jours",
+        "all": "Tout",
+        "eCpm-last-15-days": "eCPM sur les 15 derniers jours",
+        "no-segment-available": "Aucune segmentation disponible pour ces campagnes"
     }
 }
