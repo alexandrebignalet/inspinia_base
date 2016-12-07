@@ -25,7 +25,8 @@
         vm.ecpmMax = 0.5;
         vm.ecpmMin = 0.2;
 
-
+        vm.labels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
+        vm.data = [300, 500, 100];
 
     }
 
