@@ -47,6 +47,7 @@
             config.headers = AuthQuickbooks.getHeaders();
 
             if ( !AuthQuickbooks.isAvailable() ) {
+                if (config.method !== 'GET') { config.method = 'GET' }
                 config.url = NODE_API_BASE_URL+'/quickbooks/auth/requestToken'
             }
 

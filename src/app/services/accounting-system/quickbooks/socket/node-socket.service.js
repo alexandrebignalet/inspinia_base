@@ -9,8 +9,12 @@
 
     /* @ngInject */
     function NodeSocket($rootScope, AuthQuickbooks, NODE_SOCKET_BASE_URL) {
-        var _connected = false,
-            _socket = null;
+        var that = this;
+
+        that.connected = false;
+        that.socket = null;
+
+        connect();
 
         var service = {
             isConnected: isConnected,
@@ -20,12 +24,12 @@
         };
 
         on('connect', function(){
-            _connected = true;
+            that.connected = true;
             console.log('_connected')
         });
 
         on('connect_error', function() {
-            _connected = false;
+            that.connected = false;
             AuthQuickbooks.setAvailable(false)
         });
 
@@ -46,11 +50,11 @@
         ////////////////
 
         function isConnected () {
-            return _connected
+            return that.connected
         }
 
         function connect(){
-            io.connect(NODE_SOCKET_BASE_URL, {
+            that.socket = io.connect(NODE_SOCKET_BASE_URL, {
                 'reconnection': true,
                 'reconnectionDelay': 1000,
                 'reconnectionDelayMax' : 5000,
@@ -59,24 +63,24 @@
         }
 
         function on (eventName, callback) {
-            if(!_socket){ return; }
+            if(!that.socket){ return; }
 
-            _socket.on(eventName, function() {
+            that.socket.on(eventName, function() {
                 var args = arguments;
                 $rootScope.$apply( function() {
-                    callback.apply(_socket, args);
+                    callback.apply(that.socket, args);
                 });
             });
         }
 
         function emit (eventName, data, callback) {
-            if(!_socket){ return; }
+            if(!that.socket){ return; }
 
-            _socket.emit(eventName, data, function() {
+            that.socket.emit(eventName, data, function() {
                 var args = arguments;
                 $rootScope.$apply( function() {
                     if (callback) {
-                        callback.apply(_socket, args);
+                        callback.apply(that.socket, args);
                     }
                 });
             })

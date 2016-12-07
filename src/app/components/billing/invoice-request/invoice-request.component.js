@@ -102,7 +102,7 @@
 
             switch ($event.type) {
                 case BILLING_DOCUMENTS_TYPES.INVOICE:
-                    accountingSystem['Invoice'].create(vm.announcer, vm.sendings.toCharged, vm.date);
+                    accountingSystem['Invoice'].create(vm.announcer, vm.sendings.toCharged.list, vm.date);
                     break;
                 case BILLING_DOCUMENTS_TYPES.WAITING_LIST:
                     break;

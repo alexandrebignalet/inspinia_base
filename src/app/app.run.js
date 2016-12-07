@@ -5,12 +5,11 @@
     .module('dataToolApp')
     .run(runBlock);
 
-    runBlock.$inject = ['translationHandler', 'stateHandler', 'NodeSocket'];
+    runBlock.$inject = ['translationHandler', 'stateHandler'];
 
-    function runBlock(translationHandler, stateHandler, NodeSocket) {
+    function runBlock(translationHandler, stateHandler) {
         stateHandler.initialize();
         translationHandler.initialize();
-        NodeSocket.connect();
     }
 
 })();
