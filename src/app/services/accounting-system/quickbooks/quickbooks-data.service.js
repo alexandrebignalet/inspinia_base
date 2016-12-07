@@ -76,7 +76,6 @@
         }
 
         function save(entityAlias, payload) {
-            console.log(entityAlias, payload)
             return resource.save({ entityAlias: entityAlias }, payload)
                 .$promise
                 .then(onSuccess)

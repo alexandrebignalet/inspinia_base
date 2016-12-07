@@ -59,7 +59,7 @@
                 docNumber: quickbooksFormattedInvoice['DocNumber'],
                 externalId: quickbooksFormattedInvoice['Id'],
                 company: announcer.company.id,
-                referenceDate: month.format('YYYY-MM-DD'),
+                referenceDate: month.start,
                 sentByMail :false,
                 sender: "Get the email from current user pls",
                 amount: quickbooksFormattedInvoice['Balance'],
@@ -67,7 +67,7 @@
 
             };
 
-            var sendingCharged = JSON.parse(quickbooksFormattedInvoice['PrivateNot']);
+            var sendingCharged = JSON.parse(quickbooksFormattedInvoice['PrivateNote']);
 
             for (var i = 0; i < sendingCharged.length ; i++) {
                 var idSending = { id: sendingCharged[i] };
