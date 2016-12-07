@@ -14,17 +14,29 @@
         .module('dataToolApp')
         .component('invoiceRequest', invoiceRequest);
 
-    InvoiceRequestController.$inject = ['Billing'];
+    InvoiceRequestController.$inject = ['Billing', 'AccountingSystem', 'BILLING_DOCUMENTS_TYPES'];
 
     /* @ngInject */
-    function InvoiceRequestController(Billing) {
+    function InvoiceRequestController(Billing, AccountingSystem, BILLING_DOCUMENTS_TYPES) {
         var vm = this;
 
-        vm.isLoading = false;
+        var accountingSystem = null;
 
+        vm.isLoading = false;
+        vm.announcer = null;
+        vm.date = null;
+        vm.sendings = null;
+
+        vm.$onInit = onInit;
         vm.onFiltersReceived = onFiltersReceived;
         vm.onUpdateSending = onUpdateSending;
+        vm.createBillingDocument = createBillingDocument;
 
+        //////////////////
+
+        function onInit() {
+            accountingSystem = AccountingSystem.getServices();
+        }
 
         function onFiltersReceived($event){
             if(!$event.date || !$event.announcer){ return; }
@@ -83,6 +95,29 @@
 
             //add to the new billing state array
             vm.sendings[newBillingState].list.push(sending);
+        }
+
+        function createBillingDocument($event) {
+            if (!$event.type) { return }
+
+            switch ($event.type) {
+                case BILLING_DOCUMENTS_TYPES.INVOICE:
+                    accountingSystem['Invoice'].create(vm.announcer, vm.sendings.toCharged, vm.date);
+                    break;
+                case BILLING_DOCUMENTS_TYPES.WAITING_LIST:
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        function createAndSendInvoice(){
+            accountingSystem['Invoice'].create(vm.announcer, vm.sendings, vm.date)
+                .then(sendInvoice)
+        }
+
+        function sendInvoice(){
+            accountingSystem['Invoice'].send()
         }
     }
 })();

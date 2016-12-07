@@ -16,8 +16,9 @@
     <div class="ibox" ng-if="vm.sendings">
         <div class="ibox-content">
             <invoice-request-array sendings="vm.sendings"
+                                   is-loading="vm.isLoading"
                                    on-patch="vm.onUpdateSending($event)"
-                                   is-loading="vm.isLoading">
+                                   on-create-document="vm.createBillingDocument($event)">
             </invoice-request-array>
         </div>
     </div>

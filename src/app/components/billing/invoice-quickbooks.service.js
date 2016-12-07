@@ -3,12 +3,12 @@
 
     angular
         .module('dataToolApp')
-        .factory('InvoiceRequest', InvoiceRequest);
+        .factory('InvoiceQuickbooks', InvoiceQuickbooks);
 
-    InvoiceRequest.$inject = ['Invoice', 'QuickbooksDataService', 'AuthQuickbooks', 'ToastrService', '$q'];
+    InvoiceQuickbooks.$inject = ['Invoice', 'QuickbooksDataService', 'AuthQuickbooks', 'ToastrService'];
 
     /* @ngInject */
-    function InvoiceRequest(Invoice, QuickbooksDataService, AuthQuickbooks, ToastrService, $q) {
+    function InvoiceQuickbooks(Invoice, QuickbooksDataService, AuthQuickbooks, ToastrService) {
 
         const entityAlias = 'Invoice';
 

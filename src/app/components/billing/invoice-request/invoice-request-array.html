@@ -15,6 +15,11 @@
                 first-text="{{ 'global.action.first' | translate }}"
                 last-text="{{ 'global.action.last' | translate }}">
             </ul>
+
+            <button type="button" ng-if="sendingStatus.informations.index.no == 1 && sendingStatus.list.length > 0"
+                    class="pull-right btn btn-primary" ng-click="vm.createDocument('invoice')">
+                Create invoice
+            </button>
         </div>
         <!--<div ng-if="sendingStatus.informations.index.no == 2">-->
             <!--<div class="col-md-6">-->

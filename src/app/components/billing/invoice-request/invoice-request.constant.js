@@ -3,7 +3,8 @@
 
     angular
         .module('dataToolApp')
-        .constant('BILLING_STATES', getBillingStates());
+        .constant('BILLING_STATES', getBillingStates())
+        .constant('BILLING_DOCUMENTS_TYPES', getBillingDocumentTypes());
 
     function getBillingStates(){
         return {
@@ -13,4 +14,12 @@
             PAID: 'paid'
         };
     }
+
+    function getBillingDocumentTypes(){
+        return {
+            INVOICE: 'invoice',
+            WAITING_LIST: 'waitingList'
+        }
+    }
+
 })();
