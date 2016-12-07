@@ -5,10 +5,10 @@
         .module('dataToolApp')
         .factory('InvoiceQuickbooks', InvoiceQuickbooks);
 
-    InvoiceQuickbooks.$inject = ['Invoice', 'QuickbooksDataService', 'AuthQuickbooks', 'ToastrService'];
+    InvoiceQuickbooks.$inject = ['Invoice', 'QuickbooksDataService', 'AuthQuickbooks', 'ToastrService', 'Company'];
 
     /* @ngInject */
-    function InvoiceQuickbooks(Invoice, QuickbooksDataService, AuthQuickbooks, ToastrService) {
+    function InvoiceQuickbooks(Invoice, QuickbooksDataService, AuthQuickbooks, ToastrService, Company) {
 
         const entityAlias = 'Invoice';
 
@@ -23,23 +23,24 @@
         ////////////////
 
         function create(announcer, sendings, month) {
-            if ( !AuthQuickbooks.isAvailable() ) { ToastrService.error('Quickbooks isn\'t available.'); return }
-
             var quickbooksFormattedInvoice = createQuickbooksType(announcer, sendings);
 
             var addingDocNumberPromise = Invoice.generateDocNumber()
                 .then(function(docNumber){
-                    return quickbooksFormattedInvoice['DocNumber'] = docNumber
+
+                    quickbooksFormattedInvoice['DocNumber'] = docNumber;
+
+                    return quickbooksFormattedInvoice;
                 });
 
             return addingDocNumberPromise
-                .then(function(invoiceFormatted){
-                    return QuickbooksDataService.save(entityAlias, invoiceFormatted)
-                })
-                .then(function(invoiceSaved){
-                    var invoice = transformer(invoiceSaved, announcer, month);
-                    return Invoice.save(invoice)
-                })
+                    .then(function(invoiceFormatted){
+                        return QuickbooksDataService.save(entityAlias, invoiceFormatted)
+                    })
+                    .then(function(invoiceSaved){
+                        var invoice = transformer(invoiceSaved, announcer, month);
+                        return Invoice.save(invoice)
+                    })
         }
 
         function send(){}
@@ -88,10 +89,11 @@
             var invoice = {};
 
             if (!sendings || sendings.length < 1) {
-
                 ToastrService.error('No sendings to generate the invoice.');
                 return -1;
             }
+
+            var billingContact = Company.getBillingContact(announcer.company);
 
             if (!announcer) {
                 ToastrService.error('Select an announcer.');
@@ -101,7 +103,7 @@
                 ToastrService.error('Add a company to the announcer ' + announcer.announcer + '.');
                 return -1;
 
-            } else if (!announcer.billingContact) {
+            } else if (!billingContact) {
                 ToastrService.error('Add a billing contact to the company ' + announcer.company.name + '.');
                 return -1;
             }
@@ -134,7 +136,7 @@
                 },
                 EmailStatus: "NeedToSend",
                 BillEmail: {
-                    Address: announcer.billingContact.mail
+                    Address: billingContact.mail
                 },
                 DueDate: moment().add(announcer.company.payment_period, 'days').format('YYYY-MM-DD')
             };
@@ -204,12 +206,12 @@
                 );
 
                 if (invoice.BillAddr.CountrySubDivisionCode === 'ES') {
-                    invoice.Line[index].SalesItemLineDetail.TaxCodeRef = {
+                    invoice.Line[index]['SalesItemLineDetail']['TaxCodeRef'] = {
                         "value": "TAX"
                     };
                 }
                 else {
-                    invoice.Line[index].SalesItemLineDetail.TaxCodeRef = {
+                    invoice.Line[index]['SalesItemLineDetail']['TaxCodeRef'] = {
                         "value": "NON"
                     };
                 }

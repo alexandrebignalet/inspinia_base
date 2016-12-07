@@ -13,9 +13,17 @@
         const resourceUrl = NODE_API_BASE_URL+'/quickbooks/controllers/:entityAlias/:id';
 
         var resource = $resource(resourceUrl, {entityAlias: '@entityAlias',id: '@id'}, {
-            'update': { method: 'PATCH' },
-            'pdf': { method: 'GET', url: NODE_API_BASE_URL+'/quickbooks/controllers/:entityAlias/:id/pdf' },
-            'send': { method: 'GET', url: NODE_API_BASE_URL+'/quickbooks/controllers/:entityAlias/:id/sendTo/:email' }
+            get:    { method: 'GET' },//, transformRequest: addHeaders },
+            update: { method: 'PATCH' },//, transformRequest: addHeaders },
+            save:   { method: 'POST' },//, transformRequest: addHeaders },
+            pdf:    {
+                method: 'GET',
+                url: NODE_API_BASE_URL+'/quickbooks/controllers/:entityAlias/:id/pdf'//, transformRequest: addHeaders
+            },
+            send:   {
+                method: 'GET',
+                url: NODE_API_BASE_URL+'/quickbooks/controllers/:entityAlias/:id/sendTo/:email'//, transformRequest: addHeaders
+            }
         });
 
         var service = {
@@ -61,14 +69,15 @@
         }
 
         function remove(entityAlias, id) {
-            return resource.update({ entityAlias: entityAlias, id: id })
+            return resource.delete({ entityAlias: entityAlias, id: id })
                 .$promise
                 .then(onSuccess)
                 .catch(onError);
         }
 
         function save(entityAlias, payload) {
-            return resource.update({ entityAlias: entityAlias }, payload)
+            console.log(entityAlias, payload)
+            return resource.save({ entityAlias: entityAlias }, payload)
                 .$promise
                 .then(onSuccess)
                 .catch(onError);
@@ -87,6 +96,11 @@
                 .then(onSuccess)
                 .catch(onError);
         }
+
+        // function addHeaders(data, headersGetters){
+        //     console.log(data, headersGetters)
+        //     return data;
+        // }
 
         function onSuccess(data){
             return data

@@ -43,6 +43,7 @@
         function getHeaders () {
             return {
                 "Accept": "application/json",
+                "Content-Type": "application/json",
                 "consumer-key": _authInfo.consumerKey,
                 "consumer-secret": _authInfo.consumerSecret
             }
