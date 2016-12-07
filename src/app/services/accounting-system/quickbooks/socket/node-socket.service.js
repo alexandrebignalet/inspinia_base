@@ -5,32 +5,27 @@
         .module('accounting.system')
         .factory('NodeSocket', NodeSocket);
 
-    NodeSocket.$inject = ['$rootScope', 'AuthQuickbooks', 'NODE_SOCKET_BASE_URL', 'io'];
+    NodeSocket.$inject = ['$rootScope', 'AuthQuickbooks', 'NODE_SOCKET_BASE_URL'];
 
     /* @ngInject */
-    function NodeSocket($rootScope, AuthQuickbooks, NODE_SOCKET_BASE_URL, io) {
-        var connected = false;
-
-        var _socket = io.connect(NODE_SOCKET_BASE_URL, {
-            'reconnection': true,
-            'reconnectionDelay': 1000,
-            'reconnectionDelayMax' : 5000,
-            'reconnectionAttempts': 1
-        });
+    function NodeSocket($rootScope, AuthQuickbooks, NODE_SOCKET_BASE_URL) {
+        var _connected = false,
+            _socket = null;
 
         var service = {
             isConnected: isConnected,
+            connect: connect,
             on: on,
             emit: emit
         };
 
         on('connect', function(){
-            connected = true;
-            console.log('connected')
+            _connected = true;
+            console.log('_connected')
         });
 
         on('connect_error', function() {
-            connected = false;
+            _connected = false;
             AuthQuickbooks.setAvailable(false)
         });
 
@@ -51,10 +46,21 @@
         ////////////////
 
         function isConnected () {
-            return connected
+            return _connected
+        }
+
+        function connect(){
+            io.connect(NODE_SOCKET_BASE_URL, {
+                'reconnection': true,
+                'reconnectionDelay': 1000,
+                'reconnectionDelayMax' : 5000,
+                'reconnectionAttempts': 1
+            });
         }
 
         function on (eventName, callback) {
+            if(!_socket){ return; }
+
             _socket.on(eventName, function() {
                 var args = arguments;
                 $rootScope.$apply( function() {
@@ -64,6 +70,8 @@
         }
 
         function emit (eventName, data, callback) {
+            if(!_socket){ return; }
+
             _socket.emit(eventName, data, function() {
                 var args = arguments;
                 $rootScope.$apply( function() {
