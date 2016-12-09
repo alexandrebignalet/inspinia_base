@@ -45,6 +45,8 @@
         "surname": "Surname",
         "firstname": "Firstname",
         "zipcode": "Zipcode",
-        "sections": "Sections"
+        "sections": "Sections",
+        "ecpm-min": "ECPM Min",
+        "ecpm-max": "ECPM Max"
     }
 }
