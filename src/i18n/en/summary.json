@@ -21,6 +21,7 @@
         "estimated-volume": "Estimated volume",
         "estimated-incomes": "Estimated incomes",
         "estimated-cost": "Estimeated cost",
-        "estimated-margin": "Estimated margin"
+        "estimated-margin": "Estimated margin",
+        "database-active": "Database active"
     }
 }

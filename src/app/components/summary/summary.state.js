@@ -37,6 +37,29 @@
                     }
                 }
             })
-        ;
+            $stateProvider
+                .state('summary.actual-volume', {
+                    parent: 'summary',
+                    url: '/actual-volume',
+                    data: {
+                        pageTitle: 'Summary',
+                        authorities: ['ROLE_ADMIN', 'ROLE_USER', 'ROLE_SUPER_ADMIN']
+                    },
+                    views: {
+                        'content@': {
+                            template: '<actual-volume></actual-volume>'
+                        }
+                    },
+                    resolve: {
+                        mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
+                            $translatePartialLoader.addPart('summary');
+                            return $translate.refresh();
+                        }],
+                        loadPlugin: function ($ocLazyLoad) {
+                            return $ocLazyLoad.load(['angular-daterangepicker','datatables','immutable']);
+                        }
+                    }
+                })
+            ;
     }
 })();

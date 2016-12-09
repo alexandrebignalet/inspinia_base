@@ -16,6 +16,8 @@
             "first": "Première",
             "last": "Dernière"
         },
+        "summary": "Résumé",
+        "actual-volume": "Volume réel",
         "entity": {
             "select": {
                 "country": "Pays"

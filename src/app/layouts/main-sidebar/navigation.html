@@ -27,15 +27,19 @@
             </li>
 
             <li ui-sref-active="active">
-                <a ui-sref="summary"><i class="fa fa-line-chart"></i> <span class="nav-label">Summary</span></a>
-            </li>
-
-            <li ui-sref-active="active">
                 <a ui-sref="database"><i class="fa fa-database"></i> <span class="nav-label">Database</span></a>
             </li>
 
             <li ui-sref-active="active">
                 <a ui-sref="company"><i class="fa fa-briefcase"></i> <span class="nav-label">Company</span></a>
+            </li>
+
+            <li ng-class="{active: vm.state.includes('summary')}">
+                <a href=""><i class="fa fa-line-chart"></i><span translate="global.summary"></span></a>
+                <ul class="nav nav-second-level collapse" ng-class="{in: vm.includes('summary')}">
+                    <li ui-sref-active="active"><a ui-sref="summary"><span translate="global.summary"></span></a></li>
+                    <li ui-sref-active="active"><a ui-sref="summary.actual-volume"><span translate="global.actual-volume"></span></a></li>
+                </ul>
             </li>
 
             <li ui-sref-active="active">
