@@ -20,8 +20,6 @@
     function LastDataUpdatedController() {
         var vm = this;
 
-
-
     }
 
 })();
