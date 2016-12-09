@@ -19,7 +19,6 @@
     /* @ngInject */
     function CpmCampaignsController() {
         var vm = this;
-
     }
 
 })();

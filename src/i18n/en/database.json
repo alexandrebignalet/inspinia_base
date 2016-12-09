@@ -38,6 +38,7 @@
         "module": "Module",
         "creation-date": "Creation date",
         "section": "Section",
-        "last-data-updated": "Last 30 data updated"
+        "last-data-updated": "Last 30 data updated",
+        "last-campaigns": "Laat campaigns"
     }
 }
