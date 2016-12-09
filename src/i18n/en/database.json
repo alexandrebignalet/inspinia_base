@@ -47,6 +47,7 @@
         "zipcode": "Zipcode",
         "sections": "Sections",
         "ecpm-min": "ECPM Min",
-        "ecpm-max": "ECPM Max"
+        "ecpm-max": "ECPM Max",
+        "change": "Change"
     }
 }
