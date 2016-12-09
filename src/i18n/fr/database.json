@@ -34,6 +34,9 @@
         "no-segment-available": "Aucune segmentation disponible pour ces campagnes",
         "last-cpm-campaigns-two-months": "Campagne CPM des deux derniers mois",
         "volume-sent": "Volume envoyé",
-        "cpm": "CPM"
+        "cpm": "CPM",
+        "creation-date": "Date de création",
+        "section": "Section",
+        "last-data-updated": "30 dernières donneés mise à jour"
     }
 }
