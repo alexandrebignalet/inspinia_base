@@ -38,6 +38,13 @@
         "creation-date": "Date de création",
         "section": "Section",
         "last-data-updated": "30 dernières donneés mise à jour",
-        "last-campaigns": "Dernières campagnes"
+        "last-campaigns": "Dernières campagnes",
+        "sexe": "Sexe",
+        "age": "Age",
+        "surname": "Nom",
+        "firstname": "Prénom",
+        "zipcode": "Code postal",
+        "sections": "Sections"
+
     }
 }

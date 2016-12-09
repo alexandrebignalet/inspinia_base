@@ -39,6 +39,12 @@
         "creation-date": "Creation date",
         "section": "Section",
         "last-data-updated": "Last 30 data updated",
-        "last-campaigns": "Laat campaigns"
+        "last-campaigns": "Last campaigns",
+        "sexe": "Sex",
+        "age": "Age",
+        "surname": "Surname",
+        "firstname": "Firstname",
+        "zipcode": "Zipcode",
+        "sections": "Sections"
     }
 }
