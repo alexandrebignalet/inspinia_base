@@ -1,25 +1,42 @@
-<div class="ibox">
+<div class="ibox" xmlns="http://www.w3.org/1999/html">
     <div class="ibox-title">
         <h2><span translate="database.sections">Sections</span></h2>
     </div>
     <div class="ibox-title">
-        <h3><span translate="database.categories">Categories</span></h3>
-        <div class="row">
-            <div class="col-md-4">
-                <label><span translate="database.ecpm-min">ECPM Min</span></label>
-                <input type="text" ng-model="vm.ecpmMin" placeholder=".input-sm" class="form-control input-sm">
+        <h3><span translate="database.categories">Categories</span>
+            <div class="pull-right">
+                <a class="" ng-click="isCollapsedRouter = !isCollapsedRouter">
+                    <span ng-if="!isCollapsedRouter" class="fa fa-chevron-up"></span>
+                    <span ng-if="isCollapsedRouter" class="fa fa-chevron-down"></span>
+                </a>
             </div>
-            <div class="col-md-4">
-                <label><span translate="database.ecpm-max">ECPM Min</span></label>
-                <input type="text" ng-model="vm.ecpmMax" placeholder="" class="form-control input-sm">
-            </div>
-            <div class="col-md-4">
-                <br>
-                <button class="btn btn-default btn-outline"><span translate="database.change">Change</span></button>
+        </h3>
+    </div>
+    <div  uib-collapse="isCollapsedRouter">
+        <div class="ibox-content">
+            <div class="row">
+                <form class="form-horizontal">
+                <div class="col-md-4">
+                <div class="input-group">
+                        <label class="control-label"><span translate="database.ecpm-min">ECPM Min</span></label>
+                        <input type="text" ng-model="vm.ecpmMin" placeholder=".input-sm" class="form-control input-sm">
+                </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <label><span translate="database.ecpm-max">ECPM Min</span></label>
+                        <input type="text" ng-model="vm.ecpmMax" placeholder="" class="form-control input-sm">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <button style="margin-top: 22px" class="btn btn-primary btn-sm btn-outline"><span class="fa fa-refresh"></span></button>
+                </div>
+                </form>
+
             </div>
         </div>
-
     </div>
+
     <div class="ibox-content">
         <div class="row">
             <div class="col-md-4">
