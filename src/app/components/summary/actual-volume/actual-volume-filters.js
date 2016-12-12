@@ -15,10 +15,10 @@
         .module('dataToolApp')
         .component('actualVolumeFilters', actualVolumeFilters);
 
-    ActualVolumeFiltersController.$inject = ['$filter'];
+    ActualVolumeFiltersController.$inject = ['$filter','ActualVolume'];
 
     /* @ngInject */
-    function ActualVolumeFiltersController($filter) {
+    function ActualVolumeFiltersController($filter, ActualVolume) {
         var vm = this;
         vm.$onInit = onInit;
         vm.$onChanges = onChanges;
@@ -59,15 +59,13 @@
          //------------------------------------*/
 
         function parseData() {
-            angular.forEach(vm.stats, function(stat) {
-                composeFilterWithStat(stat);
-            });
+
+            //vm.filters.dataFilters = ActualVolume.getFiltersContent(vm.stats);
 
             vm.filters = {
-                countChange: 0,
                 selectedDatabases: vm.dataFilters.databases,
                 selectedCompanies: vm.dataFilters.companies,
-                selectedRouters:   vm.dataFilters.routers,
+                selectedCountries: vm.dataFilters.countries,
                 selectedTypes:     vm.dataFilters.types
             };
 

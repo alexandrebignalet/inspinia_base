@@ -19,7 +19,7 @@
                                 <date-range-picker on-change-dates="vm.onChangeDates($event)"></date-range-picker>
                             </div>
                         </div>
-                        <actual-volume-filters on-change-filters="vm.onChangeFilters($event)"></actual-volume-filters>
+                        <actual-volume-filters stats="vm.stats" on-change-filters="vm.onChangeFilters($event)"></actual-volume-filters>
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <actual-volume-graph></actual-volume-graph>
+            <volume-total-graph></volume-total-graph>
         </div>
     </div>
 

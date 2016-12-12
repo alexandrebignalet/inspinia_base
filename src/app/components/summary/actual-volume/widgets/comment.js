@@ -2,7 +2,7 @@
     'use strict';
 
     var actualVolumeComment = {
-        templateUrl: 'app/components/summary/actual-volume/widgets/actual-volume-comment.html',
+        templateUrl: 'app/components/summary/actual-volume/widgets/comment.html',
         controller: ActualVolumeCommentController,
         controllerAs: 'vm',
         bindings: {

@@ -65,7 +65,6 @@
             });
 
             vm.filters = {
-                countChange: 0,
                 selectedDatabases: vm.dataFilters.databases,
                 selectedCompanies: vm.dataFilters.companies,
                 selectedRouters:   vm.dataFilters.routers,
