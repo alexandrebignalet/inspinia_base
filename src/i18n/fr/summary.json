@@ -21,6 +21,13 @@
         "estimated-incomes": "Chiffre d0affaire estimé",
         "estimated-cost": "Coût estimé",
         "estimated-margin": "Marge estimé",
-        "database-active": "Database active"
+        "database-active": "Database active",
+        "database": "Base de données",
+        "active": "Active",
+        "current-volume": "Volume actuel",
+        "day-before-volume": "Volume de la veille",
+        "volume-forecast": "Prévision volume actuel",
+        "day-before-volume-forecast": "Prévision volume de la veille",
+        "combinated-forecast": "Prévision combinés"
     }
 }

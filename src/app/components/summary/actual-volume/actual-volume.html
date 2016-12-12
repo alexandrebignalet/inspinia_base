@@ -29,6 +29,30 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="ibox">
+                <div class="ibox-content">
+                    <uib-tabset>
+                        <uib-tab index="0" heading="All" select="selectRouter('all')"></uib-tab>
+                        <uib-tab index="$index + 2" ng-repeat="router in routers" heading="{{ router }}" select="selectRouter(router)"></uib-tab>
+                    </uib-tabset>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th><span translate="summary.database">Database</span></th>
+                                <th><span translate="summary.company">Comapny</span></th>
+                                <th><span translate="summary.type">Type</span></th>
+                                <th><span translate="summary.country">Country</span></th>
+                                <th><span translate="summary.active">Active</span></th>
+                                <th><span translate="summary.current-volume">Current Volume</span></th>
+                                <th><span translate="summary.day-before-volume">Day before volume</span></th>
+                                <th><span translate="summary.volume-forecast">Volume forecast</span></th>
+                                <th><span translate="summary.day-before-volume-forecast">Day before volume forecast</span></th>
+                                <th><span translate="summary.combinated-forecast">Combinated forecast</span></th>
+                            </tr>
+                            </thead>
+
+                        </table>
+                </div>
+
             </div>
         </div>
     </div>
