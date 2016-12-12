@@ -49,6 +49,32 @@
                             <th><span translate="summary.combinated-forecast">Combinated forecast</span></th>
                         </tr>
                         </thead>
+                        <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td> {{ vm.totals.actualVolume | number:0 }} </td>
+                            <td> {{ vm.totals.daybeforeVolume | number:0 }} </td>
+                            <td> {{ vm.totals.predictActualVolume | number:0 }} </td>
+                            <td> {{ vm.totals.predictDaybeforeVolume | number:0 }} </td>
+                            <td> {{ vm.totals.predictCombined | number:0 }} </td>
+                        </tr>
+                        <tr ng-repeat="database in vm.databases">
+                            <td> {{ database.database_name }} </td>
+                            <td> {{ database.company_name }} </td>
+                            <td> {{ database.database_type }} </td>
+                            <td> {{ database.database_country }} </td>
+                            <td> {{ database.active }} </td>
+                            <td> {{ database.total | number:0 }} </td>
+                            <td> {{ database.daybefore_volume | number:0 }} </td>
+                            <td> {{ database.predictVolume | number:0 }} </td>
+                            <td> {{ database.predictVolumeDayBefore | number:0 }} </td>
+                            <td> {{ database.predictActualVolumeDayBefore | number:0 }} </td>
+                        </tr>
+                        </tbody>
 
                     </table>
                 </div>

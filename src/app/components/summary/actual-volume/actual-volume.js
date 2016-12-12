@@ -69,8 +69,6 @@
             angular.forEach(vm.databases, function(database) {
                 setProcessedValues(database);
             });
-
-            console.log(vm.databases);
         }
 
         /*------------------------------------//
@@ -100,6 +98,8 @@
             vm.totals.predictDaybeforeVolume += predictVolumeDayBefore;
             vm.totals.predictCombined += predictActualVolumeDayBefore;
             vm.totals.predictActualVolume += predictVolume;
+            vm.totals.actualVolume += database.total;
+            vm.totals.daybeforeVolume += database.daybefore_volume;
         }
 
         function getPredictVolumeDayBefore(volume, date, total) {
