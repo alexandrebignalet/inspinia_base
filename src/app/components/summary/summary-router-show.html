@@ -1,0 +1,130 @@
+<div class="ibox-title">
+    <h2>
+        {{vm.router.name}}
+        <div class="pull-right">
+        <a class="" ng-click="isCollapsedRouter = !isCollapsedRouter">
+            <span ng-if="!isCollapsedRouter" class="fa fa-chevron-up"></span>
+            <span ng-if="isCollapsedRouter" class="fa fa-chevron-down"></span>
+        </a>
+    </div>
+
+    </h2>
+</div>
+
+<div uib-collapse="isCollapsedRouter">
+    <div class="ibox-content">
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-sm-15">
+                        <div class="widget style1 lazur-bg">
+                            <div class="row">
+
+                                <div class="col-xs-12 text-right">
+                                    <span translate="summary.volume-sent">Volume sent</span>
+
+                                    <h2 class="font-bold">{{ 12545321 | number}}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-15">
+                        <div class="widget style1 lazur-bg">
+                            <div class="row">
+
+                                <div class="col-xs-12 text-right">
+                                    <span translate="summary.incomes">Incomes</span>
+
+                                    <h2 class="font-bold">{{ 12545321 | number}}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-15">
+                        <div class="widget style1 lazur-bg">
+                            <div class="row">
+
+                                <div class="col-xs-12 text-right">
+                                    <span translate="summary.margin">Margin</span>
+
+                                    <h2 class="font-bold">{{ 12545321 | number}}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-15">
+                        <div class="widget style1 lazur-bg">
+                            <div class="row">
+
+                                <div class="col-xs-12 text-right">
+                                    <span translate="summary.cpm-cost">CPM Cost</span>
+
+                                    <h2 class="font-bold">{{ 12545321 | number}}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-15">
+                        <div class="widget style1 lazur-bg">
+                            <div class="row">
+
+                                <div class="col-xs-12 text-right">
+                                    <span translate="summary.cost">Cost</span>
+
+                                    <h2 class="font-bold">{{ 12545321 | number}}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-md-12">
+                <table datatable="ng" dt-options="vm.dtOptions" class="table">
+                    <thead>
+                    <tr>
+                        <th><span translate="summary.name">Name</span></th>
+                        <th style="width: 20%"><span translate="summary.company">Company</span></th>
+                        <th><span translate="summary.country">Country</span></th>
+                        <th><span translate="summary.type">Type</span></th>
+                        <th><span translate="summary.volume">Volume</span></th>
+                        <th><span translate="summary.cpm-cost">CPM Cost</span></th>
+                        <th><span translate="summary.incomes">Incomes</span></th>
+                        <th><span translate="summary.cost">Cost</span></th>
+                        <th><span translate="summary.margin"></span></th>
+                        <th><span translate="summary.ecpm">eCPM</span></th>
+                        <th><span translate="summary.estimated-volume">Estimated Volumes</span></th>
+                        <th><span translate="summary.estimated-incomes">Estimated Incomes</span></th>
+                        <th><span translate="summary.estimated-cost">Estimated Cost</span></th>
+                        <th><span translate="summary.estimated-margin">Estimated Margin</span></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="stat in vm.filteredStats">
+                        <td>{{ stat.database_name }}</td>
+                        <td>{{ stat.company_name }}</td>
+                        <td>{{ stat.database_country }}</td>
+                        <td>{{ stat.database_type }}</td>
+                        <td>{{ stat.real.volume | number:0 }}</td>
+                        <td>{{ stat.real.cpmCost | number:2 }}</td>
+                        <td>{{ stat.real.income | currency:"€":2 }}</td>
+                        <td>{{ stat.real.cost | currency:"€":2 }}</td>
+                        <td>{{ stat.real.margin | currency:"€":2 }}</td>
+                        <td>{{ stat.real.ecpm | number:2 }}</td>
+                        <td>{{ stat.estimate.volume | number:0 }}</td>
+                        <td>{{ stat.estimate.income | currency:"€":2 }}</td>
+                        <td>{{ stat.estimate.cost | currency:"€":2 }}</td>
+                        <td>{{ stat.estimate.margin| currency:"€":2  }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

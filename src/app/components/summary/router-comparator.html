@@ -1,0 +1,52 @@
+
+<div class="ibox-title">
+    <h2><span translate="summary.comparator">Comparator</span></h2>
+</div>
+<div class="ibox-content">
+    <div class="row">
+        <div class="form-group col-md-3">
+            <label ><span translate="summary.routers">Routers</span></label>
+            <am-multiselect multiple="true"
+                            ms-selected ="There are {{vm.routersSelected.length}} routers(s) selected"
+                            template-url="app/layouts/select-template.html"
+                            ng-model="vm.routersSelected" ms-header="Select routers"
+                            options="router as router.name for router in vm.routers"
+                            change="vm.onChangeRoutersSelected()">
+            </am-multiselect>
+        </div>
+    </div>
+</div>
+<div class="ibox-content">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Volumes</th>
+                    <th>Incomes</th>
+                    <th>Cost</th>
+                    <th>eCPM</th>
+                    <th>Volume</th>
+                    <th>Income</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="router in vm.routersSelected">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
