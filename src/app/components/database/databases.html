@@ -35,7 +35,7 @@
                             <td>
                                 <a href>{{ ::db.id }} </a>
                             </td>
-                            <th><a href>{{ ::db.name }}</a></th>
+                            <th><a ui-sref="database.show({databaseId: db.id})">{{ ::db.name }}</a></th>
                             <td>{{ ::db.country }}</td>
                             <td>{{ ::db.type }}</td>
                             <td>

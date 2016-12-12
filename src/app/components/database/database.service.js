@@ -5,9 +5,9 @@
         .module('dataToolApp')
         .factory('Database', Database);
 
-    Database.$inject = ['$resource','API_BASE_URL', 'ToastrService', '$q'];
+    Database.$inject = ['$resource','API_BASE_URL', 'ToastrService', '$q', '$http'];
 
-    function Database ($resource, API_BASE_URL, ToastrService, $q) {
+    function Database ($resource, API_BASE_URL, ToastrService, $q, $http) {
 
         var resourceUrl = API_BASE_URL + '/api/databases/:id';
 
@@ -24,7 +24,10 @@
             getAll: getAll,
             save: save,
             patch: patch,
-            init: init
+            init: init,
+            lastNCampaigns: lastNCampaigns,
+            getLadder: getLadder,
+            getIncomesByBm: getIncomesByBm
         };
 
         return service;
@@ -101,6 +104,37 @@
                 ToastrService.error(error, 'Impossible to save the database.');
                 return $q.reject(error);
             }
+        }
+
+        /* ------------------------------- /
+        //
+        //         DATABASE SHOW          //
+        //
+        / ------------------------------- */
+
+        function lastNCampaigns(databaseId, numberOfCampaigns) {
+            return $http({
+                method: 'GET',
+                url: API_BASE_URL + './../en/databases/' + databaseId + '/statistics/last-' + numberOfCampaigns
+            });
+        }
+
+
+        // TODO : Add the ../en/
+
+        function getLadder(databaseId, groupBy) {
+            return $http({
+                method: 'GET',
+                url: API_BASE_URL + '/databases/' + databaseId +'/statistics/' + groupBy +'/ladder'
+            });
+        }
+
+
+        function getIncomesByBm(databaseId) {
+            return $http({
+                method: 'GET',
+                url: API_BASE_URL + '/databases/' + databaseId + '/incomes-by-business-model'
+            });
         }
 
         function init(){

@@ -21,6 +21,33 @@
         "expertSenderApiUrl": "ExpertSender Api Url",
         "dialog": {
             "createOrEdit": "Create or edit a database"
-        }
+        },
+        "tops": "Tops",
+        "flops": "Flops",
+        "average": "Average",
+        "categories": "Categories",
+        "campaigns": "Campaigns",
+        "show-more": "Show more",
+        "avg-volume-title": "Average volume sent per day on the last 15 days",
+        "all": "All",
+        "eCpm-last-15-days": "eCPM on the last 15 days",
+        "no-segment-available": "No segmentation available for these campaigns",
+        "last-cpm-campaigns-two-months": "CPM Campaigns for the last 2 months",
+        "volume-sent": "Volume sent",
+        "cpm": "CPM",
+        "module": "Module",
+        "creation-date": "Creation date",
+        "section": "Section",
+        "last-data-updated": "Last 30 data updated",
+        "last-campaigns": "Last campaigns",
+        "sexe": "Sex",
+        "age": "Age",
+        "surname": "Surname",
+        "firstname": "Firstname",
+        "zipcode": "Zipcode",
+        "sections": "Sections",
+        "ecpm-min": "ECPM Min",
+        "ecpm-max": "ECPM Max",
+        "change": "Change"
     }
 }

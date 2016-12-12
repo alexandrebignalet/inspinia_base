@@ -1,0 +1,257 @@
+<div class="ibox" xmlns="http://www.w3.org/1999/html">
+    <div class="ibox-title">
+        <h2><span translate="database.sections">Sections</span></h2>
+    </div>
+    <div class="ibox-title">
+        <h3><span translate="database.categories">Categories</span>
+            <div class="pull-right">
+                <a class="" ng-click="isCollapsedRouter = !isCollapsedRouter">
+                    <span ng-if="!isCollapsedRouter" class="fa fa-chevron-up"></span>
+                    <span ng-if="isCollapsedRouter" class="fa fa-chevron-down"></span>
+                </a>
+            </div>
+        </h3>
+    </div>
+    <div  uib-collapse="isCollapsedRouter">
+        <div class="ibox-content">
+            <div class="row">
+                <form class="form-horizontal">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                        <label class="control-label"><span translate="database.ecpm-min">ECPM Min</span></label>
+                        <input type="text" ng-model="vm.ecpmMin" placeholder=".input-sm" class="form-control input-sm">
+                    </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <label><span translate="database.ecpm-max">ECPM Min</span></label>
+                            <input type="text" ng-model="vm.ecpmMax" placeholder="" class="form-control input-sm">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <button style="margin-top: 22px" class="btn btn-primary btn-sm btn-outline"><span class="fa fa-refresh"></span></button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="ibox-content">
+        <div class="row">
+            <div class="col-md-4">
+                <h4 class="text-center"><span translate="database.tops">Tops</span></h4>
+                <div>
+                    <canvas id="doughnut2" class="chart chart-doughnut"
+                            chart-data="vm.data" chart-labels="vm.labels">
+                    </canvas>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h4 class="text-center"><span translate="database.average">Average</span></h4>
+                <div>
+                    <canvas id="doughnut3" class="chart chart-doughnut"
+                            chart-data="vm.data" chart-labels="vm.labels">
+                    </canvas>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h4 class="text-center"><span translate="database.flops">Flops</span></h4>
+                <div>
+                    <canvas id="doughnut" class="chart chart-doughnut"
+                            chart-data="vm.data" chart-labels="vm.labels">
+                    </canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ibox-title">
+        <h3><span translate="database.campaigns">Campaigns</span></h3>
+    </div>
+    <div class="ibox-content">
+        <div class="row">
+            <div class="col-md-4">
+                <h4 class="text-center"><span translate="database.tops">Tops</span></h4>
+                <table class="table">
+                    <tr>
+                        <td>1</td>
+                        <td>Campaign</td>
+                        <td>Price</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Campaign</td>
+                        <td>Price</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Campaign</td>
+                        <td>Price</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Campaign</td>
+                        <td>Price</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Campaign</td>
+                        <td>Price</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-4">
+                <h4 class="text-center"><span translate="database.average">Average</span></h4>
+                <table class="table">
+                    <tr>
+                        <td>1</td>
+                        <td>Campaign</td>
+                        <td>Price</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Campaign</td>
+                        <td>Price</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Campaign</td>
+                        <td>Price</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Campaign</td>
+                        <td>Price</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Campaign</td>
+                        <td>Price</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-4">
+                <h4 class="text-center"><span translate="database.flops">Flops</span></h4>
+                <table class="table">
+                    <tr>
+                        <td>1</td>
+                        <td>Campaign</td>
+                        <td>Price</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Campaign</td>
+                        <td>Price</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Campaign</td>
+                        <td>Price</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Campaign</td>
+                        <td>Price</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Campaign</td>
+                        <td>Price</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <button type="button" class="btn btn-block btn-outline btn-primary"><span translate="show-more">Show more</span></button>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="ibox-title">
+                        <h3>Revenue by business model</h3>
+                    </div>
+                    <div class="ibox-content">
+                        <div>
+                            <canvas id="doughnut6" class="chart chart-doughnut"
+                                    chart-data="vm.data" chart-labels="vm.labels">
+                            </canvas>
+                        </div>
+                        <table class="table">
+                            <tr>
+                                <td>1</td>
+                                <td>Campaign</td>
+                                <td>Price</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Campaign</td>
+                                <td>Price</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Campaign</td>
+                                <td>Price</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Campaign</td>
+                                <td>Price</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Campaign</td>
+                                <td>Price</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="ibox-title">
+                        <h3>
+                            Camapaign by business model
+                        </h3>
+                    </div>
+                    <div class="ibox-content">
+                        <div>
+                            <canvas id="doughnut5" class="chart chart-doughnut"
+                                    chart-data="vm.data" chart-labels="vm.labels">
+                            </canvas>
+                        </div>
+                        <table class="table">
+                            <tr>
+                                <td>1</td>
+                                <td>Campaign</td>
+                                <td>Price</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Campaign</td>
+                                <td>Price</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Campaign</td>
+                                <td>Price</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Campaign</td>
+                                <td>Price</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Campaign</td>
+                                <td>Price</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
