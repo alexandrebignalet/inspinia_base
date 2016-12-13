@@ -6,6 +6,8 @@
         controller: VolumeTotalGraphController,
         controllerAs: 'vm',
         bindings: {
+            chartVolumeObject: '<',
+            chartTotalsObject: '<'
         }
     };
 

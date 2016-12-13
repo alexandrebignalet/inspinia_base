@@ -57,6 +57,16 @@
         }
 
         function parseData() {
+
+            vm.stats.sort(function(a,b){
+                var dateA = moment(a.date.date);
+                var dateB = moment(b.date.date);
+
+                return dateA - dateB;
+            });
+
+            loadDataForVolumesChart();
+
             angular.forEach(vm.stats, function(stat) {
 
                 addStatToDatabase(stat);
@@ -64,6 +74,8 @@
                 addCompanyToFilter(stat);
                 addCountryToFilter(stat);
                 addTypeToFilter(stat);
+
+
             });
 
             angular.forEach(vm.databases, function(database) {
@@ -73,7 +85,135 @@
 
         /*------------------------------------//
 
-                PROCESSING STATS SECTION
+             PROCESSING DATA FOR GRAPH
+
+             IN : DATABSES SELECTED
+             OUT : GRAPH OBJECTS
+
+         //------------------------------------*/
+
+
+        /**
+         * IN : Ordered stats by date ASC ( Mandatory for function to work properly )
+         */
+        function loadDataForVolumesChart() {
+
+            var dateFormat = 'YYYY-MM-DD';
+            var labelsVolume     = [];
+            var labelsTotals     = [];
+            var dataVolume = [];
+            var dataTotals = [];
+            var total      = 0;
+            var dataIndex  = 0;
+            var statsLength = vm.stats.length;
+
+            vm.chartVolumeObject = {
+                labels: [],
+                data: [],
+                series: ['Volumes','Average']
+            };
+
+            vm.chartTotalsObject = {
+                labels: [],
+                data: [],
+                series: ['TotalsAvg','TotalsDayBefore']
+            };
+
+            /**
+             * Init of labels and data with the first stat
+             */
+            var firstDate = moment(vm.stats[0].date.date).format(dateFormat);
+            var firstValue = +vm.stats[0].volume_sent;
+
+            labelsVolume.push(firstDate);
+            dataVolume[dataIndex] = firstValue;
+
+            total += firstValue;
+
+            /**
+             * Loop to insert the data and labels starting to index 1
+             */
+            var currentDate = firstDate;
+            var stat;
+            var statValue;
+            var statDate;
+
+            for( var i = 1 ; i < statsLength ; i++) {
+
+                stat = vm.stats[i];
+                statDate = moment(stat.date.date).format(dateFormat);
+                statValue = +stat.volume_sent;
+                total += statValue;
+
+                if(statDate == currentDate) {
+                    dataVolume[dataIndex] += statValue;
+                } else {
+                    labelsVolume.push(statDate);
+                    currentDate = statDate;
+                    dataTotals.push(total);
+                    dataIndex++;
+                    dataVolume[dataIndex] = statValue
+                }
+            }
+
+            dataTotals.push(total);
+
+            var dataTotalsAvg = angular.copy(dataTotals);
+            var dataTotalsDayBefore = angular.copy(dataTotals);
+
+            /**
+             * Calcul des prévisions
+             */
+            var dataTotalsLength = dataTotals.length;
+            var lastTotalAvg = dataTotals[dataTotalsLength - 1];
+            var lastTotalDayBefore = dataTotals[dataTotalsLength - 1];
+            var stepAvg = +( lastTotalAvg / dataTotalsLength ).toFixed(0);
+            var daysInMonth = moment(currentDate).endOf('month').format('DD');
+            var daysLeft = daysInMonth - dataTotalsLength;
+
+            var stepDayBefore = +(dataTotals[dataTotalsLength - 1] - dataTotals[dataTotalsLength - 2]);
+
+            labelsTotals = angular.copy(labelsVolume);
+
+            for( var k = daysLeft ; k > 0 ; k-- ) {
+                currentDate = moment(currentDate).add(1, 'days');
+
+                lastTotalAvg += stepAvg;
+                lastTotalDayBefore += stepDayBefore;
+
+                labelsTotals.push(currentDate.format(dateFormat));
+
+                dataTotalsAvg.push(lastTotalAvg);
+                dataTotalsDayBefore.push(lastTotalDayBefore);
+            }
+
+            /**
+             * Calcul de la moyenne
+             */
+            var labelsLength = labelsVolume.length;
+            var avg = ( total / labelsLength ).toFixed(0);
+            var dataAvg = [];
+
+            for( var j = 0 ; j < labelsLength ; j++ ){
+                dataAvg[j] = avg;
+            }
+
+            vm.chartVolumeObject.labels = labelsVolume;
+            vm.chartVolumeObject.data.push(dataVolume);
+            vm.chartVolumeObject.data.push(dataAvg);
+
+            vm.chartTotalsObject.labels = labelsTotals;
+            vm.chartTotalsObject.data.push(dataTotalsAvg);
+            vm.chartTotalsObject.data.push(dataTotalsDayBefore);
+        }
+
+
+        /*------------------------------------//
+
+            PROCESSING STATS SECTION FOR TAB
+
+            IN : DATABASES SELECTED
+            OUT : TOTALS (table),
 
          //------------------------------------*/
 
@@ -147,7 +287,10 @@
 
         /*------------------------------------//
 
-         PROCESSING STATS SECTION
+             PROCESSING STATS SECTION FOR FORMATING
+
+             IN : STATS (from HTTP Request)
+             OUT : DATABASES + FILTERS CONTENT
 
          //------------------------------------*/
 

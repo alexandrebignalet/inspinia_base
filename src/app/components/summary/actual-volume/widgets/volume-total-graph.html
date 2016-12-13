@@ -3,6 +3,13 @@
         <h2>Actual volume graph</h2>
     </div>
     <div class="ibox-content">
-
+        <canvas class="chart chart-line" chart-data="vm.chartVolumeObject.data"
+                chart-labels="vm.chartVolumeObject.labels" chart-series="vm.chartVolumeObject.series" chart-options="vm.charte.options">
+        </canvas>
+    </div>
+    <div class="ibox-content">
+        <canvas class="chart chart-line" chart-data="vm.chartTotalsObject.data"
+                chart-labels="vm.chartTotalsObject.labels" chart-series="vm.chartTotalsObject.series" chart-options="vm.charte.options">
+        </canvas>
     </div>
 </div>
