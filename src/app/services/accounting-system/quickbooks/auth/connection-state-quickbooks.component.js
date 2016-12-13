@@ -2,7 +2,7 @@
     'use strict';
 
     var connectionAccounting = {
-        template: '<div ng-click="vm.init()">' +
+        template: '<div ng-click="vm.connect()">' +
         '<span ng-if="vm.connected">Node ON</span>'+
         '<span ng-if="!vm.connected">Node OFF</span>'+
         '<span ng-if="vm.available">Quickbooks ON</span>'+
@@ -21,10 +21,10 @@
         var vm = this;
 
         vm.$onInit = onInit;
-        vm.init = init;
+        vm.connect = connect;
 
-        function init(){
-
+        function connect(){
+            NodeSocket.connect();
         }
 
         function onInit () {

@@ -5,9 +5,9 @@
         .module('dataToolApp')
         .factory('Invoice', Invoice);
 
-    Invoice.$inject = ['$resource','API_BASE_URL', 'ToastrService', '$q'];
+    Invoice.$inject = ['$resource','API_BASE_URL', 'ToastrService', '$q', 'Sending'];
 
-    function Invoice ($resource, API_BASE_URL, ToastrService, $q) {
+    function Invoice ($resource, API_BASE_URL, ToastrService, $q, Sending) {
 
         var resourceUrl = API_BASE_URL + '/api/invoices/:id';
 
@@ -77,9 +77,22 @@
         function save(invoice){
             return resource.save(invoice)
                 .$promise
+                .then(onSaveSendings)
                 .then(onSaveSuccess)
                 .catch(onSaveError);
 
+            function onSaveSendings(){
+
+                if (!invoice.emails) { return invoice }
+
+                angular
+                    .forEach(invoice.emails, function(sending){
+                        sending.charged = true;
+                        Sending.update(sending);
+                    });
+
+                return invoice;
+            }
             function onSaveSuccess(data){
                 return data;
             }

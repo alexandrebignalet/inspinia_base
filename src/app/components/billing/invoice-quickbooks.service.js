@@ -41,6 +41,9 @@
                         var invoice = transformer(invoiceSaved, announcer, month);
                         return Invoice.save(invoice)
                     })
+                    .then(function(){
+                        return ToastrService.success('Invoice created', 'Quickbooks');
+                    })
         }
 
         function send(){}
@@ -75,7 +78,7 @@
                 invoice.emails.push(idSending);
             }
 
-            return JSON.stringify(invoice);
+            return invoice;
         }
 
         /**

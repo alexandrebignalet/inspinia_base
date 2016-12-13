@@ -5,10 +5,10 @@
         .module('accounting.system')
         .factory('AccountingSystem', AccountingSystem);
 
-    AccountingSystem.$inject = ['ACCOUNTING_SYSTEM_SERVICES', '$injector'];
+    AccountingSystem.$inject = ['ACCOUNTING_SYSTEM_SERVICES', 'ACCOUNTING_SYSTEMS', '$injector', 'AuthQuickbooks'];
 
     /* @ngInject */
-    function AccountingSystem(ACCOUNTING_SYSTEM_SERVICES, $injector) {
+    function AccountingSystem(ACCOUNTING_SYSTEM_SERVICES, ACCOUNTING_SYSTEMS, $injector, AuthQuickbooks) {
         var that = this;
 
         that.accountingSystemName = null;
@@ -24,6 +24,10 @@
         ////////////////
 
         function init(accountingSystemName){
+            if (accountingSystemName === ACCOUNTING_SYSTEMS["DATAENGINE"]){
+                AuthQuickbooks.setAvailable(false);
+            }
+
             //TODO later from here you would receive the agency accounting system from the api
             that.accountingSystemName = accountingSystemName
 

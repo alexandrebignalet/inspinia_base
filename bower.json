@@ -16,7 +16,6 @@
     "moment": "~2.10.6",
     "animate.css": "~3.4.0",
     "angular": "~1.5.0",
-    "pace": "~1.0.2",
     "metisMenu": "~2.0.2",
     "fontawesome": "~4.5.0",
     "oclazyload": "^1.0.9",
@@ -41,34 +40,37 @@
     "amitava82-angular-multiselect": "^1.2.0",
     "angular-moment": "^1.0.1",
     "socket.io-client": "^1.7.1",
-    "angular-socket-io": "^0.7.0"
+    "angular-socket-io": "^0.7.0",
+    "angular-loading-bar": "^0.9.0"
   },
   "devDependencies": {
     "angular-mocks": "~1.5.0"
   },
   "overrides": {
     "socket.io-client": {
-        "main": ["dist/socket.io.min.js"]
+      "main": [
+        "dist/socket.io.min.js"
+      ]
     },
     "bootstrap": {
-        "main": [
-            "less/bootstrap.less",
-            "dist/fonts/glyphicons-halflings-regular.eot",
-            "dist/fonts/glyphicons-halflings-regular.svg",
-            "dist/fonts/glyphicons-halflings-regular.ttf",
-            "dist/fonts/glyphicons-halflings-regular.woff",
-            "dist/fonts/glyphicons-halflings-regular.woff2"
-        ]
+      "main": [
+        "less/bootstrap.less",
+        "dist/fonts/glyphicons-halflings-regular.eot",
+        "dist/fonts/glyphicons-halflings-regular.svg",
+        "dist/fonts/glyphicons-halflings-regular.ttf",
+        "dist/fonts/glyphicons-halflings-regular.woff",
+        "dist/fonts/glyphicons-halflings-regular.woff2"
+      ]
     },
     "fontawesome": {
-        "main": [
-            "less/font-awesome.less",
-            "fonts/fontawesome-webfont.eot",
-            "fonts/fontawesome-webfont.svg",
-            "fonts/fontawesome-webfont.ttf",
-            "fonts/fontawesome-webfont.woff",
-            "fonts/fontawesome-webfont.woff2"
-        ]
+      "main": [
+        "less/font-awesome.less",
+        "fonts/fontawesome-webfont.eot",
+        "fonts/fontawesome-webfont.svg",
+        "fonts/fontawesome-webfont.ttf",
+        "fonts/fontawesome-webfont.woff",
+        "fonts/fontawesome-webfont.woff2"
+      ]
     }
   },
   "resolutions": {
