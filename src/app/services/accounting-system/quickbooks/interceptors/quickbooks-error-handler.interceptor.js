@@ -5,9 +5,9 @@
         .module('accounting.system')
         .factory('quickBooksErrorHandlerInterceptor', quickBooksErrorHandlerInterceptor);
 
-    quickBooksErrorHandlerInterceptor.$inject = ['NODE_API_BASE_URL', '$q', 'AuthQuickbooks'];
+    quickBooksErrorHandlerInterceptor.$inject = ['$q', 'AuthQuickbooks', 'ToastrService'];
 
-    function quickBooksErrorHandlerInterceptor (NODE_API_BASE_URL, $q, AuthQuickbooks) {
+    function quickBooksErrorHandlerInterceptor ($q, AuthQuickbooks, ToastrService) {
 
         var service = {
             responseError: responseError
@@ -19,20 +19,16 @@
 
         function responseError (response) {
 
-            // if ( !response.config.url.includes(NODE_API_BASE_URL) ) {
-            //     return response
-            // }
-
             switch (response.status) {
                 case 401:
                     AuthQuickbooks.setAvailable(false);
-                    console.log('401 error', response);
+                    ToastrService.warning('Not available', 'Quickbooks');
                     break;
                 case 400:
-                    console.log('400 error', response);
+                    ToastrService.warning('Validation Error', 'Quickbooks');
                     break;
                 default:
-                    console.log('400 error', response.status, response);
+                    ToastrService.warning('Unregistered Error', 'Quickbooks');
                     break;
             }
 

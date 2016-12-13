@@ -14,10 +14,10 @@
         .module('dataToolApp')
         .component('invoiceRequest', invoiceRequest);
 
-    InvoiceRequestController.$inject = ['Billing', 'AccountingSystem', 'BILLING_DOCUMENTS_TYPES'];
+    InvoiceRequestController.$inject = ['Billing', 'AccountingSystem', 'BILLING_DOCUMENTS_TYPES', 'BILLING_STATES'];
 
     /* @ngInject */
-    function InvoiceRequestController(Billing, AccountingSystem, BILLING_DOCUMENTS_TYPES) {
+    function InvoiceRequestController(Billing, AccountingSystem, BILLING_DOCUMENTS_TYPES, BILLING_STATES) {
         var vm = this;
 
         var accountingSystem = null;
@@ -102,7 +102,8 @@
 
             switch ($event.type) {
                 case BILLING_DOCUMENTS_TYPES.INVOICE:
-                    accountingSystem['Invoice'].create(vm.announcer, vm.sendings.toCharged.list, vm.date);
+                    accountingSystem['Invoice'].create(vm.announcer, vm.sendings[BILLING_STATES.TO_CHARGED].list, vm.date)
+                        .then(Billing.changeSendingsState(vm.sendings, BILLING_STATES.TO_CHARGED, BILLING_STATES.CHARGED));
                     break;
                 case BILLING_DOCUMENTS_TYPES.WAITING_LIST:
                     break;

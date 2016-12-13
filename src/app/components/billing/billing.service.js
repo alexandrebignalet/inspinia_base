@@ -19,7 +19,8 @@
         var service = {
             get: get,
             update: update,
-            getBillingState: getBillingState
+            getBillingState: getBillingState,
+            changeSendingsState: changeSendingsState
         };
 
         return service;
@@ -97,10 +98,30 @@
          */
         function init (sendings) {
             var sortedSendings = {
-                notCharged: {informations: {name: "Sendings unbilled", index:{no: 0, name: 'notCharged'}}, list: []},
-                toCharged: {informations: {name: "Sendings to charge", index:{no: 1, name: 'toCharged'}}, list: []},
-                charged: {informations: {name: "Sendings charged", index:{no: 2, name: 'charged'}}, list: []},
-                paid: {informations: {name: "Sendings paid", index:{no: 3, name: 'paid'}}, list: []}
+                notCharged: {
+                    informations: {
+                        name: "Sendings unbilled", index: { no: 0, name: BILLING_STATES.NOT_CHARGED }
+                    },
+                    list: []
+                },
+                toCharged: {
+                    informations: {
+                        name: "Sendings to charge", index:{ no: 1, name: BILLING_STATES.TO_CHARGED }
+                    },
+                    list: []
+                },
+                charged: {
+                    informations: {
+                        name: "Sendings charged", index:{ no: 2, name: BILLING_STATES.CHARGED }
+                    },
+                    list: []
+                },
+                paid: {
+                    informations: {
+                        name: "Sendings paid", index:{ no: 3, name: BILLING_STATES.PAID }
+                    },
+                    list: []
+                }
             };
 
             for(var i = 0; i < sendings.length; i++){
@@ -129,6 +150,22 @@
             }
 
             return sortedSendings;
+        }
+
+        /**
+         * Update the main array of data according on the sendings updated
+         * @param sendings
+         * @param fromBilingState
+         * @param toBillingState
+         */
+        function changeSendingsState(sendings, fromBilingState, toBillingState){
+
+            angular
+                .forEach( sendings[fromBilingState].list, function(sending){
+                    sendings[toBillingState].list.push(sending);
+                });
+
+            sendings[fromBilingState].list = [];
         }
 
         function toPayloadFormat(sending) {

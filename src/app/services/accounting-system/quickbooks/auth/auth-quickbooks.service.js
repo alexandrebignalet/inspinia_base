@@ -5,10 +5,10 @@
         .module('accounting.system')
         .factory('AuthQuickbooks', AuthQuickbooks);
 
-    AuthQuickbooks.$inject = [];
+    AuthQuickbooks.$inject = ['NodeSocket', 'ToastrService'];
 
     /* @ngInject */
-    function AuthQuickbooks() {
+    function AuthQuickbooks(NodeSocket, ToastrService) {
         var _authInfo;
         var _available = false;
 
@@ -19,6 +19,28 @@
             isAvailable: isAvailable,
             setAvailable: setAvailable
         };
+
+        NodeSocket.on('quickbooks_not_available', function() {
+            ToastrService.success('Not available', 'Quickbooks');
+            setAvailable(false)
+        });
+
+        NodeSocket.on('connect_error', function() {
+            setAvailable(false)
+        });
+
+        NodeSocket.on('quickbooks_authentication_success', function() {
+            setAvailable(true)
+        });
+
+        NodeSocket.on('quickbooks_available', function() {
+            ToastrService.success('You can use Quickbooks', 'Quickbooks');
+            setAvailable(true)
+        });
+
+        NodeSocket.on('quickbooks_not_available', function() {
+            setAvailable(false);
+        });
 
         return service;
 
