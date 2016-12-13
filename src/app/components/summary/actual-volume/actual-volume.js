@@ -93,6 +93,18 @@
          //------------------------------------*/
 
 
+        vm.chartVolumeObject = {
+            labels: [],
+            data: [],
+            series: ['Volumes','Average']
+        };
+
+        vm.chartTotalsObject = {
+            labels: [],
+            data: [],
+            series: ['TotalsAvg','TotalsDayBefore']
+        };
+
         /**
          * IN : Ordered stats by date ASC ( Mandatory for function to work properly )
          */
@@ -107,17 +119,6 @@
             var dataIndex  = 0;
             var statsLength = vm.stats.length;
 
-            vm.chartVolumeObject = {
-                labels: [],
-                data: [],
-                series: ['Volumes','Average']
-            };
-
-            vm.chartTotalsObject = {
-                labels: [],
-                data: [],
-                series: ['TotalsAvg','TotalsDayBefore']
-            };
 
             /**
              * Init of labels and data with the first stat
@@ -158,12 +159,11 @@
 
             dataTotals.push(total);
 
-            var dataTotalsAvg = angular.copy(dataTotals);
-            var dataTotalsDayBefore = angular.copy(dataTotals);
-
             /**
              * Calcul des prévisions
              */
+            var dataTotalsAvg = angular.copy(dataTotals);
+            var dataTotalsDayBefore = angular.copy(dataTotals);
             var dataTotalsLength = dataTotals.length;
             var lastTotalAvg = dataTotals[dataTotalsLength - 1];
             var lastTotalDayBefore = dataTotals[dataTotalsLength - 1];
