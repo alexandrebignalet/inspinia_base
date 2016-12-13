@@ -1,0 +1,55 @@
+<form name="editForm" role="form" novalidate ng-submit="vm.onSubmit()">
+
+    <div class="form-group" ng-class="{ 'has-error' : (editForm.mail.$invalid && !editForm.mail.$pristine), 'has-success': editForm.mail.$valid}">
+        <div class="form-group">
+            <label class="control-label" for="document_send_mail"><span translate="billing.document.mail">Email</span></label>
+            <div class="input-group m-b">
+                <span class="input-group-addon"><i class="fa fa-{{ editForm.mail.$invalid ? 'times' : 'check'}}"></i></span>
+                <input type="email" class="form-control" name="mail" id="document_send_mail" required/>
+            </div>
+        </div>
+        <div ng-show="editForm.mail.$invalid && !editForm.mail.$pristine">
+            <p class="help-block"
+               ng-show="editForm.mail.$error.required" translate="global.entity.validation.required">
+                This field is required.
+            </p>
+            <p class="help-block"
+               ng-show="editForm.mail.$error.email" translate="global.entity.validation.email">
+                This field should be a valid email.
+            </p>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{ 'has-error' : (editForm.subject.$invalid && !editForm.subject.$pristine), 'has-success': editForm.subject.$valid}">
+        <div class="form-group">
+            <label class="control-label" for="document_send_subject"><span translate="billing.document.subject">Subject</span></label>
+            <div class="input-group m-b">
+                <span class="input-group-addon"><i class="fa fa-{{ editForm.subject.$invalid ? 'times' : 'check'}}"></i></span>
+                <input type="text" class="form-control" name="subject" id="document_send_subject" required/>
+            </div>
+        </div>
+        <div ng-show="editForm.subject.$invalid && !editForm.subject.$pristine">
+            <p class="help-block"
+               ng-show="editForm.subject.$error.required" translate="global.entity.validation.required">
+                This field is required.
+            </p>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{ 'has-error' : (editForm.message.$invalid && !editForm.message.$pristine), 'has-success': editForm.message.$valid}">
+        <div class="form-group">
+            <label class="control-label" for="document_send_message"><span translate="billing.document.message">Message</span></label>
+            <div class="input-group m-b">
+                <span class="input-group-addon"><i class="fa fa-{{ editForm.message.$invalid ? 'times' : 'check'}}"></i></span>
+                <textarea class="form-control" name="message" id="document_send_message" required></textarea>
+            </div>
+        </div>
+        <div ng-show="editForm.message.$invalid && !editForm.message.$pristine">
+            <p class="help-block"
+               ng-show="editForm.message.$error.required" translate="global.entity.validation.required">
+                This field is required.
+            </p>
+        </div>
+    </div>
+
+</form>

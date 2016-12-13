@@ -9,7 +9,8 @@
             sendings : '<',
             isLoading: '<',
             onPatch: '&',
-            onCreateDocument: '&'
+            onCreateDocument: '&',
+            onCreateAndSendDocument: ' &'
         }
     };
 
@@ -24,6 +25,7 @@
 
         vm.update = update;
         vm.createDocument = createDocument;
+        vm.createAndSendDocument = createAndSendDocument;
         vm.$onInit = onInit;
 
         function onInit(){
@@ -72,6 +74,18 @@
             }
 
             vm.onCreateDocument({
+                $event: {
+                    type: type
+                }
+            })
+        }
+
+        function createAndSendDocument(type){
+            if ( !BILLING_DOCUMENTS_TYPES.hasOwnProperty( type.toUpperCase() ) ){
+                throw new Error('Unknown billing document type, refer to invoice-request.constant.js to see types.')
+            }
+
+            vm.onCreateAndSendDocument({
                 $event: {
                     type: type
                 }

@@ -5,24 +5,27 @@
         .module('accounting.system')
         .factory('QuickbooksDataService', QuickbooksDataService);
 
-    QuickbooksDataService.$inject = ['$resource','NODE_API_BASE_URL'];
+    QuickbooksDataService.$inject = ['$resource','NODE_API_BASE_URL', 'AuthQuickbooks'];
 
     /* @ngInject */
-    function QuickbooksDataService($resource, NODE_API_BASE_URL) {
+    function QuickbooksDataService($resource, NODE_API_BASE_URL, AuthQuickbooks) {
 
         const resourceUrl = NODE_API_BASE_URL+'/quickbooks/controllers/:entityAlias/:id';
 
         var resource = $resource(resourceUrl, {entityAlias: '@entityAlias',id: '@id'}, {
-            get:    { method: 'GET' },//, transformRequest: addHeaders },
-            update: { method: 'PATCH' },//, transformRequest: addHeaders },
-            save:   { method: 'POST' },//, transformRequest: addHeaders },
+            get:    { method: 'GET' , headers: AuthQuickbooks.getHeaders() },
+            update: { method: 'PATCH', headers: AuthQuickbooks.getHeaders() },//, transformRequest: addHeaders },
+            save:   { method: 'POST', headers: AuthQuickbooks.getHeaders() },//, transformRequest: addHeaders },
             pdf:    {
                 method: 'GET',
-                url: NODE_API_BASE_URL+'/quickbooks/controllers/:entityAlias/:id/pdf'//, transformRequest: addHeaders
+                url: NODE_API_BASE_URL+'/quickbooks/controllers/:entityAlias/:id/pdf',// transformRequest: addHeaders
+                responseType: 'arraybuffer',
+                headers: AuthQuickbooks.getHeaders()
             },
             send:   {
                 method: 'GET',
-                url: NODE_API_BASE_URL+'/quickbooks/controllers/:entityAlias/:id/sendTo/:email'//, transformRequest: addHeaders
+                url: NODE_API_BASE_URL+'/quickbooks/controllers/:entityAlias/:id/sendTo/:email', //transformRequest: addHeaders
+                headers: AuthQuickbooks.getHeaders()
             }
         });
 
@@ -85,8 +88,14 @@
         function pdf(entityAlias, id){
             return resource.pdf({ entityAlias: entityAlias, id: id })
                 .$promise
-                .then(onSuccess)
+                .then(onGetPdf)
                 .catch(onError);
+
+            function onGetPdf(pdf){
+                var file = new Blob([pdf.data], {type: 'application/pdf'});
+
+                return URL.createObjectURL(file);
+            }
         }
 
         function send(entityAlias, id, email){
@@ -95,11 +104,6 @@
                 .then(onSuccess)
                 .catch(onError);
         }
-
-        // function addHeaders(data, headersGetters){
-        //     console.log(data, headersGetters)
-        //     return data;
-        // }
 
         function onSuccess(data){
             return data

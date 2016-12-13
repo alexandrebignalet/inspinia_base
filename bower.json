@@ -44,7 +44,9 @@
     "angular-moment": "^1.0.1",
     "socket.io-client": "^1.7.1",
     "angular-socket-io": "^0.7.0",
-    "angular-loading-bar": "^0.9.0"
+    "angular-loading-bar": "^0.9.0",
+    "pdfjs-dist": "^1.6.380",
+    "angular-pdf": "^1.4.0"
   },
   "devDependencies": {
     "angular-mocks": "~1.5.0",

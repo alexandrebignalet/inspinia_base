@@ -14,10 +14,10 @@
         .module('dataToolApp')
         .component('invoiceRequest', invoiceRequest);
 
-    InvoiceRequestController.$inject = ['Billing', 'AccountingSystem', 'BILLING_DOCUMENTS_TYPES', 'BILLING_STATES'];
+    InvoiceRequestController.$inject = ['Billing', 'AccountingSystem', 'BILLING_DOCUMENTS_TYPES', 'BILLING_STATES', 'DocumentSendDialog', 'ACCOUNTING_SYSTEM_SERVICES'];
 
     /* @ngInject */
-    function InvoiceRequestController(Billing, AccountingSystem, BILLING_DOCUMENTS_TYPES, BILLING_STATES) {
+    function InvoiceRequestController(Billing, AccountingSystem, BILLING_DOCUMENTS_TYPES, BILLING_STATES, DocumentSendDialog, ACCOUNTING_SYSTEM_SERVICES) {
         var vm = this;
 
         var accountingSystem = null;
@@ -31,6 +31,7 @@
         vm.onFiltersReceived = onFiltersReceived;
         vm.onUpdateSending = onUpdateSending;
         vm.createBillingDocument = createBillingDocument;
+        vm.createAndSendBillingDocument = createAndSendBillingDocument;
 
         //////////////////
 
@@ -102,8 +103,12 @@
 
             switch ($event.type) {
                 case BILLING_DOCUMENTS_TYPES.INVOICE:
-                    accountingSystem['Invoice'].create(vm.announcer, vm.sendings[BILLING_STATES.TO_CHARGED].list, vm.date)
-                        .then(Billing.changeSendingsState(vm.sendings, BILLING_STATES.TO_CHARGED, BILLING_STATES.CHARGED));
+
+                    return accountingSystem['Invoice'].create(vm.announcer, vm.sendings[BILLING_STATES.TO_CHARGED].list, vm.date)
+                        .then(function(invoice){
+                            Billing.changeSendingsState(vm.sendings, BILLING_STATES.TO_CHARGED, BILLING_STATES.CHARGED);
+                            return invoice
+                        });
                     break;
                 case BILLING_DOCUMENTS_TYPES.WAITING_LIST:
                     break;
@@ -112,13 +117,23 @@
             }
         }
 
-        function createAndSendInvoice(){
-            accountingSystem['Invoice'].create(vm.announcer, vm.sendings, vm.date)
-                .then(sendInvoice)
-        }
+        function createAndSendBillingDocument($event) {
+            if (!$event.type) { return }
 
-        function sendInvoice(){
-            accountingSystem['Invoice'].send()
+            switch($event.type){
+                case BILLING_DOCUMENTS_TYPES.INVOICE:
+
+                    return createBillingDocument($event)
+                        .then(function(invoice){
+                            DocumentSendDialog.openDialogModal(invoice, ACCOUNTING_SYSTEM_SERVICES.INVOICE.name);
+                            return invoice
+                        });
+                    break;
+                case BILLING_DOCUMENTS_TYPES.WAITING_LIST:
+                    break;
+                default:
+                    break;
+            }
         }
     }
 })();

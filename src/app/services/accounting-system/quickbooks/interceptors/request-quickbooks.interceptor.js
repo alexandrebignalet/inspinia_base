@@ -35,6 +35,7 @@
                 return $q.reject(response)
             }
 
+
             if ( !AuthQuickbooks.hasAuthInfo() ) {
                 response = {
                     status: 0,
@@ -44,12 +45,13 @@
                 return $q.reject(response)
             }
 
-            config.headers = AuthQuickbooks.getHeaders();
+           // config.headers = AuthQuickbooks.getHeaders();
 
             if ( !AuthQuickbooks.isAvailable() ) {
                 if (config.method !== 'GET') { config.method = 'GET' }
                 config.url = NODE_API_BASE_URL+'/quickbooks/auth/requestToken'
             }
+
 
             return config;
         }
