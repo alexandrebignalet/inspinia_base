@@ -5,17 +5,19 @@
         .module('dataToolApp')
         .factory('InvoiceQuickbooks', InvoiceQuickbooks);
 
-    InvoiceQuickbooks.$inject = ['Invoice', 'QuickbooksDataService', 'AuthQuickbooks', 'ToastrService', 'Company'];
+    InvoiceQuickbooks.$inject = ['Invoice', 'QuickbooksDataService', 'ToastrService', 'Company'];
 
     /* @ngInject */
-    function InvoiceQuickbooks(Invoice, QuickbooksDataService, AuthQuickbooks, ToastrService, Company) {
+    function InvoiceQuickbooks(Invoice, QuickbooksDataService, ToastrService, Company) {
 
         const entityAlias = 'Invoice';
 
         var service = {
             create: create,
             send: send,
-            createAndSend: createAndSend
+            createAndSend: createAndSend,
+            pdf: getPdf,
+            preferences: getPreferences
         };
 
         return service;
@@ -41,13 +43,31 @@
                         var invoice = transformer(invoiceSaved, announcer, month);
                         return Invoice.save(invoice)
                     })
-                    .then(function(){
-                        return ToastrService.success('Invoice created', 'Quickbooks');
+                    .then(function(invoice){
+                        ToastrService.success('Invoice created', 'Quickbooks');
+                        return invoice;
                     })
         }
 
-        function send(){}
-        function createAndSend(){}
+        function send(id, mail){
+            return QuickbooksDataService.send(entityAlias, id, mail);
+        }
+
+        function getPdf(id){
+            return QuickbooksDataService.pdf(entityAlias, id);
+        }
+
+        function getPreferences(){
+            return QuickbooksDataService.get('Preferences');
+        }
+
+        function createAndSend(announcer, sendings, month){
+            return create(announcer, sendings, month)
+                .then(function(invoice){
+                    var billingContact = Company.getBillingContact(announcer.company);
+                    return send(invoice.id, billingContact);
+                })
+        }
 
         function transformer(quickbooksFormattedInvoice, announcer, month) {
             var invoice = {};
@@ -55,7 +75,7 @@
             if (quickbooksFormattedInvoice.EmailStatus === 'EmailSent') {
                 invoice.recipients = [ quickbooksFormattedInvoice['BillEmail']['Address'] ];
                 invoice.sentByMail = true;
-                return JSON.stringify(invoice);
+                return invoice;
             }
 
             invoice = {

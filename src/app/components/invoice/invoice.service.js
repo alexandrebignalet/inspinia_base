@@ -81,9 +81,9 @@
                 .then(onSaveSuccess)
                 .catch(onSaveError);
 
-            function onSaveSendings(){
+            function onSaveSendings(invoiceSaved){
 
-                if (!invoice.emails) { return invoice }
+                if (!invoice.emails) { return invoiceSaved }
 
                 angular
                     .forEach(invoice.emails, function(sending){
@@ -91,7 +91,7 @@
                         Sending.update(sending);
                     });
 
-                return invoice;
+                return invoiceSaved;
             }
             function onSaveSuccess(data){
                 return data;
