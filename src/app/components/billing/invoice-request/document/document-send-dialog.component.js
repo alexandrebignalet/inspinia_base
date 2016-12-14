@@ -52,12 +52,12 @@
                 .catch(onSendError);
 
             function onSendSuccess(){
-                ToastrService.success("envoyé à " + mail, "Envoi réussi");
-                vm.isSending = false
+                ToastrService.success("envoyé à " + $event.mail, "Envoi réussi");
+                vm.isSending = false;
                 vm.modalInstance.close();
             }
             function onSendError(){
-                vm.isSending = false
+                vm.isSending = false;
                 vm.modalInstance.close();
             }
         }

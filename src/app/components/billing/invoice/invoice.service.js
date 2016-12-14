@@ -16,7 +16,7 @@
             update: { method: 'PATCH' },
             delete: { method: 'DELETE' },
             send:   { method: 'GET', url: API_BASE_URL + '/api/invoices/:id/send' },
-            pdf:    { method: 'GET', url: API_BASE_URL + '/api/invoices/:id/pdf' }
+            pdf:    { method: 'GET', url: API_BASE_URL + '/api/invoices/:id/pdf', responseType: 'arraybuffer' }
         });
 
         //////////////////////////////
@@ -167,7 +167,7 @@
         }
 
         function pdf(id) {
-            return resource.send({ id: id })
+            return resource.pdf({ id: id })
                 .$promise
                 .then(onPdfSuccess)
                 .catch(onPdfError);

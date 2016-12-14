@@ -18,8 +18,7 @@
 
         ////////////////
 
-        function openDialogModal(documentId, type, announcer) {
-            var accountingService = AccountingSystem.getServices()[type];
+        function openDialogModal(documentId, type, announcer, dataService) {
 
             $uibModal.open({
                 component: 'documentSendDialog',
@@ -36,13 +35,13 @@
                         return announcer
                     },
                     pdf: function(){
-                        return accountingService.pdf(documentId);
+                        return dataService.pdf(documentId);
                     },
                     preferences: function(){
-                        return accountingService.mailPreferences();
+                        return dataService.mailPreferences();
                     },
                     sendDocument: function(){
-                        return accountingService.send
+                        return dataService.send
                     },
                     loadPlugin: function ($ocLazyLoad) {
                         return $ocLazyLoad.load(['pdfjs']);

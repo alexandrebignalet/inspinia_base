@@ -22,14 +22,25 @@
                     last-text="{{ 'global.action.last' | translate }}">
                 </ul>
                 <div class="btn-group pull-right" ng-if="sendingStatus.informations.index.no == 1">
-                    <button type="button" class="btn btn-primary" ng-click="vm.createDocument('invoice')">
+                    <button type="button" class="btn btn-primary" ng-click="vm.createDocument('Invoice')">
                         <span class="fa fa-plus"></span>&nbsp;
                         Create invoice
                     </button>
-                    <button type="button" class="btn btn-primary" ng-click="vm.createAndSendDocument('invoice')">
+                    <button type="button" class="btn btn-primary" ng-click="vm.createAndSendDocument('Invoice')">
                         <span class="fa fa-plus"></span>&nbsp;
                         <span class="fa fa-send"></span>&nbsp;
                         Create and send invoice
+                    </button>
+                </div>
+                <div class="btn-group pull-right" ng-if="sendingStatus.informations.index.no == 0">
+                    <button type="button" class="btn btn-success" ng-click="vm.createDocument('WaitingList')">
+                        <span class="fa fa-plus"></span>&nbsp;
+                        Create waiting list
+                    </button>
+                    <button type="button" class="btn btn-success" ng-click="vm.createAndSendDocument('WaitingList')">
+                        <span class="fa fa-plus"></span>&nbsp;
+                        <span class="fa fa-send"></span>&nbsp;
+                        Create and send waiting list
                     </button>
                 </div>
             </div>

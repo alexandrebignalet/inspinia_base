@@ -97,7 +97,6 @@
 
             function onGetPdf(pdf){
                 var file = new Blob([pdf.data], {type: 'application/pdf'});
-
                 return URL.createObjectURL(file);
             }
         }
