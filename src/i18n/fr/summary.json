@@ -1,0 +1,33 @@
+{
+    "summary": {
+        "summary": "Résumé",
+        "filters": "Filters",
+        "comparator": "Comaparateur",
+        "databases": "Bases de données",
+        "companies": "Companies",
+        "types": "Types",
+        "routers": "Routers",
+        "name": "Nom",
+        "company": "Companie",
+        "country": "Pays",
+        "type": "Type",
+        "volume": "Volume",
+        "cpm-cost": "Coût CPM",
+        "incomes": "Chiffre d'affaire",
+        "cost": "Coûtt",
+        "margin": "Marge",
+        "ecpm": "eCPM",
+        "estimated-volume": "Volume estimé",
+        "estimated-incomes": "Chiffre d0affaire estimé",
+        "estimated-cost": "Coût estimé",
+        "estimated-margin": "Marge estimé",
+        "database-active": "Database active",
+        "database": "Base de données",
+        "active": "Active",
+        "current-volume": "Volume actuel",
+        "day-before-volume": "Volume de la veille",
+        "volume-forecast": "Prévision volume actuel",
+        "day-before-volume-forecast": "Prévision volume de la veille",
+        "combinated-forecast": "Prévision combinés"
+    }
+}

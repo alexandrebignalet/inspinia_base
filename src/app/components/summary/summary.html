@@ -1,0 +1,70 @@
+<div class="wrapper wrapper-content  animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h2><span translate="summary.filters">Filters</span>
+                        <div class="pull-right">
+                            <a ng-click="isCollapsedFilters = !isCollapsedFilters">
+                                <span ng-if="!isCollapsedFilters" class="fa fa-chevron-up"></span>
+                                <span ng-if="isCollapsedFilters" class="fa fa-chevron-down"></span>
+                            </a>
+                        </div>
+                    </h2>
+                </div>
+                <div uib-collapse="isCollapsedFilters">
+                    <div class="ibox-content">
+                        <div class="row" >
+                            <div  class="col-md-3 m-b-md" >
+                                <date-range-picker on-change-dates="vm.onChangeDates($event)"></date-range-picker>
+                            </div>
+                        </div>
+                        <summary-filters stats="vm.stats" on-change-filters="vm.onChangeFilters($event)"></summary-filters>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   <!-- <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Planche ID</th>
+                            <th>Planche name</th>
+                            <th>Tranche min value</th>
+                            <th>Tranche CPM</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="tranche in vm.tranches">
+                            <td>{{ tranche.planche_id }}</td>
+                            <td>{{ tranche.planche_name }}</td>
+                            <td>{{ tranche.tranche_Minimalvalue }}</td>
+                            <td>{{ tranche.tranche_ThisCpm }}</td>
+                            <td>{{ tranche.tranche_name}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>-->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox">
+                <summary-router-show ng-repeat="router in vm.routers" filters-value="vm.filtersValue" router="router"></summary-router-show>
+            </div>
+        </div>
+    </div>
+    <div ng-if="vm.routers.length > 0" class="row">
+        <div class="col-sm-12">
+            <div class="ibox">
+                <router-comparator routers="vm.routers"></router-comparator>
+            </div>
+        </div>
+    </div>
+</div>

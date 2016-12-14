@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="form-group col-md-3">
+        <label ><span translate="summary.databases">Databases</span></label>
+        <am-multiselect multiple="true"
+                        ms-selected ="There are {{vm.filters.selectedDatabases.length}} database(s) selected"
+                        template-url="app/layouts/select-template.html"
+                        ng-model="vm.filters.selectedDatabases" ms-header="Select databases"
+                        options="database as database.name for database in vm.dataFilters.databases"
+                        change="vm.onChangeFilter()">
+        </am-multiselect>
+    </div>
+
+    <div class="form-group col-md-3">
+        <label ><span translate="summary.companies">Companies</span></label>
+        <am-multiselect multiple="true"
+                        ms-selected ="There are {{vm.filters.selectedCompanies.length}} company(ies) selected"
+                        template-url="app/layouts/select-template.html"
+                        ng-model="vm.filters.selectedCompanies" ms-header="Select companies"
+                        options="company as company.name for database in vm.dataFilters.companies"
+                        change="vm.onChangeFilter()">
+        </am-multiselect>
+    </div>
+
+    <div class="form-group col-md-3">
+        <label ><span translate="summary.types">Types</span></label>
+        <am-multiselect multiple="true"
+                        ms-selected ="There are {{vm.filters.selectedTypes.length}} types(s) selected"
+                        template-url="app/layouts/select-template.html"
+                        ng-model="vm.filters.selectedTypes" ms-header="Select types"
+                        options="type as type.name for type in vm.dataFilters.types"
+                        change="vm.onChangeFilter()">
+        </am-multiselect>
+    </div>
+
+    <div class="form-group col-md-3">
+        <label ><span translate="summary.routers">Routers</span></label>
+        <am-multiselect multiple="true"
+                        ms-selected ="There are {{vm.filters.selectedRouters.length}} routers(s) selected"
+                        template-url="app/layouts/select-template.html"
+                        ng-model="vm.filters.selectedRouters" ms-header="Select routers"
+                        options="router as router.name for router in vm.dataFilters.routers"
+                        change="vm.onChangeFilter()">
+        </am-multiselect>
+    </div>
+</div>
