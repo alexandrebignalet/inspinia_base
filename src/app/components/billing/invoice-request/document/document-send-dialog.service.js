@@ -18,7 +18,7 @@
 
         ////////////////
 
-        function openDialogModal(document, type) {
+        function openDialogModal(id, type) {
             var accountingService = AccountingSystem.getServices()[type];
 
             $uibModal.open({
@@ -33,13 +33,16 @@
                         return type
                     },
                     pdf: function(){
-                        return accountingService.pdf(document.id);
+                        return accountingService.pdf(id);
                     },
                     preferences: function(){
                         return accountingService.preferences();
                     },
                     sendDocument: function(){
                         return accountingService.send
+                    },
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load(['pdfjs']);
                     }
                 }
             })
