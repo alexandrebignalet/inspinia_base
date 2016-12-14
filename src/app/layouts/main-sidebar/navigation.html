@@ -13,6 +13,11 @@
                             </span>
                     </a>
                     <ul uib-dropdown-menu class="animated flipInX m-t-xs">
+                        <li>
+                            <div class="p-xs">
+                                <connection-accounting></connection-accounting>
+                            </div>
+                        </li>
                         <li><a ng-click="vm.logout()">Logout</a></li>
                     </ul>
                 </div>
@@ -47,7 +52,7 @@
             </li>
 
             <li ng-class="{active: vm.state.includes('announcer')}">
-                <a ui-sref="announcer"><i class="fa fa-bullhorn"></i> <span class="nav-label">Announcer</span><span class="fa fa-arrow"></span></a>
+                <a href><i class="fa fa-bullhorn"></i> <span class="nav-label">Announcer</span><span class="fa fa-arrow"></span></a>
                 <ul class="nav nav-second-level collapse" ng-class="{in: vm.state.includes('announcer')}">
                     <li ui-sref-active="active">
                         <a ui-sref="announcer"><i class="fa fa-bullhorn"></i> Announcer</a>
@@ -60,6 +65,15 @@
 
             <li ng-class="{active: vm.state.includes('router-main')}">
                 <a ui-sref="router"><i class="fa fa-compass"></i> <span class="nav-label">Router Management</span><span class="fa fa-arrow"></span></a>
+            </li>
+
+            <li ng-class="{active: vm.state.includes('billing')}">
+                <a href><i class="fa fa-bullhorn"></i> <span class="nav-label">Billing</span><span class="fa fa-arrow"></span></a>
+                <ul class="nav nav-second-level collapse" ng-class="{in: vm.state.includes('billing')}">
+                    <li ui-sref-active="active">
+                        <a ui-sref="invoice-request"><i class="fa fa-bullhorn"></i> Invoice request</a>
+                    </li>
+                </ul>
             </li>
         </ul>
     </div>

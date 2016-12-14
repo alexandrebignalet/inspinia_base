@@ -8,5 +8,7 @@
         .constant('API_BASE_URL', 'http://datatool.dev')
         .constant('TYPE_BILLING', 'Billing')
         .constant('TYPE_COMMERCIAL', 'Commercial')
-        .constant('ACCOUNTING_SYSTEM', 'Datatool');
+        .constant('ACCOUNTING_SYSTEM', 'Quickbooks')
+        .constant('moment', moment)
+        .constant('toastr', toastr);
 })();

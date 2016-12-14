@@ -1,0 +1,31 @@
+<form name="requestDataForm" ng-submit="vm.onSubmit()" novalidate>
+    <div class="row">
+        <div class="form-group-lg col-md-4">
+            <button type="button" date-time ng-model="vm.month" min-view="month" auto-close="true" class="btn btn-default btn-block">
+                <i class="fa fa-calendar"></i>
+                {{ vm.month.format('MMMM YYYY')}}
+            </button>
+        </div>
+        <div class="form-group col-md-4">
+            <ui-select ng-model="vm.announcerSelected" theme="bootstrap" required name="announcer">
+                <ui-select-match placeholder="Select or search an announcer in the list..." >
+                    {{$select.selected.announcer}}
+                </ui-select-match>
+                <ui-select-choices repeat="announcer in vm.announcers | propsFilter: {announcer: $select.search} track by announcer.id">
+                    <div ng-bind-html="announcer.announcer | highlight: $select.search"></div>
+                </ui-select-choices>
+            </ui-select>
+            <div ng-show="requestDataForm.announcer.$invalid">
+                <p class="help-block"
+                   ng-show="requestDataForm.announcer.$error.required" translate="global.entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group-lg col-md-4">
+            <button class="btn btn-primary btn-block btn-outline" type="submit"
+                    ng-disabled="requestDataForm.$invalid || vm.isLoading"
+                    translate="billing.invoiceRequest.load"> Load</button>
+        </div>
+    </div>
+</form>

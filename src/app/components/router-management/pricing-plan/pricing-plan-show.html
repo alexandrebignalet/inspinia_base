@@ -2,26 +2,26 @@
     <div class="ibox-content">
         <div class="row">
             <strong class="col-md-3"><span class="pull-right" translate="pricingPlan.name">Name</span>
-            </strong><span class="col-md-8">{{ ::$ctrl.pricingPlan.name }}</span><br>
+            </strong><span class="col-md-8">{{ $ctrl.pricingPlan.name }}</span><br>
         </div>
         <div class="row">
             <strong class="col-md-3"><span class="pull-right" translate="pricingPlan.comment">Comment</span>
-            </strong><span class="col-md-8">{{ ::$ctrl.pricingTier.comment }}</span><br>
+            </strong><span class="col-md-8">{{ $ctrl.pricingTier.comment }}</span><br>
         </div>
         <div class="row">
             <strong class="col-md-3"><span class="pull-right" translate="pricingPlan.pricingTier">Pricing tier</span>
             </strong>
             <span class="col-md-8">
-                <div ng-repeat="pricingTier in ::$ctrl.pricingPlan.id_tranche">
+                <div ng-repeat="pricingTier in $ctrl.pricingPlan.id_tranche">
                     <span translate="pricingTier.name">Name: </span>
-                    {{ ::pricingTier.name }}
+                    {{ pricingTier.name }}
                 </div>
             </span>
             <br>
         </div>
         <div class="row">
             <strong class="col-md-3"><span class="pull-right" translate="pricingPlan.router">Router</span>
-            </strong><span class="col-md-8">{{ ::$ctrl.pricingPlan.id_router.name }}</span><br>
+            </strong><span class="col-md-8">{{ $ctrl.pricingPlan.id_router.name }}</span><br>
         </div>
     </div>
 

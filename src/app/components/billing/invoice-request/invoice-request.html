@@ -1,0 +1,26 @@
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <invoice-request-main-form announcers="vm.announcers"
+                                               on-filtering="vm.onFiltersReceived($event)">
+                    </invoice-request-main-form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6" ng-if="vm.announcer" ng-class="{'animated fadeIn': vm.isLoading}">
+            <company-show-min company="vm.announcer.company" ng-if="vm.announcer.company"></company-show-min>
+        </div>
+    </div>
+    <div class="ibox" ng-if="vm.sendings">
+        <div class="ibox-content">
+            <invoice-request-array sendings="vm.sendings"
+                                   is-loading="vm.isLoading"
+                                   on-patch="vm.onUpdateSending($event)"
+                                   on-create-document="vm.createBillingDocument($event)"
+                                   on-create-and-send-document="vm.createAndSendBillingDocument($event)">
+            </invoice-request-array>
+        </div>
+    </div>
+</div>

@@ -3,6 +3,7 @@
 
     angular
     .module('dataToolApp', [
+        'accounting.system',
         'ngAnimate',
         'ngCookies',
         'ngTouch',
@@ -11,6 +12,8 @@
         'ngAria',
         'ngResource',
         'ui.router',
+        'angular-loading-bar',
+        'ui.bootstrap',
         'oc.lazyLoad',
         'chart.js',
         'ngStorage',
@@ -18,6 +21,7 @@
         'tmh.dynamicLocale',
         'pascalprecht.translate',
         'ui.select',
-        'am.multiselect'
+        'am.multiselect',
+        'angularMoment'
     ]);
 })();
