@@ -18,25 +18,28 @@
 
         ////////////////
 
-        function openDialogModal(id, type) {
+        function openDialogModal(documentId, type, announcer) {
             var accountingService = AccountingSystem.getServices()[type];
 
             $uibModal.open({
                 component: 'documentSendDialog',
                 backdrop: 'true',
-                size: 'lg',
+                windowClass: 'send-document-modal-window',
                 resolve: {
-                    document: function(){
-                        return document
+                    documentId: function(){
+                        return documentId
                     },
                     type: function(){
                         return type
                     },
+                    announcer: function(){
+                        return announcer
+                    },
                     pdf: function(){
-                        return accountingService.pdf(id);
+                        return accountingService.pdf(documentId);
                     },
                     preferences: function(){
-                        return accountingService.preferences();
+                        return accountingService.mailPreferences();
                     },
                     sendDocument: function(){
                         return accountingService.send

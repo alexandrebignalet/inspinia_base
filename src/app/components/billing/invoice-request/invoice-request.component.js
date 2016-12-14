@@ -123,6 +123,7 @@
             if (!$event.type) { return }
 
             switch($event.type){
+
                 case BILLING_DOCUMENTS_TYPES.INVOICE:
 
                     return createBillingDocument($event)
@@ -130,14 +131,14 @@
 
                             if ( AccountingSystem.getName() !== ACCOUNTING_SYSTEMS["DATAENGINE"] )
                             {
-                                DocumentSendDialog.openDialogModal(invoice.externalId, ACCOUNTING_SYSTEM_SERVICES.INVOICE.name);
+                                DocumentSendDialog.openDialogModal(invoice.externalId, ACCOUNTING_SYSTEM_SERVICES.INVOICE.name, vm.announcer);
                                 return invoice
                             }
-                            DocumentSendDialog.openDialogModal(invoice.id, ACCOUNTING_SYSTEM_SERVICES.INVOICE.name);
+                            DocumentSendDialog.openDialogModal(invoice.id, ACCOUNTING_SYSTEM_SERVICES.INVOICE.name, vm.announcer);
 
                             return invoice
                         });
-                    break;
+
                 case BILLING_DOCUMENTS_TYPES.WAITING_LIST:
                     break;
                 default:

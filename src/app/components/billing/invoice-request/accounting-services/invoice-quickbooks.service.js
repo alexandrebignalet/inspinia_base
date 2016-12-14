@@ -15,9 +15,8 @@
         var service = {
             create: create,
             send: send,
-            createAndSend: createAndSend,
             pdf: getPdf,
-            preferences: getPreferences
+            mailPreferences: getMailPreferences
         };
 
         return service;
@@ -49,24 +48,41 @@
                     })
         }
 
-        function send(id, mail){
-            return QuickbooksDataService.send(entityAlias, id, mail);
+        function send(id, mail, preferences){
+
+            return QuickbooksDataService.update('Preferences', null, MailPrefsToPayloadFormat(preferences))
+                .then(function(preferences){
+                    return QuickbooksDataService.send(entityAlias, id, mail)
+                });
+
+            function MailPrefsToPayloadFormat(preferences) {
+                return {
+                    EmailMessagesPrefs:{
+                        InvoiceMessage: {
+                            Subject: preferences.subject,
+                            Message: preferences.message
+                        }
+                    }
+                }
+            }
         }
 
         function getPdf(id){
             return QuickbooksDataService.pdf(entityAlias, id);
         }
 
-        function getPreferences(){
-            return QuickbooksDataService.get('Preferences');
-        }
+        function getMailPreferences(){
+            return QuickbooksDataService.get('Preferences')
+                .then(getMailPreferencesPerType);
 
-        function createAndSend(announcer, sendings, month){
-            return create(announcer, sendings, month)
-                .then(function(invoice){
-                    var billingContact = Company.getBillingContact(announcer.company);
-                    return send(invoice.id, billingContact);
-                })
+            function getMailPreferencesPerType(preferences){
+                var mailPrefs = { subject: null, message: null };
+
+                mailPrefs.subject = preferences["EmailMessagesPrefs"]["InvoiceMessage"]["Subject"];
+                mailPrefs.message = preferences["EmailMessagesPrefs"]["InvoiceMessage"]["Message"];
+
+                return mailPrefs;
+            }
         }
 
         function transformer(quickbooksFormattedInvoice, announcer, month) {

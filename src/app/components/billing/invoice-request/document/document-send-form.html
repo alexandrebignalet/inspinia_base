@@ -1,11 +1,10 @@
 <form name="editForm" role="form" novalidate ng-submit="vm.onSubmit()">
-
     <div class="form-group" ng-class="{ 'has-error' : (editForm.mail.$invalid && !editForm.mail.$pristine), 'has-success': editForm.mail.$valid}">
         <div class="form-group">
             <label class="control-label" for="document_send_mail"><span translate="billing.document.mail">Email</span></label>
             <div class="input-group m-b">
                 <span class="input-group-addon"><i class="fa fa-{{ editForm.mail.$invalid ? 'times' : 'check'}}"></i></span>
-                <input type="email" class="form-control" name="mail" id="document_send_mail" required/>
+                <input type="email" class="form-control" name="mail" id="document_send_mail" required ng-model="vm.mail"/>
             </div>
         </div>
         <div ng-show="editForm.mail.$invalid && !editForm.mail.$pristine">
@@ -25,7 +24,7 @@
             <label class="control-label" for="document_send_subject"><span translate="billing.document.subject">Subject</span></label>
             <div class="input-group m-b">
                 <span class="input-group-addon"><i class="fa fa-{{ editForm.subject.$invalid ? 'times' : 'check'}}"></i></span>
-                <input type="text" class="form-control" name="subject" id="document_send_subject" required/>
+                <input type="text" class="form-control" name="subject" id="document_send_subject" required ng-model="vm.preferences.subject"/>
             </div>
         </div>
         <div ng-show="editForm.subject.$invalid && !editForm.subject.$pristine">
@@ -41,7 +40,7 @@
             <label class="control-label" for="document_send_message"><span translate="billing.document.message">Message</span></label>
             <div class="input-group m-b">
                 <span class="input-group-addon"><i class="fa fa-{{ editForm.message.$invalid ? 'times' : 'check'}}"></i></span>
-                <textarea class="form-control" name="message" id="document_send_message" required></textarea>
+                <textarea class="form-control" name="message" id="document_send_message" required ng-model="vm.preferences.message"></textarea>
             </div>
         </div>
         <div ng-show="editForm.message.$invalid && !editForm.message.$pristine">
@@ -51,5 +50,13 @@
             </p>
         </div>
     </div>
-
+    <div class="btn-group pull-right">
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSending" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="billing.send">Send document</span>
+        </button>
+        <a type="button" download="toto" ng-href="{{vm.pdf}}" class="btn btn-default">
+            <span class="fa fa-save"></span>&nbsp;
+            <span translate="document.download">Download</span>
+        </a>
+    </div>
 </form>

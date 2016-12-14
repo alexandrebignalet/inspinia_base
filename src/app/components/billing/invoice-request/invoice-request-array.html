@@ -1,67 +1,44 @@
 <uib-tabset active="activeJustified" justified="true">
     <uib-tab
         ng-repeat="sendingStatus in vm.sendings"
-        index="sendingStatus.informations.index.no"
-        heading="{{ sendingStatus.informations.name }}"
-    >
-        <div class="text-center">
-            <ul uib-pagination
-                total-items="sendingStatus.list.length" class="pagination-sm"
-                ng-model="vm.pagination.currentPage" ng-if="sendingStatus.list.length > vm.pagination.itemsPerPage"
-                items-per-page="vm.pagination.itemsPerPage" max-size="vm.pagination.maxSize"
-                boundary-links="true" rotate="false"
-                previous-text="{{ 'global.action.previous' | translate }}"
-                next-text="{{ 'global.action.next' | translate }}"
-                first-text="{{ 'global.action.first' | translate }}"
-                last-text="{{ 'global.action.last' | translate }}">
-            </ul>
-
-            <button type="button" ng-if="sendingStatus.informations.index.no == 1 && sendingStatus.list.length > 0"
-                    class="pull-right btn btn-primary" ng-click="vm.createDocument('invoice')">
-                Create invoice
-            </button>
-            <button type="button" ng-if="sendingStatus.informations.index.no == 1 && sendingStatus.list.length > 0"
-                    class="pull-right btn btn-primary" ng-click="vm.createAndSendDocument('invoice')">
-                Create and send invoice
-            </button>
-        </div>
-        <!--<div ng-if="sendingStatus.informations.index.no == 2">-->
-            <!--<div class="col-md-6">-->
-                <!--<button class="btn btn-success">Load Invoices</button>-->
-            <!--</div>-->
-            <!--<div class="col-md-4">-->
-                <!--<div class="input-group">-->
-                                        <!--<span class="input-group-addon">-->
-                                            <!--<span class="glyphicon glyphicon-cloud" ng-if="vm.invoiceSelected.externalId" style="color:#2ca01c;"-->
-                                                  <!--data-toggle="tooltip" title="Invoice already sent to {{vm.invoiceSelected.mail}}"></span>-->
-                                        <!--</span>-->
-                    <!--<select class='form-control' id="invoicesToSend" name="announcer-select"-->
-                            <!--ng-options="invoice.docNumber for invoice in vm.invoices track by invoice.id"-->
-                            <!--ng-model="vm.invoiceSelected">-->
-                        <!--<option value=""></option>-->
-                    <!--</select>-->
-                    <!--<span class="input-group-addon">-->
-                                            <!--<span class="glyphicon glyphicon-send" ng-if="vm.invoiceSelected.sentByMail" style="color:rgb(51, 122, 183);"-->
-                                                  <!--data-toggle="tooltip" title="Invoice already sent to {{vm.invoiceSelected.mail}}"></span>-->
-                                            <!--<span class="glyphicon glyphicon-send" ng-if="!vm.invoiceSelected.sentByMail" style="color:#dee1e7;"-->
-                                                  <!--data-toggle="tooltip" title="Invoice not send"></span>-->
-                                        <!--</span>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="col-md-2">-->
-                <!--<send-billing-document billing-document="vm.invoiceSelected" announcer="vm.announcerSelected" billing-document-type="invoice"></send-billing-document>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div ng-if="sendingStatus.informations.index.no == 2 && vm.invoices.length == 0" class="col-md-4 alert alert-info text-center">-->
-            <!--<h5>No invoices</h5>-->
-        <!--</div>-->
-        <div ng-if="sendingStatus.list.length == 0" class="col-md-12 alert alert-info text-center">
-            <h3>No result</h3>
-        </div>
-        <table
-               class="table table-hover table-condensed table-striped dataTables-example"
-               ng-if="sendingStatus.list.length > 0">
-                <thead>
+        ng-if="sendingStatus.list.length > 0"
+        index="sendingStatus.informations.index.no">
+        <uib-tab-heading>
+            <h4>
+                {{ sendingStatus.informations.name }}
+                <span class="badge badge-primary pull-right">{{ sendingStatus.list.length }}</span>
+            </h4>
+        </uib-tab-heading>
+        <div class="ibox">
+            <div class="ibox-title text-center m-md no-borders" ng-if="sendingStatus.list.length > 0">
+                <ul uib-pagination
+                    total-items="sendingStatus.list.length" class="pagination-sm"
+                    ng-model="vm.pagination.currentPage" ng-if="sendingStatus.list.length > vm.pagination.itemsPerPage"
+                    items-per-page="vm.pagination.itemsPerPage" max-size="vm.pagination.maxSize"
+                    boundary-links="true" rotate="false"
+                    previous-text="{{ 'global.action.previous' | translate }}"
+                    next-text="{{ 'global.action.next' | translate }}"
+                    first-text="{{ 'global.action.first' | translate }}"
+                    last-text="{{ 'global.action.last' | translate }}">
+                </ul>
+                <div class="btn-group pull-right" ng-if="sendingStatus.informations.index.no == 1">
+                    <button type="button" class="btn btn-primary" ng-click="vm.createDocument('invoice')">
+                        <span class="fa fa-plus"></span>&nbsp;
+                        Create invoice
+                    </button>
+                    <button type="button" class="btn btn-primary" ng-click="vm.createAndSendDocument('invoice')">
+                        <span class="fa fa-plus"></span>&nbsp;
+                        <span class="fa fa-send"></span>&nbsp;
+                        Create and send invoice
+                    </button>
+                </div>
+            </div>
+            <div class="ibox-content m-b-md">
+                <div ng-if="sendingStatus.list.length == 0" class="col-md-12 alert alert-info text-center">
+                    <h3>No result</h3>
+                </div>
+                <table class="table table-hover table-condensed table-striped" ng-if="sendingStatus.list.length > 0">
+                    <thead>
                     <th>Campaign ID</th>
                     <th>Date</th>
                     <th>Base</th>
@@ -79,8 +56,8 @@
                     <th>Comments</th>
                     <th ng-if="sendingStatus.informations.index.no == 2">DocNumber</th>
                     <th>SAVE</th>
-                </thead>
-                <tbody>
+                    </thead>
+                    <tbody>
                     <tr ng-repeat="sending in sendingPaginated = (sendingStatus.list | orderBy: 'sendingTime')
                             .slice((vm.pagination.currentPage - 1)*vm.pagination.itemsPerPage) |
                                 limitTo: vm.pagination.itemsPerPage
@@ -91,22 +68,22 @@
                         <td><a href>{{ sending.databaseName }}</a></td>
                         <td><a href>{{ sending.subject }}</a></td>
                         <td>
-                            <p ng-if="+sending.cpm > 0">CPM</p>
-                            <p ng-if="+sending.cpl > 0">CPL</p>
-                            <p ng-if="+sending.cpc > 0">CPC</p>
-                            <p ng-if="+sending.cpa > 0">CPA</p>
+                            <p ng-if="+sending.sent > 0">CPM</p>
+                            <p ng-if="+sending.leads > 0">CPL</p>
+                            <p ng-if="+sending.clicks > 0">CPC</p>
+                            <p ng-if="+sending.sales > 0">CPA</p>
                         </td>
                         <td>
-                            <p ng-if="+sending.cpm > 0">{{ +(sending.sent / 1000) | numberLocaleTransformer:2 }}k</p>
-                            <p ng-if="+sending.cpl > 0">{{ +(sending.leads) | numberLocaleTransformer:0 }}</p>
-                            <p ng-if="+sending.cpc > 0">{{ +(sending.clicks) | numberLocaleTransformer:0 }}</p>
-                            <p ng-if="+sending.cpa > 0">{{ +(sending.sales) | numberLocaleTransformer:0 }}</p>
+                            <p ng-if="+sending.sent > 0">{{ +(sending.sent / 1000) | numberLocaleTransformer:2 }}k</p>
+                            <p ng-if="+sending.leads > 0">{{ +(sending.leads) | numberLocaleTransformer:0 }}</p>
+                            <p ng-if="+sending.clicks > 0">{{ +(sending.clicks) | numberLocaleTransformer:0 }}</p>
+                            <p ng-if="+sending.sales > 0">{{ +(sending.sales) | numberLocaleTransformer:0 }}</p>
                         </td>
                         <td>
-                            <p ng-if="+sending.cpm > 0">{{ +(sending.cpm)| numberLocaleTransformer:2 }}€</p>
-                            <p ng-if="+sending.cpl > 0">{{ +(sending.cpl)| numberLocaleTransformer:2 }}€</p>
-                            <p ng-if="+sending.cpc > 0">{{ +(sending.cpc)| numberLocaleTransformer:2 }}€</p>
-                            <p ng-if="+sending.cpa > 0">{{ +(sending.cpa)| numberLocaleTransformer:2 }}€</p>
+                            <p ng-if="+sending.sent > 0">{{ +(sending.cpm)| numberLocaleTransformer:2 }}€</p>
+                            <p ng-if="+sending.leads > 0">{{ +(sending.cpl)| numberLocaleTransformer:2 }}€</p>
+                            <p ng-if="+sending.clicks > 0">{{ +(sending.cpc)| numberLocaleTransformer:2 }}€</p>
+                            <p ng-if="+sending.sales > 0">{{ +(sending.cpa)| numberLocaleTransformer:2 }}€</p>
                         </td>
                         <td>{{ sending.income| numberLocaleTransformer:2 }}€</td>
                         <td>
@@ -169,7 +146,9 @@
                             </button>
                         </td>
                     </tr>
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </uib-tab>
 </uib-tabset>
