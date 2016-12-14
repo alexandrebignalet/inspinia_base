@@ -77,11 +77,13 @@
                 });
 
                 vm.filtersContent = ActualVolume.parseResponse(vm.stats,vm.databases);
+                console.log(vm.filtersContent);
                 ActualVolume.getProcessedValues(vm.databases,vm.totals, vm.dates.endDateDay);
                 ActualVolume.getGraphsObject(vm.stats, vm.chartVolumeObject, vm.chartTotalsObject);
 
                 vm.statsFiltered     = vm.stats;
                 vm.databasesFiltered = vm.databases;
+
             }
 
             function onError(error) {
@@ -125,7 +127,17 @@
 
         function updateFilteredData() {
             var filteredDatabases = $filter('propsOnArrayFilterJs')(vm.databases,'id',vm.filtersValue.selectedDatabases,'id');
+            filteredDatabases = $filter('propsOnArrayFilterJs')(filteredDatabases,'database_country',vm.filtersValue.selectedCountries,'name');
+            filteredDatabases = $filter('propsOnArrayFilterJs')(filteredDatabases,'company_id',vm.filtersValue.selectedCompanies,'id');
+            filteredDatabases = $filter('propsOnArrayFilterJs')(filteredDatabases,'database_type',vm.filtersValue.selectedTypes,'name');
+            filteredDatabases = $filter('propsOnArrayFilterJs')(filteredDatabases,'active',vm.filtersValue.selectedActives,'value');
+
             var filteredStats = $filter('propsOnArrayFilterJs')(vm.stats,'database_id',vm.filtersValue.selectedDatabases,'id');
+            filteredStats = $filter('propsOnArrayFilterJs')(filteredStats,'database_country',vm.filtersValue.selectedCountries,'name');
+            filteredStats = $filter('propsOnArrayFilterJs')(filteredStats,'company_id',vm.filtersValue.selectedCompanies,'id');
+            filteredStats = $filter('propsOnArrayFilterJs')(filteredStats,'database_type',vm.filtersValue.selectedTypes,'name');
+            filteredStats = $filter('propsOnArrayFilterJs')(filteredStats,'active',vm.filtersValue.selectedActives,'value');
+
             vm.databasesFiltered = filteredDatabases;
             vm.statsFiltered = filteredStats;
         }

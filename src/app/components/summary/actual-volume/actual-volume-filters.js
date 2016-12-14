@@ -55,6 +55,7 @@
                 selectedDatabases: vm.filtersContent.databases,
                 selectedCompanies: vm.filtersContent.companies,
                 selectedCountries: vm.filtersContent.countries,
+                selectedActives:   vm.filtersContent.actives,
                 selectedTypes:     vm.filtersContent.types
             };
         }

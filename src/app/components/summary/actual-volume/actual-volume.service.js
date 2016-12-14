@@ -163,9 +163,9 @@
 
         function addCountryToFilter(stat,filters) {
 
-            if( indexOfArrayObject(stat.company_country, filters.countries, 'name') == -1) {
+            if( indexOfArrayObject(stat.database_country, filters.countries, 'name') == -1) {
                 var country = {
-                    name: stat.company_country
+                    name: stat.database_country
                 };
                 filters.countries.push(country);
             }

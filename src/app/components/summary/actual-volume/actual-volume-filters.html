@@ -17,7 +17,7 @@
                         ms-selected ="There are {{vm.filters.selectedCompanies.length}} company(ies) selected"
                         template-url="app/layouts/select-template.html"
                         ng-model="vm.filters.selectedCompanies" ms-header="Select companies"
-                        options="company as company.name for database in vm.filtersContent.companies"
+                        options="company as company.name for company in vm.filtersContent.companies"
                         change="vm.onChangeFilter()">
         </am-multiselect>
     </div>
