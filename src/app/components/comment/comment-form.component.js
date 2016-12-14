@@ -3,7 +3,7 @@
 
     var commentForm = {
         templateUrl: 'app/components/comment/comment-form.html',
-        controller: CompanyFormController,
+        controller: CommentFormController,
         controllerAs: 'vm',
         bindings: {
             comment: '<',
@@ -16,10 +16,10 @@
         .module('dataToolApp')
         .component('commentForm', commentForm);
 
-    CompanyFormController.$inject = [];
+    CommentFormController.$inject = [];
 
     /* @ngInject */
-    function CompanyFormController() {
+    function CommentFormController() {
         var vm = this;
 
         vm.onSubmit = onSubmit;

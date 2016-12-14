@@ -30,6 +30,10 @@
         "day-before-volume-forecast": "Prévision volume de la veille",
         "combinated-forecast": "Prévision combinés",
         "volumes": "Volumes",
-        "totals": "Totaux"
+        "totals": "Totaux",
+        "date": "Date",
+        "content": "Contenue",
+        "save": "Enregistrer",
+        "new-comment": "Nouveau commentaire"
     }
 }

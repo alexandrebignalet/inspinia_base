@@ -19,7 +19,6 @@
     /* @ngInject */
     function ActualVolumeCommentController() {
         var vm = this;
-        vm.addComment = addComment;
 
 
     }

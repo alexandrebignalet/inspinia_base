@@ -3,6 +3,7 @@
         <div class="col-sm-12">
             <div class="ibox">
                 <div class="ibox-title">
+                    <button ui-sref="comment-summary-create({databases: vm.databasesFiltered})" class="btn btn-outline btn-primary btn">Add comment</button>
                     <h2><span translate="summary.filters">Filters</span>
                         <div class="pull-right">
                             <a ng-click="isCollapsedFilters = !isCollapsedFilters">
