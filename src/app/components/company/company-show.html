@@ -1,7 +1,7 @@
 <div class="ibox">
     <div class="ibox-title">
         <h2>
-            {{ ::vm.company.name }}
+            {{ vm.company.name }}
             <div class="pull-right">
                 <a ui-sref="company.edit({id: vm.company.id})"><button class="btn btn-primary btn-outline">
                     <span class="fa fa-pencil"></span>
@@ -12,10 +12,10 @@
             </div>
         </h2>
         <address>
-            <strong>{{ ::vm.company.address.country }}</strong><br>
-            {{ ::vm.company.address.street }}<br>
-            {{ ::vm.company.address.town }}, {{ ::vm.company.address.zipcode }}<br>
-            <small>{{ ::vm.company.address.complement }}</small>
+            <strong>{{ vm.company.address.country }}</strong><br>
+            {{ vm.company.address.street }}<br>
+            {{ vm.company.address.town }}, {{ vm.company.address.zipcode }}<br>
+            <small>{{ vm.company.address.complement }}</small>
         </address>
     </div>
     <div class="ibox-content">
@@ -33,29 +33,29 @@
                                     <div class="panel-body">
                                         <ul class="list-group clear-list">
                                             <li class="list-group-item fist-item">
-                                                <span class="pull-right"> {{ ::vm.company.phone }} </span>
+                                                <span class="pull-right"> {{ vm.company.phone }} </span>
                                                 <strong> <i class="fa fa-phone"></i> Phone</strong>
                                             </li>
                                             <li class="list-group-item">
-                                                <span class="pull-right"> {{ ::vm.company.num_tva }} </i> </span>
+                                                <span class="pull-right"> {{ vm.company.num_tva }} </i> </span>
                                                 <strong>
                                                     <span translate="company.numTva"> TVA</span>
                                                 </strong>
                                             </li>
                                             <li class="list-group-item">
-                                                <span class="pull-right"> {{ ::vm.company.percent_tva }} </span>
+                                                <span class="pull-right"> {{ vm.company.percent_tva }} </span>
                                                 <strong>
                                                     <span translate="company.percentTva"> Percent TVA</span>
                                                 </strong>
                                             </li>
                                             <li class="list-group-item">
-                                                <span class="pull-right"> {{ ::vm.company.payment_period }} </span>
+                                                <span class="pull-right"> {{ vm.company.payment_period }} </span>
                                                 <strong>
                                                     <span translate="company.paymentPeriod.name"> Payment period</span>
                                                 </strong>
                                             </li>
                                             <li class="list-group-item">
-                                                <span class="pull-right"> {{ ::vm.company.invoice_delivery_day }} </span>
+                                                <span class="pull-right"> {{ vm.company.invoice_delivery_day }} </span>
                                                 <strong>
                                                     <span translate="company.invoiceDeliveryDay"> Invoice delivery day</span>
                                                 </strong>
@@ -76,12 +76,12 @@
                                                         <img alt="image" class="img-circle" src="assets/images/patterns/toto.jpg">
                                                     </a>
                                                     <div class="media-body">
-                                                        <small class="pull-right label label-primary">{{ ::contact.type }}</small>
-                                                        <strong>{{ ::contact.firstname }} {{ ::contact.surname }}</strong><br>
-                                                        <small class="text-primary"><i class="fa fa-user"></i> {{ ::contact.fonction }}</small> <br>
-                                                        <small class="text-muted"><i class="fa fa-envelope"></i> {{ ::contact.mail }}</small>
-                                                        <small class="text-muted"><i class="fa fa-phone"></i> {{ ::contact.phone }}</small>
-                                                        <small class="text-muted"><i class="fa fa-skype"></i> {{ ::contact.skype }}</small>
+                                                        <small class="pull-right label label-primary">{{ contact.type }}</small>
+                                                        <strong>{{ contact.firstname }} {{ contact.surname }}</strong><br>
+                                                        <small class="text-primary"><i class="fa fa-user"></i> {{ contact.fonction }}</small> <br>
+                                                        <small class="text-muted"><i class="fa fa-envelope"></i> {{ contact.mail }}</small>
+                                                        <small class="text-muted"><i class="fa fa-phone"></i> {{ contact.phone }}</small>
+                                                        <small class="text-muted"><i class="fa fa-skype"></i> {{ contact.skype }}</small>
                                                     </div>
                                                 </div>
                                             </div>
@@ -105,18 +105,18 @@
                                                             <i ng-class="{'fa fa-circle text-primary': announcer.active, 'fa fa-circle text-danger': !announcer.active}"></i>
                                                         </p>
                                                         <strong>
-                                                            {{ ::announcer.announcer }}
+                                                            {{ announcer.announcer }}
                                                         </strong><br>
                                                         <p class="text-muted">
-                                                            <span translate="announcer.platform">Platform:</span> {{ ::announcer.platform }}
+                                                            <span translate="announcer.platform">Platform:</span> {{ announcer.platform }}
                                                         </p>
                                                         <p class="text-muted">
                                                             <i class="text-danger fa fa-globe"></i>
-                                                            <span translate="announcer.country">Country:</span> {{ ::announcer.country }}
+                                                            <span translate="announcer.country">Country:</span> {{ announcer.country }}
                                                         </p>
                                                         <p class="text-muted">
                                                             <i class="text-danger fa fa-pied-piper-alt"></i>
-                                                            {{ ::announcer.reinerouge_id }}
+                                                            {{ announcer.reinerouge_id }}
                                                         </p>
                                                     </div>
                                                 </div>

@@ -18,10 +18,10 @@
         .module('dataToolApp')
         .component('companyForm', companyForm);
 
-    CompanyFormController.$inject = ['PAYMENT_PERIOD_OPTIONS', '$translate', '$scope'];
+    CompanyFormController.$inject = ['PAYMENT_PERIOD_OPTIONS', '$translate'];
 
     /* @ngInject */
-    function CompanyFormController(PAYMENT_PERIOD_OPTIONS, $translate, $scope) {
+    function CompanyFormController(PAYMENT_PERIOD_OPTIONS, $translate) {
         var vm = this;
 
         vm.onSubmit = onSubmit;

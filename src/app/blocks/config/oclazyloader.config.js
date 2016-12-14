@@ -13,7 +13,7 @@
     function ocLazyLoaderConfig($ocLazyLoadProvider) {
 
         $ocLazyLoadProvider["config"]({
-            debug: false,
+            debug: true,
             serie: true,
             modules: [
                 {
@@ -62,6 +62,22 @@
                 {
                     name: 'chartJs',
                     files: ['/bower_components/angular-chart.js/dist/angular-chart.js']
+                },
+                {
+                    name: 'datepicker',
+                    files: [
+                        '/bower_components/angular-datepicker/dist/angular-datepicker.min.css',
+                        '/bower_components/angular-datepicker/dist/angular-datepicker.min.js',
+                        '/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css',
+                        '/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js'
+                    ]
+                },
+                {
+                    name: 'pdfjs',
+                    files: [
+                        '/bower_components/pdfjs-dist/build/pdf.js',
+                        '/bower_components/angular-pdf/dist/angular-pdf.js'
+                    ]
                 }
             ]
         });

@@ -4,6 +4,7 @@
         "contacts": "Contacts",
         "contact": "contact",
         "new": "Create a contact",
+        "empty": "No billing contact",
         "surname": "Lastname",
         "firstname": "Firstname",
         "company": "Company",

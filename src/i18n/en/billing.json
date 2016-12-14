@@ -1,0 +1,9 @@
+{
+    "billing": {
+        "invoiceRequest":{
+            "title": "Invoice calls tracking (ICC)",
+            "selectMonth": "Select a month",
+            "load": "Load"
+        }
+    }
+}

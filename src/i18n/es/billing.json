@@ -1,0 +1,9 @@
+{
+    "billing": {
+        "invoiceRequest":{
+            "title": "Seguimiento de peticiones de facturas (ICC)",
+            "selectMonth": "Selecíonar un mes",
+            "load": "Ir"
+        }
+    }
+}
