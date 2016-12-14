@@ -13,14 +13,16 @@
         .module('dataToolApp')
         .component('actualVolume', actualVolume);
 
-    ActualVolumeController.$inject = ['ActualVolume'];
+    ActualVolumeController.$inject = ['ActualVolume','$filter'];
 
     /* @ngInject */
-    function ActualVolumeController(ActualVolume) {
+    function ActualVolumeController(ActualVolume,$filter) {
         var vm = this;
         vm.dates = {};
         vm.stats = [];       // RECEIVED DATA
+        vm.statsFiltered = [];       // RECEIVED DATA
         vm.databases = [];   // TAB DATA
+        vm.databasesFiltered = [];   // TAB DATA
         vm.test = [];
         vm.totals = {
             actualVolume: 0,
@@ -47,7 +49,7 @@
         /////////////////////////////////////////////
 
         function onInit(){
-            vm.filtersContent = {foo: 'foo' };
+            vm.filtersContent = {};
         }
 
         function onChangeDates($event)
@@ -74,13 +76,12 @@
                     return dateA - dateB;
                 });
 
-
-                vm.filtersContent = ActualVolume.parseResponse(vm.stats,vm.databases,vm.filtersContent);
-
-                console.log(vm.filtersContent);
-
+                vm.filtersContent = ActualVolume.parseResponse(vm.stats,vm.databases);
                 ActualVolume.getProcessedValues(vm.databases,vm.totals, vm.dates.endDateDay);
                 ActualVolume.getGraphsObject(vm.stats, vm.chartVolumeObject, vm.chartTotalsObject);
+
+                vm.statsFiltered     = vm.stats;
+                vm.databasesFiltered = vm.databases;
             }
 
             function onError(error) {
@@ -89,11 +90,46 @@
         }
 
         function onChangeFilters($event) {
-
             vm.filtersValue = $event.filters;
-            console.log(vm.filtersValue);
-
+            updateComponents();
         }
+
+        function updateComponents(){
+
+            updateFilteredData();
+            resetObjects();
+
+            ActualVolume.getGraphsObject(vm.statsFiltered, vm.chartVolumeObject, vm.chartTotalsObject);
+            ActualVolume.getProcessedValues(vm.databasesFiltered,vm.totals, vm.dates.endDateDay);
+        }
+
+        function resetObjects() {
+            vm.totals = {
+                actualVolume: 0,
+                daybeforeVolume: 0,
+                predictActualVolume: 0,
+                predictDaybeforeVolume: 0,
+                predictCombined: 0
+            };
+            vm.chartVolumeObject = {
+                labels: [],
+                data: [],
+                series: ['Volumes','Average']
+            };
+            vm.chartTotalsObject = {
+                labels: [],
+                data: [],
+                series: ['TotalsAvg','TotalsDayBefore']
+            };
+        }
+
+        function updateFilteredData() {
+            var filteredDatabases = $filter('propsOnArrayFilterJs')(vm.databases,'id',vm.filtersValue.selectedDatabases,'id');
+            var filteredStats = $filter('propsOnArrayFilterJs')(vm.stats,'database_id',vm.filtersValue.selectedDatabases,'id');
+            vm.databasesFiltered = filteredDatabases;
+            vm.statsFiltered = filteredStats;
+        }
+
 
     }
 

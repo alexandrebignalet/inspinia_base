@@ -21,6 +21,10 @@
     function VolumeTotalGraphController() {
         var vm = this;
 
+        vm.$onChanges = function(changes) {
+            console.log(vm.chartVolumeObject);
+        }
+
     }
 
 })();

@@ -76,7 +76,7 @@
 
          /----------------------------------------------*/
 
-        function parseResponse(data,databases,filters) {
+        function parseResponse(data,databases) {
 
             var tmp = {
                 databases: [],
@@ -91,7 +91,6 @@
                     value: false
                 }]
             };
-
 
             angular.forEach(data, function(stat) {
 
@@ -339,7 +338,7 @@
 
             labelsTotals = angular.copy(labelsVolume);
 
-            for( var k = daysLeft ; k >= 0 ; k-- ) {
+            for( var k = daysLeft ; k > 0 ; k-- ) {
                 currentDate = moment(currentDate).add(1, 'days');
 
                 lastTotalAvg += stepAvg;

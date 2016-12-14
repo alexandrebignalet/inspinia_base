@@ -62,7 +62,7 @@
                             <td> {{ vm.totals.predictDaybeforeVolume | number:0 }} </td>
                             <td> {{ vm.totals.predictCombined | number:0 }} </td>
                         </tr>
-                        <tr ng-repeat="database in vm.databases">
+                        <tr ng-repeat="database in vm.databasesFiltered">
                             <td> {{ database.database_name }} </td>
                             <td> {{ database.company_name }} </td>
                             <td> {{ database.database_type }} </td>

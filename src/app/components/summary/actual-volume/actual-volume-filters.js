@@ -15,10 +15,10 @@
         .module('dataToolApp')
         .component('actualVolumeFilters', actualVolumeFilters);
 
-    ActualVolumeFiltersController.$inject = ['$filter','ActualVolume'];
+    ActualVolumeFiltersController.$inject = [];
 
     /* @ngInject */
-    function ActualVolumeFiltersController($filter, ActualVolume) {
+    function ActualVolumeFiltersController() {
         var vm = this;
 
         vm.$onChanges = onChanges;
