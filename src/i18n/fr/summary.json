@@ -28,6 +28,8 @@
         "day-before-volume": "Volume de la veille",
         "volume-forecast": "Prévision volume actuel",
         "day-before-volume-forecast": "Prévision volume de la veille",
-        "combinated-forecast": "Prévision combinés"
+        "combinated-forecast": "Prévision combinés",
+        "volumes": "Volumes",
+        "totals": "Totaux"
     }
 }

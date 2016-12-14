@@ -13,17 +13,16 @@
         .module('dataToolApp')
         .component('actualVolume', actualVolume);
 
-    ActualVolumeController.$inject = ['ActualVolume','$filter'];
+    ActualVolumeController.$inject = ['ActualVolume','$filter','DTOptionsBuilder','DTColumnDefBuilder'];
 
     /* @ngInject */
-    function ActualVolumeController(ActualVolume,$filter) {
+    function ActualVolumeController(ActualVolume,$filter,DTOptionsBuilder,DTColumnDefBuilder) {
         var vm = this;
         vm.dates = {};
         vm.stats = [];       // RECEIVED DATA
         vm.statsFiltered = [];       // RECEIVED DATA
         vm.databases = [];   // TAB DATA
         vm.databasesFiltered = [];   // TAB DATA
-        vm.test = [];
         vm.totals = {
             actualVolume: 0,
             daybeforeVolume: 0,
@@ -45,6 +44,16 @@
         vm.onChangeFilters = onChangeFilters;
         vm.onChangeDates = onChangeDates;
         vm.$onInit = onInit;
+
+        vm.dtOptions = DTOptionsBuilder.newOptions()
+            .withOption('paging', false)
+            .withDOM('t');
+
+        vm.DTColumnDefs = [
+            DTColumnDefBuilder.newColumnDef("sorting_disabled").notSortable()
+        ];
+
+
 
         /////////////////////////////////////////////
 
@@ -141,7 +150,6 @@
             vm.databasesFiltered = filteredDatabases;
             vm.statsFiltered = filteredStats;
         }
-
 
     }
 

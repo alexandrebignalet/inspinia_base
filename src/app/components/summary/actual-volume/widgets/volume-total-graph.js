@@ -20,9 +20,7 @@
     /* @ngInject */
     function VolumeTotalGraphController() {
         var vm = this;
-
-
-
+        vm.toogle = true;
     }
 
 })();

@@ -28,64 +28,71 @@
 
     <div class="row">
         <div class="col-sm-12">
-            <div class="ibox">
-                <div class="ibox-content">
-                    <uib-tabset>
-                        <uib-tab index="0" heading="All" select="selectRouter('all')"></uib-tab>
-                        <uib-tab index="$index + 2" ng-repeat="router in routers" heading="{{ router }}" select="selectRouter(router)"></uib-tab>
-                    </uib-tabset>
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th><span translate="summary.database">Database</span></th>
-                            <th><span translate="summary.company">Comapny</span></th>
-                            <th><span translate="summary.type">Type</span></th>
-                            <th><span translate="summary.country">Country</span></th>
-                            <th><span translate="summary.active">Active</span></th>
-                            <th><span translate="summary.current-volume">Current Volume</span></th>
-                            <th><span translate="summary.day-before-volume">Day before volume</span></th>
-                            <th><span translate="summary.volume-forecast">Volume forecast</span></th>
-                            <th><span translate="summary.day-before-volume-forecast">Day before volume forecast</span></th>
-                            <th><span translate="summary.combinated-forecast">Combinated forecast</span></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td> {{ vm.totals.actualVolume | number:0 }} </td>
-                            <td> {{ vm.totals.daybeforeVolume | number:0 }} </td>
-                            <td> {{ vm.totals.predictActualVolume | number:0 }} </td>
-                            <td> {{ vm.totals.predictDaybeforeVolume | number:0 }} </td>
-                            <td> {{ vm.totals.predictCombined | number:0 }} </td>
-                        </tr>
-                        <tr ng-repeat="database in vm.databasesFiltered">
-                            <td> {{ database.database_name }} </td>
-                            <td> {{ database.company_name }} </td>
-                            <td> {{ database.database_type }} </td>
-                            <td> {{ database.database_country }} </td>
-                            <td> {{ database.active }} </td>
-                            <td> {{ database.total | number:0 }} </td>
-                            <td> {{ database.daybefore_volume | number:0 }} </td>
-                            <td> {{ database.predictVolume | number:0 }} </td>
-                            <td> {{ database.predictVolumeDayBefore | number:0 }} </td>
-                            <td> {{ database.predictActualVolumeDayBefore | number:0 }} </td>
-                        </tr>
-                        </tbody>
+            <div ng-if="vm.databases.length != 0">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <uib-tabset>
+                            <uib-tab index="0" heading="All" select="selectRouter('all')"></uib-tab>
+                            <uib-tab index="$index + 2" ng-repeat="router in routers" heading="{{ router }}" select="selectRouter(router)"></uib-tab>
+                        </uib-tabset>
+                        <table datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.dtColumnDefs" class="table">
+                            <thead>
+                            <tr>
+                                <th><span translate="summary.database">Database</span></th>
+                                <th><span translate="summary.company">Comapny</span></th>
+                                <th><span translate="summary.type">Type</span></th>
+                                <th><span translate="summary.country">Country</span></th>
+                                <th><span translate="summary.active">Active</span></th>
+                                <th><span translate="summary.current-volume">Current Volume</span></th>
+                                <th><span translate="summary.day-before-volume">Day before volume</span></th>
+                                <th><span translate="summary.volume-forecast">Volume forecast</span></th>
+                                <th><span translate="summary.day-before-volume-forecast">Day before volume forecast</span></th>
+                                <th><span translate="summary.combinated-forecast">Combinated forecast</span></th>
+                            </tr>
 
-                    </table>
+                            </thead>
+
+                            <tbody>
+                            <tr class="sorting_disabled">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="sorting_disabled"> {{ vm.totals.actualVolume | number:0 }} </td>
+                                <td> {{ vm.totals.daybeforeVolume | number:0 }} </td>
+                                <td> {{ vm.totals.predictActualVolume | number:0 }} </td>
+                                <td> {{ vm.totals.predictDaybeforeVolume | number:0 }} </td>
+                                <td> {{ vm.totals.predictCombined | number:0 }} </td>
+                            </tr>
+                            <tr ng-repeat="database in vm.databasesFiltered">
+                                <td> {{ database.database_name }} </td>
+                                <td> {{ database.company_name }} </td>
+                                <td> {{ database.database_type }} </td>
+                                <td> {{ database.database_country }} </td>
+                                <td>
+                                    <i ng-class="{'text-danger': !database.active, 'text-info': database.active}" class="fa fa-{{ database.active ? 'check' : 'times'}} "></i>
+                                </td>
+                                <td> {{ database.total | number:0 }} </td>
+                                <td> {{ database.daybefore_volume | number:0 }} </td>
+                                <td> {{ database.predictVolume | number:0 }} </td>
+                                <td> {{ database.predictVolumeDayBefore | number:0 }} </td>
+                                <td> {{ database.predictActualVolumeDayBefore | number:0 }} </td>
+                            </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
                 </div>
-
             </div>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-12">
-            <volume-total-graph chart-totals-object="vm.chartTotalsObject" chart-volume-object="vm.chartVolumeObject"></volume-total-graph>
+        <div ng-if="vm.databases.length != 0">
+            <div class="col-md-12">
+                <volume-total-graph chart-totals-object="vm.chartTotalsObject" chart-volume-object="vm.chartVolumeObject"></volume-total-graph>
+            </div>
         </div>
     </div>
 
