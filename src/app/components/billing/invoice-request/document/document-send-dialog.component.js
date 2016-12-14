@@ -30,7 +30,7 @@
         ////////////////
 
         function onInit(){
-            vm.document = vm.resolve.document;
+            //vm.document = vm.resolve.document;
             vm.type = vm.resolve.type;
             vm.pdf = vm.resolve.pdf;
             vm.preferences = vm.resolve.preferences;

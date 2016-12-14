@@ -15,6 +15,7 @@
         that.services = {};
 
         var service = {
+            getName: getName,
             init: init,
             getServices: getServices
         };
@@ -22,6 +23,10 @@
         return service;
 
         ////////////////
+
+        function getName () {
+            return that.accountingSystemName
+        }
 
         function init(accountingSystemName){
             if (accountingSystemName === ACCOUNTING_SYSTEMS["DATAENGINE"]){

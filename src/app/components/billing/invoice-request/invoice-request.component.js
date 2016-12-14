@@ -14,10 +14,12 @@
         .module('dataToolApp')
         .component('invoiceRequest', invoiceRequest);
 
-    InvoiceRequestController.$inject = ['Billing', 'AccountingSystem', 'BILLING_DOCUMENTS_TYPES', 'BILLING_STATES', 'DocumentSendDialog', 'ACCOUNTING_SYSTEM_SERVICES'];
+    InvoiceRequestController.$inject = ['Billing', 'AccountingSystem', 'BILLING_DOCUMENTS_TYPES', 'ACCOUNTING_SYSTEMS',
+                                        'BILLING_STATES', 'DocumentSendDialog', 'ACCOUNTING_SYSTEM_SERVICES'];
 
     /* @ngInject */
-    function InvoiceRequestController(Billing, AccountingSystem, BILLING_DOCUMENTS_TYPES, BILLING_STATES, DocumentSendDialog, ACCOUNTING_SYSTEM_SERVICES) {
+    function InvoiceRequestController(Billing, AccountingSystem, BILLING_DOCUMENTS_TYPES, ACCOUNTING_SYSTEMS,
+                                      BILLING_STATES, DocumentSendDialog, ACCOUNTING_SYSTEM_SERVICES) {
         var vm = this;
 
         var accountingSystem = null;
@@ -125,7 +127,14 @@
 
                     return createBillingDocument($event)
                         .then(function(invoice){
-                            DocumentSendDialog.openDialogModal(invoice, ACCOUNTING_SYSTEM_SERVICES.INVOICE.name);
+
+                            if ( AccountingSystem.getName() !== ACCOUNTING_SYSTEMS["DATAENGINE"] )
+                            {
+                                DocumentSendDialog.openDialogModal(invoice.externalId, ACCOUNTING_SYSTEM_SERVICES.INVOICE.name);
+                                return invoice
+                            }
+                            DocumentSendDialog.openDialogModal(invoice.id, ACCOUNTING_SYSTEM_SERVICES.INVOICE.name);
+
                             return invoice
                         });
                     break;
