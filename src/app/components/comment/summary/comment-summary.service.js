@@ -5,23 +5,34 @@
         .module('dataToolApp')
         .factory('CommentSummary', CommentSummary);
 
-    CommentSummary.$inject = ['$resource', 'API_BASE_URL', 'ToastrService', '$q'];
+    CommentSummary.$inject = ['$resource','$http', 'API_BASE_URL', 'ToastrService', '$q'];
 
-    function CommentSummary($resource, API_BASE_URL, ToastrService, $q) {
+    function CommentSummary($resource, $http, API_BASE_URL, ToastrService, $q) {
 
         var service = {
             get: get,
+            getByDateRage: getByDateRage,
             save: save,
             init: init
         };
 
-        var resourceUrl = API_BASE_URL+'/api/summaries/:id/comments/json';
-
+        var resourceUrl = API_BASE_URL+'/api/summary/:id/comments/json';
+        var dateFormat = 'YYYY-MM-DD';
         var resource = $resource(resourceUrl, {}, {
             'update': {method: 'PATCH'}
         });
 
         return service;
+
+        function getByDateRage(startDate, endDate) {
+            var formatedStartDate = formatDateToQuery(startDate);
+            var formatedEndDate = formatDateToQuery(endDate);
+
+            return $http({
+                method: 'GET',
+                url: API_BASE_URL + "/comment/summary/" + formatedStartDate + "/" + formatedEndDate
+            });
+        }
 
         function get(idSummary, context){
             return resource.get({
@@ -74,6 +85,10 @@
             delete tmp.id;
 
             return tmp;
+        }
+
+        function formatDateToQuery(date) {
+            return date.format(dateFormat);
         }
     }
 })();

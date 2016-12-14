@@ -13,16 +13,17 @@
         .module('dataToolApp')
         .component('actualVolume', actualVolume);
 
-    ActualVolumeController.$inject = ['ActualVolume','$filter','DTOptionsBuilder','DTColumnDefBuilder'];
+    ActualVolumeController.$inject = ['ActualVolume','CommentSummary','$filter','DTOptionsBuilder','DTColumnDefBuilder'];
 
     /* @ngInject */
-    function ActualVolumeController(ActualVolume,$filter,DTOptionsBuilder,DTColumnDefBuilder) {
+    function ActualVolumeController(ActualVolume,CommentSummary,$filter,DTOptionsBuilder,DTColumnDefBuilder) {
         var vm = this;
         vm.dates = {};
-        vm.stats = [];       // RECEIVED DATA
-        vm.statsFiltered = [];       // RECEIVED DATA
-        vm.databases = [];   // TAB DATA
-        vm.databasesFiltered = [];   // TAB DATA
+        vm.stats = [];
+        vm.statsFiltered = [];
+        vm.databases = [];
+        vm.databasesFiltered = [];
+        vm.comments = [];
         vm.totals = {
             actualVolume: 0,
             daybeforeVolume: 0,
@@ -72,10 +73,24 @@
             };
 
             ActualVolume.getSummaryVolumes(dates.startDate, dates.endDate)
-                .then(onSuccess)
-                .catch(onError);
+                .then(onSuccessGetSummary)
+                .catch(onErrorGetSummary);
 
-            function onSuccess(response){
+            CommentSummary.getByDateRage(dates.startDate, dates.endDate)
+                .then(onSuccessGetComments)
+                .catch(onErrorGetComments);
+
+
+
+            function onSuccessGetComments(response) {
+                vm.comments = response.data;
+            }
+
+            function onErrorGetComments(error) {
+                console.log(error);
+            }
+
+            function onSuccessGetSummary(response){
 
                 vm.stats = response.data;
                 vm.stats.sort(function(a,b){
@@ -94,8 +109,7 @@
                 vm.databasesFiltered = vm.databases;
 
             }
-
-            function onError(error) {
+            function onErrorGetSummary(error) {
                 console.log(error);
             }
         }

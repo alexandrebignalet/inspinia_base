@@ -28,7 +28,7 @@
 
     <div class="row">
         <div class="col-sm-12">
-            <div ng-if="vm.databases.length != 0">
+            <div ng-if="vm.databases.length > 0">
                 <div class="ibox">
                     <div class="ibox-content">
                         <uib-tabset>
@@ -89,7 +89,7 @@
     </div>
 
     <div class="row">
-        <div ng-if="vm.databases.length != 0">
+        <div ng-if="vm.databases.length > 0">
             <div class="col-md-12">
                 <volume-total-graph chart-totals-object="vm.chartTotalsObject" chart-volume-object="vm.chartVolumeObject"></volume-total-graph>
             </div>
@@ -97,9 +97,10 @@
     </div>
 
     <div class="row">
-        <div class="col-md-12">
-            <actual-volume-comment></actual-volume-comment>
+        <div ng-if="vm.comments.length > 0">
+            <div class="col-md-12">
+                <actual-volume-comment comments="vm.comments"></actual-volume-comment>
+            </div>
         </div>
     </div>
-
 </div>
