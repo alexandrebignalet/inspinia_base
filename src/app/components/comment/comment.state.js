@@ -27,7 +27,8 @@
                 parent: 'summary.actual-volume',
                 url: '/comments/create',
                 params: {
-                    databases: []
+                    databases: [],
+                    stats: []
                 },
                 data: {
                     pageTitle: 'Add a comment',
@@ -42,9 +43,9 @@
                     function(CommentSummaryDialogService, CommentSummary, $stateParams) {
                         var comment = CommentSummary.init();
                         var databases = $stateParams.databases;
-                        console.log(databases);
+                        var stats = $stateParams.stats;
 
-                        CommentSummaryDialogService.openDialogModal(comment, databases);
+                        CommentSummaryDialogService.openDialogModal(comment, databases,stats);
                     }]
         });
     }

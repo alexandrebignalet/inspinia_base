@@ -72,6 +72,8 @@
                 endDateDay: dates.endDate.format('DD')
             };
 
+            console.log(vm.dates);
+
             ActualVolume.getSummaryVolumes(dates.startDate, dates.endDate)
                 .then(onSuccessGetSummary)
                 .catch(onErrorGetSummary);
@@ -101,7 +103,6 @@
                 });
 
                 vm.filtersContent = ActualVolume.parseResponse(vm.stats,vm.databases);
-                console.log(vm.filtersContent);
                 ActualVolume.getProcessedValues(vm.databases,vm.totals, vm.dates.endDateDay);
                 ActualVolume.getGraphsObject(vm.stats, vm.chartVolumeObject, vm.chartTotalsObject);
 

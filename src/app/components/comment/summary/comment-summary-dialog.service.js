@@ -20,9 +20,9 @@
 
         /**
          *
-         * @param id sending or summary
          * @param comment
-         * @param type of comment sending or summary
+         * @param databases
+         * @param stats
          */
         function openDialogModal(comment,databases,stats) {
 

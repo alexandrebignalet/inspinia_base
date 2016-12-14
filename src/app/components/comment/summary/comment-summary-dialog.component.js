@@ -15,10 +15,10 @@
         .module('dataToolApp')
         .component('commentSummaryDialog', commentSummaryDialog);
 
-    CommentSummaryDialogController.$inject = [];
+    CommentSummaryDialogController.$inject = ['CommentSummary'];
 
     /* @ngInject */
-    function CommentSummaryDialogController() {
+    function CommentSummaryDialogController(CommentSummary) {
         var vm = this;
 
         vm.clear = clear;
@@ -29,8 +29,24 @@
 
         }
 
-        function saveComment() {
+        function saveComment($event){
+            if (!$event.comment ){ return; }
 
+            vm.isSaving = true;
+
+            CommentSummary.save($event.comment,vm.stats)
+                .then(onSuccess)
+                .catch(onError);
+
+            function onSuccess(){
+                ToastrService.success('Comment saved', 'Save success');
+                vm.isSaving = false;
+                vm.modalInstance.close();
+            }
+
+            function onError(){
+                vm.isSaving = false;
+            }
         }
 
         function onInit() {

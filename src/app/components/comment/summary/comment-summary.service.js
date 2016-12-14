@@ -53,8 +53,18 @@
             }
         }
 
-        function save(idSummary, comment, context) {
-            return resource.save({
+        function save(comment,stats) {
+
+            console.log(comment);
+            console.log(stats);
+
+            comment.date.format('YYYY-MM-DD');
+
+            findSummariesByDateAndDbName(comment.date, comment.databases, stats);
+
+            return
+
+            /*return resource.save({
                 'id': idSummary,
                 'context': context
             }, toPayloadFormat(comment))
@@ -69,22 +79,67 @@
             function onError(error) {
                 ToastrService.error('Impossible to create Comment','XHR Error');
                 return $q.reject(error);
-            }
+            }*/
         }
 
         function init() {
             return {
                 id: null,
-                content: null
+                content: null,
+                summaries: []
             };
         }
 
-        function toPayloadFormat(comment) {
+        function toPayloadFormat(comment,selectedDatabases,date,stats) {
             var tmp = Object.assign({}, comment);
 
             delete tmp.id;
 
             return tmp;
+        }
+
+        function findSummariesByDateAndDbName(date, databases, stats) {
+
+            var summaries;
+            var dateFormatted = moment(date).format("YYYY-MM-DD");
+
+            angular.forEach()
+
+
+            /*var summaries = [];
+            var dateFormatted = moment(date).format("YYYY-MM-DD");
+
+            angular.forEach(databases, function (database) {
+
+                var index = indexOfArrayObject(database.id,stats,'database_id');
+
+                if ( index !== -1 ) {
+
+                    var stat = stats[index];
+
+                    var tempDate = moment(stat.date.date).format('YYYY-MM-DD');
+
+                    console.log(dateFormatted);
+                    console.log(tempDate);
+
+                    if( tempDate == dateFormatted ) {
+                        summaries.push(stat.resume_id);
+                    }
+
+                }
+
+            });
+
+            console.log(summaries);*/
+        }
+
+
+
+        function indexOfArrayObject(value,array,field) {
+            for( var res = 0 ; res < array.length ; res++ ) {
+                if (array[res][field] == value) { return res }
+            }
+            return -1;
         }
 
         function formatDateToQuery(date) {

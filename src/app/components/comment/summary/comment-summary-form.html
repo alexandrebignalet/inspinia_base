@@ -3,9 +3,9 @@
     <div class="row">
         <div class="col-md-6">
             <label ><span translate="summary.date">Date</span></label>
-            <button type="button" date-time ng-model="vm.month" min-view="date" auto-close="true" class="btn btn-default btn-block">
+            <button type="button" date-time ng-model="vm.comment.date" min-view="date" auto-close="true" class="btn btn-default btn-block">
                 <i class="fa fa-calendar"></i>
-                {{ vm.month.format('DD MMMM YYYY')}}
+                {{ vm.month.format('YYYY-MM-DD')}}
             </button>
         </div>
         <div class="col-md-6">
@@ -13,7 +13,7 @@
             <am-multiselect multiple="true"
                             ms-selected ="There are {{vm.selectedDatabases.length}} database(s) selected"
                             template-url="app/layouts/select-template.html"
-                            ng-model="vm.selectedDatabases" ms-header="Select databases"
+                            ng-model="vm.comment.databases" ms-header="Select databases"
                             options="database as database.database_name for database in vm.databases"
 
             </am-multiselect>

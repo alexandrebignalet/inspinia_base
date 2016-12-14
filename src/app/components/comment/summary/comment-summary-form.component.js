@@ -26,6 +26,7 @@
         vm.onSubmit = onSubmit;
 
         function onSubmit() {
+
             vm.onSaveComment({
                 $event: {
                     comment: vm.comment
