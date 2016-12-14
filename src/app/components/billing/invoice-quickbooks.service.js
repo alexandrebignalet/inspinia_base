@@ -72,7 +72,7 @@
         function transformer(quickbooksFormattedInvoice, announcer, month) {
             var invoice = {};
 
-            if (quickbooksFormattedInvoice.EmailStatus === 'EmailSent') {
+            if (quickbooksFormattedInvoice['EmailStatus'] === 'EmailSent') {
                 invoice.recipients = [ quickbooksFormattedInvoice['BillEmail']['Address'] ];
                 invoice.sentByMail = true;
                 return invoice;

@@ -3,19 +3,30 @@
 
     angular
         .module('accounting.system')
-        .factory('quickBooksErrorHandlerInterceptor', quickBooksErrorHandlerInterceptor);
+        .factory('QuickBooksErrorHandlerInterceptor', QuickBooksErrorHandlerInterceptor);
 
-    quickBooksErrorHandlerInterceptor.$inject = ['$q', 'AuthQuickbooks', 'ToastrService'];
+    QuickBooksErrorHandlerInterceptor.$inject = ['$q', 'AuthQuickbooks', 'ToastrService', '$window'];
 
-    function quickBooksErrorHandlerInterceptor ($q, AuthQuickbooks, ToastrService) {
+    function QuickBooksErrorHandlerInterceptor ($q, AuthQuickbooks, ToastrService, $window) {
 
         var service = {
+            response: needAuthentification,
             responseError: responseError
         };
 
         return service;
 
         //////////////////////////
+
+        function needAuthentification (response) {
+
+            if ( response.config.url.includes('/auth') && !AuthQuickbooks.isAvailable()) {
+                $window.open(response.data);
+                return $q.reject(response)
+            }
+
+            return response;
+        }
 
         function responseError (response) {
 
@@ -26,6 +37,9 @@
                     break;
                 case 400:
                     ToastrService.warning('Validation Error', 'Quickbooks');
+                    break;
+                case 404:
+                    ToastrService.warning(response.status +': '+response.statusText, 'Quickbooks');
                     break;
                 default:
                     ToastrService.warning('Unregistered Error', 'Quickbooks');

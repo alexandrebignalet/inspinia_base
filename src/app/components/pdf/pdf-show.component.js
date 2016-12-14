@@ -18,7 +18,14 @@
 
     /* @ngInject */
     function PdfShowController($scope) {
-        $scope.pdfUrl = vm.pdfUrl;
+        var vm = this;
+console.log(vm.pdfUrl)
+        vm.$onInit = onInit;
+
+        function onInit(){
+            $scope.pdfUrl = vm.pdfUrl;
+            console.log($scope.pdfUrl)
+        }
     }
 
 })();

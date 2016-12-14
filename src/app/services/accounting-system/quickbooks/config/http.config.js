@@ -9,6 +9,5 @@
 
     function httpConfig($httpProvider) {
         $httpProvider.interceptors.push('quickBooksInterceptor');
-        $httpProvider.interceptors.push('quickBooksErrorHandlerInterceptor');
     }
 })();
