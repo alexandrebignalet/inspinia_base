@@ -5,27 +5,30 @@
         .module('accounting.system')
         .factory('QuickbooksDataService', QuickbooksDataService);
 
-    QuickbooksDataService.$inject = ['$resource','NODE_API_BASE_URL', 'AuthQuickbooks'];
+    QuickbooksDataService.$inject = ['$resource','NODE_API_BASE_URL', 'AuthQuickbooks', 'QuickBooksErrorHandlerInterceptor'];
 
     /* @ngInject */
-    function QuickbooksDataService($resource, NODE_API_BASE_URL, AuthQuickbooks) {
+    function QuickbooksDataService($resource, NODE_API_BASE_URL, AuthQuickbooks, QuickBooksErrorHandlerInterceptor) {
 
         const resourceUrl = NODE_API_BASE_URL+'/quickbooks/controllers/:entityAlias/:id';
 
+        this.headers = AuthQuickbooks.getHeaders();
+        this.interceptor = QuickBooksErrorHandlerInterceptor;
+
         var resource = $resource(resourceUrl, {entityAlias: '@entityAlias',id: '@id'}, {
-            get:    { method: 'GET' , headers: AuthQuickbooks.getHeaders() },
-            update: { method: 'PATCH', headers: AuthQuickbooks.getHeaders() },//, transformRequest: addHeaders },
-            save:   { method: 'POST', headers: AuthQuickbooks.getHeaders() },//, transformRequest: addHeaders },
+            get:    { method: 'GET' , headers: this.headers, interceptor: this.interceptor },
+            update: { method: 'PATCH', headers: this.headers, interceptor: this.interceptor },
+            save:   { method: 'POST', headers: this.headers, interceptor: this.interceptor },
             pdf:    {
                 method: 'GET',
-                url: NODE_API_BASE_URL+'/quickbooks/controllers/:entityAlias/:id/pdf',// transformRequest: addHeaders
+                url: NODE_API_BASE_URL+'/quickbooks/controllers/:entityAlias/:id/pdf',
                 responseType: 'arraybuffer',
-                headers: AuthQuickbooks.getHeaders()
+                headers: this.headers, interceptor: this.interceptor
             },
             send:   {
                 method: 'GET',
-                url: NODE_API_BASE_URL+'/quickbooks/controllers/:entityAlias/:id/sendTo/:email', //transformRequest: addHeaders
-                headers: AuthQuickbooks.getHeaders()
+                url: NODE_API_BASE_URL+'/quickbooks/controllers/:entityAlias/:id/sendTo/:email',
+                headers: this.headers, interceptor: this.interceptor
             }
         });
 
@@ -40,6 +43,7 @@
         };
 
         return service;
+
 
         function get(entityAlias, id) {
             return resource.get({ entityAlias: entityAlias, id: id })
@@ -105,8 +109,8 @@
                 .catch(onError);
         }
 
-        function onSuccess(data){
-            return data
+        function onSuccess(response){
+            return response.data
         }
 
         function onError(error){

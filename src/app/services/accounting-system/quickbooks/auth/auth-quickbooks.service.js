@@ -9,8 +9,10 @@
 
     /* @ngInject */
     function AuthQuickbooks(NodeSocket, ToastrService) {
-        var _authInfo;
-        var _available = false;
+        var that = this;
+
+        that.authInfo = null;
+        that.available = false;
 
         var service = {
             setAuthInfo: setAuthInfo,
@@ -47,27 +49,28 @@
         ////////////////
 
         function isAvailable () {
-            return _available
+            return that.available
         }
 
         function setAvailable (bool) {
-            _available = bool
+            that.available = bool
         }
 
-        function setAuthInfo (consumerKey, consumerSecret){
-            _authInfo = { consumerKey: consumerKey, consumerSecret: consumerSecret }
+        function setAuthInfo (consumerKey, consumerSecret) {
+            that.authInfo = { consumerKey: consumerKey, consumerSecret: consumerSecret }
         }
 
         function hasAuthInfo () {
-            return angular.isDefined(_authInfo)
+            return angular.isDefined(that.authInfo)
         }
 
         function getHeaders () {
+
             return {
                 "Accept": "application/json",
                 "Content-Type": "application/json",
-                "consumer-key": _authInfo.consumerKey,
-                "consumer-secret": _authInfo.consumerSecret
+                "consumer-key": that.authInfo.consumerKey,
+                "consumer-secret": that.authInfo.consumerSecret
             }
         }
     }
