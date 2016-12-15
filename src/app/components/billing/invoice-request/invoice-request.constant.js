@@ -17,8 +17,9 @@
 
     function getBillingDocumentTypes(){
         return {
-            INVOICE: 'invoice',
-            WAITING_LIST: 'waitingList'
+            INVOICE: 'Invoice',
+            WAITINGLIST: 'WaitingList',
+            ESTIMATE: 'Estimate'
         }
     }
 

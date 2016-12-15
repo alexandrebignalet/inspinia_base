@@ -6,7 +6,10 @@
 <div class="modal-body">
     <div class="row">
         <div class="col-md-6">
-            <document-send-form document="vm.document" on-send-document="vm.onSendDocument($event)" is-saving="vm.isSaving"></document-send-form>
+            <document-send-form document-id="vm.documentId" pdf="vm.pdf" preferences="vm.preferences"
+                                on-send-document="vm.onSendDocument($event)" is-sending="vm.isSending"
+                                mail="vm.billingContact.mail">
+            </document-send-form>
         </div>
         <div class="col-md-6">
             <pdf-show pdf-url="vm.pdf"></pdf-show>

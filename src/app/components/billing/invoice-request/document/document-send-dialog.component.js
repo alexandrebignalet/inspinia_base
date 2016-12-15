@@ -15,25 +15,26 @@
         .module('dataToolApp')
         .component('documentSendDialog', documentSendDialog);
 
-    DocumentSendController.$inject = [];
+    DocumentSendController.$inject = ['Company', 'ToastrService'];
 
     /* @ngInject */
-    function DocumentSendController() {
+    function DocumentSendController(Company, ToastrService) {
         var vm = this;
 
         vm.$onInit = onInit;
         vm.onSendDocument = onSendDocument;
         vm.clear = clear;
 
-        vm.isSaving = false;
+        vm.isSending = false;
 
         ////////////////
 
         function onInit(){
-            //vm.document = vm.resolve.document;
+            vm.documentId = vm.resolve.documentId;
             vm.type = vm.resolve.type;
             vm.pdf = vm.resolve.pdf;
             vm.preferences = vm.resolve.preferences;
+            vm.billingContact = Company.getBillingContact(vm.resolve.announcer.company);
             vm.sendDocument = vm.resolve.sendDocument;
         }
 
@@ -42,10 +43,25 @@
         }
 
         function onSendDocument($event) {
-            console.log($event)
+            if ( !$event.mail || !$event.preferences || !$event.documentId ) { return }
+
+            vm.isSending = true;
+
+            vm.sendDocument($event.documentId, $event.mail, $event.preferences)
+                .then(onSendSuccess)
+                .catch(onSendError);
+
+            function onSendSuccess(){
+                ToastrService.success("envoyé à " + $event.mail, "Envoi réussi");
+                vm.isSending = false;
+                vm.modalInstance.close();
+            }
+            function onSendError(){
+                vm.isSending = false;
+                vm.modalInstance.close();
+            }
         }
     }
-
 })();
 
 

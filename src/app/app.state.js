@@ -14,7 +14,7 @@
                 resolve: {
                     authorize: ['Auth',
                         function (Auth) {
-                            return Auth.authorize();
+                            return Auth.authorize(true);
                         }
                     ],
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {

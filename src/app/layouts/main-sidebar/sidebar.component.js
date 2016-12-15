@@ -17,16 +17,20 @@
     function sideNavigationController(Principal, Auth, $state) {
         var vm = this;
 
-        vm.isAuthenticated = Principal.isAuthenticated();
         vm.logout = logout;
-        vm.state = $state;
+        vm.$onInit = onInit;
 
 
-        Principal.identity(true)
-            .then(getCurrentUser);
+        function onInit() {
+            Principal.identity()
+                .then(getCurrentUser);
 
-        function getCurrentUser(identity){
-            vm.user = identity
+            vm.isAuthenticated = Principal.isAuthenticated();
+            vm.state = $state;
+
+            function getCurrentUser(identity){
+                vm.user = identity
+            }
         }
 
         function logout(){

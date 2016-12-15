@@ -6,7 +6,8 @@
         controller: InvoiceRequestController,
         controllerAs: 'vm',
         bindings: {
-            announcers : '<'
+            announcers : '<',
+            user: '<'
         }
     };
 
@@ -15,11 +16,11 @@
         .component('invoiceRequest', invoiceRequest);
 
     InvoiceRequestController.$inject = ['Billing', 'AccountingSystem', 'BILLING_DOCUMENTS_TYPES', 'ACCOUNTING_SYSTEMS',
-                                        'BILLING_STATES', 'DocumentSendDialog', 'ACCOUNTING_SYSTEM_SERVICES'];
+                                        'BILLING_STATES', 'DocumentSendDialog', 'WaitingList'];
 
     /* @ngInject */
     function InvoiceRequestController(Billing, AccountingSystem, BILLING_DOCUMENTS_TYPES, ACCOUNTING_SYSTEMS,
-                                      BILLING_STATES, DocumentSendDialog, ACCOUNTING_SYSTEM_SERVICES) {
+                                      BILLING_STATES, DocumentSendDialog, WaitingList) {
         var vm = this;
 
         var accountingSystem = null;
@@ -106,14 +107,15 @@
             switch ($event.type) {
                 case BILLING_DOCUMENTS_TYPES.INVOICE:
 
-                    return accountingSystem['Invoice'].create(vm.announcer, vm.sendings[BILLING_STATES.TO_CHARGED].list, vm.date)
+                    return accountingSystem[BILLING_DOCUMENTS_TYPES.INVOICE]
+                        .create(vm.announcer, vm.sendings[BILLING_STATES.TO_CHARGED].list, vm.date)
                         .then(function(invoice){
                             Billing.changeSendingsState(vm.sendings, BILLING_STATES.TO_CHARGED, BILLING_STATES.CHARGED);
                             return invoice
                         });
-                    break;
-                case BILLING_DOCUMENTS_TYPES.WAITING_LIST:
-                    break;
+
+                case BILLING_DOCUMENTS_TYPES.WAITINGLIST:
+                    return WaitingList.create(vm.announcer, vm.sendings[BILLING_STATES.NOT_CHARGED].list, vm.date);
                 default:
                     break;
             }
@@ -123,23 +125,47 @@
             if (!$event.type) { return }
 
             switch($event.type){
+
                 case BILLING_DOCUMENTS_TYPES.INVOICE:
 
                     return createBillingDocument($event)
                         .then(function(invoice){
 
+                            //attach the current user email as invoice sender
+                            invoice.sender = vm.user.email;
+
+                            var accountingService = AccountingSystem.getServices()[$event.type];
+
                             if ( AccountingSystem.getName() !== ACCOUNTING_SYSTEMS["DATAENGINE"] )
                             {
-                                DocumentSendDialog.openDialogModal(invoice.externalId, ACCOUNTING_SYSTEM_SERVICES.INVOICE.name);
+                                DocumentSendDialog
+                                    .openDialogModal(invoice.externalId, BILLING_DOCUMENTS_TYPES.INVOICE,
+                                        vm.announcer, accountingService);
+
                                 return invoice
                             }
-                            DocumentSendDialog.openDialogModal(invoice.id, ACCOUNTING_SYSTEM_SERVICES.INVOICE.name);
+
+                            DocumentSendDialog
+                                .openDialogModal(invoice.id, BILLING_DOCUMENTS_TYPES.INVOICE,
+                                    vm.announcer, accountingService);
 
                             return invoice
                         });
-                    break;
-                case BILLING_DOCUMENTS_TYPES.WAITING_LIST:
-                    break;
+
+                case BILLING_DOCUMENTS_TYPES.WAITINGLIST:
+
+                    return createBillingDocument($event)
+                        .then(function(waitingList){
+
+                            waitingList.sender = vm.user.email;
+
+                            DocumentSendDialog
+                                .openDialogModal(waitingList.id, BILLING_DOCUMENTS_TYPES.WAITINGLIST,
+                                    vm.announcer, WaitingList);
+
+                            return waitingList
+                        });
+
                 default:
                     break;
             }
