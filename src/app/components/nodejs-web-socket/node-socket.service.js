@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('accounting.system')
+        .module('dataToolApp')
         .factory('NodeSocket', NodeSocket);
 
     NodeSocket.$inject = ['$rootScope', 'NODE_SOCKET_BASE_URL'];
@@ -12,12 +12,14 @@
         var that = this;
 
         that.connected = false;
+        that.watches = {};
         that.options = {
-            'reconnection': true,
-            'reconnectionDelay': 1000,
-            'reconnectionDelayMax' : 5000,
-            'reconnectionAttempts': 1
+            reconnection: true,
+            reconnectionDelay: 1000,
+            reconnectionDelayMax: 5000,
+            reconnectionAttempts: 1
         };
+
         that.socket = io(NODE_SOCKET_BASE_URL, that.options);
 
         var service = {
@@ -25,7 +27,8 @@
             connect: connect,
             disconnect: disconnect,
             on: on,
-            emit: emit
+            emit: emit,
+            watch: watch
         };
 
         on('connect', function(){
@@ -78,6 +81,10 @@
                     }
                 });
             })
+        }
+
+        function watch(item, closure) {
+            watches[item] = closure;
         }
     }
 
