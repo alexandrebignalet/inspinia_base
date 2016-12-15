@@ -16,7 +16,7 @@
 
         var service = {
             getName: getName,
-            init: init,
+            set: set,
             getServices: getServices
         };
 
@@ -28,7 +28,7 @@
             return that.accountingSystemName
         }
 
-        function init(accountingSystemName){
+        function set(accountingSystemName){
             if (accountingSystemName === ACCOUNTING_SYSTEMS["DATAENGINE"]){
                 AuthQuickbooks.setAvailable(false);
             }

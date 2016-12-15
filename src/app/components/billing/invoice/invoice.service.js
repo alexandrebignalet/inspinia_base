@@ -5,9 +5,9 @@
         .module('dataToolApp')
         .factory('Invoice', Invoice);
 
-    Invoice.$inject = ['$resource','API_BASE_URL', 'ToastrService', '$q', 'Sending'];
+    Invoice.$inject = ['$resource','API_BASE_URL', 'ToastrService', '$q', 'Sending', '$http'];
 
-    function Invoice ($resource, API_BASE_URL, ToastrService, $q, Sending) {
+    function Invoice ($resource, API_BASE_URL, ToastrService, $q, Sending, $http) {
 
         var resourceUrl = API_BASE_URL + '/api/invoices/:id';
 
@@ -88,7 +88,7 @@
                 angular
                     .forEach(invoice.emails, function(sending){
                         sending.charged = true;
-                        Sending.update(sending);
+                        Sending.update(sending)
                     });
 
                 return invoiceSaved;
@@ -122,7 +122,15 @@
 
         function init(){
             return {
-                id: null
+                docNumber: null,
+                referenceDate: null,
+                sentByMail: false,
+                amount: null,
+                sender: null,
+                company: null,
+                estimate: null,
+                emails: [],
+                recipients: []
             };
         }
 
@@ -167,8 +175,11 @@
         }
 
         function pdf(id) {
-            return resource.pdf({ id: id })
-                .$promise
+            return $http({
+                method: 'GET',
+                url: API_BASE_URL + '/api/invoices/'+id+'/pdf',
+                responseType: 'arraybuffer'
+            })
                 .then(onPdfSuccess)
                 .catch(onPdfError);
 
@@ -177,7 +188,7 @@
                 return URL.createObjectURL(file);
             }
             function onPdfError(error){
-                ToastrService.error(error, 'Impossible to generate the invoice pdf.');
+                ToastrService.error(error, 'Impossible to generate the waitingList pdf.');
                 return $q.reject(error);
             }
         }

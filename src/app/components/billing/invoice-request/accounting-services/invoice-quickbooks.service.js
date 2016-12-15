@@ -31,6 +31,11 @@
 
                     quickbooksFormattedInvoice['DocNumber'] = docNumber;
 
+                    angular
+                        .forEach(sendings, function(sending){
+                            sending.invoice = docNumber
+                        });
+
                     return quickbooksFormattedInvoice;
                 });
 
