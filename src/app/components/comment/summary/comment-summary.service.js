@@ -19,7 +19,11 @@
         var resourceUrl = API_BASE_URL+'/api/summary/:id/comments/json';
         var dateFormat = 'YYYY-MM-DD';
         var resource = $resource(resourceUrl, {}, {
-            'update': {method: 'PATCH'}
+            'update': {method: 'PATCH'},
+            'saveComment' : {
+                method: 'POST',
+                url: API_BASE_URL + '/comment/save'
+            }
         });
 
         return service;
@@ -60,14 +64,7 @@
 
             comment.date.format('YYYY-MM-DD');
 
-            findSummariesByDateAndDbName(comment.date, comment.databases, stats);
-
-            return
-
-            /*return resource.save({
-                'id': idSummary,
-                'context': context
-            }, toPayloadFormat(comment))
+            return resource.saveComment(toPayloadFormat(comment,stats))
                 .$promise
                 .then(onSuccess)
                 .catch(onError);
@@ -79,7 +76,7 @@
             function onError(error) {
                 ToastrService.error('Impossible to create Comment','XHR Error');
                 return $q.reject(error);
-            }*/
+            }
         }
 
         function init() {
@@ -90,54 +87,48 @@
             };
         }
 
-        function toPayloadFormat(comment,selectedDatabases,date,stats) {
+        function toPayloadFormat(comment,stats) {
             var tmp = Object.assign({}, comment);
 
+            tmp.summaries = findSummariesByDateAndDbName(comment.date, comment.databases, stats);
+
             delete tmp.id;
+            delete tmp.databases;
+            delete tmp.date;
 
             return tmp;
         }
 
         function findSummariesByDateAndDbName(date, databases, stats) {
 
-            var summaries;
+            var summaries = [];
             var dateFormatted = moment(date).format("YYYY-MM-DD");
+            var statsLength = stats.length;
+            var i = 0;
 
-            angular.forEach()
+            for(i ; i < statsLength ; i++ ){
+                var tempDate = moment(stats[i].date.date).format("YYYY-MM-DD");
 
+                var index = indexOfArrayObject(stats[i].database_id, databases, 'id');
 
-            /*var summaries = [];
-            var dateFormatted = moment(date).format("YYYY-MM-DD");
-
-            angular.forEach(databases, function (database) {
-
-                var index = indexOfArrayObject(database.id,stats,'database_id');
-
-                if ( index !== -1 ) {
-
-                    var stat = stats[index];
-
-                    var tempDate = moment(stat.date.date).format('YYYY-MM-DD');
-
-                    console.log(dateFormatted);
-                    console.log(tempDate);
-
-                    if( tempDate == dateFormatted ) {
-                        summaries.push(stat.resume_id);
-                    }
+                if ((index  -1) && (tempDate == dateFormatted)) {
+                    summaries.push(stats[i].resume_id)
 
                 }
 
-            });
+            }
 
-            console.log(summaries);*/
+            return summaries;
         }
-
 
 
         function indexOfArrayObject(value,array,field) {
             for( var res = 0 ; res < array.length ; res++ ) {
-                if (array[res][field] == value) { return res }
+
+
+                if (array[res][field] == value) {
+                    return +res
+                }
             }
             return -1;
         }

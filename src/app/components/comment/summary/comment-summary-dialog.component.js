@@ -32,11 +32,9 @@
         function saveComment($event){
             if (!$event.comment ){ return; }
 
-            vm.isSaving = true;
 
-            CommentSummary.save($event.comment,vm.stats)
-                .then(onSuccess)
-                .catch(onError);
+            CommentSummary.save($event.comment,vm.stats);
+
 
             function onSuccess(){
                 ToastrService.success('Comment saved', 'Save success');
