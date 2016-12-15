@@ -1,0 +1,13 @@
+<div id="connection-state-quickbooks-bar" class="row wrapper border-bottom white-bg page-heading" ng-if="vm.display"
+     ng-class="{'connected': vm.connected, 'disconnected': !vm.connected, 'animated fadeOut': vm.available }">
+    <div class="col-md-10">
+        <h2>
+            Quickbooks&nbsp;&nbsp;
+        </h2>
+
+        <div class="btn-group" ng-if="!vm.available">
+            <button class="btn btn-primary btn-xs" ng-click="vm.reload()"><i class="fa fa-refresh"></i> Reload</button>
+            <button class="btn btn-success btn-xs" ng-click="vm.switchAccounting()"><i class="fa fa-share"></i> Use DataEngine</button>
+        </div>
+    </div>
+</div>

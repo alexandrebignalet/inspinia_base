@@ -25,10 +25,6 @@
 
         var accountingSystem = null;
 
-        vm.isLoading = false;
-        vm.announcer = null;
-        vm.date = null;
-        vm.sendings = null;
 
         vm.$onInit = onInit;
         vm.onFiltersReceived = onFiltersReceived;
@@ -39,6 +35,12 @@
         //////////////////
 
         function onInit() {
+            vm.isLoading = false;
+            vm.announcer = null;
+            vm.date = null;
+            vm.sendings = null;
+            vm.displayQuickbooksConnector = AccountingSystem.getName() !== ACCOUNTING_SYSTEMS.DATAENGINE;
+
             accountingSystem = AccountingSystem.getServices();
         }
 
