@@ -33,7 +33,7 @@
 
             vm.pagination = {
                 currentPage: 1,
-                itemsPerPage: 50,
+                itemsPerPage: 10,
                 maxSize: 6
             };
 

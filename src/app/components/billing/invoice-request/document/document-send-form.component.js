@@ -6,8 +6,11 @@
         controller: DocumentSendFormController,
         controllerAs: 'vm',
         bindings: {
-            document: '<',
-            isSaving: '<',
+            documentId: '<',
+            preferences: '<',
+            mail: '<',
+            isSending: '<',
+            pdf: '<',
             onSendDocument: '&'
         }
     };
@@ -30,7 +33,9 @@
         function onSubmit() {
             vm.onSendDocument({
                 $event: {
-                    document: vm.document
+                    documentId: vm.documentId,
+                    preferences: vm.preferences,
+                    mail: vm.mail
                 }
             })
         }

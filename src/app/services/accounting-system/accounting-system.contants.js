@@ -19,7 +19,7 @@
         return {
             INVOICE: {
                 name: 'Invoice',
-                methods: ['create', 'send', 'pdf', 'preferences']
+                methods: ['create', 'send', 'pdf', 'mailPreferences']
             }
         }
     }
