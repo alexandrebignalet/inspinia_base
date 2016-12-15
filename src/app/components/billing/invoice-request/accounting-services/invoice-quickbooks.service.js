@@ -100,7 +100,7 @@
                 company: announcer.company.id,
                 referenceDate: month.start,
                 sentByMail :false,
-                sender: "Get the email from current user pls",
+                sender: null,
                 amount: quickbooksFormattedInvoice['Balance'],
                 emails: []
 

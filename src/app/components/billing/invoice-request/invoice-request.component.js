@@ -131,6 +131,9 @@
                     return createBillingDocument($event)
                         .then(function(invoice){
 
+                            //attach the current user email as invoice sender
+                            invoice.sender = vm.user.email;
+
                             var accountingService = AccountingSystem.getServices()[$event.type];
 
                             if ( AccountingSystem.getName() !== ACCOUNTING_SYSTEMS["DATAENGINE"] )
@@ -153,6 +156,8 @@
 
                     return createBillingDocument($event)
                         .then(function(waitingList){
+
+                            waitingList.sender = vm.user.email;
 
                             DocumentSendDialog
                                 .openDialogModal(waitingList.id, BILLING_DOCUMENTS_TYPES.WAITINGLIST,

@@ -113,7 +113,7 @@
                 docNumber: null,
                 referenceDate: null,
                 sentByMail: false,
-                sender: "get the mail of current user pls",
+                sender: null,
                 company: null,
                 emails: [],
                 recipients: []
