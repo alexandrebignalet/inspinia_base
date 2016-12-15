@@ -8,8 +8,9 @@
     Principal.$inject = ['$q', 'User'];
 
     function Principal ($q, User) {
-        var _identity,
-            _authenticated = false;
+        var that = this;
+
+        that.authenticated = false;
 
         var service = {
             authenticate: authenticate,
@@ -23,17 +24,17 @@
         return service;
 
         function authenticate (identity) {
-            _identity = identity;
-            _authenticated = identity !== null;
+            that.identity = identity;
+            that.authenticated = identity !== null;
         }
 
         function hasAnyAuthority (roles) {
-            if (!_authenticated || !_identity || !_identity.roles) {
+            if (!that.authenticated || !that.identity || !that.identity.roles) {
                 return false;
             }
 
             for (var i = 0; i < roles.length; i++) {
-                if (_identity.roles.indexOf(roles[i]) !== -1) {
+                if (that.identity.roles.indexOf(roles[i]) !== -1) {
                     return true;
                 }
             }
@@ -42,7 +43,7 @@
         }
 
         function hasAuthority (role) {
-            if (!_authenticated) {
+            if (!that.authenticated) {
                 return $q.when(false);
             }
 
@@ -57,13 +58,13 @@
             var deferred = $q.defer();
 
             if (force === true) {
-                _identity = undefined;
+                that.identity = undefined;
             }
 
             // check and see if we have retrieved the identity data from the server.
             // if we have, reuse it by immediately resolving
-            if (angular.isDefined(_identity)) {
-                deferred.resolve(_identity);
+            if (angular.isDefined(that.identity)) {
+                deferred.resolve(that.identity);
 
                 return deferred.promise;
             }
@@ -76,24 +77,24 @@
             return deferred.promise;
 
             function getUserThen (user) {
-                _identity = user.data;
-                _authenticated = true;
-                deferred.resolve(_identity);
+                that.identity = user;
+                that.authenticated = true;
+                deferred.resolve(that.identity);
             }
 
             function getUserCatch () {
-                _identity = null;
-                _authenticated = false;
-                deferred.resolve(_identity);
+                that.identity = null;
+                that.authenticated = false;
+                deferred.resolve(that.identity);
             }
         }
 
         function isAuthenticated () {
-            return _authenticated;
+            return that.authenticated;
         }
 
         function isIdentityResolved () {
-            return angular.isDefined(_identity);
+            return angular.isDefined(that.identity);
         }
     }
 })();

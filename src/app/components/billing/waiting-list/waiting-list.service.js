@@ -142,8 +142,8 @@
             }
         }
 
-        function send(id, email, prefs) {
-            return resource.send({ id: id, email: email, subject: prefs.subject, message: prefs.message })
+        function send(id, mail, prefs) {
+            return resource.send({ id: id, sentTo: mail, subject: prefs.subject, message: prefs.message })
                 .$promise
                 .then(onSendSuccess)
                 .catch(onSendError);

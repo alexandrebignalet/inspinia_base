@@ -19,7 +19,7 @@
                 },
                 views: {
                     'content@': {
-                        template: '<invoice-request announcers="$resolve.announcers"></invoice-request>'
+                        template: '<invoice-request announcers="$resolve.announcers" user="$resolve.user"></invoice-request>'
                     }
                 },
                 resolve: {
@@ -30,6 +30,9 @@
                             'contacts_summary',
                             'addresses_summary'
                         ])
+                    }],
+                    user: ['Principal', function(Principal){
+                        return Principal.identity()
                     }],
                     loadPlugin: function ($ocLazyLoad) {
                         return $ocLazyLoad.load(['datatables', 'datepicker']);

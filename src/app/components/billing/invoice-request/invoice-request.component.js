@@ -6,7 +6,8 @@
         controller: InvoiceRequestController,
         controllerAs: 'vm',
         bindings: {
-            announcers : '<'
+            announcers : '<',
+            user: '<'
         }
     };
 
