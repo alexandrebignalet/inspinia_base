@@ -89,21 +89,16 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-2">
-            <button ui-sref="comment-summary-create({databases: vm.databasesFiltered,stats: vm.statsFiltered})" class="btn btn-outline btn-block btn-primary btn">Add comment</button>
-            <actual-volume-comment comments="vm.comments"></actual-volume-comment>
-        </div>
-        <div ng-if="vm.databases.length > 0">
-            <div class="col-md-10">
-                <volume-total-graph chart-totals-object="vm.chartTotalsObject" chart-volume-object="vm.chartVolumeObject"></volume-total-graph>
+    <div ng-if="vm.databases.length > 0">
+        <div class="row">
+            <div class="col-md-2">
+                <actual-volume-comment comments="vm.comments"></actual-volume-comment>
             </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div ng-if="vm.comments.length > 0">
-
+            <div>
+                <div class="col-md-10">
+                    <volume-total-graph chart-totals-object="vm.chartTotalsObject" chart-volume-object="vm.chartVolumeObject"></volume-total-graph>
+                </div>
+            </div>
         </div>
     </div>
 </div>

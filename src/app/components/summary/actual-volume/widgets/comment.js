@@ -20,7 +20,11 @@
     function ActualVolumeCommentController() {
         var vm = this;
 
+        vm.formatDate = formatDate;
 
+        function formatDate(date){
+            return moment(date).format('DD/MM/YYYY');
+        }
     }
 
 })();
