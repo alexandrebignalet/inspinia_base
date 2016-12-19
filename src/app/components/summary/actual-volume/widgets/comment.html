@@ -1,0 +1,40 @@
+<div class="ibox">
+    <div class="ibox-title">
+        <h2>Comments
+            <button ui-sref="comment-summary-create({databases: vm.databasesFiltered,stats: vm.statsFiltered})"
+                    class="btn btn-outline btn-primary btn-sm pull-right"><i class="fa fa-plus"></i>
+            </button>
+        </h2>
+    </div>
+    <div class="ibox-content" style="margin: 0px; padding: 0;">
+        <div class="row" style="margin: 0px; padding: 0;">
+            <div class="col-md-12" style="margin: 0px; padding: 0;">
+                <input type="text" placeholder="Serach" class="form-control">
+            </div>
+        </div>
+    </div>
+    <div ng-if="vm.comments.length > 0">
+        <div class="ibox-content">
+            <div class="fh-breadcrumb" >
+                <div class="client-detail">
+                    <div class="full-height-scroll" full-scroll>
+                        <div class="list-group elements-list">
+                            <div ng-repeat="comment in vm.comments">
+                                <div class="list-group-item">
+                                    <small class="text-muted">{{ vm.formatDate(comment.date.date) }}</small><br>
+                                    <strong>{{ comment.database_name}}</strong>
+
+                                    <div class="small m-t-xs">
+                                        <p class="m-b-xs">
+                                             {{ comment.content }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

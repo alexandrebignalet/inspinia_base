@@ -1,0 +1,20 @@
+<div class="ibox">
+    <div class="ibox-title">
+        <h2>
+            <span ng-if="vm.toogle" translate="summary.volumes"></span>
+            <span ng-if="!vm.toogle" translate="summary.totals"></span>
+            <button class="btn btn-success btn-outline btn-sm m-l-sm" ng-click="vm.toogle = !vm.toogle"><i class="fa fa-refresh"></i></button>
+        </h2>
+
+    </div>
+    <div ng-if="vm.toogle" class="ibox-content">
+        <canvas class="chart chart-line" chart-data="vm.chartVolumeObject.data"
+                chart-labels="vm.chartVolumeObject.labels" chart-series="vm.chartVolumeObject.series" chart-options="vm.charte.options">
+        </canvas>
+    </div>
+    <div ng-if="!vm.toogle" class="ibox-content">
+        <canvas class="chart chart-line" chart-data="vm.chartTotalsObject.data"
+                chart-labels="vm.chartTotalsObject.labels" chart-series="vm.chartTotalsObject.series" chart-options="vm.charte.options">
+        </canvas>
+    </div>
+</div>

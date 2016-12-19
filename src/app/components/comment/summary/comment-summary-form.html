@@ -1,0 +1,62 @@
+<form content="editForm" ng-submit="vm.onSubmit()">
+
+    <div class="row">
+        <div class="col-md-6">
+            <label ><span translate="summary.date">Date</span></label>
+            <button type="button" date-time ng-model="vm.comment.date" min-view="date" auto-close="true" class="btn btn-default btn-block">
+                <i class="fa fa-calendar"></i>
+                {{ vm.month.format('YYYY-MM-DD')}}
+            </button>
+        </div>
+        <div class="col-md-6">
+            <label ><span translate="summary.databases">Databases</span></label>
+            <am-multiselect multiple="true"
+                            ms-selected ="There are {{vm.selectedDatabases.length}} database(s) selected"
+                            template-url="app/layouts/select-template.html"
+                            ng-model="vm.comment.databases" ms-header="Select databases"
+                            options="database as database.database_name for database in vm.databases"
+
+            </am-multiselect>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group" ng-class="{ 'has-error' : (editForm.content.$invalid && !editForm.content.$pristine), 'has-success': editForm.content.$valid}">
+                <label for="comment_content" translate="summary.content">Content</label>
+                <div class="input-group m-b">
+                    <span class="input-group-addon"><i class="fa fa-{{ editForm.content.$invalid ? 'times' : 'check'}}"></i></span>
+                    <input class="form-control" id="comment_content" name="content" ng-model="vm.comment.content" type="text"
+                           minlength="3" maxlength="250" required/>
+
+                </div>
+                <div ng-show="editForm.content.$invalid && !editForm.content.$pristine">
+                    <p class="help-block"
+                       ng-show="editForm.content.$error.required" translate="global.entity.validation.required">
+                        This field is required.
+                    </p>
+                    <p class="help-block"
+                       ng-show="editForm.content.$error.minlength"
+                       translate="global.entity.validation.minlength"
+                       translate-values="{min:3}" >
+                    </p>
+                    <p class="help-block"
+                       ng-show="editForm.content.$error.maxlength"
+                       translate="global.entity.validation.maxlength"
+                       translate-values="{max:250}" >
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <button class="btn btn-block btn-primary"
+            type="submit"
+            ng-disabled="editForm.$invalid || vm.isSaving">
+        <span class="glyphicon glyphicon-save"></span>&nbsp;
+        <span ng-if="!vm.comment.id" translate="comment.action.save">Save</span>
+    </button>
+
+</form>

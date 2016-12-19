@@ -29,6 +29,12 @@
         "day-before-volume": "Day before volume",
         "volume-forecast": "Volume forecast",
         "day-before-volume-forecast": "Day before volume forecast",
-        "combinated-forecast": "Combinated forecast"
+        "combinated-forecast": "Combinated forecast",
+        "volumes": "Volumes",
+        "totals": "Totals",
+        "date": "Date",
+        "content": "Content",
+        "save": "Save",
+        "new-comment": "New comment"
     }
 }

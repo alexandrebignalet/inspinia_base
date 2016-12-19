@@ -56,7 +56,7 @@
                             return $translate.refresh();
                         }],
                         loadPlugin: function ($ocLazyLoad) {
-                            return $ocLazyLoad.load(['angular-daterangepicker','datatables','immutable']);
+                            return $ocLazyLoad.load(['angular-daterangepicker','datatables','immutable','chartJs']);
                         }
                     }
                 })

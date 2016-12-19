@@ -32,8 +32,6 @@
             console.log(vm.tranches);
         };
 
-
-
         function formatStats(stats) {
             angular.forEach(stats, function(stat) {
                 stat = formatStat(stat);

@@ -1,12 +1,13 @@
 (function () {
     'use strict';
 
-    var commentForm = {
-        templateUrl: 'app/components/comment/comment-form.html',
-        controller: CommentFormController,
+    var commentSummaryForm = {
+        templateUrl: 'app/components/comment/summary/comment-summary-form.html',
+        controller: CommentSummaryFormController,
         controllerAs: 'vm',
         bindings: {
             comment: '<',
+            databases: '<',
             isSaving: '<',
             onSaveComment: '&'
         }
@@ -14,17 +15,18 @@
 
     angular
         .module('dataToolApp')
-        .component('commentForm', commentForm);
+        .component('commentSummaryForm', commentSummaryForm);
 
-    CommentFormController.$inject = [];
+    CommentSummaryFormController.$inject = [];
 
     /* @ngInject */
-    function CommentFormController() {
+    function CommentSummaryFormController() {
         var vm = this;
 
         vm.onSubmit = onSubmit;
 
         function onSubmit() {
+
             vm.onSaveComment({
                 $event: {
                     comment: vm.comment
